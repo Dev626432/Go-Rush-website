@@ -1,0 +1,123 @@
+.hero-section {
+  isolation: isolate;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  min-height: calc(100svh - 76px);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.hero-section .hero-background-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.16);
+  transform-origin: center center;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(9, 24, 15, 0.72) 0%, rgba(9, 24, 15, 0.42) 48%, rgba(9, 24, 15, 0.18) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-art {
+  display: none;
+}
+
+.hero-copy,
+.hero-copy .hero-kicker,
+.hero-copy h1,
+.hero-copy > p,
+.hero-copy .hero-actions,
+.hero-copy .hero-trust {
+  color: #f8faef;
+}
+
+.hero-copy h1 em {
+  color: var(--acid);
+}
+
+.hero-copy .hero-kicker,
+.hero-copy > p,
+.hero-copy .hero-trust {
+  color: rgba(248, 250, 239, 0.78);
+}
+
+.hero-copy .hero-trust strong {
+  color: #f8faef;
+}
+
+.hero-copy .play-cta {
+  color: #f8faef;
+}
+
+.hero-copy .play-cta span {
+  border-color: rgba(248, 250, 239, 0.6);
+}
+
+.hero-copy > * {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-reveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.hero-copy .hero-kicker { animation-delay: 0.12s; }
+.hero-copy h1 { animation-delay: 0.24s; }
+.hero-copy > p { animation-delay: 0.38s; }
+.hero-copy .hero-actions { animation-delay: 0.52s; }
+.hero-copy .hero-trust { animation-delay: 0.66s; }
+
+.hero-art > * {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hero-art-reveal 0.8s ease-out forwards;
+}
+
+.hero-art .hero-background-video,
+.hero-art .hero-video-overlay {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.hero-art .sun-disc { animation-delay: 0.35s; }
+.hero-art .city-lines { animation-delay: 0.48s; }
+.hero-art .hero-scooter { animation-delay: 0.58s; }
+.hero-art .route-stamp { animation-delay: 0.7s; }
+.hero-art .earnings-float { animation-delay: 0.82s; }
+.hero-art .rating-float { animation-delay: 0.94s; }
+
+@keyframes hero-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-art-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > *, .hero-art > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-section .hero-background-video {
+    transform: scale(1.1);
+  }
+}
