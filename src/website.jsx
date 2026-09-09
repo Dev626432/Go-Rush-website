@@ -93,17 +93,32 @@ export default function Website() {
   const [formOpen, setFormOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [exiting, setExiting] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setExiting(true);
-      const removeTimer = setTimeout(() => {
-        setLoading(false);
-      }, 550);
-      return () => clearTimeout(removeTimer);
-    }, 1300);
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        const step = Math.floor(Math.random() * 9) + 5;
+        return Math.min(100, prev + step);
+      });
+    }, 55);
+    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      const exitTimer = setTimeout(() => setExiting(true), 300);
+      const hideTimer = setTimeout(() => setLoading(false), 900);
+      return () => {
+        clearTimeout(exitTimer);
+        clearTimeout(hideTimer);
+      };
+    }
+  }, [progress]);
 
   const action = (message) => {
     setNotice(message);
@@ -119,21 +134,34 @@ export default function Website() {
     <div className="site-shell">
       {loading && (
         <div className={`gorush-preloader ${exiting ? 'fade-out' : ''}`}>
-          <div className="loader-badge-container">
-            <div className="loader-glow-ring" />
-            <div className="loader-logo-wrapper">
-              <img src="/gorush-logo.jpg" alt="GoRush" className="loader-logo-img" />
+          <div className="loader-center">
+            <div className="loader-spinner-outer" />
+            <div className="loader-spinner-inner" />
+            <div className="loader-logo-card">
+              <img src="/gorush-logo.jpg" alt="GoRush Logo" />
             </div>
           </div>
-          <div className="loader-title">
+
+          <h2 className="loader-brand-title">
             <span>Go</span>Rush
-          </div>
+          </h2>
           <div className="loader-tagline">Drive · Earn · Grow</div>
-          <div className="loader-bar-wrap">
-            <div className="loader-bar" />
-          </div>
-          <div className="loader-status">
-            <span className="loader-dot" /> Now welcoming drivers in Indore
+
+          <div className="loader-progress-container">
+            <div className="loader-bar-track">
+              <div className="loader-bar-fill" style={{ width: `${progress}%` }} />
+            </div>
+            <div className="loader-meta">
+              <span className="loader-status-text">
+                <span className="loader-status-dot" />
+                {progress < 40
+                  ? 'Starting GoRush...'
+                  : progress < 80
+                  ? 'Connecting Indore drivers...'
+                  : 'Ready! Welcome.'}
+              </span>
+              <span className="loader-percent">{progress}%</span>
+            </div>
           </div>
         </div>
       )}
@@ -553,6 +581,7 @@ export default function Website() {
 
 function DriverForm({ close, action }) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   return (
     <div className="form-overlay" onClick={close}>
       <div className="driver-form" onClick={(event) => event.stopPropagation()}>
@@ -605,12 +634,25 @@ function DriverForm({ close, action }) {
             </label>
             <button
               className="primary-cta form-submit"
+              disabled={isSubmitting}
               onClick={() => {
-                setSubmitted(true);
-                action('Registration started');
+                setIsSubmitting(true);
+                setTimeout(() => {
+                  setIsSubmitting(false);
+                  setSubmitted(true);
+                  action('Registration started');
+                }, 850);
               }}
             >
-              Start registration <ArrowRight size={16} />
+              {isSubmitting ? (
+                <>
+                  <span className="btn-spinner" /> Verifying details...
+                </>
+              ) : (
+                <>
+                  Start registration <ArrowRight size={16} />
+                </>
+              )}
             </button>
             <small>We never share your details without permission.</small>
           </>
