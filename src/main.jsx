@@ -41,7 +41,7 @@ function App() {
     <div className="app-shell">
       <aside className={`sidebar ${menuOpen ? 'is-open' : ''}`}>
         <div className="brand-lockup">
-          <img src="/gorush-logo.jpg" alt="GoRush" style={{ width: '34px', height: '34px', borderRadius: '10px', objectFit: 'cover', display: 'block' }} />
+          <img src="/gorush-logo.png" alt="GoRush" style={{ width: '34px', height: '34px', borderRadius: '10px', objectFit: 'contain', display: 'block' }} />
           <div><strong>GoRush</strong><span>DRIVER CONSOLE</span></div>
           <button className="mobile-close" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={18} /></button>
         </div>

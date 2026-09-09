@@ -138,7 +138,7 @@ export default function Website() {
             <div className="loader-spinner-outer" />
             <div className="loader-spinner-inner" />
             <div className="loader-logo-card">
-              <img src="/gorush-logo.jpg" alt="GoRush Logo" />
+              <img src="/gorush-logo.png" alt="GoRush Logo" />
             </div>
           </div>
 
@@ -174,11 +174,8 @@ export default function Website() {
 
       <header className="site-header">
         <a className="site-brand" href="#top">
-          <img src="/gorush-logo.jpg" alt="GoRush" className="brand-logo-img" />
-          <div className="brand-title-wrap">
-            <strong>GoRush</strong>
-            <span className="brand-sub">DRIVE · EARN · GROW</span>
-          </div>
+          <img src="/gorush-logo.png" alt="GoRush" className="brand-logo-img" />
+          <strong>GoRush</strong>
         </a>
         <nav className={menu ? 'site-nav open' : 'site-nav'}>
           <button onClick={() => scrollTo('how-it-works')}>How it works</button>
@@ -533,11 +530,8 @@ export default function Website() {
       <footer className="site-footer">
         <div className="footer-brand">
           <a className="site-brand" href="#top">
-            <img src="/gorush-logo.jpg" alt="GoRush" className="brand-logo-img" />
-            <div className="brand-title-wrap">
-              <strong>GoRush</strong>
-              <span className="brand-sub">DRIVE · EARN · GROW</span>
-            </div>
+            <img src="/gorush-logo.png" alt="GoRush" className="brand-logo-img" />
+            <strong>GoRush</strong>
           </a>
           <p>
             Move freely. Earn fairly.
