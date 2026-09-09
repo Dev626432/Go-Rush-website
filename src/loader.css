@@ -1,0 +1,206 @@
+/* GoRush Ultra-Modern Preloader & Logo Styling */
+
+.gorush-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: radial-gradient(circle at center, #15271d 0%, #0c1610 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.55s ease,
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.gorush-preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.loader-badge-container {
+  position: relative;
+  display: grid;
+  place-items: center;
+  animation: floatBadge 2.8s ease-in-out infinite;
+}
+
+.loader-glow-ring {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 36px;
+  background: conic-gradient(from 0deg, #7bc44a, #d4ef62, #22c55e, #14251b, #7bc44a);
+  animation: spinRing 4s linear infinite;
+  filter: blur(14px);
+  opacity: 0.7;
+}
+
+.loader-logo-wrapper {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 26px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 40px rgba(123, 196, 74, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-logo-img {
+  width: 86px;
+  height: 86px;
+  border-radius: 22px;
+  object-fit: cover;
+  display: block;
+}
+
+.loader-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f6f5ed;
+  letter-spacing: -0.04em;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.loader-title span {
+  color: #7bc44a;
+}
+
+.loader-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #a4bba8;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.loader-bar-wrap {
+  width: 220px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 28px;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7bc44a, #d4ef62, #22c55e);
+  border-radius: 99px;
+  box-shadow: 0 0 16px #7bc44a;
+  animation: loadProgress 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.loader-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #8fa693;
+  margin-top: 14px;
+}
+
+.loader-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7bc44a;
+  box-shadow: 0 0 8px #7bc44a;
+  animation: pulseDot 1.4s ease-in-out infinite;
+}
+
+/* Header & Footer Logo Styles */
+.brand-logo-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 3px 10px rgba(20, 37, 27, 0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.site-brand:hover .brand-logo-img {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 6px 18px rgba(123, 196, 74, 0.35);
+}
+
+.brand-title-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: #718075;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.site-footer .brand-sub {
+  color: #a0b6a2;
+}
+
+/* Animations */
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes spinRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loadProgress {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 55%;
+  }
+  80% {
+    width: 88%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+    box-shadow: 0 0 12px #7bc44a;
+  }
+}

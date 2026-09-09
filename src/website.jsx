@@ -29,6 +29,7 @@ import './feature-motion.css';
 import './feature-latest.css';
 import './feature-polish.css';
 import './feature-theme.css';
+import './loader.css';
 
 const featureGroups = [
   {
@@ -90,6 +91,19 @@ export default function Website() {
   const [menu, setMenu] = useState(false);
   const [notice, setNotice] = useState('');
   const [formOpen, setFormOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [exiting, setExiting] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setExiting(true);
+      const removeTimer = setTimeout(() => {
+        setLoading(false);
+      }, 550);
+      return () => clearTimeout(removeTimer);
+    }, 1300);
+    return () => clearTimeout(timer);
+  }, []);
 
   const action = (message) => {
     setNotice(message);
@@ -103,6 +117,27 @@ export default function Website() {
 
   return (
     <div className="site-shell">
+      {loading && (
+        <div className={`gorush-preloader ${exiting ? 'fade-out' : ''}`}>
+          <div className="loader-badge-container">
+            <div className="loader-glow-ring" />
+            <div className="loader-logo-wrapper">
+              <img src="/gorush-logo.jpg" alt="GoRush" className="loader-logo-img" />
+            </div>
+          </div>
+          <div className="loader-title">
+            <span>Go</span>Rush
+          </div>
+          <div className="loader-tagline">Drive · Earn · Grow</div>
+          <div className="loader-bar-wrap">
+            <div className="loader-bar" />
+          </div>
+          <div className="loader-status">
+            <span className="loader-dot" /> Now welcoming drivers in Indore
+          </div>
+        </div>
+      )}
+
       {notice && (
         <div className="site-toast">
           <Check size={16} /> {notice}
@@ -111,10 +146,11 @@ export default function Website() {
 
       <header className="site-header">
         <a className="site-brand" href="#top">
-          <span>
-            <Bike size={20} />
-          </span>
-          <strong>GoRush</strong>
+          <img src="/gorush-logo.jpg" alt="GoRush" className="brand-logo-img" />
+          <div className="brand-title-wrap">
+            <strong>GoRush</strong>
+            <span className="brand-sub">DRIVE · EARN · GROW</span>
+          </div>
         </a>
         <nav className={menu ? 'site-nav open' : 'site-nav'}>
           <button onClick={() => scrollTo('how-it-works')}>How it works</button>
@@ -469,10 +505,11 @@ export default function Website() {
       <footer className="site-footer">
         <div className="footer-brand">
           <a className="site-brand" href="#top">
-            <span>
-              <Bike size={18} />
-            </span>
-            <strong>GoRush</strong>
+            <img src="/gorush-logo.jpg" alt="GoRush" className="brand-logo-img" />
+            <div className="brand-title-wrap">
+              <strong>GoRush</strong>
+              <span className="brand-sub">DRIVE · EARN · GROW</span>
+            </div>
           </a>
           <p>
             Move freely. Earn fairly.
