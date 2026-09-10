@@ -13,13 +13,11 @@ import {
   Headphones,
   IndianRupee,
   Menu,
-  Moon,
   Navigation,
   Play,
   ShieldCheck,
   Sparkles,
   Star,
-  Sun,
   TrendingUp,
   Users,
   X,
@@ -33,7 +31,6 @@ import './feature-polish.css';
 import './feature-theme.css';
 import './loader.css';
 import './card-route.css';
-import './hero-redesign.css';
 
 const featureGroups = [
   {
@@ -73,7 +70,25 @@ const stats = [
 ];
 
 export default function Website() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  useEffect(() => {
+    const artwork = document.querySelector('.hero-section');
+    if (!artwork || artwork.querySelector('.hero-background-video')) return undefined;
+    const video = document.createElement('video');
+    video.className = 'hero-background-video';
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.setAttribute('aria-hidden', 'true');
+    const source = document.createElement('source');
+    source.src = 'https://res.cloudinary.com/zfpzqpwo/video/upload/v1788946371/image-to-video/i2v_4532ef3361d04aa0ac941e0535b2036b.mp4';
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    artwork.prepend(video);
+    return () => video.remove();
+  }, []);
+
   const [menu, setMenu] = useState(false);
   const [notice, setNotice] = useState('');
   const [formOpen, setFormOpen] = useState(false);
@@ -180,126 +195,138 @@ export default function Website() {
         </div>
       )}
 
-      {/* MOCKUP HERO, HEADER, CARDS, AND STATS STRIP WRAPPER */}
-      <div className={`mockup-hero-wrapper ${isDarkMode ? 'dark-theme' : ''}`} id="top">
-        {/* Organic Background Fluid Shapes */}
-        <div className="mockup-bg-shape-top-right" />
-        <div className="mockup-bg-shape-center-lime" />
-        <div className="mockup-wave-bottom-left" />
-        <div className="mockup-wave-bottom-right" />
+      <header className="site-header">
+        <a className="site-brand" href="#top">
+          <img src="/gorush-logo.png" alt="GoRush" className="brand-logo-img" />
+          <strong>GoRush</strong>
+        </a>
+        <nav className={menu ? 'site-nav open' : 'site-nav'}>
+          <button onClick={() => scrollTo('how-it-works')}>How it works</button>
+          <button onClick={() => scrollTo('features')}>Why GoRush</button>
+          <button onClick={() => scrollTo('earnings')}>Earnings</button>
+          <button onClick={() => scrollTo('safety')}>Safety</button>
+          <button
+            className="mobile-cta"
+            onClick={() => {
+              setFormOpen(true);
+              setMenu(false);
+            }}
+          >
+            Become a driver <ArrowRight size={15} />
+          </button>
+        </nav>
+        <div className="header-actions">
+          <button className="header-login" onClick={() => action('Driver login is coming soon')}>
+            Driver login
+          </button>
+          <button className="header-cta" onClick={() => setFormOpen(true)}>
+            Join GoRush <ArrowRight size={15} />
+          </button>
+        </div>
+        <button className="site-menu" onClick={() => setMenu(!menu)}>
+          {menu ? <X size={21} /> : <Menu size={21} />}
+        </button>
+      </header>
 
-        {/* 1. REDESIGNED HEADER */}
-        <header className="mockup-header">
-          <div className="mockup-header-left">
-            <a className="mockup-brand" href="#top">
-              <img src="/gorush-logo.png" alt="GoRush Logo" />
-              <span>GoRush</span>
-            </a>
-          </div>
-
-          <nav className="mockup-nav">
-            <button className="nav-active" onClick={() => scrollTo('top')}>
-              Home
-            </button>
-            <button onClick={() => scrollTo('features')}>Features</button>
-            <button onClick={() => scrollTo('earnings')}>Earnings</button>
-            <button onClick={() => scrollTo('safety')}>Safety</button>
-            <button onClick={() => scrollTo('how-it-works')}>Support</button>
-          </nav>
-
-          <div className="mockup-header-right">
-            {/* Day / Night Theme Switch */}
-            <div
-              className="mockup-theme-toggle"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              title="Toggle day/night theme"
-            >
-              <div className={`theme-toggle-icon ${!isDarkMode ? 'active' : ''}`}>
-                <Sun size={13} />
-              </div>
-              <div className={`theme-toggle-icon ${isDarkMode ? 'active' : ''}`}>
-                <Moon size={13} />
-              </div>
+      <main id="top">
+        {/* HERO SECTION */}
+        <section className="hero-section">
+          <div className="hero-copy">
+            <div className="hero-kicker">
+              <span className="pulse-dot" /> Now welcoming drivers in Indore
             </div>
-
-            <button className="mockup-download-btn" onClick={() => setFormOpen(true)}>
-              Download Driver App <ArrowRight size={14} />
-            </button>
-
-            <button className="site-menu" onClick={() => setMenu(!menu)} aria-label="Toggle navigation">
-              {menu ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Navigation Drawer */}
-        {menu && (
-          <div className="mockup-mobile-menu">
-            <button onClick={() => { scrollTo('top'); setMenu(false); }}>Home</button>
-            <button onClick={() => { scrollTo('features'); setMenu(false); }}>Features</button>
-            <button onClick={() => { scrollTo('earnings'); setMenu(false); }}>Earnings</button>
-            <button onClick={() => { scrollTo('safety'); setMenu(false); }}>Safety</button>
-            <button onClick={() => { scrollTo('how-it-works'); setMenu(false); }}>Support</button>
-            <button onClick={() => { setFormOpen(true); setMenu(false); }}>Download Driver App</button>
-          </div>
-        )}
-
-        {/* 2. HERO CONTENT + DRIVER PHOTO VISUAL (MATCHING MOCKUP) */}
-        <section className="mockup-hero-main">
-          <div className="mockup-hero-content">
-            <div className="mockup-kicker">
-              <span>THE GORUSH DIFFERENCE</span>
-              <span className="mockup-kicker-line" />
-            </div>
-
-            <h1 className="mockup-title">
-              Built around the person
-              <em>behind the wheel.</em>
+            <h1>
+              More miles.
+              <br />
+              <em>More freedom.</em>
+              <br />
+              More you.
             </h1>
-
-            <p className="mockup-description">
-              You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
+            <p>
+              GoRush is the driver-first platform for people who want to move through the city on their own terms and earn
+              fairly along the way.
             </p>
-
-            <div className="mockup-hero-actions">
-              <button className="btn-get-started" onClick={() => setFormOpen(true)}>
-                Get Started <ArrowRight size={16} />
+            <div className="hero-actions">
+              <button className="primary-cta" onClick={() => setFormOpen(true)}>
+                Start driving <ArrowRight size={17} />
               </button>
-              <button className="btn-watch-video" onClick={() => action('Watch the GoRush story')}>
-                <Play size={14} fill="currentColor" /> Watch Video
+              <button className="play-cta" onClick={() => action('Watch the GoRush story')}>
+                <span>
+                  <Play size={13} fill="currentColor" />
+                </span>{' '}
+                See how it works
               </button>
+            </div>
+            <div className="hero-trust">
+              <div className="trust-avatars">
+                <i>AK</i>
+                <i>RS</i>
+                <i>NM</i>
+                <b>+</b>
+              </div>
+              <span>
+                <strong>48,000+ drivers</strong>
+                <br />
+                are already moving forward
+              </span>
             </div>
           </div>
 
-          {/* DRIVER VISUAL WITH FLOATING BADGES */}
-          <div className="mockup-driver-visual">
-            <div className="badge-script-quote">
-              More Than Just a Ride
+          <div className="hero-art">
+            <div className="sun-disc" />
+            <div className="city-lines" />
+            <div className="hero-scooter">
+              <Bike size={155} strokeWidth={1.1} />
             </div>
-
-            <div className="driver-photo-blob">
-              <img src="/driver-hero.jpg" alt="GoRush Driver" />
+            <div className="route-stamp">
+              <Navigation size={15} />
+              <span>
+                YOUR ROUTE
+                <br />
+                <strong>YOUR RULES</strong>
+              </span>
             </div>
-
-            <div className="badge-leaf-pill">
-              <div className="badge-leaf-icon">
-                <Sparkles size={14} />
+            <div className="earnings-float">
+              <div className="float-icon">
+                <TrendingUp size={16} />
               </div>
-              <div className="badge-leaf-text">
-                A brighter tomorrow on every ride.
-              </div>
+              <span>THIS MONTH</span>
+              <strong>₹38,420</strong>
+              <small>↑ 18.4% this week</small>
             </div>
-
-            <div className="badge-mauve-pebble">
-              <span>DRIVE</span>
-              <span>EARN</span>
-              <span>GROW</span>
+            <div className="rating-float">
+              <Star size={14} fill="currentColor" />
+              <strong>4.92</strong>
+              <span>driver rating</span>
             </div>
           </div>
         </section>
 
-        {/* 3. 3 FEATURE CARDS (KEPT UNCHANGED AS REQUESTED, WITH MOCKUP ACCENTS) */}
+        {/* STATS STRIP */}
+        <section className="stats-strip">
+          {stats.map(([number, label]) => (
+            <div key={label}>
+              <strong>{number}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </section>
+
+        {/* FEATURES */}
         <section className="intro-section" id="features">
+          <div className="section-label">
+            THE GORUSH DIFFERENCE <span />
+          </div>
+          <div className="intro-heading">
+            <h2>
+              Built around the person
+              <br />
+              <em>behind the wheel.</em>
+            </h2>
+            <p>
+              You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
+            </p>
+          </div>
           <div className={`feature-grid ${featuresInView ? 'in-view' : ''}`} ref={featureGridRef}>
             {featureGroups.map(({ icon: Icon, eyebrow, title, text, points }, index) => {
               const slideClass =
@@ -311,39 +338,6 @@ export default function Website() {
               return (
                 <article className={`feature-card ${slideClass}`} key={title}>
                   {index === 0 && <CardRouteAnimation />}
-
-                  {index === 1 && (
-                    <div className="card-widget-earnings">
-                      <div className="widget-earnings-head">
-                        <span>TODAY'S EARNINGS</span>
-                        <TrendingUp size={11} color="#7bc44a" />
-                      </div>
-                      <div className="widget-earnings-amount">
-                        <span>₹1,850</span>
-                        <div className="widget-mini-bars">
-                          <i style={{ height: '8px' }} />
-                          <i style={{ height: '14px' }} />
-                          <i style={{ height: '11px' }} />
-                          <i style={{ height: '16px' }} />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {index === 2 && (
-                    <>
-                      <div className="card-widget-safety-script">
-                        Your Safety Our Priority
-                      </div>
-                      <div className="card-widget-sos">
-                        <div className="sos-call-circle">
-                          <Headphones size={17} />
-                        </div>
-                        <span className="sos-tag-pill">24/7 SOS</span>
-                      </div>
-                    </>
-                  )}
-
                   <div className="feature-icon">
                     <Icon size={21} />
                   </div>
@@ -366,69 +360,6 @@ export default function Website() {
             })}
           </div>
         </section>
-
-        {/* 4. BOTTOM STATS STRIP & BANNER (MATCHING MOCKUP) */}
-        <section className="mockup-stats-strip">
-          <div className="mockup-stats-items">
-            <div className="mockup-stat-item">
-              <div className="stat-icon-circle">
-                <Users size={16} />
-              </div>
-              <div className="stat-text-wrap">
-                <span className="stat-value">10K+</span>
-                <span className="stat-label">Active Drivers</span>
-              </div>
-            </div>
-
-            <div className="mockup-stat-divider" />
-
-            <div className="mockup-stat-item">
-              <div className="stat-icon-circle">
-                <Bike size={16} />
-              </div>
-              <div className="stat-text-wrap">
-                <span className="stat-value">2M+</span>
-                <span className="stat-label">Rides Completed</span>
-              </div>
-            </div>
-
-            <div className="mockup-stat-divider" />
-
-            <div className="mockup-stat-item">
-              <div className="stat-icon-circle">
-                <Star size={16} fill="#8c5a60" />
-              </div>
-              <div className="stat-text-wrap">
-                <span className="stat-value">4.8</span>
-                <span className="stat-label">Driver Rating</span>
-              </div>
-            </div>
-
-            <div className="mockup-stat-divider" />
-
-            <div className="mockup-stat-item">
-              <div className="stat-icon-circle">
-                <Headphones size={16} />
-              </div>
-              <div className="stat-text-wrap">
-                <span className="stat-value">24/7</span>
-                <span className="stat-label">Customer Support</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="mockup-stats-action-wrap">
-            <span className="script-moving-forward">
-              Let's keep moving forward.
-            </span>
-            <button className="btn-drive-tomorrow" onClick={() => setFormOpen(true)}>
-              Drive a better tomorrow <ArrowRight size={14} />
-            </button>
-          </div>
-        </section>
-      </div>
-
-      <main>
 
         {/* EARNINGS */}
         <section className="earnings-section" id="earnings">
