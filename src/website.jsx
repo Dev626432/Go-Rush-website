@@ -1,17 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
+  ArrowUpRight,
   BadgeCheck,
   Banknote,
+  BarChart3,
   Bike,
   Check,
   ChevronDown,
   ChevronRight,
   Clock3,
+  Crown,
   FileCheck2,
   Globe2,
   Headphones,
   IndianRupee,
+  Leaf,
+  MapPin,
   Menu,
   Navigation,
   Play,
@@ -20,6 +25,7 @@ import {
   Star,
   TrendingUp,
   Users,
+  Wallet,
   X,
   Zap,
 } from 'lucide-react';
@@ -32,6 +38,7 @@ import './feature-theme.css';
 import './loader.css';
 import './card-route.css';
 import './features-redesign.css';
+import './earnings-redesign.css';
 
 const featureGroups = [
   {
@@ -73,7 +80,64 @@ const stats = [
   ['24/7', 'safety support'],
 ];
 
+const earningsData = {
+  'this-week': {
+    label: 'This Week',
+    month: 'September 2026',
+    subPeriod: 'Week 2',
+    amount: '12,840',
+    decimal: '.50',
+    growth: '18.4% compared with last week',
+    net: '₹10,552',
+    bars: [
+      { day: 'M', height: 44, amount: '₹1,450' },
+      { day: 'T', height: 68, amount: '₹2,100' },
+      { day: 'W', height: 52, amount: '₹1,680' },
+      { day: 'T', height: 88, amount: '₹2,640' },
+      { day: 'F', height: 96, amount: '₹2,920' },
+      { day: 'S', height: 78, amount: '₹2,350' },
+      { day: 'S', height: 60, amount: '₹1,800' },
+    ],
+  },
+  'last-week': {
+    label: 'Last Week',
+    month: 'September 2026',
+    subPeriod: 'Week 1',
+    amount: '10,845',
+    decimal: '.00',
+    growth: '12.1% compared with prev week',
+    net: '₹8,920',
+    bars: [
+      { day: 'M', height: 38, amount: '₹1,220' },
+      { day: 'T', height: 58, amount: '₹1,800' },
+      { day: 'W', height: 48, amount: '₹1,500' },
+      { day: 'T', height: 72, amount: '₹2,200' },
+      { day: 'F', height: 84, amount: '₹2,550' },
+      { day: 'S', height: 68, amount: '₹2,050' },
+      { day: 'S', height: 50, amount: '₹1,525' },
+    ],
+  },
+  'this-month': {
+    label: 'This Month',
+    month: 'September 2026',
+    subPeriod: 'Full Month',
+    amount: '48,650',
+    decimal: '.80',
+    growth: '22.8% compared with August',
+    net: '₹39,890',
+    bars: [
+      { day: 'W1', height: 62, amount: '₹10,845' },
+      { day: 'W2', height: 85, amount: '₹12,840' },
+      { day: 'W3', height: 74, amount: '₹11,450' },
+      { day: 'W4', height: 92, amount: '₹13,515' },
+    ],
+  },
+};
+
 export default function Website() {
+  const [earningsPeriod, setEarningsPeriod] = useState('this-week');
+  const [periodDropdownOpen, setPeriodDropdownOpen] = useState(false);
+  const activeEarnings = earningsData[earningsPeriod] || earningsData['this-week'];
   useEffect(() => {
     const artwork = document.querySelector('.hero-section');
     if (!artwork || artwork.querySelector('.hero-background-video')) return undefined;
@@ -446,75 +510,248 @@ export default function Website() {
         </section>
 
         {/* EARNINGS */}
-        <section className="earnings-section" id="earnings">
-          <div className="earnings-copy">
-            <div className="section-label light">
-              YOUR WORK, YOUR WORTH <span />
-            </div>
-            <h2>
-              Know what you earn.
-              <br />
-              <em>Keep what you can.</em>
-            </h2>
-            <p>
-              No mystery math. See the fare, platform fee, tips, incentives and your final take-home amount before you commit to
-              a ride.
-            </p>
-            <div className="earning-list">
-              <div>
-                <span className="list-number">01</span>
-                <strong>Transparent fares</strong>
-                <small>Every ride shows a clear estimate.</small>
-              </div>
-              <div>
-                <span className="list-number">02</span>
-                <strong>Weekly incentives</strong>
-                <small>Hit targets, unlock bonuses and peak-hour boosts.</small>
-              </div>
-              <div>
-                <span className="list-number">03</span>
-                <strong>Flexible payouts</strong>
-                <small>Withdraw to your bank or UPI when you need it.</small>
-              </div>
-            </div>
-            <button className="light-cta" onClick={() => setFormOpen(true)}>
-              See your earning potential <ArrowRight size={16} />
-            </button>
+        <section className="earnings-redesign-wrap" id="earnings">
+          {/* Central Background: Rider on Highway at Night toward City */}
+          <div className="earnings-bg-layer">
+            <img
+              src="/earnings-rider-bg.jpg"
+              alt="GoRush Night Road Rider"
+              className="earnings-bg-image"
+            />
+            <div className="earnings-bg-vignette" />
           </div>
-          <div className="earnings-card">
-            <div className="earning-card-top">
-              <span>DRIVER STATEMENT</span>
-              <ChevronDown size={16} />
+
+          {/* Glowing Route Curve & Map Pin */}
+          <div className="earnings-route-overlay">
+            <div className="earnings-pin-container">
+              <div className="earnings-pin-marker">
+                <MapPin size={22} />
+                <span className="pin-glow-ring" />
+              </div>
+              <div className="earnings-pin-tooltip">
+                <span>More Rides.</span>
+                <small>More Freedom.</small>
+              </div>
             </div>
-            <div className="earning-period">
-              September 2026 <span>Week 2</span>
-            </div>
-            <div className="big-amount">
-              ₹12,840<small>.50</small>
-            </div>
-            <div className="amount-change">
-              <TrendingUp size={14} /> 18.4% compared with last week
-            </div>
-            <div className="earning-bars">
-              {[
-                ['M', '45'],
-                ['T', '68'],
-                ['W', '52'],
-                ['T', '80'],
-                ['F', '93'],
-                ['S', '70'],
-                ['S', '56'],
-              ].map(([day, height], index) => (
-                <div key={`${day}-${index}`}>
-                  <i style={{ height: `${height}%` }} />
-                  <span>{day}</span>
+          </div>
+
+          {/* Top Right Handwritten Script */}
+          <div className="earnings-script-quote">
+            Good People
+            <br />
+            Great Journeys
+          </div>
+
+          <div className="earnings-container">
+            {/* LEFT COLUMN: Copy, Features Timeline & CTA */}
+            <div className="earnings-left-col">
+              <div className="earnings-eyebrow">
+                YOUR WORK. YOUR WORTH <span className="earnings-eyebrow-line" />
+              </div>
+
+              <h2 className="earnings-headline">
+                Know what you earn.
+                <br />
+                <em>Keep what you can.</em>
+              </h2>
+
+              <p className="earnings-desc">
+                No mystery math. See the fare, platform fee, tips, incentives and your final take-home amount before you commit to a ride.
+              </p>
+
+              {/* Connected Feature Timeline */}
+              <div className="earnings-timeline">
+                <div className="earnings-timeline-line" />
+
+                <div className="earnings-timeline-item">
+                  <div className="timeline-icon-box">
+                    <Wallet size={20} />
+                  </div>
+                  <div className="timeline-text">
+                    <div className="timeline-title-row">
+                      <span className="timeline-num">01</span>
+                      <strong className="timeline-title">Transparent fares</strong>
+                    </div>
+                    <p className="timeline-desc">Every ride shows a clear estimate.</p>
+                  </div>
                 </div>
-              ))}
+
+                <div className="earnings-timeline-item">
+                  <div className="timeline-icon-box">
+                    <BarChart3 size={20} />
+                  </div>
+                  <div className="timeline-text">
+                    <div className="timeline-title-row">
+                      <span className="timeline-num">02</span>
+                      <strong className="timeline-title">Weekly incentives</strong>
+                    </div>
+                    <p className="timeline-desc">Hit targets, unlock bonuses and peak-hour boosts.</p>
+                  </div>
+                </div>
+
+                <div className="earnings-timeline-item">
+                  <div className="timeline-icon-box">
+                    <Zap size={20} />
+                  </div>
+                  <div className="timeline-text">
+                    <div className="timeline-title-row">
+                      <span className="timeline-num">03</span>
+                      <strong className="timeline-title">Flexible payouts</strong>
+                    </div>
+                    <p className="timeline-desc">Withdraw to your bank or UPI when you need it.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA + Social Proof Avatars */}
+              <div className="earnings-action-row">
+                <button className="earnings-primary-btn" onClick={() => setFormOpen(true)}>
+                  See your earning potential <ArrowRight size={16} />
+                </button>
+
+                <div className="earnings-social-proof">
+                  <div className="earnings-avatar-stack">
+                    <img src="/driver-avatar-1.jpg" alt="GoRush Driver" className="earnings-avatar-item" />
+                    <img src="/driver-avatar-2.jpg" alt="GoRush Driver" className="earnings-avatar-item" />
+                    <img src="/driver-avatar-3.jpg" alt="GoRush Driver" className="earnings-avatar-item" />
+                  </div>
+                  <div className="earnings-social-text">
+                    <strong>48,000+ drivers</strong>
+                    <span>are earning better with GoRush</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="card-divider" />
-            <div className="earning-total">
-              <span>Net driver earnings</span>
-              <strong>₹10,552</strong>
+
+            {/* RIGHT COLUMN: Driver Statement Card & Floating Badges */}
+            <div className="earnings-right-col">
+              <div className="earnings-card-wrapper">
+                {/* Outer Glow Halo */}
+                <div className="earnings-card-glow" />
+
+                {/* Main Card */}
+                <div className="driver-statement-card">
+                  <div className="statement-card-top">
+                    <span className="statement-tag">DRIVER STATEMENT</span>
+                    <div style={{ position: 'relative' }}>
+                      <button
+                        type="button"
+                        className="statement-dropdown-btn"
+                        onClick={() => setPeriodDropdownOpen(!periodDropdownOpen)}
+                      >
+                        {activeEarnings.label} <ChevronDown size={13} />
+                      </button>
+                      {periodDropdownOpen && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            right: 0,
+                            top: '110%',
+                            background: '#ffffff',
+                            borderRadius: '12px',
+                            boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+                            border: '1px solid #dbe5d4',
+                            zIndex: 20,
+                            overflow: 'hidden',
+                            minWidth: '120px',
+                          }}
+                        >
+                          {['this-week', 'last-week', 'this-month'].map((key) => (
+                            <button
+                              key={key}
+                              type="button"
+                              onClick={() => {
+                                setEarningsPeriod(key);
+                                setPeriodDropdownOpen(false);
+                              }}
+                              style={{
+                                display: 'block',
+                                width: '100%',
+                                textAlign: 'left',
+                                padding: '8px 14px',
+                                background: earningsPeriod === key ? '#eff6e6' : '#ffffff',
+                                border: 'none',
+                                cursor: 'pointer',
+                                fontSize: '11px',
+                                fontWeight: earningsPeriod === key ? '800' : '600',
+                                color: earningsPeriod === key ? '#2a441e' : '#4a5d4d',
+                              }}
+                            >
+                              {earningsData[key].label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="statement-period-row">
+                    <span className="statement-month">{activeEarnings.month}</span>
+                    <span className="statement-week">{activeEarnings.subPeriod}</span>
+                  </div>
+
+                  <div className="statement-amount-display">
+                    ₹{activeEarnings.amount}
+                    <small>{activeEarnings.decimal}</small>
+                  </div>
+
+                  <div className="statement-growth">
+                    <TrendingUp size={13} /> {activeEarnings.growth}
+                  </div>
+
+                  {/* Dynamic Interactive Bar Chart */}
+                  <div className="statement-chart">
+                    {activeEarnings.bars.map((bar, idx) => (
+                      <div key={`${bar.day}-${idx}`} className="chart-bar-col">
+                        <div className="chart-tooltip">{bar.amount}</div>
+                        <div
+                          className="chart-bar-fill"
+                          style={{ height: `${bar.height}%` }}
+                        />
+                        <span className="chart-day-label">{bar.day}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="statement-card-bottom">
+                    <span className="statement-net-label">Net driver earnings</span>
+                    <strong className="statement-net-val">{activeEarnings.net}</strong>
+                  </div>
+                </div>
+
+                {/* Floating Chip 1: Growth Badge (+18.4% vs last week) */}
+                <div className="floating-chip-growth">
+                  <div className="chip-growth-icon">
+                    <ArrowUpRight size={17} strokeWidth={2.5} />
+                  </div>
+                  <div className="chip-growth-text">
+                    <strong>+18.4%</strong>
+                    <span>vs last week</span>
+                  </div>
+                </div>
+
+                {/* Floating Chip 2: Peak Hours Badge */}
+                <div className="floating-chip-peak">
+                  <div className="chip-peak-icon">
+                    <Crown size={16} />
+                  </div>
+                  <div className="chip-peak-text">
+                    <strong>Peak Hours</strong>
+                    <span>Higher earnings</span>
+                  </div>
+                </div>
+
+                {/* Floating Chip 3: Effort Badge */}
+                <div className="floating-chip-effort">
+                  <div className="chip-effort-icon">
+                    <Leaf size={15} />
+                  </div>
+                  <div className="chip-effort-text">
+                    <strong>Your Effort</strong>
+                    <span>Drives Better Tomorrows.</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
