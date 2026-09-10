@@ -1,0 +1,529 @@
+/* =========================================================
+   GORUSH - STEPS / HOW IT WORKS REDESIGN
+   Matches ChatGPT Reference Mockup (m_6aa25605bfa881919c6cb3956612564c)
+   ========================================================= */
+
+.steps-redesign-wrap {
+  position: relative;
+  background-color: #f3f6ee;
+  color: #14251b;
+  padding: 110px 0 60px;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', Manrope, sans-serif;
+}
+
+/* Scenic Landscape & Rider Background */
+.steps-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.steps-bg-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 35%;
+  opacity: 0.88;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.steps-bg-fade {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, #f3f6ee 0%, #f3f6ee 36%, rgba(243, 246, 238, 0.75) 54%, rgba(243, 246, 238, 0.15) 75%, transparent 100%),
+    linear-gradient(180deg, #f3f6ee 0%, transparent 15%, transparent 85%, #f3f6ee 100%);
+}
+
+/* Decorative Corner Leaves */
+.steps-leaf-accent-top {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 90px;
+  height: 90px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.steps-leaf-accent-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: -25px;
+  width: 140px;
+  height: 140px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 2;
+  transform: rotate(25deg);
+}
+
+/* Scenic Route Map Pin */
+.steps-scenic-pin {
+  position: absolute;
+  right: clamp(280px, 28vw, 420px);
+  top: 95px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  pointer-events: auto;
+  animation: pinBounce 3.5s ease-in-out infinite;
+}
+
+.steps-pin-icon {
+  width: 32px;
+  height: 32px;
+  background: #6e9632;
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(110, 150, 50, 0.35);
+}
+
+.steps-pin-tooltip {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(110, 150, 50, 0.2);
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  line-height: 1.25;
+}
+
+.steps-pin-tooltip span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a3022;
+}
+
+.steps-pin-tooltip small {
+  display: block;
+  font-size: 9.5px;
+  color: #607565;
+}
+
+/* Handwritten Script Quote */
+.steps-script-quote {
+  position: absolute;
+  right: clamp(430px, 42vw, 620px);
+  top: 75px;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(28px, 2.8vw, 38px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #55792c;
+  transform: rotate(-10deg);
+  pointer-events: none;
+  z-index: 3;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.steps-script-quote em {
+  font-style: normal;
+  display: inline-block;
+  border-bottom: 2.5px solid rgba(110, 150, 50, 0.55);
+  border-radius: 3px;
+  padding-bottom: 1px;
+}
+
+/* Main Content Container */
+.steps-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 60px);
+}
+
+/* Header Area */
+.steps-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.steps-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #6d8272;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.steps-eyebrow-line {
+  display: inline-block;
+  width: 30px;
+  height: 1.5px;
+  background: #9ab48a;
+  border-radius: 2px;
+}
+
+.steps-headline {
+  font-size: clamp(38px, 4.4vw, 58px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  margin: 0;
+}
+
+.steps-headline em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #6e9432;
+  letter-spacing: -0.03em;
+}
+
+.steps-subtitle {
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #617366;
+  margin: 0 0 8px;
+}
+
+/* =========================================================
+   CONNECTED 3-CARD LAYOUT
+   ========================================================= */
+.steps-cards-stage {
+  position: relative;
+  margin-bottom: 65px;
+}
+
+/* Route Line Connector Spanning Across Cards */
+.steps-route-connector {
+  position: absolute;
+  top: 36px;
+  left: 14%;
+  right: 14%;
+  height: 2px;
+  border-top: 2px dashed #95ae8b;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Waypoint Checkpoints Between Cards */
+.steps-waypoint {
+  position: absolute;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #395b2c;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 3px rgba(110, 150, 50, 0.35);
+  transform: translateX(-50%);
+  animation: waypointPulse 2.5s infinite;
+}
+
+.steps-waypoint-1 {
+  left: 35.5%;
+}
+
+.steps-waypoint-2 {
+  left: 68.5%;
+}
+
+/* Cards Grid */
+.steps-grid-row {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 32px);
+}
+
+/* Individual Step Card */
+.step-item-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 30px 28px 26px;
+  border: 1px solid rgba(135, 168, 120, 0.18);
+  box-shadow: 0 10px 30px rgba(25, 45, 30, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.step-item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(25, 45, 30, 0.12);
+  border-color: rgba(110, 150, 50, 0.4);
+}
+
+/* Middle Featured Card */
+.step-item-card.featured-step {
+  background: linear-gradient(180deg, #f7faee 0%, #eef5e3 100%);
+  border: 1.5px solid rgba(125, 168, 65, 0.35);
+  box-shadow: 0 14px 35px rgba(50, 80, 40, 0.08);
+}
+
+.step-item-card.featured-step:hover {
+  box-shadow: 0 24px 50px rgba(50, 80, 40, 0.15);
+  border-color: #79a635;
+}
+
+/* Card Top Row */
+.step-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.step-card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #769b36;
+  letter-spacing: 0.04em;
+}
+
+.step-card-icon-wrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #eaf3db;
+  color: #558026;
+  display: grid;
+  place-items: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(85, 128, 38, 0.12);
+}
+
+.step-item-card:hover .step-card-icon-wrap {
+  transform: scale(1.08);
+  background: #e1efcc;
+}
+
+.step-item-card.featured-step .step-card-icon-wrap {
+  background: #e2eec9;
+}
+
+/* Card Body */
+.step-card-body {
+  flex: 1;
+}
+
+.step-card-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #14251b;
+  margin: 0 0 10px;
+}
+
+.step-card-text {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #637667;
+  margin: 0 0 24px;
+}
+
+/* Card Bottom Action Link */
+.step-card-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #15261c;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  margin-top: auto;
+  transition: color 0.2s ease;
+}
+
+.step-card-link-btn svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #6e9432;
+}
+
+.step-item-card:hover .step-card-link-btn svg {
+  transform: translateX(5px);
+}
+
+.step-item-card:hover .step-card-link-btn {
+  color: #527c24;
+}
+
+/* =========================================================
+   BOTTOM ROW: TRUST BADGES & CORNER RIBBON BANNER
+   ========================================================= */
+.steps-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(135, 168, 120, 0.22);
+}
+
+.steps-trust-strip {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3.5vw, 44px);
+  flex-wrap: wrap;
+}
+
+.steps-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #314a38;
+}
+
+.steps-trust-item svg {
+  color: #6b9432;
+}
+
+/* Bottom Right Curved Dark Green Banner */
+.steps-corner-banner {
+  background: #12251a;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 11px 22px 11px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(18, 37, 26, 0.3);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-right: -10px;
+}
+
+.steps-corner-banner:hover {
+  background: #183323;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(18, 37, 26, 0.45);
+}
+
+.steps-banner-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(212, 239, 98, 0.15);
+  color: #d4ef62;
+  display: grid;
+  place-items: center;
+}
+
+.steps-banner-text strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.steps-banner-text span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #a4bea8;
+}
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ========================================================= */
+@keyframes pinBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes waypointPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(110, 150, 50, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(110, 150, 50, 0.15);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 1080px) {
+  .steps-bg-image {
+    width: 50%;
+    opacity: 0.65;
+  }
+  .steps-script-quote {
+    right: 250px;
+    top: 55px;
+  }
+  .steps-scenic-pin {
+    right: 120px;
+    top: 75px;
+  }
+}
+
+@media (max-width: 900px) {
+  .steps-redesign-wrap {
+    padding: 75px 0 50px;
+  }
+
+  .steps-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .steps-subtitle {
+    max-width: 100%;
+  }
+
+  .steps-script-quote,
+  .steps-scenic-pin {
+    display: none;
+  }
+
+  .steps-route-connector {
+    display: none;
+  }
+
+  .steps-grid-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .steps-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .steps-corner-banner {
+    margin-right: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}

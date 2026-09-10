@@ -24,6 +24,7 @@ import {
   Sparkles,
   Star,
   TrendingUp,
+  UserPlus,
   Users,
   Wallet,
   X,
@@ -39,6 +40,7 @@ import './loader.css';
 import './card-route.css';
 import './features-redesign.css';
 import './earnings-redesign.css';
+import './steps-redesign.css';
 
 const featureGroups = [
   {
@@ -756,28 +758,175 @@ export default function Website() {
           </div>
         </section>
 
-        {/* HOW IT WORKS */}
-        <section className="steps-section" id="how-it-works">
-          <div className="section-label">
-            GET ON THE ROAD <span />
+        {/* HOW IT WORKS / THREE STEPS REDESIGNED */}
+        <section className="steps-redesign-wrap" id="how-it-works">
+          {/* Scenic Background: Rider on Winding Highway toward City */}
+          <div className="steps-bg-layer">
+            <img
+              src="/steps-scenic-bg.jpg"
+              alt="GoRush Scenic Highway Rider"
+              className="steps-bg-image"
+            />
+            <div className="steps-bg-fade" />
           </div>
-          <div className="intro-heading">
-            <h2>
-              Three steps to your
-              <br />
-              <em>next chapter.</em>
-            </h2>
-            <p>Getting started is designed to be simple. You stay in control from the first tap.</p>
+
+          {/* Decorative Corner Botanical Leaf Accents */}
+          <svg className="steps-leaf-accent-top" viewBox="0 0 100 100" fill="none">
+            <path
+              d="M10,80 Q30,30 80,10 Q60,60 10,80 Z M35,45 Q70,40 80,10"
+              stroke="#558026"
+              strokeWidth="2"
+              fill="rgba(110, 160, 50, 0.08)"
+            />
+            <path
+              d="M25,85 Q45,55 75,45 Q50,75 25,85 Z"
+              stroke="#558026"
+              strokeWidth="1.5"
+              fill="rgba(110, 160, 50, 0.05)"
+            />
+          </svg>
+
+          <svg className="steps-leaf-accent-bottom" viewBox="0 0 120 120" fill="none">
+            <path
+              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
+              stroke="#558026"
+              strokeWidth="2"
+              fill="rgba(110, 160, 50, 0.12)"
+            />
+          </svg>
+
+          {/* Cursive Handwritten Script Quote */}
+          <div className="steps-script-quote">
+            Same Roads
+            <br />
+            <em>Bigger Dreams</em>
           </div>
-          <div className="steps-grid">
-            {steps.map(([number, title, text]) => (
-              <article key={number}>
-                <span>{number}</span>
-                <div className="step-line" />
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
+
+          {/* Scenic Route Map Pin */}
+          <div className="steps-scenic-pin">
+            <div className="steps-pin-icon">
+              <MapPin size={18} />
+            </div>
+            <div className="steps-pin-tooltip">
+              <span>More Rides</span>
+              <small>More Freedoms</small>
+            </div>
+          </div>
+
+          <div className="steps-container">
+            {/* Header Area */}
+            <div className="steps-header-row">
+              <div className="steps-title-col">
+                <div className="steps-eyebrow">
+                  GET ON THE ROAD <span className="steps-eyebrow-line" />
+                </div>
+                <h2 className="steps-headline">
+                  Three steps to your
+                  <br />
+                  <em>next chapter.</em>
+                </h2>
+              </div>
+              <p className="steps-subtitle">
+                Getting started is designed to be simple. You stay in control from the first tap.
+              </p>
+            </div>
+
+            {/* Connected Cards Stage */}
+            <div className="steps-cards-stage">
+              {/* Route Line Connector Spanning Across Cards */}
+              <div className="steps-route-connector">
+                <div className="steps-waypoint steps-waypoint-1" />
+                <div className="steps-waypoint steps-waypoint-2" />
+              </div>
+
+              {/* 3 Step Cards Grid */}
+              <div className="steps-grid-row">
+                {/* Step 1 */}
+                <div className="step-item-card" onClick={() => setFormOpen(true)}>
+                  <div className="step-card-header">
+                    <span className="step-card-num">01</span>
+                    <div className="step-card-icon-wrap">
+                      <UserPlus size={26} />
+                    </div>
+                  </div>
+                  <div className="step-card-body">
+                    <h3 className="step-card-title">Create your profile</h3>
+                    <p className="step-card-text">
+                      Register with your mobile number, verify OTP and tell us a little about yourself.
+                    </p>
+                  </div>
+                  <button type="button" className="step-card-link-btn">
+                    Get Started <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                {/* Step 2 (Featured / Highlighted) */}
+                <div className="step-item-card featured-step" onClick={() => setFormOpen(true)}>
+                  <div className="step-card-header">
+                    <span className="step-card-num">02</span>
+                    <div className="step-card-icon-wrap">
+                      <FileCheck2 size={26} />
+                    </div>
+                  </div>
+                  <div className="step-card-body">
+                    <h3 className="step-card-title">Verify your documents</h3>
+                    <p className="step-card-text">
+                      Upload your license, RC, insurance and bank details. Our team checks everything quickly.
+                    </p>
+                  </div>
+                  <button type="button" className="step-card-link-btn">
+                    Learn More <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                {/* Step 3 */}
+                <div className="step-item-card" onClick={() => setFormOpen(true)}>
+                  <div className="step-card-header">
+                    <span className="step-card-num">03</span>
+                    <div className="step-card-icon-wrap">
+                      <TrendingUp size={26} />
+                    </div>
+                  </div>
+                  <div className="step-card-body">
+                    <h3 className="step-card-title">Start earning</h3>
+                    <p className="step-card-text">
+                      Go online, accept your first ride and watch your earnings grow in real time.
+                    </p>
+                  </div>
+                  <button type="button" className="step-card-link-btn">
+                    Go Online <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Row: Trust Badges & Corner Ribbon Banner */}
+            <div className="steps-bottom-row">
+              <div className="steps-trust-strip">
+                <div className="steps-trust-item">
+                  <ShieldCheck size={18} />
+                  <span>Safe & Secure</span>
+                </div>
+                <div className="steps-trust-item">
+                  <Headphones size={18} />
+                  <span>24/7 Support</span>
+                </div>
+                <div className="steps-trust-item">
+                  <Leaf size={18} />
+                  <span>Grow Your Earnings</span>
+                </div>
+              </div>
+
+              <div className="steps-corner-banner" onClick={() => setFormOpen(true)}>
+                <div className="steps-banner-icon">
+                  <BarChart3 size={18} />
+                </div>
+                <div className="steps-banner-text">
+                  <strong>Every Ride</strong>
+                  <span>A Brighter Tomorrow. <ArrowRight size={12} /></span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
