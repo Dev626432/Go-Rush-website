@@ -31,9 +31,11 @@ import './feature-polish.css';
 import './feature-theme.css';
 import './loader.css';
 import './card-route.css';
+import './features-redesign.css';
 
 const featureGroups = [
   {
+    num: '01',
     icon: Navigation,
     eyebrow: 'MOVE SMART',
     title: 'Every ride, mapped with confidence.',
@@ -41,6 +43,7 @@ const featureGroups = [
     points: ['Live driver tracking', 'Pickup & destination navigation', 'Real-time ETA and re-routing'],
   },
   {
+    num: '02',
     icon: Banknote,
     eyebrow: 'EARN CLEARLY',
     title: 'The fare is yours to understand.',
@@ -48,6 +51,7 @@ const featureGroups = [
     points: ['Cash, UPI, wallet and online payments', 'Daily, weekly and monthly earnings', 'Fast payouts and incentive bonuses'],
   },
   {
+    num: '03',
     icon: ShieldCheck,
     eyebrow: 'DRIVE SAFELY',
     title: 'Support that stays close.',
@@ -312,49 +316,129 @@ export default function Website() {
           ))}
         </section>
 
-        {/* FEATURES */}
+        {/* FEATURES SECTION (MATCHING CHATGPT DESIGN) */}
         <section className="intro-section" id="features">
-          <div className="section-label">
-            THE GORUSH DIFFERENCE <span />
+          {/* Top-Right Large Watermark */}
+          <div className="features-watermark">DRIVE YOUR DAY</div>
+
+          {/* Left City Skyline Silhouette */}
+          <svg className="features-bg-skyline" viewBox="0 0 320 480" fill="none" aria-hidden="true">
+            <path
+              d="M0 480 L0 260 L25 260 L25 220 L40 220 L40 180 L55 180 L55 140 L70 140 L70 110 L85 110 L85 80 L95 80 L95 50 L105 50 L105 80 L115 80 L115 150 L140 150 L140 190 L160 190 L160 230 L180 230 L180 270 L210 270 L210 310 L250 310 L250 360 L290 360 L290 420 L320 420 L320 480 Z"
+              fill="rgba(80, 120, 90, 0.35)"
+            />
+            <path
+              d="M0 480 L0 320 L35 320 L35 280 L75 280 L75 240 L120 240 L120 290 L170 290 L170 340 L230 340 L230 390 L280 390 L280 440 L320 440 L320 480 Z"
+              fill="rgba(60, 100, 70, 0.25)"
+            />
+            <path
+              d="M-20 380 Q 80 340 180 380 T 340 370 L 340 480 L -20 480 Z"
+              fill="rgba(100, 140, 90, 0.22)"
+            />
+          </svg>
+
+          {/* Right Highway Silhouette */}
+          <svg className="features-bg-highway" viewBox="0 0 380 450" fill="none" aria-hidden="true">
+            <path
+              d="M50 450 C 120 350 220 280 380 230 L 380 450 Z"
+              fill="rgba(120, 160, 100, 0.22)"
+            />
+            <path
+              d="M0 450 C 140 380 260 340 380 320 L 380 450 Z"
+              fill="rgba(90, 130, 80, 0.28)"
+            />
+          </svg>
+
+          {/* Upper-Right Floating GPS Pin & Route Ahead Widget */}
+          <div className="features-bg-route-wrap" aria-hidden="true">
+            <div className="route-pin-beacon">
+              <div className="beacon-dot" />
+            </div>
+            <div className="route-pill-widget">
+              <span>A Better Route Ahead</span>
+              <ArrowRight size={13} />
+            </div>
           </div>
-          <div className="intro-heading">
-            <h2>
+
+          {/* Background Dashed Route Curve */}
+          <svg className="features-bg-dashed-route" viewBox="0 0 320 220" fill="none" aria-hidden="true">
+            <path
+              d="M 280 20 C 220 50 140 90 60 190"
+              stroke="#8cb344"
+              strokeWidth="2.5"
+              strokeDasharray="6 7"
+              strokeLinecap="round"
+            />
+          </svg>
+
+          {/* Upper-Right Floating Cursive Script */}
+          <div className="features-script-quote" aria-hidden="true">
+            <span>More Miles</span>
+            <span>More Freedom</span>
+          </div>
+
+          {/* Blurred Corner Foliage */}
+          <div className="features-leaf-corner left" aria-hidden="true" />
+          <div className="features-leaf-corner right" aria-hidden="true" />
+
+          {/* Left Grouped Header: Title + Subtitle */}
+          <div className="features-header-wrap">
+            <div className="features-kicker">
+              <span>THE GORUSH DIFFERENCE</span>
+              <span className="features-kicker-line" />
+            </div>
+            <h2 className="features-main-title">
               Built around the person
-              <br />
               <em>behind the wheel.</em>
             </h2>
-            <p>
+            <p className="features-main-desc">
               You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
             </p>
           </div>
-          <div className={`feature-grid ${featuresInView ? 'in-view' : ''}`} ref={featureGridRef}>
-            {featureGroups.map(({ icon: Icon, eyebrow, title, text, points }, index) => {
-              const slideClass =
+
+          {/* 3 Cards Grid */}
+          <div className={`features-cards-grid feature-grid ${featuresInView ? 'in-view' : ''}`} ref={featureGridRef}>
+            {featureGroups.map(({ num, icon: Icon, eyebrow, title, text, points }, index) => {
+              const cardClass =
                 index === 0
-                  ? 'card-slide-left'
+                  ? 'card-dark-forest card-slide-left'
                   : index === 1
-                  ? 'card-slide-bottom'
-                  : 'card-slide-right';
+                  ? 'card-vibrant-lime card-slide-bottom'
+                  : 'card-dark-forest card-slide-right';
               return (
-                <article className={`feature-card ${slideClass}`} key={title}>
+                <article className={`feature-card ${cardClass}`} key={title}>
+                  {/* Decorative Corner Arc */}
+                  <div className="card-top-corner-arc" />
+
+                  {/* Card 1 Animated Route & Tiny Driving Car */}
                   {index === 0 && <CardRouteAnimation />}
-                  <div className="feature-icon">
-                    <Icon size={21} />
+
+                  <div>
+                    <div className="card-icon-wrap">
+                      <Icon size={22} />
+                    </div>
+                    <div className="card-num-pill">
+                      <span>{num}</span> {eyebrow}
+                    </div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
                   </div>
-                  <span className="card-eyebrow">{eyebrow}</span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <ul>
-                    {points.map((point) => (
-                      <li key={point}>
-                        <Check size={14} />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                  <button onClick={() => action(`${eyebrow} details opened`)}>
-                    Explore feature <ArrowRight size={15} />
-                  </button>
+
+                  <div>
+                    <ul>
+                      {points.map((point) => (
+                        <li key={point}>
+                          <span className="point-check-badge">
+                            <Check size={11} strokeWidth={3} />
+                          </span>
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                    <button onClick={() => action(`${eyebrow} details opened`)}>
+                      Explore feature <ArrowRight size={15} />
+                    </button>
+                  </div>
                 </article>
               );
             })}

@@ -1,0 +1,542 @@
+/* ===================================================
+   GoRush Features Section Redesign (ChatGPT Design Match)
+   "Built around the person behind the wheel." & 3 Cards
+   =================================================== */
+
+.intro-section {
+  position: relative;
+  padding: 100px clamp(24px, 5.5vw, 90px) 130px;
+  background: linear-gradient(180deg, #f7f6f0 0%, #f1f5eb 50%, #e8efe2 100%);
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* 1. Large Top-Right Watermark "DRIVE YOUR DAY" */
+.features-watermark {
+  position: absolute;
+  top: 20px;
+  right: 2%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(60px, 9.5vw, 150px);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: rgba(20, 37, 27, 0.038);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* 2. Left Misty City Skyline Silhouette */
+.features-bg-skyline {
+  position: absolute;
+  left: -20px;
+  top: 15%;
+  width: 320px;
+  height: 480px;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. Right Highway Curve Silhouette */
+.features-bg-highway {
+  position: absolute;
+  right: -30px;
+  top: 18%;
+  width: 380px;
+  height: 450px;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 4. Upper-Right Floating GPS Pin, Route Pill & Script */
+.features-bg-route-wrap {
+  position: absolute;
+  top: 50px;
+  right: 6%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.route-pin-beacon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #14251b;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(20, 37, 27, 0.18);
+}
+
+.route-pin-beacon::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(123, 196, 74, 0.6);
+  animation: beaconSpin 12s linear infinite;
+}
+
+@keyframes beaconSpin {
+  to { transform: rotate(360deg); }
+}
+
+.beacon-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d4ef62;
+  box-shadow: 0 0 10px #d4ef62;
+}
+
+.route-pill-widget {
+  background: #ffffff;
+  border-radius: 99px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #14251b;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(20, 37, 27, 0.08);
+}
+
+.route-pill-widget svg {
+  color: #14251b;
+}
+
+.features-script-quote {
+  position: absolute;
+  top: 105px;
+  right: 5%;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(28px, 2.5vw, 38px);
+  font-weight: 700;
+  color: #7b9e38;
+  line-height: 1.12;
+  transform: rotate(-7deg);
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+  z-index: 1;
+  pointer-events: none;
+  text-align: right;
+}
+
+.features-script-quote span {
+  display: block;
+}
+
+/* Curved dashed route line behind */
+.features-bg-dashed-route {
+  position: absolute;
+  top: 75px;
+  right: 14%;
+  width: 320px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+/* 5. Bottom Blurred Foliage / Leaf Accents */
+.features-leaf-corner {
+  position: absolute;
+  bottom: -30px;
+  width: 220px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(10px);
+  opacity: 0.35;
+}
+
+.features-leaf-corner.left {
+  left: -20px;
+  background: radial-gradient(circle at bottom left, #7da54b 0%, #a4c975 40%, transparent 75%);
+}
+
+.features-leaf-corner.right {
+  right: -20px;
+  background: radial-gradient(circle at bottom right, #7da54b 0%, #a4c975 40%, transparent 75%);
+}
+
+/* 6. Section Header (Left Grouped) */
+.features-header-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin-bottom: 52px;
+}
+
+.features-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #6a7c6e;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.features-kicker-line {
+  width: 44px;
+  height: 1.5px;
+  background: #9ab09f;
+}
+
+.features-main-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(38px, 4.4vw, 62px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  color: #14251b;
+  margin: 0;
+}
+
+.features-main-title em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #7b9e38;
+  display: block;
+}
+
+.features-main-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5c6f61;
+  max-width: 420px;
+  margin: 20px 0 0;
+}
+
+/* 7. Feature Cards Grid */
+.features-cards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr 1fr;
+  gap: clamp(18px, 2.4vw, 32px);
+  max-width: 1280px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* 8. Feature Card Base */
+.features-cards-grid .feature-card {
+  position: relative;
+  border-radius: 22px !important;
+  padding: 34px 28px 28px !important;
+  min-height: 485px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  backdrop-filter: none !important;
+  flex: unset !important;
+  max-width: none !important;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s ease !important;
+}
+
+/* Remove old wireframe orbits and extra borders */
+.features-cards-grid .feature-card::before,
+.features-cards-grid .feature-card::after {
+  display: none !important;
+}
+
+/* Top-Right Decorative Quarter-Circle Arc on All Cards */
+.card-top-corner-arc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 135px;
+  height: 135px;
+  border-bottom-left-radius: 135px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card 1 & Card 3 (Dark Forest Theme) */
+.features-cards-grid .card-dark-forest {
+  background: #13261b !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 24px 50px rgba(18, 38, 26, 0.22), 0 4px 14px rgba(0, 0, 0, 0.1) !important;
+}
+
+.features-cards-grid .card-dark-forest .card-top-corner-arc {
+  background: rgba(52, 94, 68, 0.32);
+}
+
+.features-cards-grid .card-dark-forest h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 21.5px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+  color: #ffffff !important;
+  margin: 0 0 10px;
+}
+
+.features-cards-grid .card-dark-forest > div > p {
+  font-size: 12.5px;
+  line-height: 1.62;
+  color: #9cb0a2 !important;
+  margin: 0 0 20px;
+  min-height: 58px;
+}
+
+.features-cards-grid .card-dark-forest .card-num-pill {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #d4ef62 !important;
+}
+
+.features-cards-grid .card-dark-forest ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.features-cards-grid .card-dark-forest li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  color: #e5ede7 !important;
+}
+
+.features-cards-grid .card-dark-forest .point-check-badge {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #7bc44a !important;
+  color: #ffffff !important;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.features-cards-grid .card-dark-forest button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.features-cards-grid .card-dark-forest button:hover {
+  gap: 11px;
+  color: #d4ef62 !important;
+}
+
+/* Card 1 Specific (Move Smart - Tilt Left) */
+.features-cards-grid .card-slide-left {
+  --card-tilt: -2deg;
+  --card-y: 12px;
+}
+
+.features-cards-grid .card-slide-left:hover {
+  transform: rotate(0deg) translateY(-12px) scale(1.03) !important;
+  box-shadow: 0 34px 70px rgba(18, 38, 26, 0.32) !important;
+}
+
+.features-cards-grid .card-slide-left .card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff !important;
+  color: #14251b !important;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* Card 2 Specific (Earn Clearly - Center Vibrant Lime) */
+.features-cards-grid .card-vibrant-lime {
+  background: #d4ef62 !important;
+  color: #14251b !important;
+  border: 1px solid rgba(20, 37, 27, 0.08) !important;
+  box-shadow: 0 30px 65px rgba(110, 140, 35, 0.28), 0 6px 18px rgba(0, 0, 0, 0.07) !important;
+  --card-tilt: 0deg;
+  --card-y: -14px;
+  min-height: 505px !important;
+}
+
+.features-cards-grid .card-vibrant-lime:hover {
+  transform: rotate(0deg) translateY(-22px) scale(1.03) !important;
+  box-shadow: 0 42px 85px rgba(110, 140, 35, 0.38) !important;
+}
+
+.features-cards-grid .card-vibrant-lime .card-top-corner-arc {
+  background: rgba(180, 215, 60, 0.48);
+}
+
+.features-cards-grid .card-vibrant-lime .card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #14251b !important;
+  color: #ffffff !important;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(20, 37, 27, 0.22);
+}
+
+.features-cards-grid .card-vibrant-lime .card-num-pill {
+  background: rgba(20, 37, 27, 0.08);
+  border: 1px solid rgba(20, 37, 27, 0.18);
+  color: #14251b !important;
+}
+
+.features-cards-grid .card-vibrant-lime h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 21.5px;
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+  color: #14251b !important;
+  margin: 0 0 10px;
+}
+
+.features-cards-grid .card-vibrant-lime > div > p {
+  font-size: 12.5px;
+  line-height: 1.62;
+  color: #2b3e30 !important;
+  margin: 0 0 20px;
+  min-height: 58px;
+}
+
+.features-cards-grid .card-vibrant-lime ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.features-cards-grid .card-vibrant-lime li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  color: #14251b !important;
+  font-weight: 600;
+}
+
+.features-cards-grid .card-vibrant-lime .point-check-badge {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #14251b !important;
+  color: #ffffff !important;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.features-cards-grid .card-vibrant-lime button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #14251b !important;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: gap 0.2s ease;
+}
+
+.features-cards-grid .card-vibrant-lime button:hover {
+  gap: 11px;
+}
+
+/* Card 3 Specific (Drive Safely - Tilt Right) */
+.features-cards-grid .card-slide-right {
+  --card-tilt: 2deg;
+  --card-y: 12px;
+}
+
+.features-cards-grid .card-slide-right:hover {
+  transform: rotate(0deg) translateY(-12px) scale(1.03) !important;
+  box-shadow: 0 34px 70px rgba(18, 38, 26, 0.32) !important;
+}
+
+.features-cards-grid .card-slide-right .card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #d4ef62 !important;
+  color: #14251b !important;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(212, 239, 98, 0.32);
+}
+
+/* Card Pill Badge */
+.card-num-pill {
+  width: fit-content;
+  border-radius: 99px;
+  padding: 4px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 18px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .features-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    gap: 30px;
+  }
+  .card-slide-left,
+  .card-vibrant-lime,
+  .card-slide-right {
+    transform: none !important;
+  }
+  .features-bg-route-wrap,
+  .features-script-quote,
+  .features-bg-dashed-route {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro-section {
+    padding: 70px 20px 90px;
+  }
+  .features-header-wrap {
+    margin-bottom: 36px;
+  }
+  .features-cards-grid .feature-card {
+    min-height: auto;
+    padding: 28px 22px;
+  }
+}
