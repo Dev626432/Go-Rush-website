@@ -1,0 +1,726 @@
+/* =========================================================
+   GORUSH - SAFETY SECTION REDESIGN
+   Matches ChatGPT Reference Mockup (m_6aa265c3d01c8191a4b81e6cd5856ef8)
+   ========================================================= */
+
+.safety-redesign-wrap {
+  position: relative;
+  background-color: #f5f8f0;
+  color: #14251b;
+  padding: 110px 0 100px;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', Manrope, sans-serif;
+}
+
+/* Scenic Highway Bridge & City Background */
+.safety-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.safety-bg-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 65%;
+  height: 85%;
+  object-fit: cover;
+  object-position: left bottom;
+  opacity: 0.65;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.safety-bg-fade {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(245, 248, 240, 0.45) 45%, #f5f8f0 75%, #f5f8f0 100%),
+    linear-gradient(180deg, #f5f8f0 0%, transparent 20%, transparent 80%, #f5f8f0 100%);
+}
+
+/* Decorative Corner Botanical Leaves */
+.safety-leaf-top-left {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.38;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.safety-leaf-bottom-left {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  width: 130px;
+  height: 130px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 2;
+  transform: rotate(-15deg);
+}
+
+.safety-leaf-bottom-right {
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  width: 140px;
+  height: 140px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 2;
+  transform: rotate(45deg);
+}
+
+/* Top Right Dashed Swoosh Line */
+.safety-swoosh-svg {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 380px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.65;
+}
+
+/* Cursive Handwritten Script Quotes */
+.safety-script-quote-top {
+  position: absolute;
+  top: 40px;
+  right: clamp(24px, 6vw, 80px);
+  font-family: 'Caveat', cursive;
+  font-size: clamp(26px, 2.5vw, 34px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #55792c;
+  transform: rotate(-8deg);
+  pointer-events: none;
+  z-index: 3;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.safety-script-quote-top em {
+  font-style: normal;
+  display: inline-block;
+  border-bottom: 2.5px solid rgba(110, 150, 50, 0.55);
+  border-radius: 3px;
+  padding-bottom: 1px;
+}
+
+.safety-script-quote-bottom {
+  position: absolute;
+  bottom: 45px;
+  left: clamp(24px, 5vw, 60px);
+  font-family: 'Caveat', cursive;
+  font-size: clamp(26px, 2.5vw, 34px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #55792c;
+  transform: rotate(-10deg);
+  pointer-events: none;
+  z-index: 3;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.safety-script-quote-bottom em {
+  font-style: normal;
+  display: inline-block;
+  border-bottom: 2.5px solid rgba(110, 150, 50, 0.55);
+  border-radius: 3px;
+  padding-bottom: 1px;
+}
+
+/* Main Container Grid */
+.safety-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(36px, 6vw, 85px);
+}
+
+/* =========================================================
+   LEFT COLUMN: 3D SAFETY RADAR & FLOATING PILLS
+   ========================================================= */
+.safety-radar-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+}
+
+.safety-radar-stage {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  display: grid;
+  place-items: center;
+}
+
+/* Concentric Radar Rings */
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(115, 160, 60, 0.28);
+  pointer-events: none;
+}
+
+.radar-ring-1 {
+  width: 420px;
+  height: 420px;
+  animation: radarRingPulse 6s ease-in-out infinite;
+}
+
+.radar-ring-2 {
+  width: 290px;
+  height: 290px;
+  border-color: rgba(115, 160, 60, 0.38);
+  animation: radarRingPulse 6s ease-in-out infinite 1.5s;
+}
+
+.radar-ring-3 {
+  width: 180px;
+  height: 180px;
+  border-color: rgba(115, 160, 60, 0.5);
+  border-style: dashed;
+}
+
+/* Orbital Waypoint Dots on Rings */
+.radar-waypoint {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5b872c;
+  box-shadow: 0 0 0 3px rgba(110, 160, 50, 0.25);
+}
+
+.radar-waypoint-top {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.radar-waypoint-bottom {
+  bottom: 25px;
+  left: 48%;
+  transform: translateX(-50%);
+}
+
+.radar-waypoint-right {
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Central 3D Crystal Shield Badge */
+.safety-center-crystal {
+  position: relative;
+  z-index: 4;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  box-shadow: 
+    0 16px 40px rgba(40, 70, 30, 0.22),
+    0 0 35px rgba(135, 195, 60, 0.45);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  animation: shieldGlowPulse 4s ease-in-out infinite;
+}
+
+.safety-center-crystal img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.safety-center-crystal:hover {
+  transform: scale(1.08);
+  box-shadow: 
+    0 22px 50px rgba(40, 70, 30, 0.3),
+    0 0 45px rgba(135, 195, 60, 0.65);
+}
+
+/* Halo Glow Around Central Shield */
+.safety-center-halo {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(135, 195, 60, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+  animation: haloPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 4 Floating Glassmorphism Pills */
+.safety-floating-pill {
+  position: absolute;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(115, 160, 60, 0.22);
+  border-radius: 999px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(25, 45, 25, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.safety-floating-pill:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(25, 45, 25, 0.14);
+  border-color: rgba(110, 160, 50, 0.45);
+}
+
+.pill-check-badge {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #558525;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+}
+
+.pill-check-badge svg {
+  stroke-width: 3;
+}
+
+.pill-icon {
+  color: #233b2a;
+}
+
+.pill-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1a3022;
+}
+
+/* Pill 1: Top Left (Identity Verified) */
+.safety-pill-identity {
+  top: 85px;
+  left: -20px;
+  animation: pillFloat1 4.5s ease-in-out infinite;
+}
+
+/* Pill 2: Top Right (Trip Sharing Active) */
+.safety-pill-trip {
+  top: 105px;
+  right: -25px;
+  animation: pillFloat2 5s ease-in-out infinite 0.8s;
+}
+
+/* Pill 3: Bottom Left (24/7 Live Support) */
+.safety-pill-support {
+  bottom: 95px;
+  left: -15px;
+  animation: pillFloat1 4.8s ease-in-out infinite 1.4s;
+}
+
+/* Pill 4: Bottom Right (Safer Rides Card) */
+.safety-card-community {
+  bottom: 80px;
+  right: -30px;
+  background: linear-gradient(180deg, #f7faee 0%, #eef5e3 100%);
+  border: 1px solid rgba(115, 160, 60, 0.32);
+  border-radius: 16px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 28px rgba(25, 45, 25, 0.09);
+  animation: pillFloat2 5.2s ease-in-out infinite 2s;
+  cursor: pointer;
+}
+
+.safety-card-community:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(25, 45, 25, 0.16);
+  border-color: #79a635;
+}
+
+.community-icon {
+  color: #558026;
+}
+
+.community-text strong {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #162a1e;
+  line-height: 1.2;
+}
+
+.community-text span {
+  display: block;
+  font-size: 9.5px;
+  color: #637767;
+  line-height: 1.2;
+}
+
+.community-arrow {
+  color: #558026;
+  transition: transform 0.25s ease;
+}
+
+.safety-card-community:hover .community-arrow {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   RIGHT COLUMN: COPY & FEATURES LIST
+   ========================================================= */
+.safety-copy-col {
+  max-width: 520px;
+}
+
+.safety-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #6d8272;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.safety-eyebrow-line {
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background: #9ab48a;
+  border-radius: 2px;
+}
+
+.safety-headline {
+  font-size: clamp(38px, 4.4vw, 60px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  margin: 0 0 20px;
+}
+
+.safety-headline em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #6e9432;
+  letter-spacing: -0.03em;
+}
+
+.safety-desc {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #617366;
+  margin: 0 0 34px;
+  max-width: 440px;
+}
+
+/* Feature Points */
+.safety-points-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 38px;
+}
+
+.safety-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.safety-point-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #eaf3db;
+  color: #558026;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(85, 128, 38, 0.12);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.safety-point-item:hover .safety-point-icon-box {
+  transform: scale(1.08);
+  background: #e1efcc;
+}
+
+.safety-point-text {
+  flex: 1;
+  padding-top: 1px;
+}
+
+.safety-point-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #14251b;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+}
+
+.safety-point-desc {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #637667;
+  margin: 0;
+}
+
+/* Bottom CTA & Trust Note */
+.safety-action-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.safety-primary-btn {
+  background: #12251a;
+  color: #ffffff;
+  border: 0;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(18, 37, 26, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.safety-primary-btn:hover {
+  background: #1a3525;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(18, 37, 26, 0.4);
+}
+
+.safety-note-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.safety-note-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: rgba(110, 150, 50, 0.15);
+  color: #6b9432;
+  display: grid;
+  place-items: center;
+}
+
+.safety-note-text strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #14251b;
+  line-height: 1.25;
+}
+
+.safety-note-text span {
+  display: block;
+  font-size: 10px;
+  color: #6e8273;
+  line-height: 1.3;
+}
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ========================================================= */
+@keyframes shieldGlowPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 16px 40px rgba(40, 70, 30, 0.22), 0 0 35px rgba(135, 195, 60, 0.45);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 20px 45px rgba(40, 70, 30, 0.28), 0 0 50px rgba(135, 195, 60, 0.6);
+  }
+}
+
+@keyframes haloPulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.9;
+  }
+}
+
+@keyframes radarRingPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+@keyframes pillFloat1 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pillFloat2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 1080px) {
+  .safety-pill-identity {
+    left: 0;
+  }
+  .safety-pill-trip {
+    right: 0;
+  }
+  .safety-pill-support {
+    left: 0;
+  }
+  .safety-card-community {
+    right: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .safety-redesign-wrap {
+    padding: 75px 0 65px;
+  }
+
+  .safety-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .safety-script-quote-top,
+  .safety-script-quote-bottom {
+    display: none;
+  }
+
+  .safety-radar-col {
+    order: 2;
+  }
+
+  .safety-copy-col {
+    order: 1;
+    max-width: 100%;
+  }
+
+  .safety-radar-stage {
+    width: 360px;
+    height: 360px;
+  }
+
+  .radar-ring-1 {
+    width: 340px;
+    height: 340px;
+  }
+
+  .radar-ring-2 {
+    width: 240px;
+    height: 240px;
+  }
+
+  .radar-ring-3 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .safety-center-crystal {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 520px) {
+  .safety-redesign-wrap {
+    padding: 55px 0 50px;
+  }
+
+  .safety-headline {
+    font-size: 32px;
+  }
+
+  .safety-radar-stage {
+    width: 300px;
+    height: 300px;
+  }
+
+  .radar-ring-1 {
+    width: 290px;
+    height: 290px;
+  }
+
+  .radar-ring-2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .radar-ring-3 {
+    width: 120px;
+    height: 120px;
+  }
+
+  .safety-pill-identity {
+    top: 20px;
+    left: -10px;
+  }
+
+  .safety-pill-trip {
+    top: 30px;
+    right: -10px;
+  }
+
+  .safety-pill-support {
+    bottom: 25px;
+    left: -10px;
+  }
+
+  .safety-card-community {
+    bottom: 15px;
+    right: -10px;
+  }
+}
