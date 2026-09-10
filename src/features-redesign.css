@@ -179,8 +179,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1540px;
-  margin: 0 auto clamp(20px, 3vh, 44px);
+  max-width: 1200px;
+  margin: 0 auto clamp(18px, 2.5vh, 36px);
 }
 
 .features-kicker {
@@ -229,27 +229,27 @@
   margin: 18px 0 0;
 }
 
-/* 7. Feature Cards Grid - FULL PAGE WIDTH */
+/* 7. Feature Cards Grid - COMPACT & BALANCED */
 .features-cards-grid {
   position: relative;
   z-index: 2;
   display: grid !important;
   grid-template-columns: 1fr 1.05fr 1fr !important;
   grid-auto-flow: row !important;
-  gap: clamp(18px, 2.5vw, 36px) !important;
+  gap: clamp(16px, 2vw, 26px) !important;
   width: 100% !important;
-  max-width: 1540px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
   padding: 0 !important;
   align-items: center !important;
 }
 
-/* 8. Feature Card Base - FULL SIZING */
+/* 8. Feature Card Base - TIGHTER & SLEEKER SIZING */
 .features-cards-grid .feature-card {
   position: relative;
-  border-radius: 24px !important;
-  padding: clamp(30px, 3.2vh, 40px) clamp(24px, 2.4vw, 36px) clamp(26px, 2.8vh, 34px) !important;
-  min-height: clamp(510px, 54vh, 610px) !important;
+  border-radius: 20px !important;
+  padding: 26px 22px 22px !important;
+  min-height: 425px !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
@@ -273,9 +273,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: clamp(130px, 11vw, 160px);
-  height: clamp(130px, 11vw, 160px);
-  border-bottom-left-radius: clamp(130px, 11vw, 160px);
+  width: 110px;
+  height: 110px;
+  border-bottom-left-radius: 110px;
   pointer-events: none;
   z-index: 1;
 }
@@ -294,47 +294,50 @@
 
 .features-cards-grid .card-dark-forest h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(20px, 1.8vw, 25px);
+  font-size: 19px !important;
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #ffffff !important;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .features-cards-grid .card-dark-forest > div > p {
-  font-size: clamp(12px, 1vw, 13.5px);
-  line-height: 1.65;
+  font-size: 12px !important;
+  line-height: 1.58;
   color: #9cb0a2 !important;
-  margin: 0 0 22px;
-  min-height: 56px;
+  margin: 0 0 16px;
+  min-height: 44px;
 }
 
 .features-cards-grid .card-dark-forest .card-num-pill {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #d4ef62 !important;
+  font-size: 9px !important;
+  padding: 3px 9px !important;
+  margin: 12px 0 10px !important;
 }
 
 .features-cards-grid .card-dark-forest ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 26px;
+  margin: 0 0 20px;
   display: grid;
-  gap: 12px;
+  gap: 9px;
 }
 
 .features-cards-grid .card-dark-forest li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: clamp(11px, 0.95vw, 12.5px);
+  gap: 8px;
+  font-size: 11.5px !important;
   color: #e5ede7 !important;
 }
 
 .features-cards-grid .card-dark-forest .point-check-badge {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #7bc44a !important;
   color: #ffffff !important;
@@ -348,41 +351,41 @@
   border: 0;
   padding: 0;
   color: #ffffff !important;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   cursor: pointer;
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .features-cards-grid .card-dark-forest button:hover {
-  gap: 12px;
+  gap: 11px;
   color: #d4ef62 !important;
 }
 
 /* Card 1 Specific (Move Smart - Tilt Left) */
 .features-cards-grid .card-slide-left {
   --card-tilt: -2deg;
-  --card-y: 12px;
-  transform: rotate(-2deg) translateY(8px);
+  --card-y: 8px;
+  transform: rotate(-2deg) translateY(6px);
 }
 
 .features-cards-grid .card-slide-left:hover {
-  transform: rotate(0deg) translateY(-14px) scale(1.03) !important;
-  box-shadow: 0 36px 75px rgba(18, 38, 26, 0.35) !important;
+  transform: rotate(0deg) translateY(-10px) scale(1.025) !important;
+  box-shadow: 0 32px 65px rgba(18, 38, 26, 0.32) !important;
 }
 
 .features-cards-grid .card-slide-left .card-icon-wrap {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #ffffff !important;
   color: #14251b !important;
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
 }
 
 /* Card 2 Specific (Earn Clearly - Center Vibrant Lime) */
@@ -390,16 +393,16 @@
   background: #d4ef62 !important;
   color: #14251b !important;
   border: 1px solid rgba(20, 37, 27, 0.08) !important;
-  box-shadow: 0 32px 70px rgba(110, 140, 35, 0.28), 0 6px 18px rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 28px 60px rgba(110, 140, 35, 0.26), 0 6px 16px rgba(0, 0, 0, 0.06) !important;
   --card-tilt: 0deg;
-  --card-y: -14px;
-  min-height: clamp(540px, 58vh, 640px) !important;
-  transform: rotate(0deg) translateY(-12px);
+  --card-y: -10px;
+  min-height: 448px !important;
+  transform: rotate(0deg) translateY(-10px);
 }
 
 .features-cards-grid .card-vibrant-lime:hover {
-  transform: rotate(0deg) translateY(-24px) scale(1.03) !important;
-  box-shadow: 0 44px 90px rgba(110, 140, 35, 0.38) !important;
+  transform: rotate(0deg) translateY(-20px) scale(1.025) !important;
+  box-shadow: 0 38px 80px rgba(110, 140, 35, 0.35) !important;
 }
 
 .features-cards-grid .card-vibrant-lime .card-top-corner-arc {
@@ -407,60 +410,63 @@
 }
 
 .features-cards-grid .card-vibrant-lime .card-icon-wrap {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
   background: #14251b !important;
   color: #ffffff !important;
   display: grid;
   place-items: center;
-  box-shadow: 0 6px 16px rgba(20, 37, 27, 0.22);
+  box-shadow: 0 5px 14px rgba(20, 37, 27, 0.2);
 }
 
 .features-cards-grid .card-vibrant-lime .card-num-pill {
   background: rgba(20, 37, 27, 0.08);
   border: 1px solid rgba(20, 37, 27, 0.18);
   color: #14251b !important;
+  font-size: 9px !important;
+  padding: 3px 9px !important;
+  margin: 12px 0 10px !important;
 }
 
 .features-cards-grid .card-vibrant-lime h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(20px, 1.8vw, 25px);
+  font-size: 19px !important;
   font-weight: 800;
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #14251b !important;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .features-cards-grid .card-vibrant-lime > div > p {
-  font-size: clamp(12px, 1vw, 13.5px);
-  line-height: 1.65;
+  font-size: 12px !important;
+  line-height: 1.58;
   color: #2b3e30 !important;
-  margin: 0 0 22px;
-  min-height: 56px;
+  margin: 0 0 16px;
+  min-height: 44px;
 }
 
 .features-cards-grid .card-vibrant-lime ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 26px;
+  margin: 0 0 20px;
   display: grid;
-  gap: 12px;
+  gap: 9px;
 }
 
 .features-cards-grid .card-vibrant-lime li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: clamp(11px, 0.95vw, 12.5px);
+  gap: 8px;
+  font-size: 11.5px !important;
   color: #14251b !important;
   font-weight: 600;
 }
 
 .features-cards-grid .card-vibrant-lime .point-check-badge {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #14251b !important;
   color: #ffffff !important;
@@ -474,40 +480,40 @@
   border: 0;
   padding: 0;
   color: #14251b !important;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   cursor: pointer;
   transition: gap 0.2s ease;
 }
 
 .features-cards-grid .card-vibrant-lime button:hover {
-  gap: 12px;
+  gap: 11px;
 }
 
 /* Card 3 Specific (Drive Safely - Tilt Right) */
 .features-cards-grid .card-slide-right {
   --card-tilt: 2deg;
-  --card-y: 12px;
-  transform: rotate(2deg) translateY(8px);
+  --card-y: 8px;
+  transform: rotate(2deg) translateY(6px);
 }
 
 .features-cards-grid .card-slide-right:hover {
-  transform: rotate(0deg) translateY(-14px) scale(1.03) !important;
-  box-shadow: 0 36px 75px rgba(18, 38, 26, 0.35) !important;
+  transform: rotate(0deg) translateY(-10px) scale(1.025) !important;
+  box-shadow: 0 32px 65px rgba(18, 38, 26, 0.32) !important;
 }
 
 .features-cards-grid .card-slide-right .card-icon-wrap {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #d4ef62 !important;
   color: #14251b !important;
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 14px rgba(212, 239, 98, 0.32);
+  box-shadow: 0 4px 12px rgba(212, 239, 98, 0.3);
 }
 
 /* Card Pill Badge */
