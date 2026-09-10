@@ -179,8 +179,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto clamp(18px, 2.5vh, 36px);
+  max-width: 1040px;
+  margin: 0 auto clamp(16px, 2vh, 30px);
 }
 
 .features-kicker {
@@ -188,23 +188,23 @@
   align-items: center;
   gap: 12px;
   font-family: 'DM Mono', monospace;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.16em;
   color: #6a7c6e;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .features-kicker-line {
-  width: 44px;
+  width: 40px;
   height: 1.5px;
   background: #9ab09f;
 }
 
 .features-main-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(38px, 4.2vw, 64px);
+  font-size: clamp(34px, 3.8vw, 56px);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.055em;
@@ -222,11 +222,11 @@
 }
 
 .features-main-desc {
-  font-size: clamp(13px, 1.1vw, 15.5px);
-  line-height: 1.7;
+  font-size: clamp(12.5px, 1vw, 14.5px);
+  line-height: 1.65;
   color: #5c6f61;
-  max-width: 440px;
-  margin: 18px 0 0;
+  max-width: 420px;
+  margin: 14px 0 0;
 }
 
 /* 7. Feature Cards Grid - COMPACT & BALANCED */
@@ -236,9 +236,9 @@
   display: grid !important;
   grid-template-columns: 1fr 1.05fr 1fr !important;
   grid-auto-flow: row !important;
-  gap: clamp(16px, 2vw, 26px) !important;
+  gap: clamp(14px, 1.8vw, 22px) !important;
   width: 100% !important;
-  max-width: 1200px !important;
+  max-width: 1040px !important;
   margin: 0 auto !important;
   padding: 0 !important;
   align-items: center !important;
@@ -247,9 +247,9 @@
 /* 8. Feature Card Base - TIGHTER & SLEEKER SIZING */
 .features-cards-grid .feature-card {
   position: relative;
-  border-radius: 20px !important;
-  padding: 26px 22px 22px !important;
-  min-height: 425px !important;
+  border-radius: 18px !important;
+  padding: 22px 18px 18px !important;
+  min-height: 380px !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
@@ -273,9 +273,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 110px;
-  height: 110px;
-  border-bottom-left-radius: 110px;
+  width: 90px;
+  height: 90px;
+  border-bottom-left-radius: 90px;
   pointer-events: none;
   z-index: 1;
 }
@@ -285,7 +285,7 @@
   background: #13261b !important;
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 24px 50px rgba(18, 38, 26, 0.22), 0 4px 14px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 20px 42px rgba(18, 38, 26, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 .features-cards-grid .card-dark-forest .card-top-corner-arc {
@@ -294,50 +294,50 @@
 
 .features-cards-grid .card-dark-forest h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 19px !important;
+  font-size: 17.5px !important;
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #ffffff !important;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .features-cards-grid .card-dark-forest > div > p {
-  font-size: 12px !important;
-  line-height: 1.58;
+  font-size: 11.5px !important;
+  line-height: 1.54;
   color: #9cb0a2 !important;
-  margin: 0 0 16px;
-  min-height: 44px;
+  margin: 0 0 14px;
+  min-height: 38px;
 }
 
 .features-cards-grid .card-dark-forest .card-num-pill {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #d4ef62 !important;
-  font-size: 9px !important;
-  padding: 3px 9px !important;
-  margin: 12px 0 10px !important;
+  font-size: 8.5px !important;
+  padding: 2.5px 8px !important;
+  margin: 10px 0 8px !important;
 }
 
 .features-cards-grid .card-dark-forest ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   display: grid;
-  gap: 9px;
+  gap: 8px;
 }
 
 .features-cards-grid .card-dark-forest li {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11.5px !important;
+  gap: 7px;
+  font-size: 11px !important;
   color: #e5ede7 !important;
 }
 
 .features-cards-grid .card-dark-forest .point-check-badge {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: #7bc44a !important;
   color: #ffffff !important;
@@ -351,41 +351,41 @@
   border: 0;
   padding: 0;
   color: #ffffff !important;
-  font-size: 12px;
+  font-size: 11.5px !important;
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   cursor: pointer;
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .features-cards-grid .card-dark-forest button:hover {
-  gap: 11px;
+  gap: 10px;
   color: #d4ef62 !important;
 }
 
 /* Card 1 Specific (Move Smart - Tilt Left) */
 .features-cards-grid .card-slide-left {
   --card-tilt: -2deg;
-  --card-y: 8px;
-  transform: rotate(-2deg) translateY(6px);
+  --card-y: 6px;
+  transform: rotate(-2deg) translateY(5px);
 }
 
 .features-cards-grid .card-slide-left:hover {
-  transform: rotate(0deg) translateY(-10px) scale(1.025) !important;
-  box-shadow: 0 32px 65px rgba(18, 38, 26, 0.32) !important;
+  transform: rotate(0deg) translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 28px 55px rgba(18, 38, 26, 0.3) !important;
 }
 
 .features-cards-grid .card-slide-left .card-icon-wrap {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #ffffff !important;
   color: #14251b !important;
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
 }
 
 /* Card 2 Specific (Earn Clearly - Center Vibrant Lime) */
@@ -393,16 +393,16 @@
   background: #d4ef62 !important;
   color: #14251b !important;
   border: 1px solid rgba(20, 37, 27, 0.08) !important;
-  box-shadow: 0 28px 60px rgba(110, 140, 35, 0.26), 0 6px 16px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 24px 50px rgba(110, 140, 35, 0.24), 0 5px 14px rgba(0, 0, 0, 0.06) !important;
   --card-tilt: 0deg;
-  --card-y: -10px;
-  min-height: 448px !important;
-  transform: rotate(0deg) translateY(-10px);
+  --card-y: -8px;
+  min-height: 405px !important;
+  transform: rotate(0deg) translateY(-8px);
 }
 
 .features-cards-grid .card-vibrant-lime:hover {
-  transform: rotate(0deg) translateY(-20px) scale(1.025) !important;
-  box-shadow: 0 38px 80px rgba(110, 140, 35, 0.35) !important;
+  transform: rotate(0deg) translateY(-16px) scale(1.02) !important;
+  box-shadow: 0 32px 65px rgba(110, 140, 35, 0.32) !important;
 }
 
 .features-cards-grid .card-vibrant-lime .card-top-corner-arc {
@@ -410,63 +410,63 @@
 }
 
 .features-cards-grid .card-vibrant-lime .card-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 13px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   background: #14251b !important;
   color: #ffffff !important;
   display: grid;
   place-items: center;
-  box-shadow: 0 5px 14px rgba(20, 37, 27, 0.2);
+  box-shadow: 0 4px 12px rgba(20, 37, 27, 0.18);
 }
 
 .features-cards-grid .card-vibrant-lime .card-num-pill {
   background: rgba(20, 37, 27, 0.08);
   border: 1px solid rgba(20, 37, 27, 0.18);
   color: #14251b !important;
-  font-size: 9px !important;
-  padding: 3px 9px !important;
-  margin: 12px 0 10px !important;
+  font-size: 8.5px !important;
+  padding: 2.5px 8px !important;
+  margin: 10px 0 8px !important;
 }
 
 .features-cards-grid .card-vibrant-lime h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 19px !important;
+  font-size: 17.5px !important;
   font-weight: 800;
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #14251b !important;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .features-cards-grid .card-vibrant-lime > div > p {
-  font-size: 12px !important;
-  line-height: 1.58;
+  font-size: 11.5px !important;
+  line-height: 1.54;
   color: #2b3e30 !important;
-  margin: 0 0 16px;
-  min-height: 44px;
+  margin: 0 0 14px;
+  min-height: 38px;
 }
 
 .features-cards-grid .card-vibrant-lime ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   display: grid;
-  gap: 9px;
+  gap: 8px;
 }
 
 .features-cards-grid .card-vibrant-lime li {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11.5px !important;
+  gap: 7px;
+  font-size: 11px !important;
   color: #14251b !important;
   font-weight: 600;
 }
 
 .features-cards-grid .card-vibrant-lime .point-check-badge {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: #14251b !important;
   color: #ffffff !important;
@@ -480,40 +480,40 @@
   border: 0;
   padding: 0;
   color: #14251b !important;
-  font-size: 12px;
+  font-size: 11.5px !important;
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   cursor: pointer;
   transition: gap 0.2s ease;
 }
 
 .features-cards-grid .card-vibrant-lime button:hover {
-  gap: 11px;
+  gap: 10px;
 }
 
 /* Card 3 Specific (Drive Safely - Tilt Right) */
 .features-cards-grid .card-slide-right {
   --card-tilt: 2deg;
-  --card-y: 8px;
-  transform: rotate(2deg) translateY(6px);
+  --card-y: 6px;
+  transform: rotate(2deg) translateY(5px);
 }
 
 .features-cards-grid .card-slide-right:hover {
-  transform: rotate(0deg) translateY(-10px) scale(1.025) !important;
-  box-shadow: 0 32px 65px rgba(18, 38, 26, 0.32) !important;
+  transform: rotate(0deg) translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 28px 55px rgba(18, 38, 26, 0.3) !important;
 }
 
 .features-cards-grid .card-slide-right .card-icon-wrap {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #d4ef62 !important;
   color: #14251b !important;
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 12px rgba(212, 239, 98, 0.3);
+  box-shadow: 0 3px 10px rgba(212, 239, 98, 0.26);
 }
 
 /* Card Pill Badge */
