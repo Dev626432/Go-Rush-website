@@ -101,7 +101,7 @@ export default function Website() {
   const [progress, setProgress] = useState(0);
 
   const featureGridRef = useRef(null);
-  const [featuresInView, setFeaturesInView] = useState(false);
+  const [featuresInView, setFeaturesInView] = useState(true);
 
   useEffect(() => {
     const el = featureGridRef.current;

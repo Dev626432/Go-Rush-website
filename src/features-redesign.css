@@ -1,23 +1,30 @@
 /* ===================================================
    GoRush Features Section Redesign (ChatGPT Design Match)
-   "Built around the person behind the wheel." & 3 Cards
+   FULL PAGE (Full Width & Viewport Height) Showcase
    =================================================== */
 
 .intro-section {
   position: relative;
-  padding: 100px clamp(24px, 5.5vw, 90px) 130px;
-  background: linear-gradient(180deg, #f7f6f0 0%, #f1f5eb 50%, #e8efe2 100%);
-  overflow: hidden;
+  width: 100% !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: clamp(60px, 6vh, 90px) clamp(24px, 4vw, 80px) clamp(70px, 8vh, 110px) !important;
+  background: linear-gradient(180deg, #f7f6f0 0%, #f1f5eb 50%, #e8efe2 100%) !important;
+  overflow: hidden !important;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* 1. Large Top-Right Watermark "DRIVE YOUR DAY" */
+/* 1. Large Top-Right Watermark "DRIVE YOUR DAY" across full page */
 .features-watermark {
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 2%;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(60px, 9.5vw, 150px);
+  font-size: clamp(75px, 11vw, 180px);
   font-weight: 800;
   letter-spacing: -0.06em;
   color: rgba(20, 37, 27, 0.038);
@@ -27,25 +34,25 @@
   z-index: 0;
 }
 
-/* 2. Left Misty City Skyline Silhouette */
+/* 2. Left Misty City Skyline Silhouette (Spanning Full Left Edge) */
 .features-bg-skyline {
   position: absolute;
-  left: -20px;
-  top: 15%;
-  width: 320px;
-  height: 480px;
+  left: 0;
+  bottom: 0;
+  width: clamp(280px, 28vw, 440px);
+  height: clamp(380px, 50vh, 560px);
   opacity: 0.28;
   pointer-events: none;
   z-index: 0;
 }
 
-/* 3. Right Highway Curve Silhouette */
+/* 3. Right Highway Curve Silhouette (Spanning Full Right Edge) */
 .features-bg-highway {
   position: absolute;
-  right: -30px;
-  top: 18%;
-  width: 380px;
-  height: 450px;
+  right: 0;
+  bottom: 0;
+  width: clamp(300px, 30vw, 480px);
+  height: clamp(360px, 48vh, 540px);
   opacity: 0.24;
   pointer-events: none;
   z-index: 0;
@@ -54,8 +61,8 @@
 /* 4. Upper-Right Floating GPS Pin, Route Pill & Script */
 .features-bg-route-wrap {
   position: absolute;
-  top: 50px;
-  right: 6%;
+  top: clamp(30px, 4vh, 55px);
+  right: clamp(40px, 8vw, 180px);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -65,8 +72,8 @@
 
 .route-pin-beacon {
   position: relative;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #14251b;
   display: grid;
@@ -77,9 +84,9 @@
 .route-pin-beacon::before {
   content: '';
   position: absolute;
-  inset: -6px;
+  inset: -7px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(123, 196, 74, 0.6);
+  border: 1.5px dashed rgba(123, 196, 74, 0.65);
   animation: beaconSpin 12s linear infinite;
 }
 
@@ -88,8 +95,8 @@
 }
 
 .beacon-dot {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: #d4ef62;
   box-shadow: 0 0 10px #d4ef62;
@@ -98,14 +105,14 @@
 .route-pill-widget {
   background: #ffffff;
   border-radius: 99px;
-  padding: 8px 16px;
+  padding: 9px 18px;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #14251b;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(20, 37, 27, 0.08);
 }
 
@@ -115,10 +122,10 @@
 
 .features-script-quote {
   position: absolute;
-  top: 105px;
-  right: 5%;
+  top: clamp(75px, 9vh, 120px);
+  right: clamp(24px, 4vw, 80px);
   font-family: 'Caveat', cursive;
-  font-size: clamp(28px, 2.5vw, 38px);
+  font-size: clamp(28px, 2.6vw, 42px);
   font-weight: 700;
   color: #7b9e38;
   line-height: 1.12;
@@ -136,10 +143,10 @@
 /* Curved dashed route line behind */
 .features-bg-dashed-route {
   position: absolute;
-  top: 75px;
-  right: 14%;
-  width: 320px;
-  height: 220px;
+  top: clamp(60px, 7vh, 100px);
+  right: clamp(60px, 12vw, 240px);
+  width: clamp(280px, 25vw, 400px);
+  height: 240px;
   pointer-events: none;
   z-index: 0;
   opacity: 0.65;
@@ -149,11 +156,11 @@
 .features-leaf-corner {
   position: absolute;
   bottom: -30px;
-  width: 220px;
-  height: 200px;
+  width: clamp(200px, 20vw, 320px);
+  height: clamp(180px, 18vh, 280px);
   pointer-events: none;
   z-index: 1;
-  filter: blur(10px);
+  filter: blur(12px);
   opacity: 0.35;
 }
 
@@ -167,12 +174,13 @@
   background: radial-gradient(circle at bottom right, #7da54b 0%, #a4c975 40%, transparent 75%);
 }
 
-/* 6. Section Header (Left Grouped) */
+/* 6. Section Header (Left Grouped, Full Width Container) */
 .features-header-wrap {
   position: relative;
   z-index: 2;
-  max-width: 640px;
-  margin-bottom: 52px;
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto clamp(20px, 3vh, 44px);
 }
 
 .features-kicker {
@@ -180,12 +188,12 @@
   align-items: center;
   gap: 12px;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.16em;
   color: #6a7c6e;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .features-kicker-line {
@@ -196,7 +204,7 @@
 
 .features-main-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(38px, 4.4vw, 62px);
+  font-size: clamp(38px, 4.2vw, 64px);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.055em;
@@ -214,39 +222,44 @@
 }
 
 .features-main-desc {
-  font-size: 14px;
+  font-size: clamp(13px, 1.1vw, 15.5px);
   line-height: 1.7;
   color: #5c6f61;
-  max-width: 420px;
-  margin: 20px 0 0;
+  max-width: 440px;
+  margin: 18px 0 0;
 }
 
-/* 7. Feature Cards Grid */
+/* 7. Feature Cards Grid - FULL PAGE WIDTH */
 .features-cards-grid {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1.05fr 1fr;
-  gap: clamp(18px, 2.4vw, 32px);
-  max-width: 1280px;
-  margin: 0 auto;
-  align-items: center;
+  display: grid !important;
+  grid-template-columns: 1fr 1.05fr 1fr !important;
+  grid-auto-flow: row !important;
+  gap: clamp(18px, 2.5vw, 36px) !important;
+  width: 100% !important;
+  max-width: 1540px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  align-items: center !important;
 }
 
-/* 8. Feature Card Base */
+/* 8. Feature Card Base - FULL SIZING */
 .features-cards-grid .feature-card {
   position: relative;
-  border-radius: 22px !important;
-  padding: 34px 28px 28px !important;
-  min-height: 485px !important;
+  border-radius: 24px !important;
+  padding: clamp(30px, 3.2vh, 40px) clamp(24px, 2.4vw, 36px) clamp(26px, 2.8vh, 34px) !important;
+  min-height: clamp(510px, 54vh, 610px) !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   backdrop-filter: none !important;
-  flex: unset !important;
+  flex: 1 1 0 !important;
+  width: 100% !important;
   max-width: none !important;
-  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s ease !important;
+  box-sizing: border-box !important;
+  transition: transform 0.45s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.45s ease !important;
 }
 
 /* Remove old wireframe orbits and extra borders */
@@ -260,9 +273,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 135px;
-  height: 135px;
-  border-bottom-left-radius: 135px;
+  width: clamp(130px, 11vw, 160px);
+  height: clamp(130px, 11vw, 160px);
+  border-bottom-left-radius: clamp(130px, 11vw, 160px);
   pointer-events: none;
   z-index: 1;
 }
@@ -281,20 +294,20 @@
 
 .features-cards-grid .card-dark-forest h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 21.5px;
+  font-size: clamp(20px, 1.8vw, 25px);
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #ffffff !important;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .features-cards-grid .card-dark-forest > div > p {
-  font-size: 12.5px;
-  line-height: 1.62;
+  font-size: clamp(12px, 1vw, 13.5px);
+  line-height: 1.65;
   color: #9cb0a2 !important;
-  margin: 0 0 20px;
-  min-height: 58px;
+  margin: 0 0 22px;
+  min-height: 56px;
 }
 
 .features-cards-grid .card-dark-forest .card-num-pill {
@@ -306,22 +319,22 @@
 .features-cards-grid .card-dark-forest ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 0 0 26px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .features-cards-grid .card-dark-forest li {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 11.5px;
+  gap: 10px;
+  font-size: clamp(11px, 0.95vw, 12.5px);
   color: #e5ede7 !important;
 }
 
 .features-cards-grid .card-dark-forest .point-check-badge {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #7bc44a !important;
   color: #ffffff !important;
@@ -335,17 +348,17 @@
   border: 0;
   padding: 0;
   color: #ffffff !important;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   cursor: pointer;
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .features-cards-grid .card-dark-forest button:hover {
-  gap: 11px;
+  gap: 12px;
   color: #d4ef62 !important;
 }
 
@@ -353,16 +366,17 @@
 .features-cards-grid .card-slide-left {
   --card-tilt: -2deg;
   --card-y: 12px;
+  transform: rotate(-2deg) translateY(8px);
 }
 
 .features-cards-grid .card-slide-left:hover {
-  transform: rotate(0deg) translateY(-12px) scale(1.03) !important;
-  box-shadow: 0 34px 70px rgba(18, 38, 26, 0.32) !important;
+  transform: rotate(0deg) translateY(-14px) scale(1.03) !important;
+  box-shadow: 0 36px 75px rgba(18, 38, 26, 0.35) !important;
 }
 
 .features-cards-grid .card-slide-left .card-icon-wrap {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: #ffffff !important;
   color: #14251b !important;
@@ -376,15 +390,16 @@
   background: #d4ef62 !important;
   color: #14251b !important;
   border: 1px solid rgba(20, 37, 27, 0.08) !important;
-  box-shadow: 0 30px 65px rgba(110, 140, 35, 0.28), 0 6px 18px rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 32px 70px rgba(110, 140, 35, 0.28), 0 6px 18px rgba(0, 0, 0, 0.07) !important;
   --card-tilt: 0deg;
   --card-y: -14px;
-  min-height: 505px !important;
+  min-height: clamp(540px, 58vh, 640px) !important;
+  transform: rotate(0deg) translateY(-12px);
 }
 
 .features-cards-grid .card-vibrant-lime:hover {
-  transform: rotate(0deg) translateY(-22px) scale(1.03) !important;
-  box-shadow: 0 42px 85px rgba(110, 140, 35, 0.38) !important;
+  transform: rotate(0deg) translateY(-24px) scale(1.03) !important;
+  box-shadow: 0 44px 90px rgba(110, 140, 35, 0.38) !important;
 }
 
 .features-cards-grid .card-vibrant-lime .card-top-corner-arc {
@@ -392,9 +407,9 @@
 }
 
 .features-cards-grid .card-vibrant-lime .card-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
   background: #14251b !important;
   color: #ffffff !important;
   display: grid;
@@ -410,42 +425,42 @@
 
 .features-cards-grid .card-vibrant-lime h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 21.5px;
+  font-size: clamp(20px, 1.8vw, 25px);
   font-weight: 800;
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #14251b !important;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .features-cards-grid .card-vibrant-lime > div > p {
-  font-size: 12.5px;
-  line-height: 1.62;
+  font-size: clamp(12px, 1vw, 13.5px);
+  line-height: 1.65;
   color: #2b3e30 !important;
-  margin: 0 0 20px;
-  min-height: 58px;
+  margin: 0 0 22px;
+  min-height: 56px;
 }
 
 .features-cards-grid .card-vibrant-lime ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 0 0 26px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .features-cards-grid .card-vibrant-lime li {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 11.5px;
+  gap: 10px;
+  font-size: clamp(11px, 0.95vw, 12.5px);
   color: #14251b !important;
   font-weight: 600;
 }
 
 .features-cards-grid .card-vibrant-lime .point-check-badge {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #14251b !important;
   color: #ffffff !important;
@@ -459,33 +474,34 @@
   border: 0;
   padding: 0;
   color: #14251b !important;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   cursor: pointer;
   transition: gap 0.2s ease;
 }
 
 .features-cards-grid .card-vibrant-lime button:hover {
-  gap: 11px;
+  gap: 12px;
 }
 
 /* Card 3 Specific (Drive Safely - Tilt Right) */
 .features-cards-grid .card-slide-right {
   --card-tilt: 2deg;
   --card-y: 12px;
+  transform: rotate(2deg) translateY(8px);
 }
 
 .features-cards-grid .card-slide-right:hover {
-  transform: rotate(0deg) translateY(-12px) scale(1.03) !important;
-  box-shadow: 0 34px 70px rgba(18, 38, 26, 0.32) !important;
+  transform: rotate(0deg) translateY(-14px) scale(1.03) !important;
+  box-shadow: 0 36px 75px rgba(18, 38, 26, 0.35) !important;
 }
 
 .features-cards-grid .card-slide-right .card-icon-wrap {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: #d4ef62 !important;
   color: #14251b !important;
@@ -498,27 +514,47 @@
 .card-num-pill {
   width: fit-content;
   border-radius: 99px;
-  padding: 4px 10px;
+  padding: 4px 11px;
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  margin: 18px 0 12px;
+  margin: 18px 0 14px;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-/* Responsive Rules */
-@media (max-width: 1024px) {
-  .features-cards-grid {
-    grid-template-columns: 1fr;
-    max-width: 440px;
-    gap: 30px;
+/* In-View Smooth Transitions */
+.features-cards-grid.in-view .card-slide-left {
+  opacity: 1 !important;
+  transform: rotate(-2deg) translateY(8px) !important;
+}
+
+.features-cards-grid.in-view .card-vibrant-lime {
+  opacity: 1 !important;
+  transform: rotate(0deg) translateY(-12px) !important;
+}
+
+.features-cards-grid.in-view .card-slide-right {
+  opacity: 1 !important;
+  transform: rotate(2deg) translateY(8px) !important;
+}
+
+/* Responsive Rules for Seamless Full Page Layout */
+@media (max-width: 1120px) {
+  .intro-section {
+    min-height: auto !important;
+    padding: 80px 24px 100px !important;
   }
-  .card-slide-left,
-  .card-vibrant-lime,
-  .card-slide-right {
+  .features-cards-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 600px !important;
+    gap: 32px !important;
+  }
+  .features-cards-grid .card-slide-left,
+  .features-cards-grid .card-vibrant-lime,
+  .features-cards-grid .card-slide-right {
     transform: none !important;
   }
   .features-bg-route-wrap,
@@ -530,13 +566,13 @@
 
 @media (max-width: 640px) {
   .intro-section {
-    padding: 70px 20px 90px;
+    padding: 60px 18px 80px !important;
   }
   .features-header-wrap {
-    margin-bottom: 36px;
+    margin-bottom: 30px;
   }
   .features-cards-grid .feature-card {
-    min-height: auto;
-    padding: 28px 22px;
+    min-height: auto !important;
+    padding: 28px 20px !important;
   }
 }
