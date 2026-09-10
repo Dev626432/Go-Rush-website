@@ -8,12 +8,14 @@ import {
   Bike,
   Check,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
   Clock3,
   Crown,
   FileCheck2,
   Globe2,
   Headphones,
+  Heart,
   IndianRupee,
   Leaf,
   MapPin,
@@ -44,6 +46,7 @@ import './features-redesign.css';
 import './earnings-redesign.css';
 import './steps-redesign.css';
 import './safety-redesign.css';
+import './quote-redesign.css';
 
 const featureGroups = [
   {
@@ -139,7 +142,35 @@ const earningsData = {
   },
 };
 
+const driverQuotes = [
+  {
+    initials: 'NM',
+    name: 'Nitin Menon',
+    role: 'GoRush driver · Pune',
+    avatarBg: '#c8816c',
+    text: 'gave me the flexibility to be present for my family without putting my goals on hold.',
+  },
+  {
+    initials: 'PS',
+    name: 'Pooja Sharma',
+    role: 'GoRush driver · Indore',
+    avatarBg: '#7ca872',
+    text: 'transparent fares and instant daily payouts gave me complete control over my income and my time.',
+  },
+  {
+    initials: 'AR',
+    name: 'Arjun Rathore',
+    role: 'GoRush driver · Bhopal',
+    avatarBg: '#597fa6',
+    text: 'the 24/7 safety team and live trip sharing give me and my family absolute confidence every single night.',
+  },
+];
+
 export default function Website() {
+  const [activeQuoteIdx, setActiveQuoteIdx] = useState(0);
+  const nextQuote = () => setActiveQuoteIdx((prev) => (prev + 1) % driverQuotes.length);
+  const prevQuote = () => setActiveQuoteIdx((prev) => (prev - 1 + driverQuotes.length) % driverQuotes.length);
+
   const [earningsPeriod, setEarningsPeriod] = useState('this-week');
   const [periodDropdownOpen, setPeriodDropdownOpen] = useState(false);
   const activeEarnings = earningsData[earningsPeriod] || earningsData['this-week'];
@@ -1131,23 +1162,132 @@ export default function Website() {
           </div>
         </section>
 
-        {/* QUOTE */}
-        <section className="quote-section">
-          <div className="quote-mark">“</div>
-          <blockquote>
-            GoRush gave me the flexibility to be present for my family without putting my goals on hold.
-          </blockquote>
-          <div className="quote-author">
-            <div>NM</div>
-            <span>
-              <strong>Nitin Menon</strong>
-              <small>GoRush driver · Pune</small>
-            </span>
+        {/* QUOTE / TESTIMONIAL REDESIGNED */}
+        <section className="quote-redesign-wrap" id="stories">
+          {/* Soft Decorative Corner Leaves */}
+          <svg className="quote-leaf-top-left" viewBox="0 0 100 100" fill="none">
+            <path
+              d="M15,85 Q35,30 85,15 Q65,65 15,85 Z M40,45 Q75,40 85,15"
+              stroke="#558026"
+              strokeWidth="2"
+              fill="rgba(110, 160, 50, 0.12)"
+            />
+          </svg>
+          <svg className="quote-leaf-bottom-left" viewBox="0 0 120 120" fill="none">
+            <path
+              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
+              stroke="#558026"
+              strokeWidth="2"
+              fill="rgba(110, 160, 50, 0.14)"
+            />
+          </svg>
+          <svg className="quote-leaf-bottom-right" viewBox="0 0 120 120" fill="none">
+            <path
+              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
+              stroke="#558026"
+              strokeWidth="2"
+              fill="rgba(110, 160, 50, 0.14)"
+            />
+          </svg>
+
+          {/* Top-Center Label */}
+          <div className="quote-section-label">
+            <span className="quote-label-line" />
+            REAL STORIES. REAL IMPACT
+            <span className="quote-label-line" />
           </div>
-          <div className="quote-dots">
-            <i />
-            <i className="active" />
-            <i />
+
+          {/* Cursive Handwritten Quotes */}
+          <div className="quote-script-left">
+            People
+            <br />
+            Like You
+            <br />
+            <em>Make It Real</em>
+          </div>
+
+          <div className="quote-script-right">
+            Same
+            <br />
+            Journeys
+            <br />
+            Bigger
+            <br />
+            <em>Stories</em>
+          </div>
+
+          {/* Top-Right Tracked Text Stamp */}
+          <div className="quote-badge-top-right">
+            <span>MORE</span>
+            <span>PEOPLE</span>
+            <span>BRIGHTER</span>
+            <span>TOMORROWS</span>
+          </div>
+
+          {/* Bottom-Left Brand Stamp */}
+          <div className="quote-stamp-bottom-left">
+            <div className="quote-heart-badge">
+              <Heart size={13} />
+            </div>
+            <span>DRIVE</span>
+            <span>EARN</span>
+            <span>GROW</span>
+            <div className="quote-stamp-line" />
+          </div>
+
+          {/* Main Stage: Carousel with Left / Right Arrows */}
+          <div className="quote-stage-container">
+            <button
+              type="button"
+              className="quote-nav-btn prev"
+              onClick={prevQuote}
+              aria-label="Previous story"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <div className="quote-main-card">
+              <div className="quote-bubble-mark">“</div>
+              <blockquote className="quote-statement">
+                <span className="quote-brand-accent">GoRush</span>
+                {driverQuotes[activeQuoteIdx].text}
+              </blockquote>
+
+              <div className="quote-author-row">
+                <div
+                  className="quote-author-avatar"
+                  style={{ background: driverQuotes[activeQuoteIdx].avatarBg }}
+                >
+                  {driverQuotes[activeQuoteIdx].initials}
+                </div>
+                <div className="quote-author-meta">
+                  <strong>{driverQuotes[activeQuoteIdx].name}</strong>
+                  <span>{driverQuotes[activeQuoteIdx].role}</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="quote-nav-btn next"
+              onClick={nextQuote}
+              aria-label="Next story"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="quote-dots-nav">
+            {driverQuotes.map((q, idx) => (
+              <button
+                key={q.name}
+                type="button"
+                className={`quote-dot-pill ${activeQuoteIdx === idx ? 'active' : ''}`}
+                onClick={() => setActiveQuoteIdx(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </section>
 
