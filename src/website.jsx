@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
   BadgeCheck,
@@ -30,6 +30,7 @@ import './feature-latest.css';
 import './feature-polish.css';
 import './feature-theme.css';
 import './loader.css';
+import './card-route.css';
 
 const featureGroups = [
   {
@@ -94,6 +95,28 @@ export default function Website() {
   const [loading, setLoading] = useState(true);
   const [exiting, setExiting] = useState(false);
   const [progress, setProgress] = useState(0);
+
+  const featureGridRef = useRef(null);
+  const [featuresInView, setFeaturesInView] = useState(false);
+
+  useEffect(() => {
+    const el = featureGridRef.current;
+    if (!el) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setFeaturesInView(true);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -304,28 +327,37 @@ export default function Website() {
               You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
             </p>
           </div>
-          <div className="feature-grid">
-            {featureGroups.map(({ icon: Icon, eyebrow, title, text, points }) => (
-              <article className="feature-card" key={title}>
-                <div className="feature-icon">
-                  <Icon size={21} />
-                </div>
-                <span className="card-eyebrow">{eyebrow}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <ul>
-                  {points.map((point) => (
-                    <li key={point}>
-                      <Check size={14} />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <button onClick={() => action(`${eyebrow} details opened`)}>
-                  Explore feature <ArrowRight size={15} />
-                </button>
-              </article>
-            ))}
+          <div className={`feature-grid ${featuresInView ? 'in-view' : ''}`} ref={featureGridRef}>
+            {featureGroups.map(({ icon: Icon, eyebrow, title, text, points }, index) => {
+              const slideClass =
+                index === 0
+                  ? 'card-slide-left'
+                  : index === 1
+                  ? 'card-slide-bottom'
+                  : 'card-slide-right';
+              return (
+                <article className={`feature-card ${slideClass}`} key={title}>
+                  {index === 0 && <CardRouteAnimation />}
+                  <div className="feature-icon">
+                    <Icon size={21} />
+                  </div>
+                  <span className="card-eyebrow">{eyebrow}</span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                  <ul>
+                    {points.map((point) => (
+                      <li key={point}>
+                        <Check size={14} />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={() => action(`${eyebrow} details opened`)}>
+                    Explore feature <ArrowRight size={15} />
+                  </button>
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -652,6 +684,127 @@ function DriverForm({ close, action }) {
           </>
         )}
       </div>
+    </div>
+  );
+}
+
+function CardRouteAnimation() {
+  const routePath = "M 325,26 C 265,65 210,120 255,170 C 315,225 330,270 275,310 C 235,342 275,372 315,365";
+  return (
+    <div className="first-card-route" aria-hidden="true">
+      <div className="card-live-gps-pill">
+        <span className="live-dot" /> LIVE ROUTE
+      </div>
+      <svg className="card-route-svg" viewBox="0 0 360 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="routeLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#7bc44a" stopOpacity="0.85" />
+            <stop offset="50%" stopColor="#d4ef62" stopOpacity="0.95" />
+            <stop offset="100%" stopColor="#22c55e" stopOpacity="0.8" />
+          </linearGradient>
+          <radialGradient id="headlightConeGrad" cx="0%" cy="50%" r="100%">
+            <stop offset="0%" stopColor="#d4ef62" stopOpacity="0.75" />
+            <stop offset="50%" stopColor="#d4ef62" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#d4ef62" stopOpacity="0" />
+          </radialGradient>
+          <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Ambient base route line */}
+        <path
+          d={routePath}
+          fill="none"
+          stroke="rgba(123, 196, 74, 0.16)"
+          strokeWidth="7"
+          strokeLinecap="round"
+        />
+
+        {/* Animated Moving Dashed Route Line */}
+        <path
+          d={routePath}
+          fill="none"
+          stroke="url(#routeLineGrad)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          className="moving-route-path"
+          filter="url(#routeGlow)"
+        />
+
+        {/* Waypoint 1 (Start) */}
+        <circle cx="325" cy="26" r="4.5" fill="#d4ef62" />
+        <circle cx="325" cy="26" r="5" fill="none" stroke="#d4ef62" strokeWidth="1.5" className="gps-pulse-circle" />
+        <circle cx="325" cy="26" r="5" fill="none" stroke="#7bc44a" strokeWidth="1" className="gps-pulse-circle delayed" />
+
+        {/* Waypoint 2 (Mid turn) */}
+        <circle cx="255" cy="170" r="3.5" fill="#7bc44a" />
+        <circle cx="255" cy="170" r="4" fill="none" stroke="#7bc44a" strokeWidth="1.2" className="gps-pulse-circle" />
+
+        {/* Waypoint 3 (End / Destination) */}
+        <circle cx="315" cy="365" r="4.5" fill="#22c55e" />
+        <circle cx="315" cy="365" r="5" fill="none" stroke="#22c55e" strokeWidth="1.5" className="gps-pulse-circle" />
+
+        {/* Tiny Car Driving Along The Route */}
+        <g className="tiny-car">
+          {/* Headlight beam */}
+          <polygon
+            points="9,-4.5 35,-14 35,14 9,4.5"
+            fill="url(#headlightConeGrad)"
+            className="headlight-cone"
+          />
+
+          {/* Car Shadow */}
+          <ellipse cx="0" cy="1" rx="10.5" ry="6" fill="rgba(0,0,0,0.6)" filter="blur(1.5px)" />
+
+          {/* Tires (4 wheels) */}
+          <rect x="-8" y="-7.5" width="4" height="2" rx="1" fill="#050a07" />
+          <rect x="4" y="-7.5" width="4" height="2" rx="1" fill="#050a07" />
+          <rect x="-8" y="5.5" width="4" height="2" rx="1" fill="#050a07" />
+          <rect x="4" y="5.5" width="4" height="2" rx="1" fill="#050a07" />
+
+          {/* Car Main Body */}
+          <rect
+            x="-9.5"
+            y="-5.5"
+            width="19"
+            height="11"
+            rx="3"
+            fill="#0f1f17"
+            stroke="#7bc44a"
+            strokeWidth="1.2"
+          />
+
+          {/* Roof (Lime Accent) */}
+          <rect x="-4" y="-3.5" width="9.5" height="7" rx="2" fill="#d4ef62" />
+
+          {/* Front Windshield */}
+          <rect x="2.5" y="-3" width="2" height="6" rx="0.5" fill="#14251b" />
+
+          {/* Rear Windshield */}
+          <rect x="-3.5" y="-3" width="1.5" height="6" rx="0.5" fill="#14251b" />
+
+          {/* Headlights (Bright White Glow) */}
+          <circle cx="9.5" cy="-3.8" r="1.5" fill="#ffffff" filter="drop-shadow(0 0 3px #ffffff)" />
+          <circle cx="9.5" cy="3.8" r="1.5" fill="#ffffff" filter="drop-shadow(0 0 3px #ffffff)" />
+
+          {/* Taillights (Red) */}
+          <circle cx="-9.5" cy="-3.8" r="1.2" fill="#ef4444" filter="drop-shadow(0 0 2px #ef4444)" />
+          <circle cx="-9.5" cy="3.8" r="1.2" fill="#ef4444" filter="drop-shadow(0 0 2px #ef4444)" />
+
+          {/* Motion along the exact curved path */}
+          <animateMotion
+            path={routePath}
+            dur="6.5s"
+            repeatCount="indefinite"
+            rotate="auto"
+          />
+        </g>
+      </svg>
     </div>
   );
 }

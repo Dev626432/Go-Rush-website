@@ -26,8 +26,7 @@
   background: var(--card-surface);
   box-shadow: 0 18px 0 rgba(10, 31, 21, 0.14), 0 30px 55px rgba(24, 55, 35, 0.17);
   backdrop-filter: none;
-  transform: translate3d(0, var(--card-y), 0) rotate(var(--card-tilt));
-  animation: theme-card-in 0.8s cubic-bezier(.22, 1, .36, 1) both, theme-card-float 5s ease-in-out infinite;
+  animation: none;
   transition: transform .45s cubic-bezier(.22, 1, .36, 1), box-shadow .45s ease, background .35s ease;
 }
 

@@ -1,0 +1,195 @@
+/* ===================================================
+   First Card: Animated Route Line + Tiny Moving Car
+   & Feature Cards Scroll Slide-in Animations
+   =================================================== */
+
+/* Container inside Card 1 */
+.first-card-route {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Ambient route background glow */
+.first-card-route::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123, 196, 74, 0.16) 0%, rgba(20, 37, 27, 0) 70%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.card-route-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Animated moving dashed route line */
+.moving-route-path {
+  stroke-dasharray: 7 7;
+  animation: routeLineMove 1.1s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(123, 196, 74, 0.6));
+}
+
+@keyframes routeLineMove {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* GPS Radar pulse ripples */
+.gps-pulse-circle {
+  transform-origin: center;
+  animation: gpsPulse 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+.gps-pulse-circle.delayed {
+  animation-delay: 1.1s;
+}
+
+@keyframes gpsPulse {
+  0% {
+    r: 4;
+    opacity: 0.9;
+  }
+  100% {
+    r: 16;
+    opacity: 0;
+  }
+}
+
+/* Live GPS telemetry pill at the top right of the first card */
+.card-live-gps-pill {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(20, 37, 27, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 239, 98, 0.35);
+  border-radius: 99px;
+  padding: 4px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #d4ef62;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.card-live-gps-pill .live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7bc44a;
+  box-shadow: 0 0 8px #7bc44a;
+  animation: blinkDot 1.2s ease-in-out infinite;
+}
+
+@keyframes blinkDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Headlight beam on the tiny car */
+.headlight-cone {
+  transform-origin: 10px 0;
+  filter: drop-shadow(0 0 8px rgba(212, 239, 98, 0.8));
+}
+
+/* ===================================================
+   SCROLL-TRIGGERED SLIDE ANIMATIONS FOR 3 CARDS
+   Left card   -> slides from LEFT
+   Middle card -> slides from BOTTOM
+   Right card  -> slides from RIGHT
+   =================================================== */
+
+/* Hide cards until scroll triggers them */
+.feature-card.card-slide-left {
+  opacity: 0 !important;
+  transform: translate3d(-140px, var(--card-y, 14px), 0) rotate(-7deg) scale(0.96) !important;
+  animation: none !important;
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.85s ease !important;
+  will-change: transform, opacity;
+}
+
+.feature-card.card-slide-bottom {
+  opacity: 0 !important;
+  transform: translate3d(0, 130px, 0) rotate(0deg) scale(0.92) !important;
+  animation: none !important;
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.85s ease !important;
+  will-change: transform, opacity;
+}
+
+.feature-card.card-slide-right {
+  opacity: 0 !important;
+  transform: translate3d(140px, var(--card-y, 12px), 0) rotate(7deg) scale(0.96) !important;
+  animation: none !important;
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.85s ease !important;
+  will-change: transform, opacity;
+}
+
+/* In-view active states triggered on scroll */
+.feature-grid.in-view .feature-card.card-slide-left {
+  opacity: 1 !important;
+  transform: translate3d(0, var(--card-y, 14px), 0) rotate(var(--card-tilt, -2.2deg)) scale(1) !important;
+  transition-delay: 0.04s !important;
+}
+
+.feature-grid.in-view .feature-card.card-slide-bottom {
+  opacity: 1 !important;
+  transform: translate3d(0, var(--card-y, -20px), 0) rotate(0deg) scale(1) !important;
+  transition-delay: 0.22s !important;
+}
+
+.feature-grid.in-view .feature-card.card-slide-right {
+  opacity: 1 !important;
+  transform: translate3d(0, var(--card-y, 12px), 0) rotate(var(--card-tilt, 2.2deg)) scale(1) !important;
+  transition-delay: 0.4s !important;
+}
+
+/* Preserve card hover effects after they slide into view */
+.feature-grid.in-view .feature-card:hover {
+  transform: translate3d(0, -28px, 0) rotate(0deg) scale(1.045) !important;
+  box-shadow: 0 26px 0 rgba(10, 31, 21, .16), 0 42px 78px rgba(24, 55, 35, .28) !important;
+  z-index: 10 !important;
+}
+
+.feature-grid.in-view .feature-card:nth-child(2):hover {
+  transform: translate3d(0, -40px, 0) rotate(0deg) scale(1.055) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 900px) {
+  .feature-card.card-slide-left {
+    transform: translate3d(-70px, 0, 0) !important;
+  }
+  .feature-card.card-slide-bottom {
+    transform: translate3d(0, 80px, 0) !important;
+  }
+  .feature-card.card-slide-right {
+    transform: translate3d(70px, 0, 0) !important;
+  }
+
+  .feature-grid.in-view .feature-card.card-slide-left,
+  .feature-grid.in-view .feature-card.card-slide-bottom,
+  .feature-grid.in-view .feature-card.card-slide-right {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
