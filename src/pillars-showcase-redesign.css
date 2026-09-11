@@ -1,0 +1,274 @@
+/* ==========================================================================
+   GoRush - The Four Pillars Redesign
+   Exact match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3cb8e798c8191840ff06f0e633fbc
+   ========================================================================== */
+
+.pillars-showcase-section-wrap {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #f4f8ec 0%, #edf5e6 50%, #eaf3e1 100%);
+  padding: 60px 24px 75px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Scenic Backdrops on Left and Right */
+.pillars-scenery-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 235px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pillars-scenery-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+.pillars-scenery-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 234px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pillars-scenery-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top right;
+  display: block;
+}
+
+/* Inner Centered Container */
+.pillars-inner-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eyebrow Pill */
+.pillars-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e4efe1;
+  border: 1px solid #cee0cb;
+  color: #224824;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+}
+
+/* Headline */
+.pillars-headline {
+  font-size: clamp(38px, 4.6vw, 58px);
+  font-weight: 800;
+  color: #112316;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin: 0 0 12px 0;
+}
+
+.pillars-script-wrap {
+  display: inline-block;
+  position: relative;
+  margin-left: 8px;
+}
+
+.pillars-headline-script {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #44772b;
+}
+
+.pillars-swoosh-svg {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 12px;
+  pointer-events: none;
+}
+
+.pillars-subtitle {
+  font-size: 15px;
+  color: #4d6051;
+  max-width: 650px;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0 auto 46px;
+}
+
+/* 4 Feature Cards Grid */
+.pillars-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  width: 100%;
+}
+
+.pillars-card {
+  background: #ffffff;
+  border: 1px solid #e1ebe0;
+  border-radius: 24px;
+  padding: 28px 22px 24px;
+  box-shadow: 0 14px 34px rgba(20, 44, 25, 0.05), 0 3px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillars-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(235, 245, 234, 0) 0%, rgba(235, 245, 234, 0.45) 100%);
+  pointer-events: none;
+}
+
+.pillars-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 42px rgba(20, 44, 25, 0.1);
+  border-color: #cbd8c8;
+}
+
+/* Card Top Row */
+.pillars-card-top-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.pillars-card-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #657f63;
+  text-transform: uppercase;
+}
+
+.pillars-card-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #ebf5ea;
+  color: #1e4521;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Card Text */
+.pillars-card-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #112415;
+  line-height: 1.25;
+  margin: 0 0 10px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.pillars-card-desc {
+  font-size: 13.5px;
+  color: #506452;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card Bottom Stat Row */
+.pillars-card-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #edf4eb;
+  position: relative;
+  z-index: 2;
+}
+
+.pillars-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  font-weight: 800;
+  color: #112415;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pillars-stat-label-badge {
+  background: #f1f7ee;
+  color: #2e4d30;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  line-height: 1.25;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .pillars-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pillars-scenery-left,
+  .pillars-scenery-right {
+    opacity: 0.35;
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pillars-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+  .pillars-scenery-left,
+  .pillars-scenery-right {
+    display: none;
+  }
+  .pillars-showcase-section-wrap {
+    padding: 40px 16px 50px;
+  }
+  .pillars-headline {
+    font-size: 32px;
+  }
+  .pillars-subtitle {
+    margin-bottom: 28px;
+  }
+}

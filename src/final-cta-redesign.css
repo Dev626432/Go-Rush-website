@@ -1,0 +1,429 @@
+/* =========================================================
+   GORUSH - FINAL CALL TO ACTION (CHATGPT EDITORIAL MATCH)
+   Pristine Editorial Canvas with Indian Driver & Cityscape
+   ========================================================= */
+
+.final-cta-redesign-wrap {
+  position: relative;
+  background-color: #f7f6f0;
+  color: #14251b;
+  min-height: 600px;
+  min-height: clamp(540px, 55vw, 680px);
+  padding: clamp(75px, 8vw, 100px) clamp(24px, 4vw, 60px) clamp(65px, 7vw, 90px);
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(20, 37, 27, 0.06);
+}
+
+/* 1. Top Bar: Left Kicker & Right Tagline */
+.final-cta-topbar {
+  position: absolute;
+  top: clamp(20px, 3vh, 32px);
+  left: clamp(24px, 4vw, 55px);
+  right: clamp(24px, 4vw, 55px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.final-cta-top-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #6a7e67;
+  text-transform: uppercase;
+}
+
+.final-cta-kicker-icon {
+  color: #6a7e67;
+  flex-shrink: 0;
+}
+
+.final-cta-top-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #6a7e67;
+  text-transform: uppercase;
+}
+
+.final-cta-top-tagline .dot {
+  color: #8fa58c;
+  font-size: 11px;
+}
+
+/* 2. Main 3-Column Layout Container */
+.final-cta-main-layout {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 210px 1fr 440px;
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 40px);
+}
+
+/* 3. Left Feature Badges Stack */
+.final-cta-left-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 4;
+}
+
+.final-cta-feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  transition: transform 0.22s ease;
+}
+
+.final-cta-feature-pill:hover {
+  transform: translateX(3px);
+}
+
+.final-cta-feat-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e2edd3;
+  border: 1px solid rgba(123, 196, 74, 0.28);
+  color: #1e3a22;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(30, 58, 34, 0.08);
+}
+
+.final-cta-feat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.22;
+}
+
+.final-cta-feat-text strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #14251b;
+  letter-spacing: -0.01em;
+}
+
+.final-cta-feat-text span {
+  font-size: 11.5px;
+  color: #556c58;
+  font-weight: 500;
+}
+
+/* Handwritten Cursive Script Quote */
+.final-cta-script-quote {
+  margin-top: 14px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #18311e;
+  transform: rotate(-6deg);
+  display: inline-block;
+  user-select: none;
+}
+
+.final-cta-script-quote span {
+  display: block;
+}
+
+.final-cta-script-curve {
+  width: 140px;
+  height: 9px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* 4. Bottom-Left Foliage Leaf Accent */
+.final-cta-leaves-corner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(180px, 18vw, 290px);
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.95;
+}
+
+/* 5. Center Hero Copy, Pill & CTA */
+.final-cta-center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  z-index: 4;
+}
+
+.final-cta-badge-pill {
+  background: #e3edd4;
+  border: 1px solid rgba(110, 160, 50, 0.32);
+  border-radius: 99px;
+  padding: 5px 14px;
+  color: #1b3820;
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(30, 58, 34, 0.06);
+}
+
+.final-cta-badge-pill svg {
+  color: #547c2a;
+}
+
+.final-cta-headline {
+  margin: 0 0 16px;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.final-cta-headline-main {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(38px, 4.2vw, 56px);
+  font-weight: 800;
+  color: #14251b;
+  letter-spacing: -0.042em;
+}
+
+.final-cta-headline-script-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.final-cta-headline-accent {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(40px, 4.5vw, 60px);
+  color: #648c34;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.final-cta-swoosh {
+  width: clamp(160px, 18vw, 240px);
+  height: 12px;
+  margin-top: -2px;
+}
+
+.final-cta-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(12.5px, 1.1vw, 14px);
+  line-height: 1.56;
+  color: #586d5a;
+  max-width: 430px;
+  margin: 0 auto 24px;
+}
+
+.final-cta-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: #14281c;
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 13px 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(18, 40, 26, 0.28);
+  transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.final-cta-action-btn:hover {
+  background: #1e3d2b;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(18, 40, 26, 0.36);
+}
+
+.final-cta-action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(18, 40, 26, 0.2);
+}
+
+.final-cta-btn-arrow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.final-cta-action-btn:hover .final-cta-btn-arrow {
+  transform: translateX(4px);
+}
+
+.final-cta-subnote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #6e816f;
+  letter-spacing: 0.02em;
+}
+
+.final-cta-subnote-icon {
+  color: #6e816f;
+}
+
+/* 6. Right Side Visual Hero (Driver + Car + Smartphone) */
+.final-cta-driver-showcase {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  max-height: 520px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.final-cta-driver-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(-8px 10px 30px rgba(20, 37, 27, 0.12));
+}
+
+/* 7. Bottom Center Ticker */
+.final-cta-bottom-ticker {
+  position: absolute;
+  bottom: clamp(14px, 2vh, 22px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 5;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ticker-line {
+  width: 36px;
+  height: 1px;
+  background: #bccab9;
+}
+
+.ticker-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #6b7f6c;
+}
+
+.ticker-car {
+  font-size: 13px;
+  display: inline-block;
+  transform: scale(1.05);
+}
+
+/* Responsive Rules */
+@media (max-width: 1180px) {
+  .final-cta-main-layout {
+    grid-template-columns: 190px 1fr 340px;
+    gap: 20px;
+  }
+  .final-cta-driver-img {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 960px) {
+  .final-cta-redesign-wrap {
+    min-height: auto;
+    padding: 90px 24px 70px;
+  }
+  .final-cta-main-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+  .final-cta-left-stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .final-cta-script-quote {
+    display: none;
+  }
+  .final-cta-driver-showcase {
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .final-cta-driver-img {
+    max-width: 360px;
+  }
+  .final-cta-leaves-corner {
+    display: none;
+  }
+  .final-cta-bottom-ticker {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .final-cta-top-tagline {
+    display: none;
+  }
+  .final-cta-headline-main {
+    font-size: 34px;
+  }
+  .final-cta-headline-accent {
+    font-size: 36px;
+  }
+  .final-cta-action-btn {
+    width: 100%;
+    max-width: 290px;
+  }
+  .final-cta-driver-img {
+    max-width: 300px;
+  }
+}

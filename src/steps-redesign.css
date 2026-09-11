@@ -5,11 +5,12 @@
 
 .steps-redesign-wrap {
   position: relative;
-  background-color: #f3f6ee;
+  background-color: #f7f6f0;
   color: #14251b;
-  padding: 110px 0 60px;
+  padding: clamp(80px, 9vw, 120px) 0 clamp(70px, 8vw, 100px);
   overflow: hidden;
   font-family: 'Plus Jakarta Sans', Manrope, sans-serif;
+  border-bottom: 1px solid rgba(20, 37, 27, 0.06);
 }
 
 /* Scenic Landscape & Rider Background */
@@ -146,7 +147,18 @@
   padding: 0 clamp(24px, 5vw, 60px);
 }
 
-/* Header Area */
+/* Header Area matching ChatGPT Reference */
+.steps-onboarding-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+
 .steps-header-row {
   display: flex;
   justify-content: space-between;

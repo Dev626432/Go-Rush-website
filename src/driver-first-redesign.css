@@ -1,0 +1,365 @@
+/* =========================================================
+   GORUSH - THE DRIVER-FIRST ADVANTAGE HERO REDESIGN
+   Matches ChatGPT Reference (m_6aa389920d7881918651e7e81909beae)
+   Panoramic 3-Column Editorial Canvas with Driver Hero & Leaf Accents
+   ========================================================= */
+
+.driver-first-section {
+  position: relative;
+  background-color: #f7f6f0;
+  color: #14251b;
+  padding: clamp(65px, 7vw, 95px) clamp(20px, 4vw, 55px) clamp(60px, 6vw, 85px);
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(20, 37, 27, 0.06);
+}
+
+/* 1. Main 3-Column Grid */
+.driver-first-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 215px 1fr 440px;
+  align-items: center;
+  gap: clamp(20px, 3vw, 44px);
+  position: relative;
+  z-index: 3;
+}
+
+/* 2. Left Column: 3 Benefit Pills Stack */
+.driver-first-left-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 4;
+}
+
+.driver-first-pill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  transition: transform 0.24s ease;
+}
+
+.driver-first-pill-item:hover {
+  transform: translateX(4px);
+}
+
+.driver-first-icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e2edd3;
+  border: 1px solid rgba(110, 160, 50, 0.3);
+  color: #1e3a22;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(30, 58, 34, 0.07);
+}
+
+.driver-first-pill-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.driver-first-pill-text strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #14251b;
+  letter-spacing: -0.01em;
+}
+
+.driver-first-pill-text span {
+  font-size: 11.5px;
+  color: #596f5c;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+/* Handwritten Cursive Quote on Left */
+.driver-first-script-left {
+  margin-top: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1a3520;
+  transform: rotate(-6deg);
+  display: inline-block;
+  user-select: none;
+}
+
+.driver-first-script-left span {
+  display: block;
+}
+
+.driver-first-script-curve {
+  width: 140px;
+  height: 9px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* 3. Center Column: Eyebrow + Headline + Description + 3 Badges + Ticker */
+.driver-first-center-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+  z-index: 4;
+}
+
+/* Eyebrow Badge */
+.driver-first-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e3eed4;
+  border: 1px solid rgba(110, 160, 50, 0.32);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #1f4023;
+  text-transform: uppercase;
+  margin-bottom: clamp(16px, 2.2vw, 24px);
+  box-shadow: 0 2px 8px rgba(30, 60, 30, 0.05);
+}
+
+.driver-first-eyebrow-pill svg {
+  color: #558028;
+}
+
+/* Big Display Headline */
+.driver-first-headline {
+  margin: 0 0 clamp(16px, 2vw, 22px);
+  padding: 0;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.driver-first-headline-main {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(38px, 4.4vw, 56px);
+  font-weight: 800;
+  color: #14251b;
+  letter-spacing: -0.042em;
+}
+
+.driver-first-script-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 4px;
+}
+
+.driver-first-headline-accent {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(40px, 4.6vw, 60px);
+  color: #628a34;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.driver-first-swoosh-svg {
+  width: clamp(200px, 22vw, 290px);
+  height: 13px;
+  margin-top: -2px;
+  display: block;
+}
+
+/* Description Lead */
+.driver-first-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.15vw, 14.5px);
+  line-height: 1.62;
+  color: #556c58;
+  max-width: 510px;
+  margin: 0 auto clamp(22px, 2.8vw, 32px);
+}
+
+/* 3 Feature Badges Row */
+.driver-first-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.driver-first-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(110, 150, 50, 0.22);
+  border-radius: 999px;
+  padding: 8.5px 17px;
+  box-shadow: 0 3px 12px rgba(25, 45, 30, 0.04);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #172d1d;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.driver-first-badge-chip:hover {
+  transform: translateY(-2px);
+  border-color: #6e9a36;
+  box-shadow: 0 6px 18px rgba(25, 45, 30, 0.08);
+}
+
+.driver-first-chip-icon {
+  color: #5f8d29;
+  flex-shrink: 0;
+}
+
+/* Bottom Center Ticker */
+.driver-first-bottom-ticker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.driver-ticker-line {
+  width: 36px;
+  height: 1px;
+  background: #bccab9;
+}
+
+.driver-ticker-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #6a7e67;
+  text-transform: uppercase;
+}
+
+/* 4. Right Column: Driver Visual Hero Artwork */
+.driver-first-right-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  max-height: 520px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.driver-first-hero-img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(-8px 10px 30px rgba(20, 37, 27, 0.12));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 5. Bottom-Left Foliage Leaf Accent */
+.driver-first-corner-leaves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(140px, 14vw, 220px);
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.95;
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 1140px) {
+  .driver-first-grid {
+    grid-template-columns: 190px 1fr 380px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 960px) {
+  .driver-first-section {
+    padding: 60px 20px 50px;
+  }
+
+  .driver-first-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .driver-first-left-stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .driver-first-script-left {
+    display: none;
+  }
+
+  .driver-first-right-visual {
+    justify-content: center;
+    max-height: 400px;
+  }
+
+  .driver-first-hero-img {
+    max-width: 360px;
+  }
+
+  .driver-first-corner-leaves {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .driver-first-headline-main {
+    font-size: 32px;
+  }
+
+  .driver-first-headline-accent {
+    font-size: 35px;
+  }
+
+  .driver-first-badges-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .driver-first-badge-chip {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .driver-first-left-stack {
+    flex-direction: column;
+    align-items: center;
+  }
+}

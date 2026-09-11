@@ -1,0 +1,227 @@
+/* ==========================================================================
+   GoRush - Safety Page Hero Redesign (Panoramic Showcase V2)
+   Exact match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa39d0ac2288191a55abcc2f5b72965
+   ========================================================================== */
+
+.safety-hero-v2-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 560px;
+  background: linear-gradient(180deg, #f7faf3 0%, #edf5ea 100%);
+  padding: 55px 24px 65px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Left Scenery Wing (Location Radar, Skyline & "Safer Rides Happier Tomorrows") */
+.safety-v2-scenery-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 440px;
+  max-width: 24vw;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.safety-v2-scenery-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+/* Right Scenery Wing (Drive-Earn-Grow, Highway, Skyline & "Every Ride Counts...") */
+.safety-v2-scenery-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 490px;
+  max-width: 25vw;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.safety-v2-scenery-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top right;
+  display: block;
+}
+
+/* Center Content Container */
+.safety-v2-center-container {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Top Eyebrow Badge */
+.safety-v2-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #eaf4e7;
+  border: 1px solid #d2e8ce;
+  color: #1e4223;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  border-radius: 9999px;
+  margin-bottom: 22px;
+}
+
+/* Main Display Headline */
+.safety-v2-headline {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+  color: #112416;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0 0 18px 0;
+}
+
+.safety-v2-headline-main {
+  display: block;
+}
+
+.safety-v2-script-wrap {
+  display: block;
+  position: relative;
+  width: fit-content;
+  margin: 4px auto 0;
+}
+
+.safety-v2-headline-script {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #5f8a32;
+  letter-spacing: -0.01em;
+}
+
+.safety-v2-swoosh-svg {
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 14px;
+  pointer-events: none;
+}
+
+/* Lead Description */
+.safety-v2-lead-desc {
+  font-size: 15.5px;
+  color: #4b5e4f;
+  line-height: 1.65;
+  max-width: 580px;
+  margin: 0 auto 34px;
+}
+
+/* 3 Stat / Feature Pills Row */
+.safety-v2-pills-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.safety-v2-stat-pill {
+  background: #ffffff;
+  border: 1px solid #e2ebe0;
+  border-radius: 9999px;
+  padding: 10px 22px;
+  box-shadow: 0 8px 24px rgba(16, 36, 22, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #112416;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.safety-v2-stat-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(16, 36, 22, 0.09);
+  border-color: #cbd8c8;
+}
+
+.safety-v2-icon-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ebf5ea;
+  color: #1e3d24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Bottom Brand Ticker */
+.safety-v2-bottom-ticker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #557257;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.safety-v2-ticker-line {
+  width: 48px;
+  height: 1.5px;
+  background: #c5d8c3;
+  display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .safety-v2-scenery-left,
+  .safety-v2-scenery-right {
+    opacity: 0.35;
+    width: 280px;
+  }
+}
+
+@media (max-width: 860px) {
+  .safety-v2-scenery-left,
+  .safety-v2-scenery-right {
+    display: none;
+  }
+  .safety-hero-v2-wrap {
+    padding: 40px 16px 45px;
+  }
+  .safety-v2-headline {
+    font-size: 34px;
+  }
+  .safety-v2-lead-desc {
+    margin-bottom: 24px;
+  }
+  .safety-v2-stat-pill {
+    padding: 8px 16px;
+    font-size: 12.5px;
+  }
+}

@@ -4,7 +4,7 @@
    =================================================== */
 
 .intro-section {
-  position: relative;
+  position: relative !important;
   width: 100% !important;
   min-height: 100vh !important;
   min-height: 100dvh !important;
@@ -12,61 +12,58 @@
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  padding: clamp(60px, 6vh, 90px) clamp(24px, 4vw, 80px) clamp(70px, 8vh, 110px) !important;
-  background: linear-gradient(180deg, #f7f6f0 0%, #f1f5eb 50%, #e8efe2 100%) !important;
+  padding: clamp(55px, 6vh, 85px) clamp(24px, 4vw, 80px) clamp(85px, 9vh, 125px) !important;
+  background: #f4f8ec url('/features-scenic-bg.webp') center bottom / cover no-repeat !important;
   overflow: hidden !important;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.intro-section::before {
+  display: none !important;
+}
+
+.intro-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* 1. Large Top-Right Watermark "DRIVE YOUR DAY" across full page */
 .features-watermark {
   position: absolute;
-  top: 15px;
-  right: 2%;
+  top: 18px;
+  right: 3%;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(75px, 11vw, 180px);
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  color: rgba(20, 37, 27, 0.038);
+  font-size: clamp(75px, 11vw, 175px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(24, 48, 30, 0.07);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
-  z-index: 0;
+  z-index: 1;
 }
 
-/* 2. Left Misty City Skyline Silhouette (Spanning Full Left Edge) */
-.features-bg-skyline {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: clamp(280px, 28vw, 440px);
-  height: clamp(380px, 50vh, 560px);
-  opacity: 0.28;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* 3. Right Highway Curve Silhouette (Spanning Full Right Edge) */
-.features-bg-highway {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: clamp(300px, 30vw, 480px);
-  height: clamp(360px, 48vh, 540px);
-  opacity: 0.24;
-  pointer-events: none;
-  z-index: 0;
+/* 2. Hide flat old SVG silhouettes in favor of rich scenic background */
+.features-bg-skyline,
+.features-bg-highway,
+.features-leaf-corner {
+  display: none !important;
 }
 
 /* 4. Upper-Right Floating GPS Pin, Route Pill & Script */
 .features-bg-route-wrap {
   position: absolute;
-  top: clamp(30px, 4vh, 55px);
-  right: clamp(40px, 8vw, 180px);
+  top: clamp(25px, 4vh, 50px);
+  right: clamp(40px, 8vw, 160px);
   display: flex;
   align-items: center;
-  gap: 16px;
-  z-index: 1;
+  gap: 14px;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -122,16 +119,16 @@
 
 .features-script-quote {
   position: absolute;
-  top: clamp(75px, 9vh, 120px);
-  right: clamp(24px, 4vw, 80px);
+  top: clamp(70px, 8.5vh, 115px);
+  right: clamp(24px, 4vw, 75px);
   font-family: 'Caveat', cursive;
   font-size: clamp(28px, 2.6vw, 42px);
   font-weight: 700;
-  color: #7b9e38;
+  color: #44772b;
   line-height: 1.12;
   transform: rotate(-7deg);
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
-  z-index: 1;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
+  z-index: 3;
   pointer-events: none;
   text-align: right;
 }
@@ -143,35 +140,13 @@
 /* Curved dashed route line behind */
 .features-bg-dashed-route {
   position: absolute;
-  top: clamp(60px, 7vh, 100px);
+  top: clamp(55px, 6.5vh, 95px);
   right: clamp(60px, 12vw, 240px);
   width: clamp(280px, 25vw, 400px);
   height: 240px;
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.65;
-}
-
-/* 5. Bottom Blurred Foliage / Leaf Accents */
-.features-leaf-corner {
-  position: absolute;
-  bottom: -30px;
-  width: clamp(200px, 20vw, 320px);
-  height: clamp(180px, 18vh, 280px);
-  pointer-events: none;
-  z-index: 1;
-  filter: blur(12px);
-  opacity: 0.35;
-}
-
-.features-leaf-corner.left {
-  left: -20px;
-  background: radial-gradient(circle at bottom left, #7da54b 0%, #a4c975 40%, transparent 75%);
-}
-
-.features-leaf-corner.right {
-  right: -20px;
-  background: radial-gradient(circle at bottom right, #7da54b 0%, #a4c975 40%, transparent 75%);
+  z-index: 2;
+  opacity: 0.75;
 }
 
 /* 6. Section Header (Left Grouped, Full Width Container) */
@@ -232,24 +207,24 @@
 /* 7. Feature Cards Grid - COMPACT & BALANCED */
 .features-cards-grid {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   display: grid !important;
   grid-template-columns: 1fr 1.05fr 1fr !important;
   grid-auto-flow: row !important;
-  gap: clamp(14px, 1.8vw, 22px) !important;
+  gap: clamp(12px, 1.4vw, 18px) !important;
   width: 100% !important;
-  max-width: 1040px !important;
+  max-width: 880px !important;
   margin: 0 auto !important;
   padding: 0 !important;
   align-items: center !important;
 }
 
-/* 8. Feature Card Base - TIGHTER & SLEEKER SIZING */
+/* 8. Feature Card Base - TIGHTER & SLEEKER COMPACT SIZING */
 .features-cards-grid .feature-card {
   position: relative;
-  border-radius: 18px !important;
-  padding: 22px 18px 18px !important;
-  min-height: 380px !important;
+  border-radius: 16px !important;
+  padding: 18px 15px 15px !important;
+  min-height: 335px !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
@@ -273,9 +248,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 90px;
-  height: 90px;
-  border-bottom-left-radius: 90px;
+  width: 65px;
+  height: 65px;
+  border-bottom-left-radius: 65px;
   pointer-events: none;
   z-index: 1;
 }
@@ -294,50 +269,50 @@
 
 .features-cards-grid .card-dark-forest h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 17.5px !important;
+  font-size: 15px !important;
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.2;
   letter-spacing: -0.04em;
   color: #ffffff !important;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
 .features-cards-grid .card-dark-forest > div > p {
-  font-size: 11.5px !important;
-  line-height: 1.54;
+  font-size: 10.5px !important;
+  line-height: 1.48;
   color: #9cb0a2 !important;
-  margin: 0 0 14px;
-  min-height: 38px;
+  margin: 0 0 10px;
+  min-height: 30px;
 }
 
 .features-cards-grid .card-dark-forest .card-num-pill {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #d4ef62 !important;
-  font-size: 8.5px !important;
-  padding: 2.5px 8px !important;
-  margin: 10px 0 8px !important;
+  font-size: 8px !important;
+  padding: 2px 7px !important;
+  margin: 8px 0 6px !important;
 }
 
 .features-cards-grid .card-dark-forest ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .features-cards-grid .card-dark-forest li {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 11px !important;
+  gap: 6px;
+  font-size: 10px !important;
   color: #e5ede7 !important;
 }
 
 .features-cards-grid .card-dark-forest .point-check-badge {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: #7bc44a !important;
   color: #ffffff !important;
@@ -351,17 +326,17 @@
   border: 0;
   padding: 0;
   color: #ffffff !important;
-  font-size: 11.5px !important;
+  font-size: 10.5px !important;
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .features-cards-grid .card-dark-forest button:hover {
-  gap: 10px;
+  gap: 9px;
   color: #d4ef62 !important;
 }
 
@@ -378,14 +353,19 @@
 }
 
 .features-cards-grid .card-slide-left .card-icon-wrap {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: #ffffff !important;
   color: #14251b !important;
   display: grid;
   place-items: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+}
+
+.features-cards-grid .card-icon-wrap svg {
+  width: 17px !important;
+  height: 17px !important;
 }
 
 /* Card 2 Specific (Earn Clearly - Center Vibrant Lime) */
@@ -396,7 +376,7 @@
   box-shadow: 0 24px 50px rgba(110, 140, 35, 0.24), 0 5px 14px rgba(0, 0, 0, 0.06) !important;
   --card-tilt: 0deg;
   --card-y: -8px;
-  min-height: 405px !important;
+  min-height: 355px !important;
   transform: rotate(0deg) translateY(-8px);
 }
 
@@ -410,9 +390,9 @@
 }
 
 .features-cards-grid .card-vibrant-lime .card-icon-wrap {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: #14251b !important;
   color: #ffffff !important;
   display: grid;
@@ -424,49 +404,49 @@
   background: rgba(20, 37, 27, 0.08);
   border: 1px solid rgba(20, 37, 27, 0.18);
   color: #14251b !important;
-  font-size: 8.5px !important;
-  padding: 2.5px 8px !important;
-  margin: 10px 0 8px !important;
+  font-size: 8px !important;
+  padding: 2px 7px !important;
+  margin: 8px 0 6px !important;
 }
 
 .features-cards-grid .card-vibrant-lime h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 17.5px !important;
+  font-size: 15px !important;
   font-weight: 800;
-  line-height: 1.22;
+  line-height: 1.2;
   letter-spacing: -0.04em;
   color: #14251b !important;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
 .features-cards-grid .card-vibrant-lime > div > p {
-  font-size: 11.5px !important;
-  line-height: 1.54;
+  font-size: 10.5px !important;
+  line-height: 1.48;
   color: #2b3e30 !important;
-  margin: 0 0 14px;
-  min-height: 38px;
+  margin: 0 0 10px;
+  min-height: 30px;
 }
 
 .features-cards-grid .card-vibrant-lime ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .features-cards-grid .card-vibrant-lime li {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 11px !important;
+  gap: 6px;
+  font-size: 10px !important;
   color: #14251b !important;
   font-weight: 600;
 }
 
 .features-cards-grid .card-vibrant-lime .point-check-badge {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: #14251b !important;
   color: #ffffff !important;
@@ -480,17 +460,17 @@
   border: 0;
   padding: 0;
   color: #14251b !important;
-  font-size: 11.5px !important;
+  font-size: 10.5px !important;
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
   transition: gap 0.2s ease;
 }
 
 .features-cards-grid .card-vibrant-lime button:hover {
-  gap: 10px;
+  gap: 9px;
 }
 
 /* Card 3 Specific (Drive Safely - Tilt Right) */
@@ -506,14 +486,21 @@
 }
 
 .features-cards-grid .card-slide-right .card-icon-wrap {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: #d4ef62 !important;
   color: #14251b !important;
   display: grid;
   place-items: center;
   box-shadow: 0 3px 10px rgba(212, 239, 98, 0.26);
+}
+
+.card-live-gps-pill {
+  top: 14px !important;
+  right: 14px !important;
+  padding: 3px 8px !important;
+  font-size: 8px !important;
 }
 
 /* Card Pill Badge */

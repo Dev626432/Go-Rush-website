@@ -1,0 +1,691 @@
+/* ==========================================================================
+   GoRush - Interactive Earnings Calculator Showcase Redesign
+   Exact match to ChatGPT Design: https://chatgpt.com/s/m_6aa391692c948191b0510016ec9d98a3
+   ========================================================================== */
+
+.calc-showcase-section-wrap {
+  position: relative;
+  width: 100%;
+  background: #f4f7f2;
+  padding: 50px 20px 80px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.calc-showcase-inner-container {
+  max-width: 1220px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ==========================================================================
+   Doodle & Handwritten Cursive Callouts (from original showcase)
+   ========================================================================== */
+.calc-doodle-annotation {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  color: #213a25;
+  pointer-events: none;
+  z-index: 5;
+  user-select: none;
+}
+
+/* Left Callout: "Flexible Work. Higher Earnings." */
+.calc-doodle-left {
+  left: -20px;
+  top: 36%;
+  text-align: right;
+  transform: rotate(-4deg);
+}
+
+.calc-doodle-left .calc-doodle-text {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1a331e;
+}
+
+.calc-doodle-left .calc-doodle-arrow {
+  position: absolute;
+  top: -38px;
+  right: -25px;
+  width: 45px;
+  height: 45px;
+}
+
+/* Top-Right Callout: "Your Time. Real Earnings." */
+.calc-doodle-topright {
+  right: 60px;
+  top: -35px;
+  text-align: left;
+  transform: rotate(2deg);
+}
+
+.calc-doodle-topright .calc-doodle-text {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #1e3a22;
+}
+
+.calc-doodle-topright .calc-doodle-underline {
+  margin-top: -4px;
+  width: 120px;
+  height: 12px;
+}
+
+/* Bottom-Right Callout: "Drive Earn Grow Together" */
+.calc-doodle-bottomright {
+  right: -10px;
+  bottom: 25px;
+  text-align: left;
+  transform: rotate(-3deg);
+}
+
+.calc-doodle-bottomright .calc-doodle-text {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1a331e;
+}
+
+.calc-doodle-bottomright .calc-doodle-arrow {
+  position: absolute;
+  top: -35px;
+  left: -20px;
+  width: 42px;
+  height: 42px;
+}
+
+/* ==========================================================================
+   Floating Sticker & Behind-Card Foliage
+   ========================================================================== */
+.calc-floating-sticker-wrap {
+  position: absolute;
+  top: 140px;
+  right: -24px;
+  z-index: 20;
+  transform: rotate(-7.5deg);
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 24px;
+  box-shadow: 0 16px 36px rgba(14, 34, 21, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  box-sizing: border-box;
+}
+
+.calc-floating-sticker-img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+}
+
+.calc-floating-leaves-wrap {
+  position: absolute;
+  top: 320px;
+  right: -45px;
+  z-index: 2;
+  pointer-events: none;
+  width: 130px;
+  opacity: 0.92;
+  transform: rotate(40deg);
+}
+
+.calc-floating-leaves-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   Dual Split Card Container
+   ========================================================================== */
+.calc-dual-container {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px -15px rgba(16, 36, 22, 0.16), 0 8px 24px -8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  border: 1px solid rgba(220, 230, 220, 0.6);
+}
+
+/* ==========================================================================
+   Left Column: Inputs & Controls
+   ========================================================================== */
+.calc-left-column {
+  padding: 42px 40px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  box-sizing: border-box;
+}
+
+.calc-left-header {
+  margin-bottom: 4px;
+}
+
+.calc-left-kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.calc-kicker-pill {
+  width: 20px;
+  height: 5px;
+  background: #234c26;
+  border-radius: 3px;
+}
+
+.calc-left-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.calc-left-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Control Group Items */
+.calc-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.calc-control-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calc-control-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calc-control-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #ebf5ea;
+  color: #1e3d24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.calc-control-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-control-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+}
+
+.calc-control-sublabel {
+  font-size: 12.5px;
+  color: #889098;
+  margin-top: 1px;
+}
+
+.calc-control-badge {
+  background: #eef6ec;
+  color: #1e3d24;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+/* Button Grids (City & Vehicle) */
+.calc-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.calc-pill-btn {
+  background: #f8faf7;
+  border: 1px solid #e7ede5;
+  color: #374151;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.18s ease;
+  font-family: inherit;
+}
+
+.calc-pill-btn:hover {
+  background: #f1f6ef;
+  border-color: #cbd8c8;
+  color: #111827;
+}
+
+.calc-pill-btn.active {
+  background: #15281a;
+  color: #ffffff;
+  border-color: #15281a;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(21, 40, 26, 0.16);
+}
+
+.calc-pill-btn.active:hover {
+  background: #1b3321;
+}
+
+/* Sliders */
+.calc-slider-box {
+  position: relative;
+  padding: 20px 4px 4px;
+}
+
+.calc-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 7px;
+  border-radius: 9999px;
+  outline: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+.calc-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #15281a;
+  border: 3px solid #84cc16;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.1s ease;
+}
+
+.calc-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+.calc-range-input::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #15281a;
+  border: 3px solid #84cc16;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Floating Tooltip above Slider Thumb */
+.calc-slider-tooltip {
+  position: absolute;
+  top: -8px;
+  transform: translateX(-50%);
+  background: #15281a;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: left 0.05s ease-out;
+}
+
+.calc-slider-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0;
+  border-style: solid;
+  border-color: #15281a transparent transparent;
+}
+
+/* Tick Mark Numbers */
+.calc-ticks-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 2px;
+}
+
+.calc-tick-num {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Right Column: Dark Forest Green Projected Earnings
+   ========================================================================== */
+.calc-right-column {
+  background: linear-gradient(155deg, #122517 0%, #0d1e12 100%);
+  color: #ffffff;
+  padding: 42px 40px 36px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Road Artwork Top-Right Corner */
+.calc-road-art-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 310px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.calc-road-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top right;
+  opacity: 0.95;
+}
+
+.calc-right-inner-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+/* Kicker & Hero Number */
+.calc-right-kicker {
+  font-family: 'DM Mono', monospace, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #a8d0ad;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+
+.calc-hero-number-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.calc-hero-rupee {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 700;
+  color: #d4ef62;
+  line-height: 1;
+}
+
+.calc-hero-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 4.6vw, 58px);
+  font-weight: 700;
+  color: #d4ef62;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.calc-hero-period {
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Glassy Estimate Notice Box */
+.calc-estimate-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 11px 16px;
+  margin: 18px 0 22px;
+  max-width: 320px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.calc-glass-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4ef62;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.calc-glass-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-glass-bold-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.calc-glass-sub-title {
+  font-size: 10.5px;
+  color: #9bb3a0;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+/* Breakdown List */
+.calc-breakdown-table {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 24px;
+}
+
+.calc-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+}
+
+.calc-breakdown-label-col {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d8e8da;
+  font-weight: 500;
+}
+
+.calc-breakdown-icon {
+  color: #a4cca8;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.calc-breakdown-val-col {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.calc-breakdown-val-col.white {
+  color: #ffffff;
+}
+
+.calc-breakdown-val-col.lime {
+  color: #d4ef62;
+}
+
+.calc-breakdown-val-col.coral {
+  color: #fca5a5;
+}
+
+/* Action CTA Button */
+.calc-start-earning-btn {
+  background: #d4ef62;
+  color: #0d2214;
+  font-size: 15.5px;
+  font-weight: 800;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 22px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(212, 239, 98, 0.25);
+  font-family: inherit;
+}
+
+.calc-start-earning-btn:hover {
+  background: #dbf26f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(212, 239, 98, 0.35);
+}
+
+.calc-start-earning-btn:active {
+  transform: translateY(0);
+}
+
+/* Guarantee Line */
+.calc-guarantee-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #9bb3a0;
+  font-size: 11.5px;
+  margin-top: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .calc-doodle-left {
+    display: none;
+  }
+  .calc-doodle-bottomright {
+    display: none;
+  }
+  .calc-floating-sticker-wrap {
+    right: -10px;
+    width: 135px;
+    height: 135px;
+  }
+  .calc-floating-sticker-img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 900px) {
+  .calc-dual-container {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+
+  .calc-left-column {
+    padding: 32px 24px;
+  }
+
+  .calc-right-column {
+    padding: 36px 24px 30px;
+  }
+
+  .calc-floating-sticker-wrap {
+    display: none;
+  }
+
+  .calc-floating-leaves-wrap {
+    display: none;
+  }
+
+  .calc-doodle-topright {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .calc-showcase-section-wrap {
+    padding: 30px 12px 50px;
+  }
+
+  .calc-pills-row {
+    gap: 6px;
+  }
+
+  .calc-pill-btn {
+    font-size: 12.5px;
+    padding: 8px 14px;
+  }
+
+  .calc-control-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .calc-control-badge {
+    margin-left: auto;
+  }
+
+  .calc-road-art-wrap {
+    width: 160px;
+    height: 220px;
+    opacity: 0.6;
+  }
+}

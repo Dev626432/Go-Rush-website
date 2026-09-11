@@ -1,0 +1,345 @@
+/* =========================================================
+   GORUSH - ONBOARDING HERO SECTION REDESIGN
+   Matches ChatGPT Reference (m_6aa2a81f5f908191a8d3d09aaa99e093)
+   Pristine 2-Column Editorial Showcase with Phone Mockup & Scenic Road
+   ========================================================= */
+
+.onboarding-redesign-section {
+  position: relative;
+  background-color: #f8f9f3;
+  color: #14251b;
+  padding: clamp(70px, 7.5vw, 105px) clamp(24px, 5vw, 70px) clamp(65px, 7vw, 95px);
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(20, 37, 27, 0.05);
+  border-bottom: 1px solid rgba(20, 37, 27, 0.05);
+}
+
+/* 1. Top Mini Brand Bar */
+.onboarding-top-brand-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(28px, 3.5vw, 42px);
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.onboarding-top-logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  user-select: none;
+}
+
+.onboarding-top-logo .logo-accent {
+  color: #5d8e2a;
+}
+
+.onboarding-top-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(20, 37, 27, 0.18);
+}
+
+.onboarding-top-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #697d66;
+  text-transform: uppercase;
+}
+
+/* 2. Main 2-Column Grid Container */
+.onboarding-main-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  align-items: center;
+  gap: clamp(28px, 4.5vw, 65px);
+  position: relative;
+  z-index: 3;
+}
+
+/* 3. Left Content Column */
+.onboarding-left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 580px;
+  z-index: 4;
+}
+
+/* Eyebrow Pill */
+.onboarding-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #e4eed5;
+  border: 1px solid rgba(100, 155, 45, 0.3);
+  padding: 6px 15px;
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #2a4c24;
+  text-transform: uppercase;
+  margin-bottom: clamp(18px, 2.2vw, 26px);
+  box-shadow: 0 2px 8px rgba(30, 60, 30, 0.05);
+}
+
+.onboarding-eyebrow-badge svg {
+  color: #558028;
+}
+
+/* Big Display Headline */
+.onboarding-headline {
+  margin: 0 0 clamp(16px, 2vw, 22px);
+  padding: 0;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.onboarding-headline-line {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 4.4vw, 58px);
+  font-weight: 800;
+  color: #14251b;
+  letter-spacing: -0.042em;
+}
+
+.onboarding-script-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 4px;
+}
+
+.onboarding-headline-script {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(38px, 4.8vw, 62px);
+  color: #648c34;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.onboarding-swoosh-svg {
+  width: clamp(180px, 20vw, 270px);
+  height: 12px;
+  margin-top: -2px;
+  display: block;
+}
+
+/* Paragraph Description */
+.onboarding-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.62;
+  color: #566c58;
+  margin: 0 0 clamp(22px, 2.6vw, 30px);
+  max-width: 530px;
+}
+
+/* Feature Badges Row (3 Pills) */
+.onboarding-badges-cluster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(26px, 3vw, 34px);
+}
+
+.onboarding-feature-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(110, 150, 50, 0.22);
+  border-radius: 999px;
+  padding: 8px 16px;
+  box-shadow: 0 3px 12px rgba(25, 45, 30, 0.04);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #172d1d;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.onboarding-feature-chip:hover {
+  transform: translateY(-2px);
+  border-color: #6e9a36;
+  box-shadow: 0 6px 18px rgba(25, 45, 30, 0.08);
+}
+
+.onboarding-chip-icon {
+  color: #5f8d29;
+  flex-shrink: 0;
+}
+
+/* Primary CTA Button */
+.onboarding-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #14281c;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(18, 40, 26, 0.28);
+  transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  margin-bottom: 16px;
+}
+
+.onboarding-cta-btn:hover {
+  background: #1e3d2b;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 34px rgba(18, 40, 26, 0.36);
+}
+
+.onboarding-cta-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(18, 40, 26, 0.2);
+}
+
+.onboarding-cta-btn-arrow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.onboarding-cta-btn:hover .onboarding-cta-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Social Proof Subnote */
+.onboarding-social-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #677d67;
+  letter-spacing: 0.01em;
+}
+
+.onboarding-social-proof svg {
+  color: #5b872b;
+}
+
+/* 4. Right Visual Column (Phone Mockup, Road, City, Badges) */
+.onboarding-right-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.onboarding-showcase-img {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(-10px 14px 36px rgba(25, 45, 30, 0.1));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  pointer-events: none;
+}
+
+.onboarding-right-visual:hover .onboarding-showcase-img {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .onboarding-main-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 880px) {
+  .onboarding-redesign-section {
+    padding: 60px 20px 50px;
+  }
+
+  .onboarding-main-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .onboarding-left-content {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .onboarding-script-wrap {
+    align-items: center;
+  }
+
+  .onboarding-badges-cluster {
+    justify-content: center;
+  }
+
+  .onboarding-showcase-img {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .onboarding-headline-line {
+    font-size: 32px;
+  }
+
+  .onboarding-headline-script {
+    font-size: 34px;
+  }
+
+  .onboarding-swoosh-svg {
+    width: 200px;
+  }
+
+  .onboarding-badges-cluster {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .onboarding-feature-chip {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .onboarding-cta-btn {
+    width: 100%;
+  }
+}

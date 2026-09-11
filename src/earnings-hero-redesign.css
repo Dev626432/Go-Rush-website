@@ -1,0 +1,363 @@
+/* =========================================================
+   GORUSH - EARNINGS HERO SECTION REDESIGN
+   Matches ChatGPT Reference (m_6aa3900293188191aba452864ff1c1e8)
+   Pristine 2-Column Showcase with Live Earnings Phone Mockup & Badges
+   ========================================================= */
+
+.earnings-hero-redesign-wrap {
+  position: relative;
+  background-color: #f8f9f3;
+  color: #14251b;
+  padding: clamp(65px, 7.5vw, 100px) clamp(24px, 5vw, 70px) clamp(65px, 7vw, 95px);
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(20, 37, 27, 0.06);
+}
+
+/* 1. Top Mini Brand Bar */
+.earnings-top-brand-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(26px, 3.2vw, 40px);
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.earnings-top-logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  user-select: none;
+}
+
+.earnings-top-logo .logo-accent {
+  color: #5d8e2a;
+}
+
+.earnings-top-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(20, 37, 27, 0.18);
+}
+
+.earnings-top-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #697d66;
+  text-transform: uppercase;
+}
+
+/* 2. Main 2-Column Grid Container */
+.earnings-hero-main-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  gap: clamp(28px, 4.5vw, 65px);
+  position: relative;
+  z-index: 3;
+}
+
+/* 3. Left Content Column */
+.earnings-hero-left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 580px;
+  z-index: 4;
+}
+
+/* Eyebrow Pill */
+.earnings-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #e4eed5;
+  border: 1px solid rgba(100, 155, 45, 0.3);
+  padding: 6px 15px;
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #264620;
+  text-transform: uppercase;
+  margin-bottom: clamp(16px, 2.2vw, 24px);
+  box-shadow: 0 2px 8px rgba(30, 60, 30, 0.05);
+}
+
+.earnings-eyebrow-badge svg {
+  color: #558028;
+}
+
+/* Big Display Headline */
+.earnings-display-headline {
+  margin: 0 0 clamp(16px, 2vw, 22px);
+  padding: 0;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.earnings-headline-line {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 4.4vw, 58px);
+  font-weight: 800;
+  color: #14251b;
+  letter-spacing: -0.042em;
+}
+
+.earnings-script-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 4px;
+}
+
+.earnings-headline-script {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(38px, 4.8vw, 62px);
+  color: #648c34;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.earnings-swoosh-svg {
+  width: clamp(180px, 20vw, 270px);
+  height: 12px;
+  margin-top: -2px;
+  display: block;
+}
+
+/* Description Lead */
+.earnings-lead-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.62;
+  color: #566c58;
+  margin: 0 0 clamp(24px, 3vw, 34px);
+  max-width: 530px;
+}
+
+/* 3 Feature Cards/Pills Row */
+.earnings-feature-cards-row {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: clamp(26px, 3.2vw, 38px);
+  width: 100%;
+}
+
+.earnings-stat-card-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(110, 150, 50, 0.22);
+  border-radius: 18px;
+  padding: 10px 18px;
+  box-shadow: 0 3px 12px rgba(25, 45, 30, 0.04);
+  flex: 1 1 auto;
+  min-width: 155px;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.earnings-stat-card-pill:hover {
+  transform: translateY(-2px);
+  border-color: #6e9a36;
+  box-shadow: 0 6px 18px rgba(25, 45, 30, 0.08);
+}
+
+.earnings-stat-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #e5eed6;
+  border: 1px solid rgba(110, 150, 50, 0.24);
+  color: #21431b;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.earnings-stat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.earnings-stat-text strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #14251b;
+}
+
+.earnings-stat-text span {
+  font-size: 11px;
+  color: #637765;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Bottom Ticker */
+.earnings-bottom-ticker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.earnings-ticker-line {
+  width: 32px;
+  height: 1px;
+  background: #bccab9;
+}
+
+.earnings-ticker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #657b68;
+  text-transform: uppercase;
+}
+
+.earnings-ticker-badge svg {
+  color: #558028;
+}
+
+/* 4. Right Visual Column (Phone Mockup, City, Road & Badges) */
+.earnings-hero-right-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.earnings-showcase-img {
+  width: 100%;
+  max-width: 660px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(-10px 14px 36px rgba(25, 45, 30, 0.1));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  pointer-events: none;
+}
+
+.earnings-hero-right-visual:hover .earnings-showcase-img {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* 5. Bottom-Left Foliage Leaf Accent */
+.earnings-hero-leaves-corner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(140px, 14vw, 220px);
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.95;
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .earnings-hero-main-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 880px) {
+  .earnings-hero-redesign-wrap {
+    padding: 60px 20px 50px;
+  }
+
+  .earnings-hero-main-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .earnings-hero-left-content {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .earnings-script-wrap {
+    align-items: center;
+  }
+
+  .earnings-feature-cards-row {
+    justify-content: center;
+  }
+
+  .earnings-bottom-ticker {
+    justify-content: center;
+  }
+
+  .earnings-showcase-img {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .earnings-hero-leaves-corner {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .earnings-headline-line {
+    font-size: 32px;
+  }
+
+  .earnings-headline-script {
+    font-size: 34px;
+  }
+
+  .earnings-swoosh-svg {
+    width: 200px;
+  }
+
+  .earnings-feature-cards-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .earnings-stat-card-pill {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
