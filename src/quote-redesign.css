@@ -6,7 +6,7 @@
 .quote-redesign-wrap {
   position: relative;
   background-color: #eaf1e3;
-  background-image: 
+  background-image:
     radial-gradient(ellipse at 12% 45%, rgba(200, 226, 178, 0.7) 0%, transparent 55%),
     radial-gradient(ellipse at 88% 55%, rgba(195, 222, 172, 0.65) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(235, 245, 225, 0.8) 0%, transparent 70%);
@@ -243,7 +243,7 @@
   border-radius: 28px;
   padding: 45px clamp(28px, 6vw, 68px) 38px;
   border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 
+  box-shadow:
     0 24px 60px rgba(25, 45, 25, 0.08),
     0 0 35px rgba(160, 205, 120, 0.14);
   text-align: center;
@@ -251,7 +251,7 @@
 }
 
 .quote-main-card:hover {
-  box-shadow: 
+  box-shadow:
     0 30px 70px rgba(25, 45, 25, 0.12),
     0 0 45px rgba(160, 205, 120, 0.22);
 }
