@@ -2,14 +2,18 @@ import React from 'react';
 import {
   AlertTriangle,
   ArrowRight,
+  Bell,
+  Building2,
   Check,
   ChevronRight,
+  Clock3,
   Coffee,
   Headphones,
   HeartHandshake,
   Lock,
   MapPin,
   Navigation,
+  Phone,
   PhoneCall,
   Radio,
   Shield,
@@ -22,6 +26,7 @@ import {
 import './pages.css';
 import '../safety-hero-redesign.css';
 import '../protocols-showcase-redesign.css';
+import '../emergency-showcase-redesign.css';
 
 const safetyFeatures = [
   {
@@ -164,48 +169,137 @@ export default function SafetyPage({ onJoinClick }) {
 
 
 
-      {/* Emergency Dispatch Banner */}
-      <section className="subpage-section">
-        <div className="subpage-container">
-          <div className="safety-dispatch-banner">
-            <div className="safety-dispatch-content">
-              <span
-                style={{
-                  fontFamily: 'DM Mono',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.14em',
-                  color: '#d4ef62',
-                  textTransform: 'uppercase',
-                  display: 'block',
-                  marginBottom: '10px',
-                }}
-              >
-                CENTRAL EMERGENCY DESK
-              </span>
-              <h3>
-                Help is always <span>one second away.</span>
-              </h3>
-              <p>
+      {/* Central Emergency Desk - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa8e3fbd6488191bd1c469f0170769d */}
+      <section className="emergency-showcase-section-wrap">
+        <div className="emergency-scenery-left" aria-hidden="true">
+          <img src="/emergency-scenery-left.webp" alt="" />
+        </div>
+        <div className="emergency-scenery-right" aria-hidden="true">
+          <img src="/emergency-scenery-right.webp" alt="" />
+        </div>
+
+        <div className="emergency-inner-container">
+          <div className="emergency-card-wrapper">
+            {/* Left Column: Information & Micro Features */}
+            <div className="emergency-left-col">
+              <div className="emergency-eyebrow-pill">
+                <Shield size={13} />
+                <span>CENTRAL EMERGENCY DESK</span>
+              </div>
+
+              <h2 className="emergency-headline">
+                Help is always
+                <span className="emergency-headline-highlight">one second away.</span>
+              </h2>
+
+              <p className="emergency-desc">
                 Our central command monitors flagged routes, sudden stops, and distress beacons around the clock.
                 If anything feels wrong, our dedicated security officers respond immediately.
               </p>
+
+              <div className="emergency-micro-features">
+                <div className="emergency-micro-item">
+                  <div className="emergency-micro-icon-circle">
+                    <Clock3 size={16} />
+                  </div>
+                  <div className="emergency-micro-text">
+                    <span className="emergency-micro-title">24/7</span>
+                    <span className="emergency-micro-sub">Monitoring</span>
+                  </div>
+                </div>
+
+                <div className="emergency-micro-item">
+                  <div className="emergency-micro-icon-circle">
+                    <Bell size={16} />
+                  </div>
+                  <div className="emergency-micro-text">
+                    <span className="emergency-micro-title">Quick</span>
+                    <span className="emergency-micro-sub">Response</span>
+                  </div>
+                </div>
+
+                <div className="emergency-micro-item">
+                  <div className="emergency-micro-icon-circle">
+                    <ShieldCheck size={16} />
+                  </div>
+                  <div className="emergency-micro-text">
+                    <span className="emergency-micro-title">Your Safety</span>
+                    <span className="emergency-micro-sub">Our Priority</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="safety-hotlines-box">
-              <div className="safety-hotline-item">
-                <span>GoRush 24/7 Driver SOS Line</span>
-                <strong>1800-467-874</strong>
+            {/* Right Column: Dark Forest Elevated Contacts Card */}
+            <div className="emergency-dark-card">
+              <div className="emergency-dark-header">
+                <div className="emergency-contacts-tag">
+                  <div className="emergency-phone-icon-squircle">
+                    <Phone size={16} />
+                  </div>
+                  <span className="emergency-contacts-title">IMPORTANT CONTACTS</span>
+                </div>
+                <div className="emergency-avail-pill">
+                  <span className="emergency-avail-dot" />
+                  <span>AVAILABLE 24/7</span>
+                </div>
               </div>
-              <div className="safety-hotline-item">
-                <span>Direct Police Coordination</span>
-                <strong>112 / 100</strong>
-              </div>
-              <div className="safety-hotline-item">
-                <span>Indore Safety Command Center</span>
-                <strong>+91 731 498 2200</strong>
-              </div>
+
+              <a href="tel:1800467874" className="emergency-contact-row">
+                <div className="emergency-contact-left">
+                  <div className="emergency-row-icon-box">
+                    <PhoneCall size={18} />
+                  </div>
+                  <div className="emergency-row-label-group">
+                    <span className="emergency-row-title">GoRush 24/7 Driver SOS Line</span>
+                    <span className="emergency-row-sub">Immediate assistance for drivers</span>
+                  </div>
+                </div>
+                <div className="emergency-contact-right">
+                  <span className="emergency-phone-num">1800-467-874</span>
+                  <ChevronRight size={16} className="emergency-chevron" />
+                </div>
+              </a>
+
+              <a href="tel:112" className="emergency-contact-row">
+                <div className="emergency-contact-left">
+                  <div className="emergency-row-icon-box">
+                    <ShieldAlert size={18} />
+                  </div>
+                  <div className="emergency-row-label-group">
+                    <span className="emergency-row-title">Direct Police Coordination</span>
+                    <span className="emergency-row-sub">For emergencies on route</span>
+                  </div>
+                </div>
+                <div className="emergency-contact-right">
+                  <span className="emergency-phone-num">112 / 100</span>
+                  <ChevronRight size={16} className="emergency-chevron" />
+                </div>
+              </a>
+
+              <a href="tel:+917314982200" className="emergency-contact-row">
+                <div className="emergency-contact-left">
+                  <div className="emergency-row-icon-box">
+                    <Building2 size={18} />
+                  </div>
+                  <div className="emergency-row-label-group">
+                    <span className="emergency-row-title">Indore Safety Command Center</span>
+                    <span className="emergency-row-sub">City monitoring & support</span>
+                  </div>
+                </div>
+                <div className="emergency-contact-right">
+                  <span className="emergency-phone-num">+91 731 498 2200</span>
+                  <ChevronRight size={16} className="emergency-chevron" />
+                </div>
+              </a>
             </div>
+          </div>
+
+          {/* Bottom Ticker */}
+          <div className="emergency-bottom-ticker">
+            <span className="emergency-ticker-line" />
+            <span>DRIVE SAFE • STAY SUPPORTED • GO FURTHER</span>
+            <span className="emergency-ticker-line" />
           </div>
         </div>
       </section>
