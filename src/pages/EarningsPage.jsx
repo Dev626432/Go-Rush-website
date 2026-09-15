@@ -18,6 +18,7 @@ import {
   Gift,
   Heart,
   IndianRupee,
+  Leaf,
   MapPin,
   Navigation,
   Percent,
@@ -31,6 +32,7 @@ import './pages.css';
 import '../earnings-hero-redesign.css';
 import '../calc-showcase-redesign.css';
 import '../incentives-showcase-redesign.css';
+import '../fare-anatomy-redesign.css';
 
 const cityMultipliers = {
   Indore: 1.0,
@@ -501,101 +503,142 @@ export default function EarningsPage({ onJoinClick }) {
       </section>
 
 
-      {/* Transparent Fare Anatomy */}
-      <section className="subpage-section alt-bg">
-        <div className="subpage-container">
-          <div className="subpage-section-header">
-            <span className="section-tag">ANATOMY OF A FARE</span>
-            <h2>
-              Where does your <em>money go?</em>
+      {/* Transparent Fare Anatomy - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa8e56849fc8191bb5b273d61fad076 */}
+      <section className="anatomy-showcase-section-wrap">
+        {/* Scenic Wings */}
+        <div className="anatomy-scenery-left" aria-hidden="true">
+          <img src="/anatomy-scenery-left.webp" alt="" />
+        </div>
+        <div className="anatomy-scenery-right" aria-hidden="true">
+          <img src="/anatomy-scenery-right.webp" alt="" />
+        </div>
+
+        <div className="anatomy-inner-container">
+          {/* Section Header */}
+          <div className="anatomy-header">
+            <div className="anatomy-eyebrow-pill">
+              <span className="anatomy-rupee-symbol">₹</span>
+              <span>ANATOMY OF A FARE</span>
+            </div>
+
+            <h2 className="anatomy-headline">
+              Where does your{' '}
+              <span className="anatomy-headline-italic">
+                money go?
+                <svg viewBox="0 0 170 14" fill="none" className="anatomy-headline-swoosh" aria-hidden="true">
+                  <path d="M 4 8 Q 85 2 166 7" stroke="#729837" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>
             </h2>
-            <p>Every rupee paid by a passenger is clearly accounted for. Here is a typical ₹300 ride breakdown.</p>
+
+            <p className="anatomy-subtitle">
+              Every rupee paid by a passenger is clearly accounted for. Here is a typical ₹300 ride breakdown.
+            </p>
           </div>
 
-          <div
-            style={{
-              maxWidth: '820px',
-              margin: '0 auto',
-              background: '#ffffff',
-              borderRadius: '24px',
-              padding: '36px clamp(24px, 5vw, 44px)',
-              border: '1px solid rgba(20, 37, 27, 0.08)',
-              boxShadow: '0 10px 30px rgba(20, 37, 27, 0.04)',
-            }}
-          >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
-              <div
-                style={{
-                  padding: '24px',
-                  borderRadius: '16px',
-                  background: '#f1f7e7',
-                  border: '1px solid rgba(112, 147, 58, 0.25)',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: 'DM Mono',
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    color: '#4f7526',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  YOU KEEP (90%)
-                </span>
-                <h3
-                  style={{
-                    fontFamily: 'Playfair Display',
-                    fontSize: '32px',
-                    margin: '10px 0 6px',
-                    color: '#14251b',
-                    fontWeight: 700,
-                  }}
-                >
-                  ₹270.00
-                </h3>
-                <p style={{ fontSize: '12.5px', color: '#5b715e', margin: 0, lineHeight: 1.5 }}>
-                  Base fare, distance rate, waiting time, and 100% of any passenger tips.
-                </p>
+          {/* Main White Enclosing Card */}
+          <div className="anatomy-main-card">
+            <div className="anatomy-subcards-grid">
+              {/* Subcard 1: Driver Portion (90%) */}
+              <div className="anatomy-subcard anatomy-driver-card">
+                <div className="anatomy-subcard-top">
+                  <div className="anatomy-icon-squircle driver">
+                    <Wallet size={22} />
+                  </div>
+                  <div className="anatomy-subcard-content">
+                    <span className="anatomy-subcard-kicker driver">YOU KEEP (90%)</span>
+                    <div className="anatomy-subcard-amount">₹270.00</div>
+                    <p className="anatomy-subcard-desc">
+                      Base fare, distance rate, waiting time, and 100% of any passenger tips.
+                    </p>
+                  </div>
+                  <div className="anatomy-subcard-badge driver">
+                    <span className="anatomy-badge-num">90%</span>
+                    <span className="anatomy-badge-lbl">To You</span>
+                  </div>
+                </div>
+
+                <div className="anatomy-subcard-divider driver" />
+
+                <div className="anatomy-subcard-list">
+                  <div className="anatomy-list-item driver">
+                    <div className="anatomy-check-circle driver">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+                    <span>Direct to your account</span>
+                  </div>
+                  <div className="anatomy-list-item driver">
+                    <div className="anatomy-check-circle driver">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+                    <span>Includes surge & incentives</span>
+                  </div>
+                  <div className="anatomy-list-item driver">
+                    <div className="anatomy-check-circle driver">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+                    <span>Tips go entirely to you</span>
+                  </div>
+                </div>
+
+                {/* Decorative Corner Ambient Glow */}
+                <div className="anatomy-subcard-wave driver" aria-hidden="true" />
               </div>
 
-              <div
-                style={{
-                  padding: '24px',
-                  borderRadius: '16px',
-                  background: '#fafaf7',
-                  border: '1px solid rgba(20, 37, 27, 0.08)',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: 'DM Mono',
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    color: '#718374',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  PLATFORM FEE (10%)
-                </span>
-                <h3
-                  style={{
-                    fontFamily: 'Playfair Display',
-                    fontSize: '32px',
-                    margin: '10px 0 6px',
-                    color: '#556c59',
-                    fontWeight: 700,
-                  }}
-                >
-                  ₹30.00
-                </h3>
-                <p style={{ fontSize: '12.5px', color: '#687e6b', margin: 0, lineHeight: 1.5 }}>
-                  Covers servers, 24/7 safety dispatch team, insurance coverage, and app updates.
-                </p>
+              {/* Subcard 2: Platform Fee (10%) */}
+              <div className="anatomy-subcard anatomy-platform-card">
+                <div className="anatomy-subcard-top">
+                  <div className="anatomy-icon-squircle platform">
+                    <Coins size={22} />
+                  </div>
+                  <div className="anatomy-subcard-content">
+                    <span className="anatomy-subcard-kicker platform">PLATFORM FEE (10%)</span>
+                    <div className="anatomy-subcard-amount">₹30.00</div>
+                    <p className="anatomy-subcard-desc">
+                      Covers servers, 24/7 safety dispatch team, insurance coverage, and app updates.
+                    </p>
+                  </div>
+                  <div className="anatomy-subcard-badge platform">
+                    <span className="anatomy-badge-num">10%</span>
+                    <span className="anatomy-badge-lbl">Platform</span>
+                  </div>
+                </div>
+
+                <div className="anatomy-subcard-divider platform" />
+
+                <div className="anatomy-subcard-list">
+                  <div className="anatomy-list-item platform">
+                    <div className="anatomy-check-circle platform">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+                    <span>App maintenance & technology</span>
+                  </div>
+                  <div className="anatomy-list-item platform">
+                    <div className="anatomy-check-circle platform">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+                    <span>24/7 support & safety operations</span>
+                  </div>
+                  <div className="anatomy-list-item platform">
+                    <div className="anatomy-check-circle platform">
+                      <Check size={13} strokeWidth={3} />
+                    </div>
+                    <span>Insurance & regulatory compliance</span>
+                  </div>
+                </div>
+
+                {/* Decorative Corner Ambient Glow */}
+                <div className="anatomy-subcard-wave platform" aria-hidden="true" />
               </div>
             </div>
+          </div>
+
+          {/* Bottom Brand Ticker */}
+          <div className="anatomy-bottom-ticker">
+            <span className="anatomy-ticker-line" />
+            <Leaf size={14} className="anatomy-ticker-leaf" />
+            <span>DRIVE • EARN • GROW TOGETHER</span>
+            <span className="anatomy-ticker-line" />
           </div>
         </div>
       </section>

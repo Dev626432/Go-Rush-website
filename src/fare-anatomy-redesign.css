@@ -1,0 +1,450 @@
+/* ==========================================================================
+   GoRush - Anatomy of a Fare Redesign
+   Exact match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa8e56849fc8191bb5b273d61fad076
+   ========================================================================== */
+
+.anatomy-showcase-section-wrap {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #f4f8ec 0%, #edf5e6 50%, #eaf3e1 100%);
+  padding: 65px 24px 75px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Scenic Backdrops on Left and Right */
+.anatomy-scenery-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 332px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.anatomy-scenery-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+.anatomy-scenery-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 332px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.anatomy-scenery-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top right;
+  display: block;
+}
+
+/* Inner Centered Container */
+.anatomy-inner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Section Header */
+.anatomy-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.anatomy-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e3efe0;
+  border: 1px solid #cfdec9;
+  color: #274828;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.anatomy-rupee-symbol {
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.anatomy-headline {
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 800;
+  color: #112316;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.anatomy-headline-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #477e2a;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.anatomy-headline-swoosh {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 12px;
+  pointer-events: none;
+}
+
+.anatomy-subtitle {
+  font-size: 15px;
+  color: #4e6252;
+  max-width: 580px;
+  text-align: center;
+  margin: 16px auto 0;
+  line-height: 1.6;
+}
+
+/* Main White Enclosing Card */
+.anatomy-main-card {
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid #dce8da;
+  box-shadow: 0 18px 45px rgba(20, 44, 25, 0.06), 0 3px 10px rgba(0, 0, 0, 0.02);
+  padding: 34px 38px;
+  width: 100%;
+  max-width: 1080px;
+  box-sizing: border-box;
+}
+
+/* 2 Subcards Grid */
+.anatomy-subcards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.anatomy-subcard {
+  border-radius: 22px;
+  padding: 28px 28px 26px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.anatomy-driver-card {
+  background: linear-gradient(135deg, #f2f9f0 0%, #e7f5e5 100%);
+  border: 1px solid #cfe5cd;
+}
+
+.anatomy-driver-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(35, 76, 38, 0.08);
+}
+
+.anatomy-platform-card {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f6f0e4 100%);
+  border: 1px solid #ebdcc5;
+}
+
+.anatomy-platform-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(90, 63, 27, 0.08);
+}
+
+/* Subcard Top Section */
+.anatomy-subcard-top {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  gap: 16px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.anatomy-icon-squircle {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.anatomy-icon-squircle.driver {
+  background: #e0f2dc;
+  border: 1px solid #c7e5c2;
+  color: #1e4521;
+}
+
+.anatomy-icon-squircle.platform {
+  background: #f2e7d3;
+  border: 1px solid #e5d3b7;
+  color: #5a3f1b;
+}
+
+.anatomy-subcard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.anatomy-subcard-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.anatomy-subcard-kicker.driver {
+  color: #274828;
+}
+
+.anatomy-subcard-kicker.platform {
+  color: #5a3f1b;
+}
+
+.anatomy-subcard-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #112316;
+  margin: 6px 0 6px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.anatomy-subcard-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
+}
+
+.anatomy-subcard-desc.driver {
+  color: #536c57;
+}
+
+.anatomy-subcard-desc.platform {
+  color: #6f593e;
+}
+
+/* Percentage Badges */
+.anatomy-subcard-badge {
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.anatomy-subcard-badge.driver {
+  background: #d4ef62;
+  color: #162c1a;
+  box-shadow: 0 4px 14px rgba(162, 204, 52, 0.28);
+}
+
+.anatomy-subcard-badge.platform {
+  background: #f0dfc5;
+  color: #4e3514;
+  box-shadow: 0 4px 14px rgba(175, 140, 80, 0.18);
+}
+
+.anatomy-badge-num {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.anatomy-badge-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* Dividers */
+.anatomy-subcard-divider {
+  height: 1px;
+  margin: 22px 0 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.anatomy-subcard-divider.driver {
+  background: rgba(71, 126, 42, 0.14);
+}
+
+.anatomy-subcard-divider.platform {
+  background: rgba(90, 63, 27, 0.12);
+}
+
+/* Feature Checklists */
+.anatomy-subcard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.anatomy-list-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.anatomy-list-item.driver {
+  color: #234c26;
+}
+
+.anatomy-list-item.platform {
+  color: #573e1c;
+}
+
+.anatomy-check-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.anatomy-check-circle.driver {
+  background: #234c26;
+}
+
+.anatomy-check-circle.platform {
+  background: #6b4d24;
+}
+
+/* Decorative Corner Ambient Glow */
+.anatomy-subcard-wave {
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: 170px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.anatomy-subcard-wave.driver {
+  background: radial-gradient(circle, rgba(162, 214, 150, 0.45) 0%, rgba(162, 214, 150, 0) 70%);
+}
+
+.anatomy-subcard-wave.platform {
+  background: radial-gradient(circle, rgba(224, 198, 160, 0.45) 0%, rgba(224, 198, 160, 0) 70%);
+}
+
+/* Bottom Ticker */
+.anatomy-bottom-ticker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #4b6a4d;
+  text-transform: uppercase;
+}
+
+.anatomy-ticker-line {
+  width: 45px;
+  height: 1.5px;
+  background: #a5c2a1;
+  display: inline-block;
+}
+
+.anatomy-ticker-leaf {
+  color: #3b663e;
+}
+
+/* Responsive Styles */
+@media (max-width: 1100px) {
+  .anatomy-scenery-left,
+  .anatomy-scenery-right {
+    opacity: 0.35;
+    width: 200px;
+  }
+  .anatomy-main-card {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .anatomy-subcards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .anatomy-scenery-left,
+  .anatomy-scenery-right {
+    display: none;
+  }
+  .anatomy-showcase-section-wrap {
+    padding: 50px 16px 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .anatomy-subcard-top {
+    grid-template-columns: 1fr auto;
+  }
+  .anatomy-icon-squircle {
+    grid-column: span 2;
+    margin-bottom: 4px;
+  }
+  .anatomy-subcard-amount {
+    font-size: 32px;
+  }
+  .anatomy-main-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .anatomy-subcard {
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
+}
