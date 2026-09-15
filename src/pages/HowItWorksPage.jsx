@@ -8,18 +8,22 @@ import {
   ChevronDown,
   Clock3,
   FileCheck2,
+  FileText,
   HelpCircle,
   IndianRupee,
+  MessageSquare,
   Navigation,
   ShieldCheck,
   Sparkles,
   Smartphone,
   Users,
+  Wallet,
   Zap,
 } from 'lucide-react';
 import './pages.css';
 import '../onboarding-hero-redesign.css';
 import '../vehicle-criteria-redesign.css';
+import '../faq-showcase-redesign.css';
 
 const stepsData = [
   {
@@ -109,20 +113,25 @@ const faqs = [
   {
     q: 'How long does the document verification process take?',
     a: 'Most profiles are verified in less than 2 hours. If your photos are clear and details match your Aadhaar, activation is same-day so you can start driving immediately.',
+    icon: FileText,
   },
   {
     q: 'Is there any joining fee or security deposit?',
     a: 'Absolutely not. GoRush does not charge any upfront joining fee, kit fee, or security deposit. You can register and test the platform completely free.',
+    icon: IndianRupee,
   },
   {
     q: 'Can I choose my own driving hours?',
     a: 'Yes, 100%. You have total freedom. Turn the app online whenever you want to drive, and switch offline when you want to take a break or spend time with family.',
+    icon: Clock3,
   },
   {
     q: 'How and when do I receive my earnings?',
     a: 'Trip earnings are settled directly to your UPI ID or bank account every single day. For cash rides, you collect the fare directly from the passenger with zero delay.',
+    icon: Wallet,
   },
 ];
+
 
 export default function HowItWorksPage({ onJoinClick }) {
   const [selectedVehicle, setSelectedVehicle] = useState('bike');
@@ -360,31 +369,56 @@ export default function HowItWorksPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Driver FAQs */}
-      <section className="subpage-section">
-        <div className="subpage-container">
-          <div className="subpage-section-header">
-            <span className="section-tag">COMMON QUESTIONS</span>
-            <h2>
-              Got questions? <em>We've got answers.</em>
+      {/* Driver FAQs Redesign matching ChatGPT Showcase */}
+      <section className="faq-showcase-section-wrap">
+        {/* Scenic Wings */}
+        <div className="faq-scenery-left" aria-hidden="true">
+          <img src="/faq-scenery-left.webp" alt="" />
+        </div>
+        <div className="faq-scenery-right" aria-hidden="true">
+          <img src="/faq-scenery-right.webp" alt="" />
+        </div>
+
+        <div className="faq-inner-container">
+          <div className="faq-header">
+            <div className="faq-eyebrow-pill">
+              <MessageSquare size={13} />
+              <span>COMMON QUESTIONS</span>
+            </div>
+            <h2 className="faq-headline">
+              <span>Got questions?</span>
+              <span className="faq-headline-italic">
+                We've got answers.
+                <svg viewBox="0 0 170 14" fill="none" className="faq-headline-swoosh" aria-hidden="true">
+                  <path d="M 4 8 Q 85 2 166 7" stroke="#729837" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>
             </h2>
-            <p>Clear details about onboarding, documents, payments, and support.</p>
+            <p className="faq-subtitle">Clear details about onboarding, documents, payments, and support.</p>
           </div>
 
-          <div className="subpage-faq-list">
-            {faqs.map((f, idx) => (
-              <div
-                className={`subpage-faq-item ${openFaq === idx ? 'open' : ''}`}
-                key={f.q}
-                onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-              >
-                <div className="subpage-faq-header">
-                  <span>{f.q}</span>
-                  <ChevronDown size={18} />
+          <div className="faq-accordion-list">
+            {faqs.map((f, idx) => {
+              const IconComp = f.icon;
+              return (
+                <div
+                  className={`faq-accordion-item ${openFaq === idx ? 'active' : ''}`}
+                  key={f.q}
+                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                >
+                  <div className="faq-item-icon">
+                    <IconComp size={22} />
+                  </div>
+                  <div className="faq-item-content">
+                    <h3 className="faq-item-question">{f.q}</h3>
+                    {openFaq === idx && <div className="faq-item-answer">{f.a}</div>}
+                  </div>
+                  <div className="faq-item-chevron-wrap">
+                    <ChevronDown size={18} strokeWidth={2.5} className="faq-item-chevron-icon" />
+                  </div>
                 </div>
-                {openFaq === idx && <div className="subpage-faq-body">{f.a}</div>}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
