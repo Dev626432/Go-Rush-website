@@ -58,6 +58,7 @@ export default function EarningsPage({ onJoinClick }) {
   
   const [earnings, setEarnings] = useState({
     dailyNet: 0,
+    monthlyNet: 0,
     monthlyGross: 0,
     platformFee: 0,
     estimatedFuelCost: 0
@@ -451,7 +452,7 @@ export default function EarningsPage({ onJoinClick }) {
                   <div className="calc-hero-number-row">
                     <span className="calc-hero-rupee">₹</span>
                     <span className="calc-hero-val">
-                      {isCalculating ? '...' : earnings.monthlyNet.toLocaleString('en-IN')}
+                      {isCalculating ? '...' : (earnings.monthlyNet || 0).toLocaleString('en-IN')}
                     </span>
                   </div>
                   <div className="calc-hero-period">per month</div>
@@ -483,7 +484,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>Average Daily Net</span>
                       </div>
                       <span className="calc-breakdown-val-col white">
-                        ₹{isCalculating ? '...' : earnings.dailyNet.toLocaleString('en-IN')} / day
+                        ₹{isCalculating ? '...' : (earnings.dailyNet || 0).toLocaleString('en-IN')} / day
                       </span>
                     </div>
 
@@ -493,7 +494,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>Gross Monthly Revenue</span>
                       </div>
                       <span className="calc-breakdown-val-col white">
-                        ₹{isCalculating ? '...' : earnings.monthlyGross.toLocaleString('en-IN')}
+                        ₹{isCalculating ? '...' : (earnings.monthlyGross || 0).toLocaleString('en-IN')}
                       </span>
                     </div>
 
@@ -503,7 +504,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>GoRush Platform Fee (10%)</span>
                       </div>
                       <span className="calc-breakdown-val-col lime">
-                        - ₹{isCalculating ? '...' : earnings.platformFee.toLocaleString('en-IN')}
+                        - ₹{isCalculating ? '...' : (earnings.platformFee || 0).toLocaleString('en-IN')}
                       </span>
                     </div>
 
@@ -513,7 +514,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>Est. Fuel & Running Cost (~{Math.round(currentVehicle.fuelPct * 100)}%)</span>
                       </div>
                       <span className="calc-breakdown-val-col coral">
-                        - ₹{isCalculating ? '...' : earnings.estimatedFuelCost.toLocaleString('en-IN')}
+                        - ₹{isCalculating ? '...' : (earnings.estimatedFuelCost || 0).toLocaleString('en-IN')}
                       </span>
                     </div>
                   </div>
