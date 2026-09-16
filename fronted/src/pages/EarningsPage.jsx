@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   BadgePercent,
@@ -28,6 +28,7 @@ import {
   Wallet,
   Zap,
 } from 'lucide-react';
+import { api } from '../services/api';
 import './pages.css';
 import '../earnings-hero-redesign.css';
 import '../calc-showcase-redesign.css';
@@ -44,9 +45,9 @@ const cityMultipliers = {
 };
 
 const vehicleRates = {
-  bike: { label: 'Bike / Scooter', baseHourly: 140, fuelPct: 0.22, icon: Bike },
-  auto: { label: 'Auto Rickshaw', baseHourly: 210, fuelPct: 0.28, icon: Navigation },
-  cab: { label: 'Cab / Sedan', baseHourly: 340, fuelPct: 0.32, icon: CarFront },
+  bike: { label: 'Bike / Scooter', baseFare: 80, fuelCostPerRide: 15, icon: Bike },
+  auto: { label: 'Auto Rickshaw', baseFare: 130, fuelCostPerRide: 25, icon: Navigation },
+  cab: { label: 'Cab / Sedan', baseFare: 250, fuelCostPerRide: 50, icon: CarFront },
 };
 
 export default function EarningsPage({ onJoinClick }) {
@@ -54,19 +55,54 @@ export default function EarningsPage({ onJoinClick }) {
   const [vehicle, setVehicle] = useState('bike');
   const [hoursPerDay, setHoursPerDay] = useState(7);
   const [daysPerWeek, setDaysPerWeek] = useState(6);
+  
+  const [earnings, setEarnings] = useState({
+    dailyNet: 0,
+    monthlyGross: 0,
+    platformFee: 0,
+    estimatedFuelCost: 0
+  });
+  const [isCalculating, setIsCalculating] = useState(false);
 
-  // Calculations
-  const cityFactor = cityMultipliers[city] || 1.0;
   const currentVehicle = vehicleRates[vehicle];
-  const hourlyGross = currentVehicle.baseHourly * cityFactor;
-  const dailyGross = Math.round(hourlyGross * hoursPerDay);
-  const weeklyGross = Math.round(dailyGross * daysPerWeek);
-  const monthlyGross = Math.round(weeklyGross * 4.3);
 
-  const platformFee = Math.round(monthlyGross * 0.1);
-  const estimatedFuel = Math.round(monthlyGross * currentVehicle.fuelPct);
-  const netMonthly = monthlyGross - platformFee - estimatedFuel;
-  const netDaily = Math.round(netMonthly / (daysPerWeek * 4.3));
+  useEffect(() => {
+    const fetchCalculations = async () => {
+      setIsCalculating(true);
+      try {
+        // Derive some realistic metrics based on hours to send to backend API
+        const ridesPerHour = 1.5;
+        const averageDailyRides = Math.round(hoursPerDay * ridesPerHour);
+        const cityMultiplier = cityMultipliers[city] || 1;
+        const averageFare = Math.round(currentVehicle.baseFare * cityMultiplier);
+        const fuelCost = Math.round(currentVehicle.fuelCostPerRide * averageDailyRides * cityMultiplier);
+
+        const response = await api.calculateEarnings({
+          city,
+          vehicleType: currentVehicle.label,
+          hoursPerDay,
+          daysPerWeek,
+          averageDailyRides,
+          averageFare,
+          platformFeePercentage: 10,
+          fuelCost,
+          otherRunningCost: 50 // Maintenance buffer
+        });
+
+        if (response.success) {
+          setEarnings(response.data.estimations);
+        }
+      } catch (err) {
+        console.error('Failed to calculate earnings:', err);
+      } finally {
+        setIsCalculating(false);
+      }
+    };
+
+    // Debounce the API call slightly
+    const timeoutId = setTimeout(fetchCalculations, 400);
+    return () => clearTimeout(timeoutId);
+  }, [city, vehicle, hoursPerDay, daysPerWeek]);
 
   return (
     <div className="subpage-wrap">
@@ -414,7 +450,9 @@ export default function EarningsPage({ onJoinClick }) {
                   <span className="calc-right-kicker">YOUR ESTIMATED TAKE-HOME PAY</span>
                   <div className="calc-hero-number-row">
                     <span className="calc-hero-rupee">₹</span>
-                    <span className="calc-hero-val">{netMonthly.toLocaleString('en-IN')}</span>
+                    <span className="calc-hero-val">
+                      {isCalculating ? '...' : earnings.monthlyNet.toLocaleString('en-IN')}
+                    </span>
                   </div>
                   <div className="calc-hero-period">per month</div>
 
@@ -445,7 +483,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>Average Daily Net</span>
                       </div>
                       <span className="calc-breakdown-val-col white">
-                        ₹{netDaily.toLocaleString('en-IN')} / day
+                        ₹{isCalculating ? '...' : earnings.dailyNet.toLocaleString('en-IN')} / day
                       </span>
                     </div>
 
@@ -455,7 +493,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>Gross Monthly Revenue</span>
                       </div>
                       <span className="calc-breakdown-val-col white">
-                        ₹{monthlyGross.toLocaleString('en-IN')}
+                        ₹{isCalculating ? '...' : earnings.monthlyGross.toLocaleString('en-IN')}
                       </span>
                     </div>
 
@@ -465,7 +503,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>GoRush Platform Fee (10%)</span>
                       </div>
                       <span className="calc-breakdown-val-col lime">
-                        - ₹{platformFee.toLocaleString('en-IN')}
+                        - ₹{isCalculating ? '...' : earnings.platformFee.toLocaleString('en-IN')}
                       </span>
                     </div>
 
@@ -475,7 +513,7 @@ export default function EarningsPage({ onJoinClick }) {
                         <span>Est. Fuel & Running Cost (~{Math.round(currentVehicle.fuelPct * 100)}%)</span>
                       </div>
                       <span className="calc-breakdown-val-col coral">
-                        - ₹{estimatedFuel.toLocaleString('en-IN')}
+                        - ₹{isCalculating ? '...' : earnings.estimatedFuelCost.toLocaleString('en-IN')}
                       </span>
                     </div>
                   </div>
