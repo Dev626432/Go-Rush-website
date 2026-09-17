@@ -433,10 +433,10 @@ export default function HomePage({ onJoinClick, action }) {
             {featureGroups.map(({ num, icon: Icon, eyebrow, title, text, points }, index) => {
               const cardClass =
                 index === 0
-                  ? 'card-dark-forest card-slide-left'
+                  ? 'card-white'
                   : index === 1
-                  ? 'card-vibrant-lime card-slide-bottom'
-                  : 'card-dark-forest card-slide-right';
+                  ? 'card-dark-forest'
+                  : 'card-white';
               return (
                 <article className={`feature-card ${cardClass}`} key={title}>
                   {/* Decorative Corner Arc */}
