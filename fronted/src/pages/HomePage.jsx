@@ -169,6 +169,47 @@ const driverQuotes = [
   },
 ];
 
+const AnimatedStat = ({ text, label }) => {
+  const [displayValue, setDisplayValue] = useState(text);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const match = text.match(/^([\d.]+)(.*)$/);
+    if (!match) return;
+
+    const targetNum = parseFloat(match[1]);
+    const suffix = match[2];
+    const isFloat = match[1].includes('.');
+    
+    let current = isFloat ? 0.0 : 1;
+    const duration = 1500;
+    const fps = 30;
+    const steps = duration / (1000 / fps);
+    const stepTime = 1000 / fps;
+    const increment = targetNum / steps;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= targetNum) {
+        current = targetNum;
+        clearInterval(timer);
+      }
+      
+      let formattedNum = isFloat ? current.toFixed(1) : Math.floor(current);
+      setDisplayValue(formattedNum + suffix);
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [text, key]);
+
+  return (
+    <div onClick={() => setKey(k => k + 1)} style={{ cursor: 'pointer', userSelect: 'none' }} title="Click to animate">
+      <strong>{displayValue}</strong>
+      <span>{label}</span>
+    </div>
+  );
+};
+
 export default function HomePage({ onJoinClick, action }) {
   const setFormOpen = () => {
     if (onJoinClick) onJoinClick();
@@ -300,10 +341,7 @@ export default function HomePage({ onJoinClick, action }) {
         {/* STATS STRIP */}
         <section className="stats-strip">
           {stats.map(([number, label]) => (
-            <div key={label}>
-              <strong>{number}</strong>
-              <span>{label}</span>
-            </div>
+            <AnimatedStat key={label} text={number} label={label} />
           ))}
         </section>
 
