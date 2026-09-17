@@ -1230,8 +1230,8 @@ export default function HomePage({ onJoinClick, action }) {
             {/* Right Side Visual Hero (Driver, Car, Phone & City) */}
             <div className="final-cta-driver-showcase" aria-hidden="true">
               <img
-                src="/final-cta-driver.webp"
-                alt="GoRush Professional Driver"
+                src="/driver-hero-new.png"
+                alt="Drive with GoRush Today"
                 className="final-cta-driver-img"
               />
             </div>
