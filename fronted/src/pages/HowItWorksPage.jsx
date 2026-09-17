@@ -212,7 +212,6 @@ export default function HowItWorksPage({ onJoinClick }) {
               src="/driver-onboarding-new.jpg"
               alt="GoRush Driver Onboarding App and Journey"
               className="onboarding-showcase-img"
-              style={{ mixBlendMode: 'darken' }}
             />
           </div>
         </div>
