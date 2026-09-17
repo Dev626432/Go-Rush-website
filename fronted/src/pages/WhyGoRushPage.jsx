@@ -156,11 +156,109 @@ export default function WhyGoRushPage({ onJoinClick }) {
   return (
     <div className="subpage-wrap">
       {/* Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa389920d7881918651e7e81909beae */}
-      <section className="driver-first-section" style={{ padding: 0, margin: 0, overflow: 'hidden' }}>
+      <section className="driver-first-section">
+        <div className="driver-first-grid">
+          {/* Left Column: 3 Benefit Pills + Handwritten Cursive */}
+          <div className="driver-first-left-stack">
+            <div className="driver-first-pill-item">
+              <div className="driver-first-icon-circle">
+                <CircleDollarSign size={18} />
+              </div>
+              <div className="driver-first-pill-text">
+                <strong>Higher Earnings</strong>
+                <span>Keep more of what you earn</span>
+              </div>
+            </div>
+
+            <div className="driver-first-pill-item">
+              <div className="driver-first-icon-circle">
+                <ShieldCheck size={18} />
+              </div>
+              <div className="driver-first-pill-text">
+                <strong>Fair & Transparent</strong>
+                <span>No hidden cuts, no surprises</span>
+              </div>
+            </div>
+
+            <div className="driver-first-pill-item">
+              <div className="driver-first-icon-circle">
+                <Users size={18} />
+              </div>
+              <div className="driver-first-pill-text">
+                <strong>A Supportive Community</strong>
+                <span>Drivers help drivers grow</span>
+              </div>
+            </div>
+
+            <div className="driver-first-script-left">
+              <span>Drive</span>
+              <span>A Brighter Tomorrow</span>
+              <svg className="driver-first-script-curve" viewBox="0 0 140 10" fill="none">
+                <path d="M 5 6 Q 70 11 135 4" stroke="#688e36" strokeWidth="2.2" strokeLinecap="round" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Center Column: Eyebrow + Headline + Lead + 3 Badges + Ticker */}
+          <div className="driver-first-center-col">
+            <div className="driver-first-eyebrow-pill">
+              <Users size={13} />
+              <span>THE DRIVER-FIRST ADVANTAGE</span>
+            </div>
+
+            <h1 className="driver-first-headline">
+              <span className="driver-first-headline-main">Built for drivers.</span>
+              <span className="driver-first-script-wrap">
+                <em className="driver-first-headline-accent">Not corporate algorithms.</em>
+                <svg className="driver-first-swoosh-svg" viewBox="0 0 290 14" fill="none">
+                  <path d="M 8 8 Q 145 14 280 5" stroke="#759c38" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>
+            </h1>
+
+            <p className="driver-first-desc">
+              We started GoRush with a simple belief: driving through the city should be empowering,
+              rewarding, and respected. Here is how we put you first on every single kilometer.
+            </p>
+
+            <div className="driver-first-badges-row">
+              <div className="driver-first-badge-chip">
+                <Percent size={14} className="driver-first-chip-icon" />
+                <span>Flat 10% platform fee</span>
+              </div>
+              <div className="driver-first-badge-chip">
+                <TrendingUp size={14} className="driver-first-chip-icon" />
+                <span>15–20% higher take-home</span>
+              </div>
+              <div className="driver-first-badge-chip">
+                <MapPin size={14} className="driver-first-chip-icon" />
+                <span>Upfront drop destinations</span>
+              </div>
+            </div>
+
+            <div className="driver-first-bottom-ticker">
+              <span className="driver-ticker-line" />
+              <span className="driver-ticker-text">DRIVE • EARN • GROW TOGETHER</span>
+              <span className="driver-ticker-line" />
+            </div>
+          </div>
+
+          {/* Right Column: Driver Visual Hero Artwork */}
+          <div className="driver-first-right-visual" aria-hidden="true">
+            <img
+              src="/driver-hero-new.png"
+              alt="GoRush Driver - Real Drivers Real Opportunities"
+              className="driver-first-hero-img"
+            />
+          </div>
+        </div>
+
+        {/* Bottom-Left Foliage Leaf Accent */}
         <img
-          src="/driver-first-bg-new.png"
-          alt="Driver First Advantage - Built for Drivers, Not corporate algorithms"
-          style={{ width: '100%', minHeight: '300px', objectFit: 'cover' }}
+          src="/driver-first-leaves.webp"
+          alt=""
+          className="driver-first-corner-leaves"
+          aria-hidden="true"
         />
       </section>
 
