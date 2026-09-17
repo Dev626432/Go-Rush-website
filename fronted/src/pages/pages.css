@@ -12,6 +12,8 @@
   min-height: 100vh;
   font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 .subpage-container {
