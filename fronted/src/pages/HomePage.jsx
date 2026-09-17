@@ -182,7 +182,7 @@ const AnimatedStat = ({ text, label }) => {
     const isFloat = match[1].includes('.');
     
     let current = isFloat ? 0.0 : 1;
-    const duration = 1500;
+    const duration = 3500; // Increased duration for slower animation
     const fps = 30;
     const steps = duration / (1000 / fps);
     const stepTime = 1000 / fps;
