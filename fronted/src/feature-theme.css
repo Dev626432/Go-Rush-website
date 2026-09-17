@@ -86,11 +86,11 @@
 .feature-card:hover,
 .feature-card:nth-child(2):hover {
   z-index: 5;
-  transform: translate3d(0, -28px, 0) rotate(0deg) scale(1.045);
-  box-shadow: 0 26px 0 rgba(10, 31, 21, .16), 0 42px 78px rgba(24, 55, 35, .28);
+  transform: translate3d(0, -15px, 0) scale(1.03);
+  box-shadow: 0 30px 60px rgba(10, 31, 21, 0.25), 0 10px 20px rgba(10, 31, 21, 0.15);
 }
 
-.feature-card:nth-child(2):hover { transform: translate3d(0, -40px, 0) rotate(0deg) scale(1.055); }
+.feature-card:nth-child(2):hover { transform: translate3d(0, -25px, 0) scale(1.045); }
 .feature-card:hover .feature-icon { transform: rotate(10deg) translateY(-6px) scale(1.12); box-shadow: 0 16px 28px rgba(0, 0, 0, .24); }
 
 @keyframes theme-card-in { from { opacity: 0; transform: translate3d(0, 55px, 0) rotate(0deg) scale(.94); } to { opacity: 1; transform: translate3d(0, var(--card-y), 0) rotate(var(--card-tilt)) scale(1); } }
