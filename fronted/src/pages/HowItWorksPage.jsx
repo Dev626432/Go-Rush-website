@@ -209,7 +209,7 @@ export default function HowItWorksPage({ onJoinClick }) {
           {/* Right Visual Column (Phone Mockup, City Skyline, Road & Floating Cards) */}
           <div className="onboarding-right-visual" aria-hidden="true">
             <img
-              src="/onboarding-showcase.webp"
+              src="/driver-hero-new.png"
               alt="GoRush Driver Onboarding App and Journey"
               className="onboarding-showcase-img"
             />
