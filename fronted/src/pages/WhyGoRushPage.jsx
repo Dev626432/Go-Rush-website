@@ -158,136 +158,97 @@ export default function WhyGoRushPage({ onJoinClick }) {
       {/* Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa389920d7881918651e7e81909beae */}
       <section className="driver-first-section scenic-hero-layout">
         <div className="driver-first-scenic-bg" aria-hidden="true">
-          {/* Using the scenic background from home page */}
-          <img src="/features-scenic-bg.webp" alt="Scenic Road" />
+          <img src="/driver-first-bg-new.png" alt="Scenic Road" onError={(e) => { e.target.src="/features-scenic-bg.webp"; }} />
         </div>
         
-        <div className="driver-first-grid">
-          {/* Left Column: 3 Benefit Pills + Handwritten Cursive */}
-          <div className="driver-first-left-stack">
-            <div className="driver-first-pill-item glass-card">
-              <div className="driver-first-icon-circle">
-                <CircleDollarSign size={18} />
-              </div>
-              <div className="driver-first-pill-text">
-                <strong>Higher Earnings</strong>
-                <span>Keep more of what you earn</span>
-              </div>
-            </div>
-
-            <div className="driver-first-pill-item glass-card">
-              <div className="driver-first-icon-circle">
-                <ShieldCheck size={18} />
-              </div>
-              <div className="driver-first-pill-text">
-                <strong>Fair & Transparent</strong>
-                <span>No hidden cuts, no surprises</span>
-              </div>
-            </div>
-
-            <div className="driver-first-pill-item glass-card">
-              <div className="driver-first-icon-circle">
-                <Users size={18} />
-              </div>
-              <div className="driver-first-pill-text">
-                <strong>A Supportive Community</strong>
-                <span>Drivers help drivers grow</span>
-              </div>
-            </div>
-
-            <div className="driver-first-script-left">
-              <span>Drive</span>
-              <span>A Brighter Tomorrow</span>
-              <svg className="driver-first-script-curve" viewBox="0 0 140 10" fill="none">
-                <path d="M 5 6 Q 70 11 135 4" stroke="#688e36" strokeWidth="2.2" strokeLinecap="round" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Center Column: Eyebrow + Headline + Lead + 3 Badges */}
-          <div className="driver-first-center-col glass-card">
-            <div className="driver-first-eyebrow-pill">
-              <Users size={13} />
-              <span>THE DRIVER-FIRST ADVANTAGE</span>
+        <div className="driver-first-content-wrapper">
+          <div className="driver-first-left-col">
+            <div className="driver-first-eyebrow">
+              <span>THE GORUSH DIFFERENCE</span>
+              <span className="eyebrow-line"></span>
             </div>
 
             <h1 className="driver-first-headline">
-              <span className="driver-first-headline-main">Built for drivers.</span>
-              <span className="driver-first-script-wrap">
-                <em className="driver-first-headline-accent">Not corporate algorithms.</em>
-                <svg className="driver-first-swoosh-svg" viewBox="0 0 290 14" fill="none">
-                  <path d="M 8 8 Q 145 14 280 5" stroke="#759c38" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-              </span>
+              Built around the <br/> person <br/>
+              <span className="driver-first-headline-accent">behind the wheel.</span>
             </h1>
 
             <p className="driver-first-desc">
-              We started GoRush with a simple belief: driving through the city should be empowering,
-              rewarding, and respected. Here is how we put you first on every single kilometer.
+              You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
             </p>
 
-            <div className="driver-first-badges-row">
-              <div className="driver-first-badge-chip">
-                <Percent size={14} className="driver-first-chip-icon" />
-                <span>Flat 10% platform fee</span>
+            <div className="driver-first-features-row">
+              <div className="driver-feature-item">
+                <div className="feature-icon-box">
+                  <Navigation size={18} />
+                </div>
+                <div className="feature-text">
+                  <strong>Drive Smarter</strong>
+                  <span>Live GPS & optimized routes</span>
+                </div>
               </div>
-              <div className="driver-first-badge-chip">
-                <TrendingUp size={14} className="driver-first-chip-icon" />
-                <span>15–20% higher take-home</span>
+
+              <div className="driver-feature-item">
+                <div className="feature-icon-box">
+                  <ShieldCheck size={18} />
+                </div>
+                <div className="feature-text">
+                  <strong>Feel Safer</strong>
+                  <span>24/7 support & emergency help</span>
+                </div>
               </div>
-              <div className="driver-first-badge-chip">
-                <MapPin size={14} className="driver-first-chip-icon" />
-                <span>Upfront drop destinations</span>
+
+              <div className="driver-feature-item">
+                <div className="feature-icon-box">
+                  <TrendingUp size={18} />
+                </div>
+                <div className="feature-text">
+                  <strong>Earn More</strong>
+                  <span>Transparent earnings & instant payouts</span>
+                </div>
               </div>
             </div>
 
             <div className="driver-first-cta-row">
-               <button
-                  type="button"
-                  className="nav-become-driver-btn"
-                  onClick={onJoinClick}
-                >
-                  <span>Join as a Driver</span>
-                  <ArrowRight size={16} />
+              <button
+                type="button"
+                className="nav-become-driver-btn"
+                onClick={onJoinClick}
+              >
+                <span>Get Started</span>
+                <ArrowRight size={16} />
+              </button>
+              
+              <div className="video-cta-wrap">
+                <button type="button" className="video-play-btn">
+                   <div className="play-triangle"></div>
                 </button>
+                <div className="video-cta-text">
+                  <strong>See How It Works</strong>
+                  <span>2 min video</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Stats Board */}
-          <div className="driver-first-right-stats glass-card">
-            <div className="stats-row">
-              <div className="stat-icon-wrapper">
-                <Users size={20} />
-              </div>
-              <div className="stat-text">
-                <span className="stat-val">10K+</span>
-                <span className="stat-label">Active Drivers</span>
-              </div>
-            </div>
-            
-            <div className="stats-row">
-              <div className="stat-icon-wrapper">
-                <MapPin size={20} />
-              </div>
-              <div className="stat-text">
-                <span className="stat-val">50+</span>
-                <span className="stat-label">Cities Live</span>
-              </div>
-            </div>
-            
-            <div className="stats-row">
-              <div className="stat-icon-wrapper">
-                <Star size={20} />
-              </div>
-              <div className="stat-text">
-                <span className="stat-val">4.8/5</span>
-                <span className="stat-label">Average Rating</span>
-              </div>
-            </div>
+          <div className="driver-first-right-col" aria-hidden="true">
+             <div className="floating-sign-board">
+                <div className="sign-board-content">
+                  More Miles <br/> More Freedom
+                </div>
+                <div className="sign-board-poles">
+                   <div className="pole"></div>
+                   <div className="pole"></div>
+                </div>
+             </div>
 
-            <div className="right-script-accent">
-               More Miles,<br/>More Freedom
-            </div>
+             <div className="floating-badge-clean">
+               <div className="badge-icon"><Leaf size={16} /></div>
+               <div className="badge-text">
+                 <strong>Cleaner Cities</strong>
+                 <span>Brighter Tomorrows</span>
+               </div>
+             </div>
           </div>
         </div>
       </section>
