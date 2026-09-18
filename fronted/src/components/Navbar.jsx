@@ -78,10 +78,8 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
         </div>
       </div>
 
-      {/* Mobile Slide-down Menu */}
       <div className={`nav-mobile-dropdown ${menuOpen ? 'open' : ''}`}>
         {navLinks.map((item) => {
-          const Icon = item.icon;
           const isActive = location.pathname === item.path;
           return (
             <Link
@@ -90,7 +88,6 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
               className={`nav-mobile-link ${isActive ? 'active' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
-              <Icon size={16} />
               <span>{item.label}</span>
             </Link>
           );
