@@ -99,132 +99,67 @@
   padding: 0;
 }
 
-.nav-link-pill {
-  display: inline-flex;
+.nav-link-item {
+  display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 14px;
-  border-radius: 999px;
+  gap: 8px;
+  text-decoration: none;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  color: #455a49;
-  text-decoration: none;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
+  color: #172d1d;
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  user-select: none;
 }
 
-.nav-link-pill svg {
-  color: #617b63;
-  transition: color 0.22s ease;
-}
-
-.nav-link-pill:hover {
+.nav-link-item:hover {
   background: rgba(110, 150, 50, 0.08);
-  color: #1a331c;
+  color: #172d1d;
 }
 
-.nav-link-pill:hover svg {
-  color: #558326;
+.nav-link-item.active {
+  background: #e4eed5;
+  color: #27472d;
+  box-shadow: inset 0 0 0 1px rgba(100, 140, 45, 0.2);
 }
 
-/* Active State: Soft Green Capsule matching ChatGPT */
-.nav-link-pill.active {
-  background: #e3eed4;
-  color: #20411a;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(32, 65, 26, 0.08);
-}
-
-.nav-link-pill.active svg {
-  color: #3b681f;
-}
-
-/* 4. Right Action Cluster: Divider + Driver Login + Join GoRush + Leaves */
+/* 4. Right Action Cluster: CTA */
 .nav-right-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  position: relative;
-  flex-shrink: 0;
+  gap: 14px;
 }
 
-.nav-actions-divider {
-  width: 1px;
-  height: 24px;
-  background: rgba(20, 37, 27, 0.14);
-  margin: 0 4px;
-}
-
-/* Driver Login Button */
-.nav-driver-login-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: transparent;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #394d3c;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.nav-driver-login-btn svg {
-  color: #5c745f;
-}
-
-.nav-driver-login-btn:hover {
-  background: rgba(20, 37, 27, 0.05);
-  color: #14251b;
-}
-
-.nav-driver-login-btn:hover svg {
-  color: #14251b;
-}
-
-/* Primary Join GoRush Button */
-.nav-join-btn {
-  display: inline-flex;
+.nav-become-driver-btn {
+  display: flex;
   align-items: center;
   gap: 8px;
-  background: #256e2d;
+  background: #1e3f2d;
   color: #ffffff;
   border: none;
   border-radius: 999px;
-  padding: 10.5px 22px;
+  padding: 10px 22px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: -0.01em;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(37, 110, 45, 0.28);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
-  position: relative;
-  z-index: 3;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(20, 45, 30, 0.2);
 }
 
-.nav-join-btn:hover {
-  background: #1c5823;
-  transform: translateY(-1px);
-  box-shadow: 0 7px 20px rgba(37, 110, 45, 0.36);
+.nav-become-driver-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(20, 45, 30, 0.3);
+  background: #142a1e;
 }
 
-.nav-join-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(37, 110, 45, 0.2);
-}
-
-.nav-join-btn svg {
+.nav-become-driver-btn svg {
   transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-join-btn:hover svg {
+.nav-become-driver-btn:hover svg {
   transform: translateX(3px);
 }
 

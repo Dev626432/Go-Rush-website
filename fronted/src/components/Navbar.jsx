@@ -18,29 +18,24 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
   const location = useLocation();
 
   const navLinks = [
-    { label: 'Home', path: '/', icon: Home },
-    { label: 'How it works', path: '/how-it-works', icon: Settings },
-    { label: 'Why GoRush', path: '/why-gorush', icon: Users },
-    { label: 'Earnings', path: '/earnings', icon: BarChart3 },
-    { label: 'Safety', path: '/safety', icon: ShieldCheck },
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/why-gorush' },
+    { label: 'How it Works', path: '/how-it-works' },
+    { label: 'Benefits', path: '/earnings' },
+    { label: 'Support', path: '/safety' },
   ];
 
   return (
     <header className="site-header-redesign-wrap">
       <div className="gorush-floating-navbar">
-        {/* Left: Brand Identity with Speed Pin Logo */}
+        {/* Left: Brand Identity with Logo */}
         <Link className="nav-brand-wrap" to="/" onClick={() => setMenuOpen(false)}>
           <img
-            src="/gorush-speed-pin-clean.webp"
-            alt="GoRush"
-            className="nav-brand-pin"
+            src="/gorush-nav-logo.webp"
+            alt="GoRush Drivers Drive Change"
+            className="nav-brand-logo"
+            style={{ height: '42px', objectFit: 'contain' }}
           />
-          <div className="nav-brand-text">
-            <span className="nav-brand-name">
-              Go<span className="brand-accent">Rush</span>
-            </span>
-            <span className="nav-brand-tagline">Drive • Earn • Grow</span>
-          </div>
         </Link>
 
         {/* Center: Navigation Links with Icons */}
@@ -48,48 +43,28 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
           {navLinks.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
-            return (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`nav-link-pill ${isActive ? 'active' : ''}`}
+                className={`nav-link-item ${isActive ? 'active' : ''}`}
                 onClick={() => setMenuOpen(false)}
               >
-                <Icon size={15} />
                 <span>{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        {/* Right: Driver Login, Join GoRush CTA & Leaves Decor */}
+        {/* Right: CTA */}
         <div className="nav-right-actions">
-          <div className="nav-actions-divider" />
-
           <button
             type="button"
-            className="nav-driver-login-btn"
-            onClick={onLoginClick}
-          >
-            <User size={15} />
-            <span>Driver login</span>
-          </button>
-
-          <button
-            type="button"
-            className="nav-join-btn"
+            className="nav-become-driver-btn"
             onClick={onJoinClick}
           >
-            <span>Join GoRush</span>
-            <ArrowRight size={14} />
+            <span>Become a Driver</span>
+            <ArrowRight size={16} />
           </button>
-
-          <img
-            src="/navbar-leaves-clean.webp"
-            alt=""
-            className="nav-leaves-corner"
-            aria-hidden="true"
-          />
 
           {/* Mobile Hamburger Button */}
           <button

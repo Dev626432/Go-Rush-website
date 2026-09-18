@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BadgeCheck,
   Bike,
+  BarChart3,
   CarFront,
   Check,
   ChevronDown,
@@ -16,6 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
   Smartphone,
+  User,
   Users,
   Wallet,
   Zap,
@@ -156,7 +158,7 @@ export default function HowItWorksPage({ onJoinClick }) {
           {/* Left Content Column */}
           <div className="onboarding-left-content">
             <div className="onboarding-eyebrow-badge">
-              <Sparkles size={13} />
+              <User size={13} />
               <span>STEP-BY-STEP ONBOARDING</span>
             </div>
 
@@ -191,28 +193,69 @@ export default function HowItWorksPage({ onJoinClick }) {
               </div>
             </div>
 
-            <button
-              type="button"
-              className="onboarding-cta-btn"
-              onClick={onJoinClick}
-            >
-              <span>Become a GoRush driver</span>
-              <ArrowRight size={16} className="onboarding-cta-btn-arrow" />
-            </button>
+            <div className="hero-cta-row">
+              <button
+                type="button"
+                className="onboarding-cta-btn"
+                onClick={onJoinClick}
+              >
+                <span>Become a GoRush driver</span>
+                <ArrowRight size={16} className="onboarding-cta-btn-arrow" />
+              </button>
+              
+              <button className="watch-video-btn">
+                <div className="play-icon-circle">
+                  <div className="triangle-right"></div>
+                </div>
+                <div className="watch-text">
+                  <strong>Watch how it works</strong>
+                  <span>2 min video</span>
+                </div>
+              </button>
+            </div>
 
-            <div className="onboarding-social-proof">
-              <Users size={14} />
-              <span>Join thousands of drivers building a better way to work.</span>
+            <div className="hero-social-proof">
+              <Users size={14} className="social-icon" />
+              <span className="social-text">Join thousands of drivers building a better way to work.</span>
+              <div className="avatar-stack-wrap">
+                <div className="avatar-stack">
+                  <img src="/driver-avatar-1.jpg" alt="" />
+                  <img src="/driver-avatar-2.jpg" alt="" />
+                  <img src="/driver-avatar-3.jpg" alt="" />
+                  <img src="/driver-avatar-1.jpg" alt="" />
+                </div>
+                <div className="driver-count">
+                  <strong>10K+ Drivers</strong>
+                  <span>Already on GoRush</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Visual Column (Phone Mockup, City Skyline, Road & Floating Cards) */}
+          {/* Right Visual Column */}
           <div className="onboarding-right-visual" aria-hidden="true">
+            <img src="/calc-floating-sticker.webp" alt="" className="sticker-more-than-ride" />
+            
             <img
-              src="/driver-onboarding-new.jpg"
-              alt="GoRush Driver Onboarding App and Journey"
-              className="onboarding-showcase-img"
+              src="/onboarding-showcase.webp"
+              alt="GoRush Driver"
+              className="onboarding-showcase-img polo-driver"
             />
+            
+            <div className="hero-glass-cards">
+              <div className="glass-card-item">
+                <BarChart3 size={20} />
+                <span>Higher<br/>Earnings</span>
+              </div>
+              <div className="glass-card-item">
+                <ShieldCheck size={20} />
+                <span>Safe &<br/>Transparent</span>
+              </div>
+              <div className="glass-card-item">
+                <Users size={20} />
+                <span>A Supportive<br/>Community</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
