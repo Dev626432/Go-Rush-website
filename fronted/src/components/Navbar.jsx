@@ -41,8 +41,8 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
         {/* Center: Navigation Links with Icons */}
         <nav className="nav-center-menu" aria-label="Main Navigation">
           {navLinks.map((item) => {
-            const Icon = item.icon;
             const isActive = location.pathname === item.path;
+            return (
               <Link
                 key={item.path}
                 to={item.path}
