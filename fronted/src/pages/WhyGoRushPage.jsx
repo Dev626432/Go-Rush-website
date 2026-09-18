@@ -156,8 +156,104 @@ export default function WhyGoRushPage({ onJoinClick }) {
   return (
     <div className="subpage-wrap">
       {/* Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa389920d7881918651e7e81909beae */}
-      <section className="driver-first-section scenic-hero-layout" style={{ padding: 0, minHeight: 'auto' }}>
-        <img src="/clean-hero-bg.png" alt="GoRush Difference" style={{ width: '100%', height: 'auto', display: 'block' }} />
+      <section className="driver-first-section scenic-hero-layout">
+        <div className="driver-first-scenic-bg" aria-hidden="true">
+          <img src="/features-scenic-bg.webp" alt="Scenic Road" />
+        </div>
+        
+        <div className="driver-first-content-wrapper">
+          <div className="driver-first-left-col">
+            <div className="driver-first-eyebrow">
+              <span>THE GORUSH DIFFERENCE</span>
+              <span className="eyebrow-line"></span>
+            </div>
+
+            <h1 className="driver-first-headline">
+              Built around the <br/> person <br/>
+              <span className="driver-first-headline-accent">behind the wheel.</span>
+            </h1>
+
+            <p className="driver-first-desc">
+              You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
+            </p>
+
+            <div className="driver-first-features-row">
+              <div className="driver-feature-item">
+                <div className="feature-icon-box">
+                  <Navigation size={18} />
+                </div>
+                <div className="feature-text">
+                  <strong>Drive Smarter</strong>
+                  <span>Live GPS & optimized routes</span>
+                </div>
+              </div>
+
+              <div className="driver-feature-item">
+                <div className="feature-icon-box">
+                  <ShieldCheck size={18} />
+                </div>
+                <div className="feature-text">
+                  <strong>Feel Safer</strong>
+                  <span>24/7 support & emergency help</span>
+                </div>
+              </div>
+
+              <div className="driver-feature-item">
+                <div className="feature-icon-box">
+                  <TrendingUp size={18} />
+                </div>
+                <div className="feature-text">
+                  <strong>Earn More</strong>
+                  <span>Transparent earnings & instant payouts</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="driver-first-cta-row">
+              <button
+                type="button"
+                className="nav-become-driver-btn"
+                onClick={onJoinClick}
+              >
+                <span>Get Started</span>
+                <ArrowRight size={16} />
+              </button>
+              
+              <div className="video-cta-wrap">
+                <button type="button" className="video-play-btn">
+                   <div className="play-triangle"></div>
+                </button>
+                <div className="video-cta-text">
+                  <strong>See How It Works</strong>
+                  <span>2 min video</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="driver-first-right-col" aria-hidden="true">
+             {/* Driver Image overlay */}
+             <img src="/driver-hero-new.png" alt="Driver" className="driver-overlay-img" />
+
+             <div className="floating-sign-board">
+                <div className="sign-board-content">
+                  More Miles <br/> More Freedom
+                </div>
+                <div className="sign-board-poles">
+                   <div className="pole"></div>
+                   <div className="pole"></div>
+                </div>
+             </div>
+
+             <div className="floating-badge-clean">
+               <div className="badge-icon"><Leaf size={16} /></div>
+               <div className="badge-text">
+                 <strong>Cleaner Cities</strong>
+                 <span>Brighter Tomorrows</span>
+               </div>
+             </div>
+          </div>
+        </div>
       </section>
 
       {/* The 4 Core Pillars - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3cb8e798c8191840ff06f0e633fbc */}
