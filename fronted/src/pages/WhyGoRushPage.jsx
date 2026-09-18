@@ -156,11 +156,16 @@ export default function WhyGoRushPage({ onJoinClick }) {
   return (
     <div className="subpage-wrap">
       {/* Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa389920d7881918651e7e81909beae */}
-      <section className="driver-first-section">
+      <section className="driver-first-section scenic-hero-layout">
+        <div className="driver-first-scenic-bg" aria-hidden="true">
+          {/* Using the scenic background from home page */}
+          <img src="/features-scenic-bg.webp" alt="Scenic Road" />
+        </div>
+        
         <div className="driver-first-grid">
           {/* Left Column: 3 Benefit Pills + Handwritten Cursive */}
           <div className="driver-first-left-stack">
-            <div className="driver-first-pill-item">
+            <div className="driver-first-pill-item glass-card">
               <div className="driver-first-icon-circle">
                 <CircleDollarSign size={18} />
               </div>
@@ -170,7 +175,7 @@ export default function WhyGoRushPage({ onJoinClick }) {
               </div>
             </div>
 
-            <div className="driver-first-pill-item">
+            <div className="driver-first-pill-item glass-card">
               <div className="driver-first-icon-circle">
                 <ShieldCheck size={18} />
               </div>
@@ -180,7 +185,7 @@ export default function WhyGoRushPage({ onJoinClick }) {
               </div>
             </div>
 
-            <div className="driver-first-pill-item">
+            <div className="driver-first-pill-item glass-card">
               <div className="driver-first-icon-circle">
                 <Users size={18} />
               </div>
@@ -199,8 +204,8 @@ export default function WhyGoRushPage({ onJoinClick }) {
             </div>
           </div>
 
-          {/* Center Column: Eyebrow + Headline + Lead + 3 Badges + Ticker */}
-          <div className="driver-first-center-col">
+          {/* Center Column: Eyebrow + Headline + Lead + 3 Badges */}
+          <div className="driver-first-center-col glass-card">
             <div className="driver-first-eyebrow-pill">
               <Users size={13} />
               <span>THE DRIVER-FIRST ADVANTAGE</span>
@@ -236,30 +241,55 @@ export default function WhyGoRushPage({ onJoinClick }) {
               </div>
             </div>
 
-            <div className="driver-first-bottom-ticker">
-              <span className="driver-ticker-line" />
-              <span className="driver-ticker-text">DRIVE • EARN • GROW TOGETHER</span>
-              <span className="driver-ticker-line" />
+            <div className="driver-first-cta-row">
+               <button
+                  type="button"
+                  className="nav-become-driver-btn"
+                  onClick={onJoinClick}
+                >
+                  <span>Join as a Driver</span>
+                  <ArrowRight size={16} />
+                </button>
             </div>
           </div>
 
-          {/* Right Column: Driver Visual Hero Artwork */}
-          <div className="driver-first-right-visual" aria-hidden="true">
-            <img
-              src="/driver-first-hero.png"
-              alt="GoRush Driver - Real Drivers Real Opportunities"
-              className="driver-first-hero-img"
-            />
+          {/* Right Column: Stats Board */}
+          <div className="driver-first-right-stats glass-card">
+            <div className="stats-row">
+              <div className="stat-icon-wrapper">
+                <Users size={20} />
+              </div>
+              <div className="stat-text">
+                <span className="stat-val">10K+</span>
+                <span className="stat-label">Active Drivers</span>
+              </div>
+            </div>
+            
+            <div className="stats-row">
+              <div className="stat-icon-wrapper">
+                <MapPin size={20} />
+              </div>
+              <div className="stat-text">
+                <span className="stat-val">50+</span>
+                <span className="stat-label">Cities Live</span>
+              </div>
+            </div>
+            
+            <div className="stats-row">
+              <div className="stat-icon-wrapper">
+                <Star size={20} />
+              </div>
+              <div className="stat-text">
+                <span className="stat-val">4.8/5</span>
+                <span className="stat-label">Average Rating</span>
+              </div>
+            </div>
+
+            <div className="right-script-accent">
+               More Miles,<br/>More Freedom
+            </div>
           </div>
         </div>
-
-        {/* Bottom-Left Foliage Leaf Accent */}
-        <img
-          src="/driver-first-leaves.webp"
-          alt=""
-          className="driver-first-corner-leaves"
-          aria-hidden="true"
-        />
       </section>
 
       {/* The 4 Core Pillars - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3cb8e798c8191840ff06f0e633fbc */}
