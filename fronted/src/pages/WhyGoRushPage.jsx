@@ -158,7 +158,7 @@ export default function WhyGoRushPage({ onJoinClick }) {
       {/* Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa389920d7881918651e7e81909beae */}
       <section className="driver-first-section scenic-hero-layout">
         <div className="driver-first-scenic-bg" aria-hidden="true">
-          <img src="/driver-first-bg-new.png" alt="Scenic Road" onError={(e) => { e.target.src="/features-scenic-bg.webp"; }} />
+          <img src="/features-scenic-bg.webp" alt="Scenic Road" />
         </div>
         
         <div className="driver-first-content-wrapper">
@@ -232,6 +232,9 @@ export default function WhyGoRushPage({ onJoinClick }) {
           </div>
 
           <div className="driver-first-right-col" aria-hidden="true">
+             {/* Driver Image overlay */}
+             <img src="/driver-hero-new.png" alt="Driver" className="driver-overlay-img" />
+
              <div className="floating-sign-board">
                 <div className="sign-board-content">
                   More Miles <br/> More Freedom
