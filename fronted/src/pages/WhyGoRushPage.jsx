@@ -246,7 +246,7 @@ export default function WhyGoRushPage({ onJoinClick }) {
           {/* Right Column: Driver Visual Hero Artwork */}
           <div className="driver-first-right-visual" aria-hidden="true">
             <img
-              src="/driver-hero-new.png"
+              src="/driver-first-hero.png"
               alt="GoRush Driver - Real Drivers Real Opportunities"
               className="driver-first-hero-img"
             />
