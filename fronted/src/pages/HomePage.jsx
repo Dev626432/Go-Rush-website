@@ -50,6 +50,7 @@ import '../safety-redesign.css';
 import '../quote-redesign.css';
 import '../final-cta-redesign.css';
 import '../onboarding-hero-redesign.css';
+import '../home-hero-scenic.css';
 
 const featureGroups = [
   {
@@ -346,102 +347,90 @@ export default function HomePage({ onJoinClick, action }) {
         </section>
 
         {/* FEATURES SECTION (MATCHING CHATGPT DESIGN) */}
-        <section className="intro-section" id="features" style={{ 
-          backgroundImage: "url('/onboarding-full-banner.webp')", 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
+        <section className="scenic-hero-section" id="features">
+          <div className="scenic-hero-container">
+            {/* Left Content Column */}
+            <div className="scenic-hero-content">
+              <div className="scenic-kicker">
+                <span>THE GORUSH DIFFERENCE</span>
+                <span className="scenic-kicker-line" />
+              </div>
+              
+              <h2 className="scenic-title">
+                Built around the person
+                <span className="scenic-script">behind the wheel.</span>
+              </h2>
+              
+              <p className="scenic-desc">
+                You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
+              </p>
 
-          {/* Upper-Right Floating GPS Pin & Route Ahead Widget */}
-          <div className="features-bg-route-wrap" aria-hidden="true">
-            <div className="route-pin-beacon">
-              <div className="beacon-dot" />
-            </div>
-            <div className="route-pill-widget">
-              <span>A Better Route Ahead</span>
-              <ArrowRight size={13} />
-            </div>
-          </div>
-
-
-
-
-          {/* Upper-Right Floating Cursive Script */}
-          <div className="features-script-quote" aria-hidden="true">
-            <span>More Miles</span>
-            <span>More Freedom</span>
-            <svg className="features-script-swoosh" viewBox="0 0 130 10" fill="none" style={{ width: '100%', height: 10, marginTop: 2 }}>
-              <path d="M 4 6 Q 65 10 126 3" stroke="#44772b" strokeWidth="2.6" strokeLinecap="round" />
-            </svg>
-          </div>
-
-          {/* Blurred Corner Foliage */}
-          <div className="features-leaf-corner left" aria-hidden="true" />
-          <div className="features-leaf-corner right" aria-hidden="true" />
-
-          {/* Left Grouped Header: Title + Subtitle */}
-          <div className="features-header-wrap">
-            <div className="features-kicker">
-              <span>THE GORUSH DIFFERENCE</span>
-              <span className="features-kicker-line" />
-            </div>
-            <h2 className="features-main-title">
-              Built around the person
-              <em>behind the wheel.</em>
-            </h2>
-            <p className="features-main-desc">
-              You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
-            </p>
-          </div>
-
-          {/* 3 Cards Grid */}
-          <div className={`features-cards-grid feature-grid ${featuresInView ? 'in-view' : ''}`} ref={featureGridRef}>
-            {featureGroups.map(({ num, icon: Icon, eyebrow, title, text, points }, index) => {
-              const cardClass =
-                index === 0
-                  ? 'card-white'
-                  : index === 1
-                  ? 'card-dark-forest'
-                  : 'card-white';
-              return (
-                <article className={`feature-card ${cardClass}`} key={title}>
-                  {/* Decorative Corner Arc */}
-                  <div className="card-top-corner-arc" />
-
-                  {/* Card 1 Animated Route & Tiny Driving Car */}
-                  {index === 0 && <CardRouteAnimation />}
-
-                  <div>
-                    <div className="card-icon-wrap">
-                      <Icon size={22} />
-                    </div>
-                    <div className="card-num-pill">
-                      <span>{num}</span> {eyebrow}
-                    </div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
+              {/* 3 Chips */}
+              <div className="scenic-chips-row">
+                <div className="scenic-chip">
+                  <div className="scenic-chip-icon">
+                    <Navigation size={18} />
                   </div>
-
-                  <div>
-                    <ul>
-                      {points.map((point) => (
-                        <li key={point}>
-                          <span className="point-check-badge">
-                            <Check size={11} strokeWidth={3} />
-                          </span>
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                    <button onClick={() => action(`${eyebrow} details opened`)}>
-                      Explore feature <ArrowRight size={15} />
-                    </button>
+                  <div className="scenic-chip-text">
+                    <strong>Drive Smarter</strong>
+                    <span>Live GPS & optimized routes</span>
                   </div>
-                </article>
-              );
-            })}
+                </div>
+
+                <div className="scenic-chip">
+                  <div className="scenic-chip-icon">
+                    <ShieldCheck size={18} />
+                  </div>
+                  <div className="scenic-chip-text">
+                    <strong>Feel Safer</strong>
+                    <span>24/7 support & emergency help</span>
+                  </div>
+                </div>
+
+                <div className="scenic-chip">
+                  <div className="scenic-chip-icon">
+                    <BarChart3 size={18} />
+                  </div>
+                  <div className="scenic-chip-text">
+                    <strong>Earn More</strong>
+                    <span>Transparent earnings & instant payouts</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="scenic-actions-row">
+                <button className="btn-get-started" onClick={() => action('Get Started clicked')}>
+                  Get Started <ArrowRight size={16} />
+                </button>
+                <button className="btn-watch-video" onClick={() => action('Watch Video clicked')}>
+                  <div className="play-circle">
+                    <Play size={18} fill="currentColor" />
+                  </div>
+                  <div className="watch-text">
+                    <strong>See How It Works</strong>
+                    <span>2 min video</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Visuals Column */}
+            <div className="scenic-hero-visuals">
+              <div className="highway-sign-widget">
+                <span>More Miles</span>
+                <span>More Freedom</span>
+              </div>
+              <div className="cleaner-cities-pill">
+                <div className="cleaner-icon-circle">
+                  <Leaf size={16} />
+                </div>
+                <div className="cleaner-text">
+                  <strong>Cleaner Cities</strong>
+                  <span>Brighter Tomorrows</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
