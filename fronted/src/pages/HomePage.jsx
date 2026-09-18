@@ -346,37 +346,13 @@ export default function HomePage({ onJoinClick, action }) {
         </section>
 
         {/* FEATURES SECTION (MATCHING CHATGPT DESIGN) */}
-        <section className="intro-section" id="features">
-          {/* Top-Right Large Watermark */}
-          <div className="features-watermark">DRIVE YOUR DAY</div>
-
-          {/* Left City Skyline Silhouette */}
-          <svg className="features-bg-skyline" viewBox="0 0 320 480" fill="none" aria-hidden="true">
-            <path
-              d="M0 480 L0 260 L25 260 L25 220 L40 220 L40 180 L55 180 L55 140 L70 140 L70 110 L85 110 L85 80 L95 80 L95 50 L105 50 L105 80 L115 80 L115 150 L140 150 L140 190 L160 190 L160 230 L180 230 L180 270 L210 270 L210 310 L250 310 L250 360 L290 360 L290 420 L320 420 L320 480 Z"
-              fill="rgba(80, 120, 90, 0.35)"
-            />
-            <path
-              d="M0 480 L0 320 L35 320 L35 280 L75 280 L75 240 L120 240 L120 290 L170 290 L170 340 L230 340 L230 390 L280 390 L280 440 L320 440 L320 480 Z"
-              fill="rgba(60, 100, 70, 0.25)"
-            />
-            <path
-              d="M-20 380 Q 80 340 180 380 T 340 370 L 340 480 L -20 480 Z"
-              fill="rgba(100, 140, 90, 0.22)"
-            />
-          </svg>
-
-          {/* Right Highway Silhouette */}
-          <svg className="features-bg-highway" viewBox="0 0 380 450" fill="none" aria-hidden="true">
-            <path
-              d="M50 450 C 120 350 220 280 380 230 L 380 450 Z"
-              fill="rgba(120, 160, 100, 0.22)"
-            />
-            <path
-              d="M0 450 C 140 380 260 340 380 320 L 380 450 Z"
-              fill="rgba(90, 130, 80, 0.28)"
-            />
-          </svg>
+        <section className="intro-section" id="features" style={{ 
+          backgroundImage: "url('/onboarding-full-banner.webp')", 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
 
           {/* Upper-Right Floating GPS Pin & Route Ahead Widget */}
           <div className="features-bg-route-wrap" aria-hidden="true">
@@ -389,16 +365,8 @@ export default function HomePage({ onJoinClick, action }) {
             </div>
           </div>
 
-          {/* Background Dashed Route Curve */}
-          <svg className="features-bg-dashed-route" viewBox="0 0 320 220" fill="none" aria-hidden="true">
-            <path
-              d="M 280 20 C 220 50 140 90 60 190"
-              stroke="#8cb344"
-              strokeWidth="2.5"
-              strokeDasharray="6 7"
-              strokeLinecap="round"
-            />
-          </svg>
+
+
 
           {/* Upper-Right Floating Cursive Script */}
           <div className="features-script-quote" aria-hidden="true">
