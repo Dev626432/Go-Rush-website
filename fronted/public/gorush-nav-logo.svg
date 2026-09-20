@@ -1,0 +1,60 @@
+
+<svg width="600" height="140" viewBox="0 0 600 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinNavGrad" x1="30" y1="10" x2="110" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="50%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+
+    <linearGradient id="leafNavGrad" x1="80" y1="50" x2="120" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#bef264" />
+      <stop offset="100%" stop-color="#65a30d" />
+    </linearGradient>
+
+    <linearGradient id="rushTextGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#559628" />
+      <stop offset="100%" stop-color="#72b834" />
+    </linearGradient>
+
+    <filter id="pinShadow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#15803d" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Left Icon Emblem (Scale ~ 0.28) -->
+  <g transform="translate(10, 8)" filter="url(#pinShadow)">
+    <!-- Speed Lines -->
+    <rect x="5" y="44" width="34" height="7" rx="3.5" fill="#4ade80" opacity="0.7" />
+    <rect x="0" y="58" width="40" height="7" rx="3.5" fill="#22c55e" opacity="0.8" />
+    <rect x="10" y="72" width="30" height="7" rx="3.5" fill="#16a34a" opacity="0.9" />
+
+    <!-- Pin Shape -->
+    <path d="M 72 20 C 48 20 28 40 28 64 C 28 82 43 96 64 122 C 68 127 76 127 80 122 C 101 96 116 82 116 64 C 116 40 96 20 72 20 Z"
+          fill="url(#pinNavGrad)" />
+    <!-- Pin Center Hole -->
+    <circle cx="72" cy="59" r="16" fill="#ffffff" />
+
+    <!-- Overlapping Leaf -->
+    <path d="M 70 82 C 70 82 92 68 102 59 C 105 74 97 92 81 100 C 70 104 69 91 70 82 Z"
+          fill="url(#leafNavGrad)" />
+    <path d="M 70 82 Q 86 79 101 60" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <!-- Brand Typography: "GoRush" -->
+  <g transform="translate(145, 20)">
+    <!-- Wordmark -->
+    <text x="0" y="65" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="58" letter-spacing="-2.5" fill="#14251b">
+      Go<tspan fill="url(#rushTextGrad)" font-style="italic" letter-spacing="-1.5">Rush</tspan>
+    </text>
+
+    <!-- Clean Tagline Subtitle -->
+    <g transform="translate(4, 90)">
+      <text x="0" y="0" font-family="'DM Mono', monospace, sans-serif" font-weight="700" font-size="12" letter-spacing="4" fill="#607663" text-transform="uppercase">
+        DRIVE · EARN · GROW
+      </text>
+      <!-- Small dynamic forward chevron accent -->
+      <circle cx="215" cy="-4" r="3" fill="#65a30d" />
+    </g>
+  </g>
+</svg>

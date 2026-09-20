@@ -31,8 +31,8 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
         {/* Left: Brand Identity with Logo */}
         <Link className="nav-brand-wrap" to="/" onClick={() => setMenuOpen(false)}>
           <img
-            src="/gorush-nav-logo.webp"
-            alt="GoRush Drivers Drive Change"
+            src="/gorush-nav-logo.png"
+            alt="GoRush - Drive. Earn. Grow."
             className="nav-brand-logo"
             style={{ height: '42px', objectFit: 'contain' }}
           />
