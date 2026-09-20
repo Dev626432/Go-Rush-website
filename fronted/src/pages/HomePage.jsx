@@ -759,47 +759,27 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* SAFETY SECTION - CHATGPT SHOWCASE REDESIGN */}
+        {/* SAFETY SECTION REDESIGNED - CHATGPT IMAGE SHOWCASE */}
         <section className="safety-redesign-wrap" id="safety">
-          <div className="safety-banner-container">
+          <div className="safety-banner-wrapper">
             <img
-              src="/chatgpt-safety-sep20.png"
-              alt="GoRush Safety - Confidence is part of every ride"
-              className="safety-banner-image"
-              loading="lazy"
+              src="/safety-showcase-sep20.png"
+              alt="Confidence is part of every ride - GoRush Safety"
+              className="safety-banner-img"
             />
-
-            {/* Real Interactive Button: Drive with confidence */}
+            {/* Real Interactive Button over 'Drive with confidence' */}
             <button
               type="button"
-              className="safety-interactive-real-btn"
+              className="safety-banner-real-btn"
               onClick={onJoinClick}
-              id="drive-with-confidence-btn"
-              aria-label="Drive with confidence"
+              title="Drive with confidence"
+              id="safety-drive-confidence-btn"
             >
               <span>Drive with confidence</span>
-              <span className="safety-real-btn-arrow">
-                <ArrowRight size={17} />
+              <span className="safety-banner-btn-arrow">
+                <ArrowRight size={15} />
               </span>
             </button>
-
-            {/* Hotspot: Safer rides Stronger community card */}
-            <button
-              type="button"
-              className="safety-hotspot-safer-rides"
-              onClick={onJoinClick}
-              title="Safer rides - Stronger community"
-              aria-label="Safer rides Stronger community"
-            />
-
-            {/* Hotspot: Safer Drivers Happier Journeys badge */}
-            <button
-              type="button"
-              className="safety-hotspot-safer-drivers"
-              onClick={onJoinClick}
-              title="Safer Drivers - Happier Journeys"
-              aria-label="Safer Drivers Happier Journeys"
-            />
           </div>
         </section>
 
