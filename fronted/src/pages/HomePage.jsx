@@ -759,201 +759,47 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* SAFETY SECTION REDESIGNED */}
+        {/* SAFETY SECTION - CHATGPT SHOWCASE REDESIGN */}
         <section className="safety-redesign-wrap" id="safety">
-          {/* Scenic Background: Highway Overpass & City Skyline */}
-          <div className="safety-bg-layer">
+          <div className="safety-banner-container">
             <img
-              src="/safety-scenic-bg.jpg"
-              alt="GoRush Safety Highway"
-              className="safety-bg-image"
+              src="/chatgpt-safety-sep20.png"
+              alt="GoRush Safety - Confidence is part of every ride"
+              className="safety-banner-image"
+              loading="lazy"
             />
-            <div className="safety-bg-fade" />
-          </div>
 
-          {/* Decorative Corner Leaves */}
-          <svg className="safety-leaf-top-left" viewBox="0 0 100 100" fill="none">
-            <path
-              d="M15,85 Q35,30 85,15 Q65,65 15,85 Z M40,45 Q75,40 85,15"
-              stroke="#558026"
-              strokeWidth="2"
-              fill="rgba(110, 160, 50, 0.12)"
+            {/* Real Interactive Button: Drive with confidence */}
+            <button
+              type="button"
+              className="safety-interactive-real-btn"
+              onClick={onJoinClick}
+              id="drive-with-confidence-btn"
+              aria-label="Drive with confidence"
+            >
+              <span>Drive with confidence</span>
+              <span className="safety-real-btn-arrow">
+                <ArrowRight size={17} />
+              </span>
+            </button>
+
+            {/* Hotspot: Safer rides Stronger community card */}
+            <button
+              type="button"
+              className="safety-hotspot-safer-rides"
+              onClick={onJoinClick}
+              title="Safer rides - Stronger community"
+              aria-label="Safer rides Stronger community"
             />
-          </svg>
 
-          <svg className="safety-leaf-bottom-left" viewBox="0 0 120 120" fill="none">
-            <path
-              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
-              stroke="#558026"
-              strokeWidth="2"
-              fill="rgba(110, 160, 50, 0.14)"
+            {/* Hotspot: Safer Drivers Happier Journeys badge */}
+            <button
+              type="button"
+              className="safety-hotspot-safer-drivers"
+              onClick={onJoinClick}
+              title="Safer Drivers - Happier Journeys"
+              aria-label="Safer Drivers Happier Journeys"
             />
-          </svg>
-
-          <svg className="safety-leaf-bottom-right" viewBox="0 0 120 120" fill="none">
-            <path
-              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
-              stroke="#558026"
-              strokeWidth="2"
-              fill="rgba(110, 160, 50, 0.14)"
-            />
-          </svg>
-
-          {/* Top-Right Dashed Swoosh Line */}
-          <svg className="safety-swoosh-svg" viewBox="0 0 400 200" fill="none">
-            <path
-              d="M380,10 Q260,80 180,110 T0,160"
-              stroke="#8fb572"
-              strokeWidth="1.5"
-              strokeDasharray="5,6"
-              opacity="0.75"
-            />
-          </svg>
-
-          {/* Cursive Handwritten Quotes */}
-          <div className="safety-script-quote-top">
-            More People
-            <br />
-            <em>More Possibilities</em>
-          </div>
-
-          <div className="safety-script-quote-bottom">
-            Safer People
-            <br />
-            <em>Brighter Tomorrows</em>
-          </div>
-
-          <div className="safety-container">
-            {/* LEFT COLUMN: 3D Holographic Radar & Floating Pills */}
-            <div className="safety-radar-col">
-              <div className="safety-radar-stage">
-                {/* Concentric Radar Rings */}
-                <div className="radar-ring radar-ring-1" />
-                <div className="radar-ring radar-ring-2" />
-                <div className="radar-ring radar-ring-3" />
-
-                {/* Orbital Checkpoint Dots */}
-                <span className="radar-waypoint radar-waypoint-top" />
-                <span className="radar-waypoint radar-waypoint-bottom" />
-                <span className="radar-waypoint radar-waypoint-right" />
-
-                {/* Central 3D Crystal Shield Badge */}
-                <div className="safety-center-crystal" onClick={() => setFormOpen(true)}>
-                  <div className="safety-center-halo" />
-                  <img
-                    src="/safety-center-shield.png"
-                    alt="24/7 Safety Verified"
-                  />
-                </div>
-
-                {/* Floating Pill 1: Identity Verified */}
-                <div className="safety-floating-pill safety-pill-identity">
-                  <UserCheck size={16} className="pill-icon" />
-                  <span className="pill-label">Identity verified</span>
-                  <span className="pill-check-badge">
-                    <Check size={11} />
-                  </span>
-                </div>
-
-                {/* Floating Pill 2: Trip Sharing Active */}
-                <div className="safety-floating-pill safety-pill-trip">
-                  <Send size={15} className="pill-icon" />
-                  <span className="pill-label">Trip sharing active</span>
-                  <span className="pill-check-badge">
-                    <Check size={11} />
-                  </span>
-                </div>
-
-                {/* Floating Pill 3: 24/7 Live Support */}
-                <div className="safety-floating-pill safety-pill-support">
-                  <Headphones size={16} className="pill-icon" />
-                  <span className="pill-label">24/7 live support</span>
-                  <span className="pill-check-badge">
-                    <Check size={11} />
-                  </span>
-                </div>
-
-                {/* Floating Pill 4: Safer Rides Community Card */}
-                <div className="safety-card-community" onClick={() => setFormOpen(true)}>
-                  <BarChart3 size={18} className="community-icon" />
-                  <div className="community-text">
-                    <strong>Safer rides</strong>
-                    <span>Stronger community</span>
-                  </div>
-                  <ArrowRight size={14} className="community-arrow" />
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN: Copy & Features Points */}
-            <div className="safety-copy-col">
-              <div className="safety-eyebrow">
-                WE HAVE YOUR BACK <span className="safety-eyebrow-line" />
-              </div>
-
-              <h2 className="safety-headline">
-                Confidence is
-                <br />
-                <em>part of every ride.</em>
-              </h2>
-
-              <p className="safety-desc">
-                From identity checks before your first ride to an always-on safety team, GoRush is built so you can focus on the road ahead.
-              </p>
-
-              <div className="safety-points-list">
-                <div className="safety-point-item">
-                  <div className="safety-point-icon-box">
-                    <ShieldCheck size={20} />
-                  </div>
-                  <div className="safety-point-text">
-                    <h4 className="safety-point-title">Every driver verified</h4>
-                    <p className="safety-point-desc">Documents and identity checked before you go online.</p>
-                  </div>
-                </div>
-
-                <div className="safety-point-item">
-                  <div className="safety-point-icon-box">
-                    <Users size={20} />
-                  </div>
-                  <div className="safety-point-text">
-                    <h4 className="safety-point-title">Trip sharing built in</h4>
-                    <p className="safety-point-desc">Keep your trusted contacts close to every journey.</p>
-                  </div>
-                </div>
-
-                <div className="safety-point-item">
-                  <div className="safety-point-icon-box">
-                    <Zap size={20} />
-                  </div>
-                  <div className="safety-point-text">
-                    <h4 className="safety-point-title">Help in one tap</h4>
-                    <p className="safety-point-desc">SOS support and incident reporting, whenever you need it.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Button & Trust Note */}
-              <div className="safety-action-row">
-                <button
-                  type="button"
-                  className="safety-primary-btn"
-                  onClick={() => setFormOpen(true)}
-                >
-                  Drive with confidence <ArrowRight size={15} />
-                </button>
-
-                <div className="safety-note-badge">
-                  <div className="safety-note-icon">
-                    <Leaf size={15} />
-                  </div>
-                  <div className="safety-note-text">
-                    <strong>Safer Drivers.</strong>
-                    <span>Happier Journeys.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
