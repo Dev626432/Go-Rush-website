@@ -681,81 +681,79 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* HOW IT WORKS / ONBOARDING - Exact match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa2a81f5f908191a8d3d09aaa99e093 */}
-        <section className="onboarding-redesign-section" id="how-it-works">
-          {/* Top Mini Brand Bar */}
-          <div className="onboarding-top-brand-bar">
-            <div className="onboarding-top-logo">
-              <span>Go</span><span className="logo-accent">Rush</span>
+        {/* HOW IT WORKS / ONBOARDING - NEW CHATGPT REDESIGN */}
+        <section className="new-onboarding-section" id="how-it-works">
+          {/* Top Navigation */}
+          <div className="new-onboarding-nav">
+            <div className="new-onboarding-logo">
+              <Sparkles size={16} color="#3C5935" />
+              <span>THE ROAD IS YOURS</span>
             </div>
-            <div className="onboarding-top-divider" />
-            <div className="onboarding-top-tagline">
-              <span>DRIVE • EARN • GROW</span>
+            <div className="new-onboarding-links">
+              <span>DRIVE • EARN • GROW • TOGETHER</span>
             </div>
           </div>
 
-          <div className="onboarding-main-container">
-            {/* Left Content Column */}
-            <div className="onboarding-left-content">
-              <div className="onboarding-eyebrow-badge">
-                <Sparkles size={13} />
-                <span>STEP-BY-STEP ONBOARDING</span>
+          {/* Main Layout */}
+          <div className="new-onboarding-main">
+            
+            {/* Left Column (Pills & Note) */}
+            <div className="new-onboarding-left">
+              <div className="new-floating-pill">
+                <div className="new-floating-icon"><Wallet size={18} /></div>
+                <div className="new-floating-text"><strong>Flexible</strong><br />Earnings</div>
               </div>
+              <div className="new-floating-pill">
+                <div className="new-floating-icon"><Clock3 size={18} /></div>
+                <div className="new-floating-text"><strong>Be Your</strong><br />Own Boss</div>
+              </div>
+              <div className="new-floating-pill">
+                <div className="new-floating-icon"><Users size={18} /></div>
+                <div className="new-floating-text"><strong>A Growing</strong><br />Community</div>
+              </div>
+              <div className="new-handwritten-note">
+                More Journeys<br />Brighter Tomorrows
+                <svg className="new-handwritten-swoosh" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0,5 Q50,10 100,2" stroke="#5A8545" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                </svg>
+              </div>
+            </div>
 
-              <h2 className="onboarding-headline">
-                <span className="onboarding-headline-line">From signup to your</span>
-                <span className="onboarding-headline-line">first payout.</span>
-                <span className="onboarding-script-wrap">
-                  <em className="onboarding-headline-script">Simple, fast, clear.</em>
-                  <svg className="onboarding-swoosh-svg" viewBox="0 0 280 14" fill="none">
-                    <path d="M 8 8 Q 140 14 270 5" stroke="#729837" strokeWidth="2.8" strokeLinecap="round" />
+            {/* Center Column (Hero Content) */}
+            <div className="new-onboarding-center">
+              <div className="new-hero-badge">
+                <Zap size={14} />
+                <span>JOIN A BETTER TOMORROW</span>
+              </div>
+              <h2 className="new-hero-headline">
+                <div className="new-headline-dark">Your next chapter</div>
+                <div className="new-headline-green">
+                  starts here.
+                  <svg className="new-headline-underline" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0,5 Q50,10 100,5" stroke="#5A8545" strokeWidth="2" fill="none" strokeLinecap="round"/>
                   </svg>
-                </span>
+                </div>
               </h2>
-
-              <p className="onboarding-description">
-                Everything you need to know about getting on the road with GoRush. Fast approvals,
-                clean paperless verification, and clear guidance every step of the journey.
+              <p className="new-hero-subtext">
+                Join thousands of drivers building a better way to work, one ride at a time.
               </p>
-
-              <div className="onboarding-badges-cluster">
-                <div className="onboarding-feature-chip">
-                  <Clock3 size={14} className="onboarding-chip-icon" />
-                  <span>Under 5 minutes setup</span>
-                </div>
-                <div className="onboarding-feature-chip">
-                  <ShieldCheck size={14} className="onboarding-chip-icon" />
-                  <span>Same-day activation</span>
-                </div>
-                <div className="onboarding-feature-chip">
-                  <Zap size={14} className="onboarding-chip-icon" />
-                  <span>Daily direct UPI payout</span>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="onboarding-cta-btn"
-                onClick={onJoinClick}
-              >
+              <button type="button" className="new-hero-cta" onClick={onJoinClick}>
                 <span>Become a GoRush driver</span>
-                <ArrowRight size={16} className="onboarding-cta-btn-arrow" />
+                <ArrowRight size={18} />
               </button>
-
-              <div className="onboarding-social-proof">
-                <Users size={14} />
-                <span>Join thousands of drivers building a better way to work.</span>
+              <div className="new-hero-eta">
+                <Clock3 size={14} />
+                <span>Registration takes less than 5 minutes</span>
               </div>
             </div>
 
-            {/* Right Visual Column (Phone Mockup, City Skyline, Road & Floating Cards) */}
-            <div className="onboarding-right-visual" aria-hidden="true">
-              <img
-                src="/driver-hero-new.png"
-                alt="GoRush Driver Onboarding App and Journey"
-                className="onboarding-showcase-img"
-              />
+            {/* Right Column (Visual Mockup) - HERE IS THE CORRECTED IMAGE! */}
+            <div className="new-onboarding-right" aria-hidden="true">
+              <div className="new-visual-box">
+                <img src="/driver-hero-new.png" alt="App Interface" className="new-visual-image" />
+              </div>
             </div>
+
           </div>
         </section>
 
