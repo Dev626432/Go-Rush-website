@@ -346,91 +346,36 @@ export default function HomePage({ onJoinClick, action }) {
           ))}
         </section>
 
-        {/* FEATURES SECTION (MATCHING CHATGPT DESIGN) */}
+        {/* THE GORUSH DIFFERENCE - CHATGPT SHOWCASE BANNER */}
         <section className="scenic-hero-section" id="features">
-          <div className="scenic-hero-container">
-            {/* Left Content Column */}
-            <div className="scenic-hero-content">
-              <div className="scenic-kicker">
-                <span>THE GORUSH DIFFERENCE</span>
-                <span className="scenic-kicker-line" />
-              </div>
-              
-              <h2 className="scenic-title">
-                Built around the person
-                <span className="scenic-script">behind the wheel.</span>
-              </h2>
-              
-              <p className="scenic-desc">
-                You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
-              </p>
+          <div className="difference-banner-wrapper">
+            <img
+              src="/difference-showcase-sep21.png"
+              alt="Built around the person behind the wheel - The GoRush Difference"
+              className="difference-banner-img"
+            />
+            {/* Real Interactive Button over 'Get Started' */}
+            <button
+              type="button"
+              className="difference-banner-real-btn"
+              onClick={onJoinClick}
+              title="Get Started"
+              id="difference-get-started-btn"
+            >
+              <span>Get Started</span>
+              <span className="difference-banner-btn-arrow">
+                <ArrowRight size={15} />
+              </span>
+            </button>
 
-              {/* 3 Chips */}
-              <div className="scenic-chips-row">
-                <div className="scenic-chip">
-                  <div className="scenic-chip-icon">
-                    <Navigation size={18} />
-                  </div>
-                  <div className="scenic-chip-text">
-                    <strong>Drive Smarter</strong>
-                    <span>Live GPS & optimized routes</span>
-                  </div>
-                </div>
-
-                <div className="scenic-chip">
-                  <div className="scenic-chip-icon">
-                    <ShieldCheck size={18} />
-                  </div>
-                  <div className="scenic-chip-text">
-                    <strong>Feel Safer</strong>
-                    <span>24/7 support & emergency help</span>
-                  </div>
-                </div>
-
-                <div className="scenic-chip">
-                  <div className="scenic-chip-icon">
-                    <BarChart3 size={18} />
-                  </div>
-                  <div className="scenic-chip-text">
-                    <strong>Earn More</strong>
-                    <span>Transparent earnings & instant payouts</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="scenic-actions-row">
-                <button className="btn-get-started" onClick={() => action('Get Started clicked')}>
-                  Get Started <ArrowRight size={16} />
-                </button>
-                <button className="btn-watch-video" onClick={() => action('Watch Video clicked')}>
-                  <div className="play-circle">
-                    <Play size={18} fill="currentColor" />
-                  </div>
-                  <div className="watch-text">
-                    <strong>See How It Works</strong>
-                    <span>2 min video</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            {/* Right Visuals Column */}
-            <div className="scenic-hero-visuals">
-              <div className="highway-sign-widget">
-                <span>More Miles</span>
-                <span>More Freedom</span>
-              </div>
-              <div className="cleaner-cities-pill">
-                <div className="cleaner-icon-circle">
-                  <Leaf size={16} />
-                </div>
-                <div className="cleaner-text">
-                  <strong>Cleaner Cities</strong>
-                  <span>Brighter Tomorrows</span>
-                </div>
-              </div>
-            </div>
+            {/* Interactive Link over 'See How It Works' */}
+            <Link
+              to="/how-it-works"
+              className="difference-banner-video-btn"
+              title="See How It Works"
+              id="difference-see-how-btn"
+              aria-label="See How It Works"
+            />
           </div>
         </section>
 
