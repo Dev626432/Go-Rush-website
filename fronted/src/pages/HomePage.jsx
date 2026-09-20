@@ -739,7 +739,9 @@ export default function HomePage({ onJoinClick, action }) {
               </p>
               <button type="button" className="new-hero-cta" onClick={onJoinClick}>
                 <span>Become a GoRush driver</span>
-                <ArrowRight size={18} />
+                <span className="new-hero-cta-arrow">
+                  <ArrowRight size={17} />
+                </span>
               </button>
               <div className="new-hero-eta">
                 <Clock3 size={14} />
