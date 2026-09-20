@@ -682,73 +682,27 @@ export default function HomePage({ onJoinClick, action }) {
         </section>
 
         {/* HOW IT WORKS / ONBOARDING - NEW CHATGPT REDESIGN */}
+        {/* HOW IT WORKS / ONBOARDING - CHATGPT SHOWCASE */}
         <section className="new-onboarding-section" id="how-it-works">
-          {/* Top Navigation */}
-          <div className="new-onboarding-nav">
-            <div className="new-onboarding-logo">
-              <Sparkles size={16} color="#3C5935" />
-              <span>THE ROAD IS YOURS</span>
-            </div>
-            <div className="new-onboarding-links">
-              <span>DRIVE • EARN • GROW • TOGETHER</span>
-            </div>
-          </div>
-
-          {/* Main Layout */}
-          <div className="new-onboarding-main">
-            
-            {/* Left Column (Pills & Note) */}
-            <div className="new-onboarding-left">
-              <div className="new-floating-pill">
-                <div className="new-floating-icon"><Wallet size={18} /></div>
-                <div className="new-floating-text"><strong>Flexible</strong><br />Earnings</div>
-              </div>
-              <div className="new-floating-pill">
-                <div className="new-floating-icon"><Clock3 size={18} /></div>
-                <div className="new-floating-text"><strong>Be Your</strong><br />Own Boss</div>
-              </div>
-              <div className="new-floating-pill">
-                <div className="new-floating-icon"><Users size={18} /></div>
-                <div className="new-floating-text"><strong>A Growing</strong><br />Community</div>
-              </div>
-              <div className="new-handwritten-note">
-                More Journeys<br />Brighter Tomorrows
-                <svg className="new-handwritten-swoosh" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0,5 Q50,10 100,2" stroke="#5A8545" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                </svg>
-              </div>
-            </div>
-
-            {/* Center Column (Hero Content) */}
-            <div className="new-onboarding-center">
-              <div className="new-hero-badge">
-                <Zap size={14} />
-                <span>JOIN A BETTER TOMORROW</span>
-              </div>
-              <h2 className="new-hero-headline">
-                <div className="new-headline-dark">Your next chapter</div>
-                <div className="new-headline-green">
-                  starts here.
-                  <svg className="new-headline-underline" viewBox="0 0 100 10" preserveAspectRatio="none">
-                    <path d="M0,5 Q50,10 100,5" stroke="#5A8545" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                  </svg>
-                </div>
-              </h2>
-              <p className="new-hero-subtext">
-                Join thousands of drivers building a better way to work, one ride at a time.
-              </p>
-              <button type="button" className="new-hero-cta" onClick={onJoinClick}>
-                <span>Become a GoRush driver</span>
-                <span className="new-hero-cta-arrow">
-                  <ArrowRight size={17} />
-                </span>
-              </button>
-              <div className="new-hero-eta">
-                <Clock3 size={14} />
-                <span>Registration takes less than 5 minutes</span>
-              </div>
-            </div>
-
+          <div className="onboarding-banner-wrapper">
+            <img
+              src="/onboarding-showcase-sep20.png"
+              alt="Your next chapter starts here - GoRush"
+              className="onboarding-banner-img"
+            />
+            {/* Real Interactive Button over 'Become a GoRush driver' */}
+            <button
+              type="button"
+              className="onboarding-banner-real-btn"
+              onClick={onJoinClick}
+              title="Become a GoRush driver"
+              id="onboarding-become-driver-btn"
+            >
+              <span>Become a GoRush driver</span>
+              <span className="onboarding-banner-btn-arrow">
+                <ArrowRight size={17} />
+              </span>
+            </button>
           </div>
         </section>
 
