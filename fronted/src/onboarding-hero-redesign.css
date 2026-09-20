@@ -38,10 +38,14 @@
 .new-onboarding-main {
   display: flex;
   flex: 1;
-  padding: 2rem 3rem;
-  justify-content: space-between;
+  padding: 3rem 4rem 4.5rem;
+  justify-content: center;
   align-items: center;
+  gap: 5rem;
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Left Column - Floating Pills */
@@ -49,7 +53,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 20%;
+  width: auto;
+  min-width: 250px;
   z-index: 2;
 }
 
@@ -106,7 +111,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 45%;
+  flex: 1;
+  max-width: 680px;
   z-index: 2;
 }
 

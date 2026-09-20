@@ -209,13 +209,6 @@ export default function HowItWorksPage({ onJoinClick }) {
             </div>
           </div>
 
-          {/* Right Column (Visual Mockup) - HERE IS THE CORRECTED IMAGE! */}
-          <div className="new-onboarding-right" aria-hidden="true">
-            <div className="new-visual-box">
-              <img src="/driver-hero-new.png" alt="App Interface" className="new-visual-image" />
-            </div>
-          </div>
-
         </div>
       </section>
 
