@@ -46,10 +46,33 @@ const cityMultipliers = {
 };
 
 const vehicleRates = {
-  bike: { label: 'Bike / Scooter', baseFare: 80, fuelCostPerRide: 15, icon: Bike },
-  auto: { label: 'Auto Rickshaw', baseFare: 130, fuelCostPerRide: 25, icon: Navigation },
-  cab: { label: 'Cab / Sedan', baseFare: 250, fuelCostPerRide: 50, icon: CarFront },
+  bike: { label: 'Bike / Scooter', baseFare: 92.5, fuelPct: 0.22, icon: Bike },
+  auto: { label: 'Auto Rickshaw', baseFare: 145, fuelPct: 0.26, icon: Navigation },
+  cab: { label: 'Cab / Sedan', baseFare: 265, fuelPct: 0.28, icon: CarFront },
 };
+
+function computeLocalEarnings(cityName, vehicleKey, hours, days) {
+  const veh = vehicleRates[vehicleKey] || vehicleRates.bike;
+  const mult = cityMultipliers[cityName] || 1;
+  const ridesPerHour = 1.5;
+  const totalRidesPerDay = hours * ridesPerHour;
+  const fare = veh.baseFare * mult;
+  const dailyGross = totalRidesPerDay * fare;
+  const daysPerMonth = days * 4.33;
+  const monthlyGross = Math.round(dailyGross * daysPerMonth);
+  const platformFee = Math.round(monthlyGross * 0.10);
+  const estimatedFuelCost = Math.round(monthlyGross * veh.fuelPct);
+  const monthlyNet = monthlyGross - platformFee - estimatedFuelCost;
+  const dailyNet = Math.round(monthlyNet / daysPerMonth);
+
+  return {
+    dailyNet,
+    monthlyNet,
+    monthlyGross,
+    platformFee,
+    estimatedFuelCost,
+  };
+}
 
 export default function EarningsPage({ onJoinClick }) {
   const [city, setCity] = useState('Indore');
@@ -57,52 +80,34 @@ export default function EarningsPage({ onJoinClick }) {
   const [hoursPerDay, setHoursPerDay] = useState(7);
   const [daysPerWeek, setDaysPerWeek] = useState(6);
   
-  const [earnings, setEarnings] = useState({
-    dailyNet: 0,
-    monthlyNet: 0,
-    monthlyGross: 0,
-    platformFee: 0,
-    estimatedFuelCost: 0
-  });
+  const [earnings, setEarnings] = useState(() => computeLocalEarnings('Indore', 'bike', 7, 6));
   const [isCalculating, setIsCalculating] = useState(false);
 
-  const currentVehicle = vehicleRates[vehicle];
+  const currentVehicle = vehicleRates[vehicle] || vehicleRates.bike;
 
   useEffect(() => {
-    const fetchCalculations = async () => {
-      setIsCalculating(true);
-      try {
-        // Derive some realistic metrics based on hours to send to backend API
-        const ridesPerHour = 1.5;
-        const averageDailyRides = Math.round(hoursPerDay * ridesPerHour);
-        const cityMultiplier = cityMultipliers[city] || 1;
-        const averageFare = Math.round(currentVehicle.baseFare * cityMultiplier);
-        const fuelCost = Math.round(currentVehicle.fuelCostPerRide * averageDailyRides * cityMultiplier);
+    // Immediately calculate dynamic local numbers so values are never 0 or NaN
+    setEarnings(computeLocalEarnings(city, vehicle, hoursPerDay, daysPerWeek));
 
+    const fetchCalculations = async () => {
+      try {
         const response = await api.calculateEarnings({
           city,
           vehicleType: currentVehicle.label,
           hoursPerDay,
           daysPerWeek,
-          averageDailyRides,
-          averageFare,
           platformFeePercentage: 10,
-          fuelCost,
-          otherRunningCost: 50 // Maintenance buffer
         });
 
-        if (response.success) {
+        if (response && response.success && response.data && response.data.estimations) {
           setEarnings(response.data.estimations);
         }
       } catch (err) {
-        console.error('Failed to calculate earnings:', err);
-      } finally {
-        setIsCalculating(false);
+        // Fallback already active with computeLocalEarnings
       }
     };
 
-    // Debounce the API call slightly
-    const timeoutId = setTimeout(fetchCalculations, 400);
+    const timeoutId = setTimeout(fetchCalculations, 500);
     return () => clearTimeout(timeoutId);
   }, [city, vehicle, hoursPerDay, daysPerWeek]);
 
@@ -176,19 +181,7 @@ export default function EarningsPage({ onJoinClick }) {
             </div>
           </div>
 
-          {/* Floating 'Same City. More Opportunities.' Sticker */}
-          <div className="calc-floating-sticker-wrap">
-            <img
-              src="/calc-sticker-content.webp"
-              alt="Same City. More Opportunities."
-              className="calc-floating-sticker-img"
-            />
-          </div>
 
-          {/* Behind-Card Foliage Leaves */}
-          <div className="calc-floating-leaves-wrap" aria-hidden="true">
-            <img src="/earnings-hero-leaves.webp" alt="" />
-          </div>
 
           {/* Main Dual-Tone Split Card */}
           <div className="calc-dual-container">
