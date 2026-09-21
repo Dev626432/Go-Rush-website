@@ -21,6 +21,7 @@ import {
   User,
   Users,
   Wallet,
+  X,
   Zap,
 } from 'lucide-react';
 import './pages.css';
@@ -117,28 +118,36 @@ const faqs = [
     q: 'How long does the document verification process take?',
     a: 'Most profiles are verified in less than 2 hours. If your photos are clear and details match your Aadhaar, activation is same-day so you can start driving immediately.',
     icon: FileText,
+    category: 'Onboarding',
+    tip: 'Keep clear photos of your documents to get faster approval.',
   },
   {
     q: 'Is there any joining fee or security deposit?',
     a: 'Absolutely not. GoRush does not charge any upfront joining fee, kit fee, or security deposit. You can register and test the platform completely free.',
     icon: IndianRupee,
+    category: 'Payments',
+    tip: 'Zero deposit required. 100% free registration.',
   },
   {
     q: 'Can I choose my own driving hours?',
     a: 'Yes, 100%. You have total freedom. Turn the app online whenever you want to drive, and switch offline when you want to take a break or spend time with family.',
     icon: Clock3,
+    category: 'Onboarding',
+    tip: 'Drive part-time, full-time, or weekend shifts at your choice.',
   },
   {
     q: 'How and when do I receive my earnings?',
     a: 'Trip earnings are settled directly to your UPI ID or bank account every single day. For cash rides, you collect the fare directly from the passenger with zero delay.',
     icon: Wallet,
+    category: 'Payments',
+    tip: 'Daily auto-settlement directly into your bank or UPI account.',
   },
 ];
-
 
 export default function HowItWorksPage({ onJoinClick }) {
   const [selectedVehicle, setSelectedVehicle] = useState('bike');
   const [openFaq, setOpenFaq] = useState(0);
+  const [selectedFaqCat, setSelectedFaqCat] = useState('All Questions');
 
   return (
     <div className="subpage-wrap">
@@ -355,56 +364,201 @@ export default function HowItWorksPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Driver FAQs Redesign matching ChatGPT Showcase */}
-      <section className="faq-showcase-section-wrap">
-        {/* Scenic Wings */}
-        <div className="faq-scenery-left" aria-hidden="true">
-          <img src="/faq-scenery-left.webp" alt="" />
-        </div>
-        <div className="faq-scenery-right" aria-hidden="true">
-          <img src="/faq-scenery-right.webp" alt="" />
-        </div>
+      {/* Driver FAQs - Sep 21 Edition with Real Interactive Buttons */}
+      <section className="faq-showcase-section" id="faq-showcase">
+        <div className="faq-container">
+          <div className="faq-banner-wrapper">
+            {/* Cleaned AI Banner without fake top bar */}
+            <img
+              src="/faq-showcase-sep21.png"
+              alt="Got questions? We've got answers - GoRush Driver FAQs"
+              className="faq-banner-img"
+            />
 
-        <div className="faq-inner-container">
-          <div className="faq-header">
-            <div className="faq-eyebrow-pill">
-              <MessageSquare size={13} />
-              <span>COMMON QUESTIONS</span>
-            </div>
-            <h2 className="faq-headline">
-              <span>Got questions?</span>
-              <span className="faq-headline-italic">
-                We've got answers.
-                <svg viewBox="0 0 170 14" fill="none" className="faq-headline-swoosh" aria-hidden="true">
-                  <path d="M 4 8 Q 85 2 166 7" stroke="#729837" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-              </span>
-            </h2>
-            <p className="faq-subtitle">Clear details about onboarding, documents, payments, and support.</p>
-          </div>
+            {/* Category Tab 1: All Questions */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-all ${selectedFaqCat === 'All Questions' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('All Questions')}
+              title="View All Questions"
+              aria-label="View All Questions"
+            >
+              {selectedFaqCat !== 'All Questions' && (
+                <span className="faq-cat-inactive-overlay">
+                  <span>All Questions</span>
+                </span>
+              )}
+            </button>
 
-          <div className="faq-accordion-list">
-            {faqs.map((f, idx) => {
-              const IconComp = f.icon;
-              return (
-                <div
-                  className={`faq-accordion-item ${openFaq === idx ? 'active' : ''}`}
-                  key={f.q}
-                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                >
-                  <div className="faq-item-icon">
-                    <IconComp size={22} />
+            {/* Category Tab 2: Onboarding */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-onboarding ${selectedFaqCat === 'Onboarding' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Onboarding')}
+              title="Onboarding Questions"
+              aria-label="Onboarding Questions"
+            >
+              {selectedFaqCat === 'Onboarding' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Onboarding</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 3: Documents */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-documents ${selectedFaqCat === 'Documents' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Documents')}
+              title="Documents Questions"
+              aria-label="Documents Questions"
+            >
+              {selectedFaqCat === 'Documents' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Documents</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 4: Payments */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-payments ${selectedFaqCat === 'Payments' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Payments')}
+              title="Payments Questions"
+              aria-label="Payments Questions"
+            >
+              {selectedFaqCat === 'Payments' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Payments</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 5: Account */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-account ${selectedFaqCat === 'Account' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Account')}
+              title="Account Questions"
+              aria-label="Account Questions"
+            >
+              {selectedFaqCat === 'Account' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Account</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 6: Support */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-support ${selectedFaqCat === 'Support' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Support')}
+              title="Support Questions"
+              aria-label="Support Questions"
+            >
+              {selectedFaqCat === 'Support' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Support</span>
+                </span>
+              )}
+            </button>
+
+            {/* Accordion Row 0 (Already expanded in graphic by default) */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-0"
+              onClick={() => setOpenFaq(openFaq === 0 ? -1 : 0)}
+              title="Toggle Question: Document Verification"
+              aria-label="Toggle Question: Document Verification"
+            />
+
+            {/* Accordion Row 1: Joining Fee */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-1"
+              onClick={() => setOpenFaq(openFaq === 1 ? -1 : 1)}
+              title="View Question: Joining Fee or Deposit"
+              aria-label="View Question: Joining Fee or Deposit"
+            />
+
+            {/* Accordion Row 2: Driving Hours */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-2"
+              onClick={() => setOpenFaq(openFaq === 2 ? -1 : 2)}
+              title="View Question: Driving Hours"
+              aria-label="View Question: Driving Hours"
+            />
+
+            {/* Accordion Row 3: Receive Earnings */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-3"
+              onClick={() => setOpenFaq(openFaq === 3 ? -1 : 3)}
+              title="View Question: Receive Earnings"
+              aria-label="View Question: Receive Earnings"
+            />
+
+            {/* Dynamic Card Overlay when Item 1, 2, or 3 is opened */}
+            {openFaq > 0 && faqs[openFaq] && (
+              <div className="faq-answer-card-overlay">
+                <div className="faq-answer-card-header">
+                  <div className="faq-answer-header-left">
+                    <div className="faq-answer-icon-wrap">
+                      {openFaq === 1 && <IndianRupee size={22} />}
+                      {openFaq === 2 && <Clock3 size={22} />}
+                      {openFaq === 3 && <Wallet size={22} />}
+                    </div>
+                    <h3 className="faq-answer-card-question">{faqs[openFaq].q}</h3>
                   </div>
-                  <div className="faq-item-content">
-                    <h3 className="faq-item-question">{f.q}</h3>
-                    {openFaq === idx && <div className="faq-item-answer">{f.a}</div>}
-                  </div>
-                  <div className="faq-item-chevron-wrap">
-                    <ChevronDown size={18} strokeWidth={2.5} className="faq-item-chevron-icon" />
+                  <button
+                    type="button"
+                    className="faq-answer-close-btn"
+                    onClick={() => setOpenFaq(0)}
+                    title="Close"
+                    aria-label="Close"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <div className="faq-answer-card-body">
+                  <p className="faq-answer-card-text">{faqs[openFaq].a}</p>
+                  <div className="faq-answer-protip-box">
+                    <Check size={16} strokeWidth={3} />
+                    <span><strong>Pro Tip:</strong> {faqs[openFaq].tip}</span>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="faq-answer-card-footer">
+                  <span className="faq-answer-footer-tag">CATEGORY: {faqs[openFaq].category}</span>
+                  <button
+                    type="button"
+                    className="faq-answer-footer-btn"
+                    onClick={onJoinClick}
+                  >
+                    <span>Register as Driver</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Real Interactive Support CTA at bottom-right */}
+            <button
+              type="button"
+              className="faq-hitbox-support"
+              onClick={onJoinClick}
+              title="Need more help? Chat with our support team"
+              aria-label="Need more help? Chat with our support team"
+            />
+
+            {/* Left Stats Badges (Interactive hover feedback) */}
+            <div className="faq-stats-hitbox faq-stats-top" title="Over 10,000 Verified Drivers" />
+            <div className="faq-stats-hitbox faq-stats-mid" title="Rated 4.9 out of 5 Stars" />
+            <div className="faq-stats-hitbox faq-stats-bot" title="100% Safe, Secure & Reliable" />
           </div>
         </div>
       </section>
