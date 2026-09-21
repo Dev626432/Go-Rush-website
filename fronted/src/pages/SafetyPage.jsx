@@ -573,72 +573,138 @@ export default function SafetyPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Safety Best Practices for Drivers - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3bcfd65288191aa4786c82fba3400 */}
-      <section className="protocols-showcase-section-wrap">
-        {/* Scenic Left Backdrop (Winding Road, Skyline & "Safe Drivers Stronger Communities") */}
-        <div className="protocols-scenery-left" aria-hidden="true">
-          <img src="/protocols-scenery-left.webp" alt="" />
-        </div>
+      {/* Safety Best Practices for Drivers - Clean Showcase Banner with Real Active Buttons */}
+      <section className="protocols-showcase-banner-section" id="driver-protocols">
+        <div className="protocols-showcase-wrapper">
+          <img
+            src="/protocols-showcase-sep21.png"
+            alt="Driver safety best practices - Road Protocols - GoRush"
+            className="protocols-showcase-img"
+          />
 
-        {/* Scenic Right Backdrop (Signpost, Skyline & "Every Ride Counts") */}
-        <div className="protocols-scenery-right" aria-hidden="true">
-          <img src="/protocols-scenery-right.webp" alt="" />
-        </div>
+          {/* Interactive Card 01: Confirm Passenger Name at Pickup */}
+          <button
+            type="button"
+            className="protocols-interactive-card protocols-card-1"
+            onClick={() => showToast('🛡️ Protocol 1: Always verify Rider OTP & Profile Name before trip start')}
+            title="Protocol 1: Confirm Passenger Name at Pickup"
+            id="protocol-card-1-btn"
+            aria-label="Confirm Passenger Name at Pickup"
+          />
+          <button
+            type="button"
+            className="protocols-action-btn-hitbox protocols-btn-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('🛡️ Verified Rider Check: Match booking details on GoRush app screen');
+            }}
+            title="Verify Ride Protocol"
+            id="protocol-action-1-btn"
+            aria-label="Verify Ride"
+          />
 
-        <div className="protocols-inner-container">
-          {/* Eyebrow Badge */}
-          <div className="protocols-eyebrow-pill">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              aria-hidden="true"
-            >
-              <path d="M4 19L8 5" strokeLinecap="round" />
-              <path d="M20 19L16 5" strokeLinecap="round" />
-              <path d="M12 7V9" strokeLinecap="round" />
-              <path d="M12 15V17" strokeLinecap="round" />
-            </svg>
-            <span>ROAD PROTOCOLS</span>
-          </div>
+          {/* Interactive Card 02: Keep Your Live GPS Active */}
+          <button
+            type="button"
+            className="protocols-interactive-card protocols-card-2"
+            onClick={() => showToast('📡 Protocol 2: Keep 4G/5G mobile data & high-accuracy GPS turned ON')}
+            title="Protocol 2: Keep Your Live GPS Active"
+            id="protocol-card-2-btn"
+            aria-label="Keep Your Live GPS Active"
+          />
+          <button
+            type="button"
+            className="protocols-action-btn-hitbox protocols-btn-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('📡 Telemetry Active: Real-time route tracking enabled');
+            }}
+            title="Stay Connected Protocol"
+            id="protocol-action-2-btn"
+            aria-label="Stay Connected"
+          />
 
-          {/* Headline */}
-          <h2 className="protocols-headline">
-            Driver safety
-            <span className="protocols-script-wrap">
-              <em className="protocols-headline-script">best practices</em>
-              <svg className="protocols-swoosh-svg" viewBox="0 0 230 12" fill="none" aria-hidden="true">
-                <path d="M 6 7 Q 115 12 224 4" stroke="#5d8932" strokeWidth="2.8" strokeLinecap="round" />
-              </svg>
-            </span>
-          </h2>
+          {/* Interactive Card 03: Utilize Well-Lit Break Hubs */}
+          <button
+            type="button"
+            className="protocols-interactive-card protocols-card-3"
+            onClick={() => showToast('☕ Protocol 3: Take breaks at designated 24/7 lit GoRush Partner Hubs')}
+            title="Protocol 3: Utilize Well-Lit Break Hubs"
+            id="protocol-card-3-btn"
+            aria-label="Utilize Well-Lit Break Hubs"
+          />
+          <button
+            type="button"
+            className="protocols-action-btn-hitbox protocols-btn-3"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('☕ Rest & Recharge: Partner lounges available across Indore city routes');
+            }}
+            title="Rest & Recharge Hubs"
+            id="protocol-action-3-btn"
+            aria-label="Rest. Recharge."
+          />
 
-          <p className="protocols-subtitle">
-            Simple daily habits recommended by our safety enforcement team.
-          </p>
+          {/* Interactive Card 04: Report Unruly Behavior Promptly */}
+          <button
+            type="button"
+            className="protocols-interactive-card protocols-card-4"
+            onClick={() => showToast('⚠️ Protocol 4: Immediately report unruly riders with zero penalty on your score')}
+            title="Protocol 4: Report Unruly Behavior Promptly"
+            id="protocol-card-4-btn"
+            aria-label="Report Unruly Behavior Promptly"
+          />
+          <button
+            type="button"
+            className="protocols-action-btn-hitbox protocols-btn-4"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('⚠️ Incident Logged: GoRush Incident Team stands by all driver partners');
+            }}
+            title="Report Safely Protocol"
+            id="protocol-action-4-btn"
+            aria-label="Report Safely"
+          />
 
-          {/* 4 Protocol Cards Grid */}
-          <div className="protocols-cards-grid">
-            {safetyTips.map((tip) => {
-              const TipIcon = tip.icon;
-              return (
-                <div className="protocols-card" key={tip.title}>
-                  <div className="protocols-card-icon-circle">
-                    <TipIcon size={22} />
-                  </div>
-                  <h3 className="protocols-card-title">{tip.title}</h3>
-                  <p className="protocols-card-desc">{tip.desc}</p>
-                  <button type="button" className="protocols-card-chip-btn">
-                    <span>{tip.btnText}</span>
-                    <ArrowRight size={13} />
-                  </button>
-                </div>
-              );
-            })}
-          </div>
+          {/* Left Signboard: PEOPLE MOVE BETTER TOGETHER */}
+          <button
+            type="button"
+            className="protocols-signboard-hitbox"
+            onClick={onJoinClick}
+            title="People Move Better Together — Join GoRush Community"
+            id="protocols-signboard-btn"
+            aria-label="Join GoRush Community"
+          />
+
+          {/* Center Eyebrow: ROAD PROTOCOLS */}
+          <button
+            type="button"
+            className="protocols-eyebrow-hitbox"
+            onClick={() => showToast('🛣️ Standard Operating Road Safety Protocols for All Drivers')}
+            title="Road Protocols"
+            id="protocols-eyebrow-btn"
+            aria-label="Road Protocols"
+          />
+
+          {/* Bottom Quote Bar */}
+          <button
+            type="button"
+            className="protocols-quote-hitbox"
+            onClick={() => showToast('✨ "Your safety drives a brighter tomorrow." — GoRush')}
+            title="GoRush Safety Motto"
+            id="protocols-quote-btn"
+            aria-label="GoRush Safety Motto"
+          />
+
+          {/* Right Map Pin */}
+          <button
+            type="button"
+            className="protocols-right-pin-hitbox"
+            onClick={() => showToast('📍 Indore Safety Network: 100% city route coverage')}
+            title="Indore Safety Coverage"
+            id="protocols-pin-btn"
+            aria-label="Indore Safety Coverage"
+          />
         </div>
       </section>
 
