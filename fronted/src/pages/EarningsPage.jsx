@@ -82,6 +82,24 @@ export default function EarningsPage({ onJoinClick }) {
   
   const [earnings, setEarnings] = useState(() => computeLocalEarnings('Indore', 'bike', 7, 6));
   const [isCalculating, setIsCalculating] = useState(false);
+  const [activeIncentiveCard, setActiveIncentiveCard] = useState(null);
+  const [incentiveBubbles, setIncentiveBubbles] = useState([]);
+
+  const handleIncentiveTap = (cardNum) => {
+    setActiveIncentiveCard(cardNum);
+    const newBubbles = Array.from({ length: 8 }).map((_, i) => ({
+      id: Math.random(),
+      left: Math.random() * 70 + 15 + '%',
+      size: Math.random() * 22 + 12,
+      duration: (Math.random() * 0.4 + 1.0).toFixed(2),
+      delay: (i * 0.08).toFixed(2),
+    }));
+    setIncentiveBubbles(newBubbles);
+    setTimeout(() => {
+      setActiveIncentiveCard(null);
+      setIncentiveBubbles([]);
+    }, 1600);
+  };
 
   const currentVehicle = vehicleRates[vehicle] || vehicleRates.bike;
 
@@ -527,98 +545,154 @@ export default function EarningsPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Bonus Boosters & Surge - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3c003318c819181cb06bb14d40ca0 */}
-      <section className="incentives-showcase-section-wrap">
-        <div className="incentives-scenery-left" aria-hidden="true">
-          <img src="/incentives-scenery-left.webp" alt="" />
-        </div>
-        <div className="incentives-scenery-right" aria-hidden="true">
-          <img src="/incentives-scenery-right.webp" alt="" />
-        </div>
+      {/* Bonus Boosters & Surge - Sep 21 Edition with Bubbling Cards & Real Buttons */}
+      <section className="incentives-showcase-section" id="incentives-program">
+        <div className="incentives-container">
+          <div className="incentives-banner-wrapper">
+            {/* Cleaned AI Banner without fake top bar */}
+            <img
+              src="/incentives-showcase-sep21.png"
+              alt="Boost your daily income - GoRush Incentive Program"
+              className="incentives-banner-img"
+            />
 
-        <div className="incentives-inner-container">
-          <div className="incentives-eyebrow-pill">
-            <Gift size={13} />
-            <span>INCENTIVE PROGRAM</span>
-          </div>
-
-          <h2 className="incentives-headline">
-            Boost your daily
-            <span className="incentives-script-wrap">
-              <em className="incentives-headline-script">income</em>
-              <svg className="incentives-swoosh-svg" viewBox="0 0 170 12" fill="none" aria-hidden="true">
-                <path d="M 6 7 Q 85 12 164 4" stroke="#5a8a30" strokeWidth="2.8" strokeLinecap="round" />
-              </svg>
-            </span>
-          </h2>
-
-          <p className="incentives-subtitle">
-            In addition to regular fares, unlock performance bonuses and peak surge rewards.
-          </p>
-
-          <div className="incentives-cards-grid">
-            <div className="incentives-card">
-              <div className="incentives-card-top-row">
-                <div className="incentives-card-icon-box">
-                  <Flame size={22} />
-                </div>
-                <span className="incentives-card-badge">2.0x</span>
-              </div>
-              <h3 className="incentives-card-title">100% Peak Hour Surge</h3>
-              <p className="incentives-card-desc">
-                During rain, festivals, or peak traffic hours, fares increase by 1.2x to 2.0x. GoRush passes 100% of the
-                surge multiplier directly to the driver.
-              </p>
-              <div className="incentives-card-bottom-row">
-                <TrendingUp size={14} />
-                <span>HIGHER EARNINGS</span>
-                <span className="incentives-card-dash" />
-              </div>
+            {/* Card 1 Tap Hitbox: 100% Peak Hour Surge */}
+            <div
+              className={`incentives-hitbox-card incentives-card-1 ${activeIncentiveCard === 1 ? 'is-active' : ''}`}
+              onClick={() => handleIncentiveTap(1)}
+              title="Tap for 100% Peak Hour Surge details"
+            >
+              {activeIncentiveCard === 1 && (
+                <>
+                  <div className="incentives-bubble-wrap">
+                    {incentiveBubbles.map((b) => (
+                      <span
+                        key={b.id}
+                        className="incentive-bubble"
+                        style={{
+                          left: b.left,
+                          width: `${b.size}px`,
+                          height: `${b.size}px`,
+                          animationDuration: `${b.duration}s`,
+                          animationDelay: `${b.delay}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <div className="incentive-reward-pill">
+                    <Zap size={14} />
+                    <span>⚡ 2.0x Peak Surge Active!</span>
+                  </div>
+                </>
+              )}
             </div>
 
-            <div className="incentives-card">
-              <div className="incentives-card-top-row">
-                <div className="incentives-card-icon-box">
-                  <BarChart3 size={22} />
-                </div>
-                <span className="incentives-card-badge">₹550</span>
-              </div>
-              <h3 className="incentives-card-title">Daily Milestone Streaks</h3>
-              <p className="incentives-card-desc">
-                Complete 8 rides in a day and earn an extra ₹250 cash bonus. Complete 14 rides and unlock ₹550 in instant
-                streak rewards.
-              </p>
-              <div className="incentives-card-bottom-row">
-                <Gift size={14} />
-                <span>RIDE MORE, EARN MORE</span>
-                <span className="incentives-card-dash" />
-              </div>
+            {/* Real Button 1: Earn More in Peak Hours -> */}
+            <button
+              type="button"
+              className="incentives-real-btn incentives-btn-1"
+              onClick={onJoinClick}
+              title="Earn More in Peak Hours - Join GoRush"
+              aria-label="Earn More in Peak Hours - Join GoRush"
+            />
+
+            {/* Card 2 Tap Hitbox: Daily Milestone Streaks */}
+            <div
+              className={`incentives-hitbox-card incentives-card-2 ${activeIncentiveCard === 2 ? 'is-active' : ''}`}
+              onClick={() => handleIncentiveTap(2)}
+              title="Tap for Daily Milestone Streaks details"
+            >
+              {activeIncentiveCard === 2 && (
+                <>
+                  <div className="incentives-bubble-wrap">
+                    {incentiveBubbles.map((b) => (
+                      <span
+                        key={b.id}
+                        className="incentive-bubble"
+                        style={{
+                          left: b.left,
+                          width: `${b.size}px`,
+                          height: `${b.size}px`,
+                          animationDuration: `${b.duration}s`,
+                          animationDelay: `${b.delay}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <div className="incentive-reward-pill">
+                    <Gift size={14} />
+                    <span>🎁 ₹550 Daily Cash Bonus!</span>
+                  </div>
+                </>
+              )}
             </div>
 
-            <div className="incentives-card">
-              <div className="incentives-card-top-row">
-                <div className="incentives-card-icon-box">
-                  <Wallet size={22} />
-                </div>
-                <span className="incentives-card-badge">100%</span>
-              </div>
-              <h3 className="incentives-card-title">Zero Tip Deductions</h3>
-              <p className="incentives-card-desc">
-                When grateful riders add a tip for great service or safe driving, 100% of the tip goes to you with
-                zero platform commission.
-              </p>
-              <div className="incentives-card-bottom-row">
-                <Heart size={14} />
-                <span>YOUR EFFORT, YOUR REWARD</span>
-                <span className="incentives-card-dash" />
-              </div>
-            </div>
-          </div>
+            {/* Real Button 2: Ride More, Earn More -> */}
+            <button
+              type="button"
+              className="incentives-real-btn incentives-btn-2"
+              onClick={onJoinClick}
+              title="Ride More, Earn More - Join GoRush"
+              aria-label="Ride More, Earn More - Join GoRush"
+            />
 
-          <div className="incentives-bottom-ticker">
-            <span className="incentives-ticker-line" />
-            <span>DRIVE • EARN • GROW</span>
-            <span className="incentives-ticker-line" />
+            {/* Card 3 Tap Hitbox: Zero Tip Deductions */}
+            <div
+              className={`incentives-hitbox-card incentives-card-3 ${activeIncentiveCard === 3 ? 'is-active' : ''}`}
+              onClick={() => handleIncentiveTap(3)}
+              title="Tap for Zero Tip Deductions details"
+            >
+              {activeIncentiveCard === 3 && (
+                <>
+                  <div className="incentives-bubble-wrap">
+                    {incentiveBubbles.map((b) => (
+                      <span
+                        key={b.id}
+                        className="incentive-bubble"
+                        style={{
+                          left: b.left,
+                          width: `${b.size}px`,
+                          height: `${b.size}px`,
+                          animationDuration: `${b.duration}s`,
+                          animationDelay: `${b.delay}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <div className="incentive-reward-pill">
+                    <Heart size={14} />
+                    <span>💚 100% Tips Kept Directly!</span>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Real Button 3: Keep What You Earn -> */}
+            <button
+              type="button"
+              className="incentives-real-btn incentives-btn-3"
+              onClick={onJoinClick}
+              title="Keep What You Earn - Join GoRush"
+              aria-label="Keep What You Earn - Join GoRush"
+            />
+
+            {/* Interactive Signboard (Left bottom) */}
+            <button
+              type="button"
+              className="incentives-signboard-hitbox"
+              onClick={onJoinClick}
+              title="Drive, Earn, Grow Together - Register as Driver"
+              aria-label="Drive, Earn, Grow Together - Register as Driver"
+            />
+
+            {/* Interactive Bottom Transparency Bar */}
+            <button
+              type="button"
+              className="incentives-bottom-bar-hitbox"
+              onClick={onJoinClick}
+              title="Fair, Transparent Rewards & Performance Bonuses"
+              aria-label="Fair, Transparent Rewards & Performance Bonuses"
+            />
           </div>
         </div>
       </section>
