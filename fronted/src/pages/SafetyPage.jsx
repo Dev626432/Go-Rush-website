@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   Sparkles,
   UserCheck,
+  X,
   Zap,
 } from 'lucide-react';
 import './pages.css';
@@ -96,76 +97,357 @@ const safetyTips = [
 
 
 export default function SafetyPage({ onJoinClick }) {
+  const [activeModal, setActiveModal] = React.useState(null);
+  const [toastMsg, setToastMsg] = React.useState('');
+
+  const showToast = (msg) => {
+    setToastMsg(msg);
+    setTimeout(() => {
+      setToastMsg((cur) => (cur === msg ? '' : cur));
+    }, 3500);
+  };
+
   return (
     <div className="subpage-wrap">
-      {/* Safety Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa39d0ac2288191a55abcc2f5b72965 */}
-      <section className="safety-hero-v2-wrap">
-        {/* Left Scenery Wing (Radar, Location Pin, Skyline & 'Safer Rides Happier Tomorrows') */}
-        <div className="safety-v2-scenery-left" aria-hidden="true">
-          <img src="/safety-scenery-left.webp" alt="" />
-        </div>
+      {/* Safety Hero Section - Clean Showcase Banner with Real Active Buttons */}
+      <section className="safety-showcase-section" id="safety-hero">
+        <div className="safety-showcase-wrapper">
+          <img
+            src="/safety-showcase-sep21.png"
+            alt="Your security on every kilometer. Zero compromise - GoRush Safety"
+            className="safety-showcase-img"
+          />
 
-        {/* Right Scenery Wing (Highway, Skyline, 'DRIVE • EARN • GROW' & 'Every Ride Counts...') */}
-        <div className="safety-v2-scenery-right" aria-hidden="true">
-          <img src="/safety-scenery-right.webp" alt="" />
-        </div>
-
-        <div className="safety-v2-center-container">
-          {/* Eyebrow Badge */}
-          <div className="safety-v2-eyebrow">
-            <ShieldCheck size={14} />
-            <span>SAFETY & SECURITY FIRST</span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="safety-v2-headline">
-            <span className="safety-v2-headline-main">Your security on every</span>
-            <span className="safety-v2-headline-main">kilometer.</span>
-            <span className="safety-v2-script-wrap">
-              <em className="safety-v2-headline-script">Zero compromise.</em>
-              <svg className="safety-v2-swoosh-svg" viewBox="0 0 280 14" fill="none" aria-hidden="true">
-                <path d="M 8 8 Q 140 14 270 5" stroke="#5f8a32" strokeWidth="2.8" strokeLinecap="round" />
-              </svg>
+          {/* Real Interactive Card 1: 24/7 Emergency Dispatch */}
+          <button
+            type="button"
+            className="safety-interactive-card safety-card-emergency"
+            onClick={() => setActiveModal('emergency')}
+            title="Open 24/7 Emergency Dispatch Hotline"
+            id="safety-card-emergency-btn"
+            aria-label="24/7 Emergency Dispatch"
+          >
+            <span className="safety-card-live-indicator">
+              <span className="live-dot" /> 24/7 Live
             </span>
-          </h1>
+          </button>
 
-          <p className="safety-v2-lead-desc">
-            Driving should never feel uncertain. GoRush surrounds you with an institutional safety net,
-            24/7 rapid emergency dispatch, verified passenger protocols, and full medical insurance.
-          </p>
+          {/* Real Action Arrow Button 1 */}
+          <button
+            type="button"
+            className="safety-arrow-btn safety-arrow-btn-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveModal('emergency');
+            }}
+            title="Connect with 24/7 Emergency Dispatch"
+            id="safety-arrow-1"
+            aria-label="Connect with 24/7 Emergency Dispatch"
+          >
+            <ArrowRight />
+          </button>
 
-          {/* 3 Stat / Feature Pills Row */}
-          <div className="safety-v2-pills-row">
-            <div className="safety-v2-stat-pill">
-              <div className="safety-v2-icon-circle">
-                <PhoneCall size={14} />
-              </div>
-              <span>24/7 Emergency dispatch</span>
-            </div>
+          {/* Real Interactive Card 2: ₹5 Lakh Accident Insurance */}
+          <button
+            type="button"
+            className="safety-interactive-card safety-card-insurance"
+            onClick={() => setActiveModal('insurance')}
+            title="View ₹5 Lakh Accident Insurance Details"
+            id="safety-card-insurance-btn"
+            aria-label="₹5 Lakh Accident Insurance"
+          >
+            <span className="safety-card-live-indicator">
+              <span className="live-dot" /> Covered
+            </span>
+          </button>
 
-            <div className="safety-v2-stat-pill">
-              <div className="safety-v2-icon-circle">
-                <ShieldCheck size={14} />
-              </div>
-              <span>₹5 Lakh accident insurance</span>
-            </div>
+          {/* Real Action Arrow Button 2 */}
+          <button
+            type="button"
+            className="safety-arrow-btn safety-arrow-btn-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveModal('insurance');
+            }}
+            title="View ₹5 Lakh Insurance Coverage"
+            id="safety-arrow-2"
+            aria-label="View ₹5 Lakh Insurance Coverage"
+          >
+            <ArrowRight />
+          </button>
 
-            <div className="safety-v2-stat-pill">
-              <div className="safety-v2-icon-circle">
-                <ShieldAlert size={14} />
-              </div>
-              <span>1-Tap SOS beacon</span>
-            </div>
-          </div>
+          {/* Real Interactive Card 3: 1-Tap SOS Beacon */}
+          <button
+            type="button"
+            className="safety-interactive-card safety-card-sos"
+            onClick={() => setActiveModal('sos')}
+            title="Activate 1-Tap SOS Beacon Test"
+            id="safety-card-sos-btn"
+            aria-label="1-Tap SOS Beacon"
+          >
+            <span className="safety-card-live-indicator">
+              <span className="live-dot" style={{ background: '#ef4444', boxShadow: '0 0 8px #ef4444' }} /> Ready
+            </span>
+          </button>
 
-          {/* Bottom Ticker */}
-          <div className="safety-v2-bottom-ticker">
-            <span className="safety-v2-ticker-line" />
-            <span>PEOPLE • SAFETY • BETTER JOURNEYS</span>
-            <span className="safety-v2-ticker-line" />
-          </div>
+          {/* Real Action Arrow Button 3 */}
+          <button
+            type="button"
+            className="safety-arrow-btn safety-arrow-btn-3"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveModal('sos');
+            }}
+            title="Test 1-Tap SOS Beacon"
+            id="safety-arrow-3"
+            aria-label="Test 1-Tap SOS Beacon"
+          >
+            <ArrowRight />
+          </button>
+
+          {/* Right Floating Badge 1: Verified Passengers */}
+          <button
+            type="button"
+            className="safety-floating-badge-hitbox safety-badge-passengers"
+            onClick={() => showToast('🛡️ Verified Passengers: 100% ID & Phone verified riders prior to booking')}
+            title="Verified Passengers: 100% ID Verified"
+            id="safety-badge-passengers-btn"
+            aria-label="Verified Passengers"
+          />
+
+          {/* Right Floating Badge 2: Real-time Monitoring */}
+          <button
+            type="button"
+            className="safety-floating-badge-hitbox safety-badge-monitoring"
+            onClick={() => showToast('📡 Real-Time Monitoring: 24/7 GPS route telemetry & off-course alerts')}
+            title="Real-time Monitoring: 24/7 Route Watch"
+            id="safety-badge-monitoring-btn"
+            aria-label="Real-time Monitoring"
+          />
+
+          {/* Right Floating Badge 3: Hospital Network Support */}
+          <button
+            type="button"
+            className="safety-floating-badge-hitbox safety-badge-hospitals"
+            onClick={() => showToast('🏥 Hospital Network: Cashless trauma care across 2,400+ partner hospitals')}
+            title="Hospital Network Support: Cashless Coverage"
+            id="safety-badge-hospitals-btn"
+            aria-label="Hospital Network Support"
+          />
+
+          {/* Left Signboard: Drive Earn Grow Together */}
+          <button
+            type="button"
+            className="safety-signboard-hitbox"
+            onClick={onJoinClick}
+            title="Drive • Earn • Grow Together — Join GoRush Today"
+            id="safety-signboard-join-btn"
+            aria-label="Join GoRush Today"
+          />
+
+          {/* Center Eyebrow Pill: SAFETY & SECURITY FIRST */}
+          <button
+            type="button"
+            className="safety-eyebrow-hitbox"
+            onClick={() => showToast('✅ GoRush Standard: Institutional grade safety on every ride')}
+            title="Safety & Security First - GoRush Quality Seal"
+            id="safety-eyebrow-btn"
+            aria-label="Safety & Security First"
+          />
         </div>
       </section>
+
+      {/* Real Interactive Modal: 24/7 Emergency Dispatch */}
+      {activeModal === 'emergency' && (
+        <div className="safety-active-modal-overlay" onClick={() => setActiveModal(null)}>
+          <div className="safety-active-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="safety-modal-close-btn"
+              onClick={() => setActiveModal(null)}
+              aria-label="Close modal"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="safety-modal-badge badge-green">
+              <PhoneCall size={12} />
+              <span>24/7 Rapid Incident Desk</span>
+            </div>
+
+            <h3 className="safety-modal-title">Emergency Dispatch Hotline</h3>
+            <p className="safety-modal-desc">
+              Direct, priority line to the GoRush Indore 24/7 safety command center. Immediate tie-up with local emergency services and hospital ambulances.
+            </p>
+
+            <div className="safety-modal-details-grid">
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Average Response Time</div>
+                <div className="stat-box-val">&lt; 90 Seconds</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Police Dial 112</div>
+                <div className="stat-box-val">Direct Integration</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Toll-Free Priority Line</div>
+                <div className="stat-box-val">1800-467-8741</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Languages Supported</div>
+                <div className="stat-box-val">Hindi, Malwi, English</div>
+              </div>
+            </div>
+
+            <a
+              href="tel:18004678741"
+              className="safety-modal-primary-btn"
+              id="safety-emergency-call-btn"
+            >
+              <PhoneCall size={18} />
+              <span>Call Dispatch Desk Now (1800-467-8741)</span>
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Real Interactive Modal: ₹5 Lakh Accident Insurance */}
+      {activeModal === 'insurance' && (
+        <div className="safety-active-modal-overlay" onClick={() => setActiveModal(null)}>
+          <div className="safety-active-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="safety-modal-close-btn"
+              onClick={() => setActiveModal(null)}
+              aria-label="Close modal"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="safety-modal-badge badge-green">
+              <ShieldCheck size={12} />
+              <span>Institutional Safety Policy</span>
+            </div>
+
+            <h3 className="safety-modal-title">₹5,00,000 Driver Accidental Cover</h3>
+            <p className="safety-modal-desc">
+              Every driver-partner is enrolled in an institutional group policy at ₹0 cost from their first trip. Covers hospitalization, accidental damage, and critical medical support.
+            </p>
+
+            <div className="safety-modal-details-grid">
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Total Insurance Pool</div>
+                <div className="stat-box-val">₹5,00,000</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Driver Cost</div>
+                <div className="stat-box-val">₹0 / Month</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Cashless Hospitals</div>
+                <div className="stat-box-val">2,400+ Centers</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Claim Processing</div>
+                <div className="stat-box-val">24-Hour Express</div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="safety-modal-primary-btn"
+              onClick={() => {
+                setActiveModal(null);
+                onJoinClick();
+              }}
+              id="safety-insurance-join-btn"
+            >
+              <ShieldCheck size={18} />
+              <span>Register as Driver to Activate Cover</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Real Interactive Modal: 1-Tap SOS Beacon */}
+      {activeModal === 'sos' && (
+        <div className="safety-active-modal-overlay" onClick={() => setActiveModal(null)}>
+          <div className="safety-active-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="safety-modal-close-btn"
+              onClick={() => setActiveModal(null)}
+              aria-label="Close modal"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="safety-modal-badge badge-red">
+              <ShieldAlert size={12} />
+              <span>Live SOS Beacon System</span>
+            </div>
+
+            <h3 className="safety-modal-title">1-Tap Emergency SOS</h3>
+            <p className="safety-modal-desc">
+              Simulating driver SOS emergency protocol. In live trips, tapping this broadcasts high-precision telemetry and alerts nearest patrol units.
+            </p>
+
+            <div className="safety-sos-pulse-container">
+              <div className="safety-sos-beacon-orb">
+                <ShieldAlert size={34} />
+              </div>
+              <div style={{ fontSize: '15px', fontWeight: 800, color: '#991b1b', marginBottom: '4px' }}>
+                BEACON ACTIVE • BROADCASTING
+              </div>
+              <div style={{ fontSize: '12px', color: '#7f1d1d', fontFamily: 'monospace' }}>
+                GPS: 22.7196° N, 75.8577° E (Indore Control Mesh)
+              </div>
+            </div>
+
+            <div className="safety-modal-details-grid">
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Telemetry Status</div>
+                <div className="stat-box-val" style={{ color: '#15803d' }}>● Connected</div>
+              </div>
+              <div className="safety-modal-stat-box">
+                <div className="stat-box-label">Nearest Patrol</div>
+                <div className="stat-box-val">0.8 km Away</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button
+                type="button"
+                className="safety-modal-primary-btn btn-sos-trigger"
+                onClick={() => {
+                  showToast('🚨 Simulated Alert Sent: Dispatcher acknowledged signal.');
+                  setActiveModal(null);
+                }}
+                id="safety-sos-confirm-btn"
+              >
+                <span>Confirm Test Signal</span>
+              </button>
+              <button
+                type="button"
+                className="safety-modal-primary-btn"
+                style={{ background: '#e2ede0', color: '#164623', boxShadow: 'none' }}
+                onClick={() => setActiveModal(null)}
+                id="safety-sos-cancel-btn"
+              >
+                <span>Close</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Quick Toast */}
+      {toastMsg && (
+        <div className="safety-quick-toast" role="status" aria-live="polite">
+          <span className="safety-quick-toast-dot" />
+          <span>{toastMsg}</span>
+        </div>
+      )}
 
 
 
