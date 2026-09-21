@@ -702,11 +702,13 @@ export default function EarningsPage({ onJoinClick }) {
           <button
             type="button"
             className="final-cta-action-btn"
-            style={{ background: '#d4ef62', color: '#122417' }}
             onClick={onJoinClick}
+            id="earnings-final-cta-btn"
           >
             <span>Become a GoRush driver</span>
-            <ArrowRight size={16} />
+            <span className="final-cta-btn-arrow-wrap">
+              <ArrowRight size={17} />
+            </span>
           </button>
         </div>
       </section>

@@ -1087,3 +1087,99 @@
   }
 }
 
+/* =========================================================
+   UNIVERSAL FINAL CALL TO ACTION BUTTON
+   "Become a GoRush driver →"
+   ========================================================= */
+
+.final-cta-action-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #d8f34d 0%, #b8e635 50%, #8ac71f 100%) !important;
+  color: #0b2413 !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: clamp(15px, 1.15vw, 17px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  user-select: none;
+  text-decoration: none;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px rgba(16, 52, 25, 0.25),
+    0 16px 36px -4px rgba(184, 230, 53, 0.55),
+    0 4px 14px rgba(11, 36, 19, 0.3);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+}
+
+/* Moving Shimmer Reflection */
+.final-cta-action-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.final-cta-action-btn:hover {
+  background: linear-gradient(135deg, #e4fb5e 0%, #c4f33d 50%, #9be023 100%) !important;
+  border-color: #ffffff;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    0 22px 46px -6px rgba(184, 230, 53, 0.75),
+    0 0 0 5px rgba(216, 243, 77, 0.3),
+    0 8px 20px rgba(11, 36, 19, 0.35);
+}
+
+.final-cta-action-btn:hover::after {
+  left: 160%;
+}
+
+.final-cta-action-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    inset 0 2px 5px rgba(11, 36, 19, 0.35),
+    0 8px 20px rgba(184, 230, 53, 0.4);
+}
+
+/* Circular Arrow Icon Badge inside the button */
+.final-cta-btn-arrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0d2e18;
+  color: #d8f34d;
+  box-shadow: 0 2px 6px rgba(13, 46, 24, 0.3);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.final-cta-action-btn:hover .final-cta-btn-arrow-wrap {
+  background: #082110;
+  color: #ffffff;
+  transform: translateX(3px) scale(1.08);
+}
+
