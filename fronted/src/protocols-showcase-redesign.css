@@ -214,3 +214,16 @@
   border-color: rgba(163, 230, 53, 0.5);
   transform: scale(1.15);
 }
+
+@media (max-width: 768px) {
+  .protocols-action-btn-hitbox::after {
+    content: '';
+    position: absolute;
+    inset: -8px -6px;
+  }
+
+  .protocols-action-btn-hitbox:active {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(163, 230, 53, 0.9);
+  }
+}

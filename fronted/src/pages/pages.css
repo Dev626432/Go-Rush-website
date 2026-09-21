@@ -1183,3 +1183,28 @@
   transform: translateX(3px) scale(1.08);
 }
 
+@media (max-width: 600px) {
+  .final-cta-action-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 14px 22px;
+    font-size: 15px;
+    min-height: 52px;
+    gap: 10px;
+  }
+
+  .subpage-hero {
+    padding: 40px 16px 32px;
+  }
+
+  .subpage-title {
+    font-size: clamp(28px, 7.5vw, 36px);
+    line-height: 1.1;
+  }
+
+  .subpage-lead {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+

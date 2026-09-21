@@ -130,18 +130,28 @@
 @media (max-width: 768px) {
   .difference-banner-real-btn {
     min-height: 28px;
-    font-size: 9.5px;
+    font-size: 10px;
     gap: 4px;
-    padding: 0 6px;
+    padding: 0 8px;
+  }
+  .difference-banner-real-btn::before {
+    content: '';
+    position: absolute;
+    inset: -8px -10px;
   }
 }
 
 @media (max-width: 480px) {
   .difference-banner-real-btn {
-    min-height: 22px;
-    font-size: 8px;
+    min-height: 26px;
+    font-size: 9px;
     gap: 3px;
-    padding: 0 4px;
+    padding: 0 6px;
+  }
+  .difference-banner-real-btn::before {
+    content: '';
+    position: absolute;
+    inset: -10px -14px;
   }
 }
 
