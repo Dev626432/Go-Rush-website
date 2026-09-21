@@ -477,142 +477,52 @@ export default function EarningsPage({ onJoinClick }) {
       </section>
 
 
-      {/* Transparent Fare Anatomy - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa8e56849fc8191bb5b273d61fad076 */}
-      <section className="anatomy-showcase-section-wrap">
-        {/* Scenic Wings */}
-        <div className="anatomy-scenery-left" aria-hidden="true">
-          <img src="/anatomy-scenery-left.webp" alt="" />
-        </div>
-        <div className="anatomy-scenery-right" aria-hidden="true">
-          <img src="/anatomy-scenery-right.webp" alt="" />
-        </div>
+      {/* Transparent Fare Anatomy - Sep 21 Edition with Cleaned Banner & Interactive Hitboxes */}
+      <section className="anatomy-showcase-section" id="fare-anatomy">
+        <div className="anatomy-container">
+          <div className="anatomy-banner-wrapper">
+            {/* Cleaned AI Banner without fake top bar */}
+            <img
+              src="/fare-anatomy-sep21.png"
+              alt="Where does your money go? Anatomy of a Fare - GoRush"
+              className="anatomy-banner-img"
+            />
 
-        <div className="anatomy-inner-container">
-          {/* Section Header */}
-          <div className="anatomy-header">
-            <div className="anatomy-eyebrow-pill">
-              <span className="anatomy-rupee-symbol">₹</span>
-              <span>ANATOMY OF A FARE</span>
-            </div>
+            {/* Interactive Driver Card Hitbox (You Keep 90% - ₹270.00) */}
+            <button
+              type="button"
+              className="anatomy-hitbox-driver"
+              onClick={onJoinClick}
+              title="You Keep 90% (₹270.00) - Register as Driver"
+              aria-label="You Keep 90% (₹270.00) - Register as Driver"
+            />
 
-            <h2 className="anatomy-headline">
-              Where does your{' '}
-              <span className="anatomy-headline-italic">
-                money go?
-                <svg viewBox="0 0 170 14" fill="none" className="anatomy-headline-swoosh" aria-hidden="true">
-                  <path d="M 4 8 Q 85 2 166 7" stroke="#729837" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-              </span>
-            </h2>
+            {/* Interactive More Rides, More Earnings Pill */}
+            <button
+              type="button"
+              className="anatomy-hitbox-pill"
+              onClick={onJoinClick}
+              title="More Rides, More Earnings - Start Driving"
+              aria-label="More Rides, More Earnings - Start Driving"
+            />
 
-            <p className="anatomy-subtitle">
-              Every rupee paid by a passenger is clearly accounted for. Here is a typical ₹300 ride breakdown.
-            </p>
-          </div>
+            {/* Interactive Platform Fee Card Hitbox (10% - ₹30.00) */}
+            <button
+              type="button"
+              className="anatomy-hitbox-platform"
+              onClick={onJoinClick}
+              title="Platform Fee 10% (₹30.00) Covers 24/7 Support & Safety"
+              aria-label="Platform Fee 10% (₹30.00) Covers 24/7 Support & Safety"
+            />
 
-          {/* Main White Enclosing Card */}
-          <div className="anatomy-main-card">
-            <div className="anatomy-subcards-grid">
-              {/* Subcard 1: Driver Portion (90%) */}
-              <div className="anatomy-subcard anatomy-driver-card">
-                <div className="anatomy-subcard-top">
-                  <div className="anatomy-icon-squircle driver">
-                    <Wallet size={22} />
-                  </div>
-                  <div className="anatomy-subcard-content">
-                    <span className="anatomy-subcard-kicker driver">YOU KEEP (90%)</span>
-                    <div className="anatomy-subcard-amount">₹270.00</div>
-                    <p className="anatomy-subcard-desc">
-                      Base fare, distance rate, waiting time, and 100% of any passenger tips.
-                    </p>
-                  </div>
-                  <div className="anatomy-subcard-badge driver">
-                    <span className="anatomy-badge-num">90%</span>
-                    <span className="anatomy-badge-lbl">To You</span>
-                  </div>
-                </div>
-
-                <div className="anatomy-subcard-divider driver" />
-
-                <div className="anatomy-subcard-list">
-                  <div className="anatomy-list-item driver">
-                    <div className="anatomy-check-circle driver">
-                      <Check size={13} strokeWidth={3} />
-                    </div>
-                    <span>Direct to your account</span>
-                  </div>
-                  <div className="anatomy-list-item driver">
-                    <div className="anatomy-check-circle driver">
-                      <Check size={13} strokeWidth={3} />
-                    </div>
-                    <span>Includes surge & incentives</span>
-                  </div>
-                  <div className="anatomy-list-item driver">
-                    <div className="anatomy-check-circle driver">
-                      <Check size={13} strokeWidth={3} />
-                    </div>
-                    <span>Tips go entirely to you</span>
-                  </div>
-                </div>
-
-                {/* Decorative Corner Ambient Glow */}
-                <div className="anatomy-subcard-wave driver" aria-hidden="true" />
-              </div>
-
-              {/* Subcard 2: Platform Fee (10%) */}
-              <div className="anatomy-subcard anatomy-platform-card">
-                <div className="anatomy-subcard-top">
-                  <div className="anatomy-icon-squircle platform">
-                    <Coins size={22} />
-                  </div>
-                  <div className="anatomy-subcard-content">
-                    <span className="anatomy-subcard-kicker platform">PLATFORM FEE (10%)</span>
-                    <div className="anatomy-subcard-amount">₹30.00</div>
-                    <p className="anatomy-subcard-desc">
-                      Covers servers, 24/7 safety dispatch team, insurance coverage, and app updates.
-                    </p>
-                  </div>
-                  <div className="anatomy-subcard-badge platform">
-                    <span className="anatomy-badge-num">10%</span>
-                    <span className="anatomy-badge-lbl">Platform</span>
-                  </div>
-                </div>
-
-                <div className="anatomy-subcard-divider platform" />
-
-                <div className="anatomy-subcard-list">
-                  <div className="anatomy-list-item platform">
-                    <div className="anatomy-check-circle platform">
-                      <Check size={13} strokeWidth={3} />
-                    </div>
-                    <span>App maintenance & technology</span>
-                  </div>
-                  <div className="anatomy-list-item platform">
-                    <div className="anatomy-check-circle platform">
-                      <Check size={13} strokeWidth={3} />
-                    </div>
-                    <span>24/7 support & safety operations</span>
-                  </div>
-                  <div className="anatomy-list-item platform">
-                    <div className="anatomy-check-circle platform">
-                      <Check size={13} strokeWidth={3} />
-                    </div>
-                    <span>Insurance & regulatory compliance</span>
-                  </div>
-                </div>
-
-                {/* Decorative Corner Ambient Glow */}
-                <div className="anatomy-subcard-wave platform" aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Brand Ticker */}
-          <div className="anatomy-bottom-ticker">
-            <span className="anatomy-ticker-line" />
-            <Leaf size={14} className="anatomy-ticker-leaf" />
-            <span>DRIVE • EARN • GROW TOGETHER</span>
-            <span className="anatomy-ticker-line" />
+            {/* Interactive Bottom Bar (Fair Pricing, Transparent Split, etc.) */}
+            <button
+              type="button"
+              className="anatomy-hitbox-bar"
+              onClick={onJoinClick}
+              title="Fair Pricing, Transparent Split & Community Growth"
+              aria-label="Fair Pricing, Transparent Split & Community Growth"
+            />
           </div>
         </div>
       </section>
