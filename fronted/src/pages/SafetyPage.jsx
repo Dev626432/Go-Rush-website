@@ -451,138 +451,190 @@ export default function SafetyPage({ onJoinClick }) {
 
 
 
-      {/* Central Emergency Desk - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa8e3fbd6488191bd1c469f0170769d */}
-      <section className="emergency-showcase-section-wrap">
-        <div className="emergency-scenery-left" aria-hidden="true">
-          <img src="/emergency-scenery-left.webp" alt="" />
-        </div>
-        <div className="emergency-scenery-right" aria-hidden="true">
-          <img src="/emergency-scenery-right.webp" alt="" />
-        </div>
+      {/* Central Emergency Desk - Clean Showcase Banner with Real Active Buttons */}
+      <section className="emergency-showcase-banner-section" id="emergency-desk">
+        <div className="emergency-showcase-wrapper">
+          <img
+            src="/emergency-showcase-sep21.png"
+            alt="Central Emergency Desk - Help is always one second away - GoRush"
+            className="emergency-showcase-img"
+          />
 
-        <div className="emergency-inner-container">
-          <div className="emergency-card-wrapper">
-            {/* Left Column: Information & Micro Features */}
-            <div className="emergency-left-col">
-              <div className="emergency-eyebrow-pill">
-                <Shield size={13} />
-                <span>CENTRAL EMERGENCY DESK</span>
-              </div>
+          {/* Real Interactive Contact Row 1: GoRush Driver SOS Line */}
+          <a
+            href="tel:1800467874"
+            className="emergency-interactive-row emergency-row-1"
+            onClick={() => showToast('📞 Connecting to GoRush Driver SOS Line: 1800-467-874')}
+            title="Call GoRush 24/7 Driver SOS Line (1800-467-874)"
+            id="emergency-contact-sos-btn"
+            aria-label="Call GoRush 24/7 Driver SOS Line"
+          />
+          <a
+            href="tel:1800467874"
+            className="emergency-row-chevron-btn emergency-chevron-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('📞 Dialing GoRush 24/7 Driver SOS: 1800-467-874');
+            }}
+            title="Call 1800-467-874"
+            aria-label="Call 1800-467-874"
+          >
+            <ChevronRight size={16} />
+          </a>
 
-              <h2 className="emergency-headline">
-                Help is always
-                <span className="emergency-headline-highlight">one second away.</span>
-              </h2>
+          {/* Real Interactive Contact Row 2: Direct Police Coordination */}
+          <a
+            href="tel:112"
+            className="emergency-interactive-row emergency-row-2"
+            onClick={() => showToast('🚨 Connecting to Direct Police Coordination: Dial 112 / 100')}
+            title="Call Direct Police Coordination (112 / 100)"
+            id="emergency-contact-police-btn"
+            aria-label="Call Direct Police Coordination"
+          />
+          <a
+            href="tel:112"
+            className="emergency-row-chevron-btn emergency-chevron-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('🚨 Dialing Police Emergency: 112');
+            }}
+            title="Call 112 / 100"
+            aria-label="Call 112 / 100"
+          >
+            <ChevronRight size={16} />
+          </a>
 
-              <p className="emergency-desc">
-                Our central command monitors flagged routes, sudden stops, and distress beacons around the clock.
-                If anything feels wrong, our dedicated security officers respond immediately.
-              </p>
+          {/* Real Interactive Contact Row 3: Indore Safety Command Center */}
+          <a
+            href="tel:+917314982200"
+            className="emergency-interactive-row emergency-row-3"
+            onClick={() => showToast('🏛️ Connecting to Indore Safety Command Center: +91 731 498 2200')}
+            title="Call Indore Safety Command Center (+91 731 498 2200)"
+            id="emergency-contact-indore-btn"
+            aria-label="Call Indore Safety Command Center"
+          />
+          <a
+            href="tel:+917314982200"
+            className="emergency-row-chevron-btn emergency-chevron-3"
+            onClick={(e) => {
+              e.stopPropagation();
+              showToast('🏛️ Dialing Indore Command Desk: +91 731 498 2200');
+            }}
+            title="Call +91 731 498 2200"
+            aria-label="Call +91 731 498 2200"
+          >
+            <ChevronRight size={16} />
+          </a>
 
-              <div className="emergency-micro-features">
-                <div className="emergency-micro-item">
-                  <div className="emergency-micro-icon-circle">
-                    <Clock3 size={16} />
-                  </div>
-                  <div className="emergency-micro-text">
-                    <span className="emergency-micro-title">24/7</span>
-                    <span className="emergency-micro-sub">Monitoring</span>
-                  </div>
-                </div>
+          {/* Real Interactive Button: DRIVE SAFE WITH GoRush Banner */}
+          <button
+            type="button"
+            className="emergency-drive-safe-card"
+            onClick={onJoinClick}
+            title="Drive Safe with GoRush - Join as Partner"
+            id="emergency-drive-safe-btn"
+            aria-label="Drive Safe with GoRush"
+          />
+          <button
+            type="button"
+            className="emergency-drive-safe-arrow-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onJoinClick();
+            }}
+            title="Join GoRush Driving Community"
+            id="emergency-drive-safe-arrow"
+            aria-label="Join GoRush"
+          >
+            <ArrowRight size={15} />
+          </button>
 
-                <div className="emergency-micro-item">
-                  <div className="emergency-micro-icon-circle">
-                    <Bell size={16} />
-                  </div>
-                  <div className="emergency-micro-text">
-                    <span className="emergency-micro-title">Quick</span>
-                    <span className="emergency-micro-sub">Response</span>
-                  </div>
-                </div>
+          {/* Real Interactive Micro-Feature Pills */}
+          <button
+            type="button"
+            className="emergency-micro-pill-hitbox emergency-pill-1"
+            onClick={() => showToast('⏱️ 24/7 Monitoring: Continuous telemetry & speed anomaly tracking')}
+            title="24/7 Monitoring Active"
+            id="emergency-pill-1-btn"
+            aria-label="24/7 Monitoring"
+          />
+          <button
+            type="button"
+            className="emergency-micro-pill-hitbox emergency-pill-2"
+            onClick={() => showToast('⚡ Quick Response: Incident officers dispatched in < 90 seconds')}
+            title="Quick Response Desk"
+            id="emergency-pill-2-btn"
+            aria-label="Quick Response"
+          />
+          <button
+            type="button"
+            className="emergency-micro-pill-hitbox emergency-pill-3"
+            onClick={() => showToast('🛡️ Your Safety: Highest rated driver protection network in MP')}
+            title="Your Safety Our Priority"
+            id="emergency-pill-3-btn"
+            aria-label="Your Safety Our Priority"
+          />
 
-                <div className="emergency-micro-item">
-                  <div className="emergency-micro-icon-circle">
-                    <ShieldCheck size={16} />
-                  </div>
-                  <div className="emergency-micro-text">
-                    <span className="emergency-micro-title">Your Safety</span>
-                    <span className="emergency-micro-sub">Our Priority</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Eyebrow Pill */}
+          <button
+            type="button"
+            className="emergency-eyebrow-hitbox"
+            onClick={() => showToast('🏢 Central Emergency Desk: 24/7 Command Center, Indore HQ')}
+            title="Central Emergency Desk"
+            id="emergency-eyebrow-btn"
+            aria-label="Central Emergency Desk"
+          />
 
-            {/* Right Column: Dark Forest Elevated Contacts Card */}
-            <div className="emergency-dark-card">
-              <div className="emergency-dark-header">
-                <div className="emergency-contacts-tag">
-                  <div className="emergency-phone-icon-squircle">
-                    <Phone size={16} />
-                  </div>
-                  <span className="emergency-contacts-title">IMPORTANT CONTACTS</span>
-                </div>
-                <div className="emergency-avail-pill">
-                  <span className="emergency-avail-dot" />
-                  <span>AVAILABLE 24/7</span>
-                </div>
-              </div>
+          {/* Right Floating Badges */}
+          <button
+            type="button"
+            className="emergency-right-badge-hitbox emergency-badge-alone"
+            onClick={() => showToast('📍 Always Connected: Live GPS location sharing for your peace of mind')}
+            title="You're never alone on the road"
+            id="emergency-badge-alone-btn"
+            aria-label="You're never alone on the road"
+          />
+          <button
+            type="button"
+            className="emergency-right-badge-hitbox emergency-badge-support"
+            onClick={() => showToast('👥 Real People Real Support: Trained safety officers on 24/7 watch')}
+            title="Real People Real Support"
+            id="emergency-badge-support-btn"
+            aria-label="Real People Real Support"
+          />
 
-              <a href="tel:1800467874" className="emergency-contact-row">
-                <div className="emergency-contact-left">
-                  <div className="emergency-row-icon-box">
-                    <PhoneCall size={18} />
-                  </div>
-                  <div className="emergency-row-label-group">
-                    <span className="emergency-row-title">GoRush 24/7 Driver SOS Line</span>
-                    <span className="emergency-row-sub">Immediate assistance for drivers</span>
-                  </div>
-                </div>
-                <div className="emergency-contact-right">
-                  <span className="emergency-phone-num">1800-467-874</span>
-                  <ChevronRight size={16} className="emergency-chevron" />
-                </div>
-              </a>
+          {/* Smartphone Showcase */}
+          <button
+            type="button"
+            className="emergency-smartphone-hitbox"
+            onClick={onJoinClick}
+            title="GoRush Driver App - Safety Always On"
+            id="emergency-smartphone-btn"
+            aria-label="GoRush Driver App"
+          />
 
-              <a href="tel:112" className="emergency-contact-row">
-                <div className="emergency-contact-left">
-                  <div className="emergency-row-icon-box">
-                    <ShieldAlert size={18} />
-                  </div>
-                  <div className="emergency-row-label-group">
-                    <span className="emergency-row-title">Direct Police Coordination</span>
-                    <span className="emergency-row-sub">For emergencies on route</span>
-                  </div>
-                </div>
-                <div className="emergency-contact-right">
-                  <span className="emergency-phone-num">112 / 100</span>
-                  <ChevronRight size={16} className="emergency-chevron" />
-                </div>
-              </a>
-
-              <a href="tel:+917314982200" className="emergency-contact-row">
-                <div className="emergency-contact-left">
-                  <div className="emergency-row-icon-box">
-                    <Building2 size={18} />
-                  </div>
-                  <div className="emergency-row-label-group">
-                    <span className="emergency-row-title">Indore Safety Command Center</span>
-                    <span className="emergency-row-sub">City monitoring & support</span>
-                  </div>
-                </div>
-                <div className="emergency-contact-right">
-                  <span className="emergency-phone-num">+91 731 498 2200</span>
-                  <ChevronRight size={16} className="emergency-chevron" />
-                </div>
-              </a>
-            </div>
-          </div>
-
-          {/* Bottom Ticker */}
-          <div className="emergency-bottom-ticker">
-            <span className="emergency-ticker-line" />
-            <span>DRIVE SAFE • STAY SUPPORTED • GO FURTHER</span>
-            <span className="emergency-ticker-line" />
-          </div>
+          {/* Bottom Trust Badges */}
+          <button
+            type="button"
+            className="emergency-trust-strip-hitbox emergency-trust-1"
+            onClick={() => showToast('🤝 Supporting Drivers: Dedicated support on every journey')}
+            title="Supporting Drivers"
+            aria-label="Supporting Drivers"
+          />
+          <button
+            type="button"
+            className="emergency-trust-strip-hitbox emergency-trust-2"
+            onClick={() => showToast('🌱 Safer Communities: Promoting safe travels across Central India')}
+            title="Safer Communities"
+            aria-label="Safer Communities"
+          />
+          <button
+            type="button"
+            className="emergency-trust-strip-hitbox emergency-trust-3"
+            onClick={() => showToast('✨ Responsible Mobility: Safe, professional, and reliable')}
+            title="Responsible Mobility"
+            aria-label="Responsible Mobility"
+          />
         </div>
       </section>
 

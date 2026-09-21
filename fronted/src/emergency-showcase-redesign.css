@@ -1,398 +1,317 @@
 /* ==========================================================================
-   GoRush - Central Emergency Desk Redesign
-   Exact match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa8e3fbd6488191bd1c469f0170769d
+   GoRush - Central Emergency Desk (Sealed Showcase Banner with Real Active Buttons)
+   Image: /emergency-showcase-sep21.png (1810 x 869)
    ========================================================================== */
 
-.emergency-showcase-section-wrap {
+.emergency-showcase-banner-section {
   position: relative;
   width: 100%;
-  background: linear-gradient(180deg, #f4f8ec 0%, #edf5e6 50%, #eaf3e1 100%);
-  padding: 55px 24px 65px;
+  background: #edf5ea;
   overflow: hidden;
-  box-sizing: border-box;
+  border-bottom: 1px solid rgba(20, 37, 27, 0.07);
 }
 
-/* Scenic Backdrops on Left and Right */
-.emergency-scenery-left {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 258px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.emergency-scenery-left img {
+.emergency-showcase-wrapper {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-  display: block;
-}
-
-.emergency-scenery-right {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 258px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.emergency-scenery-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top right;
-  display: block;
-}
-
-/* Inner Centered Container */
-.emergency-inner-container {
-  max-width: 1220px;
+  max-width: 1810px;
   margin: 0 auto;
-  position: relative;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  line-height: 0;
 }
 
-/* Main Split Showcase Card */
-.emergency-card-wrapper {
+.emergency-showcase-img {
   width: 100%;
-  max-width: 1100px;
-  background: linear-gradient(to right, #ffffff 58%, #c5eab5 100%);
-  border: 1px solid #dce8da;
-  border-radius: 28px;
-  box-shadow: 0 18px 45px rgba(20, 44, 25, 0.07), 0 3px 10px rgba(0, 0, 0, 0.02);
-  padding: 38px 40px 38px 46px;
-  display: grid;
-  grid-template-columns: 1fr 490px;
-  gap: 36px;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Left Column Content */
-.emergency-left-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.emergency-eyebrow-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #e3efe0;
-  border: 1px solid #cfdec9;
-  color: #274828;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 7px 18px;
-  border-radius: 9999px;
-  margin-bottom: 20px;
-}
-
-.emergency-headline {
-  font-size: clamp(34px, 3.8vw, 48px);
-  font-weight: 800;
-  color: #112316;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  margin: 0 0 16px 0;
-}
-
-.emergency-headline-highlight {
-  color: #477e2a;
+  height: auto;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.emergency-desc {
-  font-size: 14.5px;
-  color: #4e6252;
-  line-height: 1.65;
-  margin: 0 0 28px 0;
-  max-width: 480px;
-}
+/* ==========================================================================
+   INTERACTIVE CONTACT ROWS (Inside Dark Green Card)
+   ========================================================================== */
 
-/* Micro Features Pill Row */
-.emergency-micro-features {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.emergency-micro-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  background: #f4faf2;
-  border: 1px solid #e1eee0;
-  border-radius: 14px;
-  padding: 8px 14px;
-}
-
-.emergency-micro-icon-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #ebf5ea;
-  color: #1e4521;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.emergency-micro-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.emergency-micro-title {
-  font-size: 12px;
-  font-weight: 800;
-  color: #112415;
-  line-height: 1.2;
-}
-
-.emergency-micro-sub {
-  font-size: 10.5px;
-  color: #627765;
-  font-weight: 500;
-}
-
-/* Right Column: Dark Forest Contacts Card */
-.emergency-dark-card {
-  background: #14251b;
-  border-radius: 22px;
-  padding: 24px 24px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-sizing: border-box;
-}
-
-.emergency-dark-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
-
-.emergency-contacts-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.emergency-phone-icon-squircle {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  background: #d4ef62;
-  color: #14251b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.emergency-contacts-title {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  color: #a6baa9;
-  text-transform: uppercase;
-}
-
-.emergency-avail-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(56, 95, 65, 0.5);
-  border: 1px solid rgba(130, 210, 80, 0.35);
-  color: #d4ef62;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  text-transform: uppercase;
-}
-
-.emergency-avail-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #d4ef62;
-  box-shadow: 0 0 8px #d4ef62;
-  animation: pulseBeacon 2s infinite ease-in-out;
-}
-
-@keyframes pulseBeacon {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.3);
-    opacity: 0.65;
-  }
-}
-
-/* Contact Rows */
-.emergency-contact-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 13px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+.emergency-interactive-row {
+  position: absolute;
+  left: 48.62%;
+  width: 34.20%;
+  height: 12.0%;
+  border-radius: 16px;
   cursor: pointer;
-}
-
-.emergency-contact-row:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(212, 239, 98, 0.3);
-  transform: translateX(4px);
-}
-
-.emergency-contact-row:hover .emergency-chevron {
-  color: #d4ef62;
-  transform: translateX(2px);
-}
-
-.emergency-contact-left {
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
-  gap: 12px;
+  text-decoration: none;
 }
 
-.emergency-row-icon-box {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+.emergency-row-1 {
+  top: 29.2%;
+}
+
+.emergency-row-2 {
+  top: 44.2%;
+}
+
+.emergency-row-3 {
+  top: 59.2%;
+}
+
+.emergency-interactive-row:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(163, 230, 53, 0.5);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    0 0 0 2px rgba(163, 230, 53, 0.2);
+  transform: translateX(4px) scale(1.008);
+}
+
+.emergency-interactive-row:active {
+  transform: translateX(2px) scale(0.99);
+}
+
+/* Round chevron button micro-animation inside rows */
+.emergency-row-chevron-btn {
+  position: absolute;
+  left: 67.5%;
+  width: 3.0%;
+  height: 6.0%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(163, 230, 53, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  color: #a3e635;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.22s ease;
+  outline: none;
+  padding: 0;
 }
 
-.emergency-row-label-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.emergency-chevron-1 {
+  top: 32.2%;
 }
 
-.emergency-row-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
+.emergency-chevron-2 {
+  top: 47.2%;
 }
 
-.emergency-row-sub {
-  font-size: 11px;
-  color: #8fa693;
-  font-weight: 400;
+.emergency-chevron-3 {
+  top: 62.2%;
 }
 
-.emergency-contact-right {
+.emergency-row-chevron-btn:hover {
+  background: #a3e635;
+  color: #0b2212;
+  transform: scale(1.2);
+  box-shadow: 0 0 16px rgba(163, 230, 53, 0.6);
+}
+
+/* ==========================================================================
+   BOTTOM-LEFT QUOTE / DRIVE SAFE CTA BANNER
+   ========================================================================== */
+
+.emergency-drive-safe-card {
+  position: absolute;
+  left: 14.0%;
+  top: 78.5%;
+  width: 30.0%;
+  height: 10.0%;
+  border-radius: 16px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.22s ease;
+}
+
+.emergency-drive-safe-card:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(30, 94, 46, 0.4);
+  box-shadow: 0 8px 24px rgba(18, 54, 25, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Green round arrow button inside Drive Safe */
+.emergency-drive-safe-arrow-btn {
+  position: absolute;
+  left: 40.5%;
+  top: 80.5%;
+  width: 3.0%;
+  height: 6.0%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a3e635 0%, #84cc16 100%);
+  color: #0b2212;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  border: 1px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(132, 204, 22, 0.4);
+  transition: all 0.22s ease;
+  outline: none;
+  padding: 0;
 }
 
-.emergency-phone-num {
-  font-size: 15px;
-  font-weight: 800;
-  color: #d4ef62;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
+.emergency-drive-safe-arrow-btn:hover {
+  transform: scale(1.2) rotate(-20deg);
+  box-shadow: 0 8px 22px rgba(132, 204, 22, 0.6);
 }
 
-.emergency-chevron {
-  color: #8fa693;
+/* ==========================================================================
+   MICRO FEATURE PILLS (24/7 Monitoring, Quick Response, Your Safety)
+   ========================================================================== */
+
+.emergency-micro-pill-hitbox {
+  position: absolute;
+  top: 65.5%;
+  height: 9.0%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
   transition: all 0.2s ease;
 }
 
-/* Bottom Ticker */
-.emergency-bottom-ticker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 26px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #557257;
-  text-transform: uppercase;
+.emergency-pill-1 {
+  left: 14.0%;
+  width: 8.5%;
 }
 
-.emergency-ticker-line {
-  width: 45px;
-  height: 1.5px;
-  background: #a5c2a1;
-  display: inline-block;
+.emergency-pill-2 {
+  left: 23.8%;
+  width: 8.5%;
 }
 
-/* Responsive */
-@media (max-width: 1100px) {
-  .emergency-card-wrapper {
-    grid-template-columns: 1fr;
-    padding: 30px 24px;
-    gap: 28px;
-  }
-  .emergency-dark-card {
-    max-width: 520px;
-    width: 100%;
-  }
-  .emergency-scenery-left,
-  .emergency-scenery-right {
-    opacity: 0.35;
-    width: 150px;
-  }
+.emergency-pill-3 {
+  left: 33.6%;
+  width: 9.2%;
 }
 
-@media (max-width: 768px) {
-  .emergency-scenery-left,
-  .emergency-scenery-right {
-    display: none;
-  }
-  .emergency-showcase-section-wrap {
-    padding: 40px 16px 50px;
-  }
-  .emergency-headline {
-    font-size: 30px;
-  }
-  .emergency-card-wrapper {
-    padding: 24px 18px;
-  }
-  .emergency-contact-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .emergency-contact-right {
-    width: 100%;
-    justify-content: space-between;
-  }
+.emergency-micro-pill-hitbox:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(30, 94, 46, 0.3);
+  box-shadow: 0 4px 14px rgba(18, 54, 25, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RIGHT BADGES & FLOATING APP SCREEN
+   ========================================================================== */
+
+.emergency-right-badge-hitbox {
+  position: absolute;
+  right: 1.5%;
+  width: 11.5%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.emergency-badge-alone {
+  top: 15.0%;
+  height: 6.5%;
+}
+
+.emergency-badge-support {
+  top: 42.0%;
+  height: 6.5%;
+}
+
+.emergency-right-badge-hitbox:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(163, 230, 53, 0.5);
+  box-shadow: 0 4px 16px rgba(18, 54, 25, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Smartphone Showcase hitbox */
+.emergency-smartphone-hitbox {
+  position: absolute;
+  right: 4.5%;
+  top: 53.0%;
+  width: 15.0%;
+  height: 38.0%;
+  border-radius: 28px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 2px solid transparent;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.emergency-smartphone-hitbox:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(163, 230, 53, 0.4);
+  box-shadow: 0 12px 36px rgba(16, 46, 22, 0.25);
+  transform: scale(1.02);
+}
+
+/* Eyebrow Pill Hitbox */
+.emergency-eyebrow-hitbox {
+  position: absolute;
+  left: 14.0%;
+  top: 17.0%;
+  width: 18.0%;
+  height: 6.0%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.emergency-eyebrow-hitbox:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(30, 94, 46, 0.3);
+}
+
+/* Bottom Trust Badges */
+.emergency-trust-strip-hitbox {
+  position: absolute;
+  bottom: 5.5%;
+  height: 6.5%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.emergency-trust-1 {
+  left: 20.0%;
+  width: 18.0%;
+}
+
+.emergency-trust-2 {
+  left: 41.0%;
+  width: 18.0%;
+}
+
+.emergency-trust-3 {
+  left: 61.0%;
+  width: 18.0%;
+}
+
+.emergency-trust-strip-hitbox:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(30, 94, 46, 0.25);
 }
