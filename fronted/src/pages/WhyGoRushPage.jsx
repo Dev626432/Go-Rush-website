@@ -77,50 +77,6 @@ const pillars = [
   },
 ];
 
-const comparisonData = [
-  {
-    icon: Percent,
-    feature: 'Platform Commission',
-    gorush: 'Flat 10% platform fee',
-    competitors: '25% to 32% deduction',
-  },
-  {
-    icon: MapPin,
-    feature: 'Upfront Destination Info',
-    gorush: 'Full drop-off location visible',
-    competitors: 'Hidden until passenger is picked up',
-  },
-  {
-    icon: Zap,
-    feature: 'Surge / Peak Multiplier',
-    gorush: '100% of peak surge given to driver',
-    competitors: 'Aggregator takes 30–40% of surge',
-  },
-  {
-    icon: Wallet,
-    feature: 'Payout Frequency',
-    gorush: 'Instant daily UPI or bank payout',
-    competitors: 'Weekly cycles with delayed transfers',
-  },
-  {
-    icon: ShieldCheck,
-    feature: 'Accidental Insurance',
-    gorush: '₹5,00,000 cover at zero cost',
-    competitors: 'Requires extra daily opt-in fee',
-  },
-  {
-    icon: FileText,
-    feature: 'Cancellation & Penalties',
-    gorush: 'Zero penalization for rejected trips',
-    competitors: 'Temporary bans & algorithmic throttling',
-  },
-  {
-    icon: Headphones,
-    feature: 'Support Channel',
-    gorush: 'Direct phone & local city hubs',
-    competitors: 'Chatbot tickets with delayed reply',
-  },
-];
 
 const perks = [
   {
@@ -237,109 +193,22 @@ export default function WhyGoRushPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Head-to-Head Comparison Table */}
-      <section className="comparison-showcase-section-wrap">
-
-        <div className="comparison-inner-container">
-          <div className="comparison-eyebrow-tag">
-            <span className="comparison-eyebrow-line" />
-            <span>SIDE BY SIDE</span>
-            <span className="comparison-eyebrow-line" />
-          </div>
-
-          <h2 className="comparison-headline">
-            GoRush vs
-            <span className="comparison-script-wrap">
-              <em className="comparison-headline-script">Legacy Apps</em>
-              <svg className="comparison-swoosh-svg" viewBox="0 0 170 12" fill="none" aria-hidden="true">
-                <path d="M 6 7 Q 85 12 164 4" stroke="#44772b" strokeWidth="2.8" strokeLinecap="round" />
-              </svg>
-            </span>
-          </h2>
-
-          <p className="comparison-subtitle">
-            Compare the numbers and transparent policies before you decide where to invest your driving time.
-          </p>
-
-          <div className="comparison-card-wrapper">
-            {/* Column 1: Feature / Policy */}
-            <div className="comp-col-feature">
-              <div className="comp-col-feature-header">
-                <span>Feature / Policy</span>
-              </div>
-              {comparisonData.map((row) => {
-                const RowIcon = row.icon;
-                return (
-                  <div key={row.feature} className="comp-col-feature-row">
-                    <div className="comp-feature-icon-box">
-                      <RowIcon size={16} />
-                    </div>
-                    <span className="comp-feature-title">{row.feature}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Column 2: GoRush Platform (Elevated Hero Column) */}
-            <div className="comp-col-gorush">
-              <div className="comp-col-gorush-header">
-                <div className="comp-gorush-crown-circle">
-                  <Crown size={20} />
-                </div>
-                <div className="comp-gorush-header-text">
-                  <span className="comp-gorush-header-title">GoRush Platform</span>
-                  <span className="comp-gorush-header-sub">Built for drivers, not just rides.</span>
-                </div>
-              </div>
-              {comparisonData.map((row) => (
-                <div key={row.feature} className="comp-col-gorush-row">
-                  <div className="comp-check-circle">
-                    <Check size={12} strokeWidth={3} />
-                  </div>
-                  <span className="comp-gorush-text">{row.gorush}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Column 3: Legacy Cab Apps */}
-            <div className="comp-col-legacy">
-              <div className="comp-col-legacy-header">
-                <div className="comp-legacy-icon-circle">
-                  <Building2 size={18} />
-                </div>
-                <div className="comp-legacy-header-text">
-                  <span className="comp-legacy-header-title">Legacy Cab Apps</span>
-                  <span className="comp-legacy-header-sub">Higher cuts, lower control.</span>
-                </div>
-              </div>
-              {comparisonData.map((row) => (
-                <div key={row.feature} className="comp-col-legacy-row">
-                  <div className="comp-cross-circle">
-                    <X size={12} strokeWidth={2.6} />
-                  </div>
-                  <span className="comp-legacy-text">{row.competitors}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Ticker */}
-          <div className="comparison-bottom-ticker">
-            <span className="comparison-ticker-item">
-              <Leaf size={15} />
-              <span>DRIVE MORE</span>
-            </span>
-            <span className="comparison-ticker-divider">|</span>
-            <span className="comparison-ticker-item">
-              <Users size={15} />
-              <span>EARN MORE</span>
-            </span>
-            <span className="comparison-ticker-divider">|</span>
-            <span className="comparison-ticker-item">
-              <TrendingUp size={15} />
-              <span>GROW TOGETHER</span>
-            </span>
-          </div>
+      {/* Head-to-Head Comparison Table - Showcase Banner */}
+      <section className="comparison-banner-section" id="comparison">
+        <div className="comparison-banner-wrapper">
+          <img
+            src="/comparison-showcase.png"
+            alt="GoRush vs Legacy Apps - Compare numbers and transparent policies"
+            className="comparison-banner-img"
+          />
+          {/* Interactive Hitbox over GoRush Platform Card */}
+          <button
+            type="button"
+            className="comparison-banner-interactive-hitbox"
+            onClick={onJoinClick}
+            title="Join GoRush Platform - Built for drivers, not just rides"
+            aria-label="Join GoRush Platform"
+          />
         </div>
       </section>
 
