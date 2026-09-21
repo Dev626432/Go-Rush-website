@@ -6,16 +6,70 @@
 .calc-showcase-section-wrap {
   position: relative;
   width: 100%;
-  background: #f4f7f2;
-  padding: 50px 20px 80px;
+  background:
+    radial-gradient(ellipse 700px 480px at 8% 22%, rgba(144, 219, 134, 0.28) 0%, transparent 70%),
+    radial-gradient(ellipse 750px 520px at 92% 78%, rgba(76, 175, 80, 0.22) 0%, transparent 70%),
+    radial-gradient(circle 380px at 50% 50%, rgba(255, 255, 255, 0.65) 0%, transparent 100%),
+    linear-gradient(180deg, #f3f8ee 0%, #eaf4e5 50%, #e3efe0 100%);
+  padding: 65px 20px 85px;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+/* Ambient Decorative Background Glows */
+.calc-bg-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.calc-bg-glow-left {
+  top: 10%;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(165, 230, 150, 0.45) 0%, rgba(76, 175, 80, 0.1) 70%, transparent 100%);
+  animation: orbPulseLeft 8s infinite alternate ease-in-out;
+}
+
+.calc-bg-glow-right {
+  bottom: 5%;
+  right: -100px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(90, 185, 95, 0.35) 0%, rgba(35, 120, 50, 0.08) 70%, transparent 100%);
+  animation: orbPulseRight 9s infinite alternate ease-in-out;
+}
+
+@keyframes orbPulseLeft {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(1.15) translate(30px, 20px); opacity: 1; }
+}
+
+@keyframes orbPulseRight {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(1.12) translate(-25px, -20px); opacity: 1; }
+}
+
+/* Micro Dot Pattern for depth and texture */
+.calc-bg-contour-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(36, 85, 45, 0.065) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 1;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 40%, transparent 85%);
 }
 
 .calc-showcase-inner-container {
   max-width: 1220px;
   margin: 0 auto;
   position: relative;
+  z-index: 5;
 }
 
 /* ==========================================================================
@@ -150,11 +204,11 @@
   grid-template-columns: 1.08fr 0.92fr;
   background: #ffffff;
   border-radius: 28px;
-  box-shadow: 0 24px 60px -15px rgba(16, 36, 22, 0.16), 0 8px 24px -8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 30px 80px -15px rgba(18, 50, 24, 0.14), 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.9);
   overflow: hidden;
   position: relative;
   z-index: 10;
-  border: 1px solid rgba(220, 230, 220, 0.6);
+  border: 1px solid rgba(215, 235, 215, 0.7);
 }
 
 /* ==========================================================================

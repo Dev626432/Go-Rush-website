@@ -164,43 +164,14 @@ export default function EarningsPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Interactive Calculator Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa391692c948191b0510016ec9d98a3 */}
-      <section className="calc-showcase-section-wrap">
+      {/* Interactive Calculator Section - Redesigned Background */}
+      <section className="calc-showcase-section-wrap" id="earnings-calculator">
+        {/* Ambient Decorative Background Glows */}
+        <div className="calc-bg-glow-orb calc-bg-glow-left" aria-hidden="true" />
+        <div className="calc-bg-glow-orb calc-bg-glow-right" aria-hidden="true" />
+        <div className="calc-bg-contour-pattern" aria-hidden="true" />
+
         <div className="calc-showcase-inner-container">
-          {/* Left Decorative Handwritten Doodle */}
-          <div className="calc-doodle-annotation calc-doodle-left">
-            <svg viewBox="0 0 50 40" fill="none" className="calc-doodle-arrow" aria-hidden="true">
-              <path d="M 6 34 C 18 10 32 8 44 14" stroke="#1a331e" strokeWidth="2.2" strokeLinecap="round" />
-              <path d="M 36 8 L 45 14 L 40 24" stroke="#1a331e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <div className="calc-doodle-text">
-              Flexible<br />Work.<br />Higher<br />Earnings.
-            </div>
-          </div>
-
-          {/* Top-Right Decorative Handwritten Doodle */}
-          <div className="calc-doodle-annotation calc-doodle-topright">
-            <div className="calc-doodle-text">
-              Your Time.<br />Real Earnings.
-            </div>
-            <svg viewBox="0 0 140 12" fill="none" className="calc-doodle-underline" aria-hidden="true">
-              <path d="M 4 8 Q 70 2 136 7" stroke="#729837" strokeWidth="2.8" strokeLinecap="round" />
-            </svg>
-          </div>
-
-          {/* Bottom-Right Decorative Handwritten Doodle */}
-          <div className="calc-doodle-annotation calc-doodle-bottomright">
-            <svg viewBox="0 0 50 40" fill="none" className="calc-doodle-arrow" aria-hidden="true">
-              <path d="M 44 32 C 34 14 20 10 8 16" stroke="#1a331e" strokeWidth="2.2" strokeLinecap="round" />
-              <path d="M 16 8 L 7 16 L 14 25" stroke="#1a331e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <div className="calc-doodle-text">
-              Drive<br />Earn<br />Grow<br />Together
-            </div>
-          </div>
-
-
-
           {/* Main Dual-Tone Split Card */}
           <div className="calc-dual-container">
             {/* Left Column: Interactive Inputs */}
