@@ -34,7 +34,9 @@ import {
   X,
   Zap,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './pages.css';
+import '../home-hero-scenic.css';
 import '../driver-first-redesign.css';
 import '../perks-showcase-redesign.css';
 import '../comparison-showcase-redesign.css';
@@ -155,115 +157,41 @@ const perks = [
 export default function WhyGoRushPage({ onJoinClick }) {
   return (
     <div className="subpage-wrap">
-      {/* Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa389920d7881918651e7e81909beae */}
-      <section className="driver-first-section scenic-hero-layout">
-        <div className="driver-first-scenic-bg" aria-hidden="true">
-          <img src="/features-scenic-bg.webp" alt="Scenic Road" />
-        </div>
-        
-        <div className="driver-first-content-wrapper">
-          <div className="driver-first-left-col">
-            <div className="driver-first-eyebrow">
-              <span>THE GORUSH DIFFERENCE</span>
-              <span className="eyebrow-line"></span>
-            </div>
+      {/* Hero Section - The GoRush Difference Showcase Banner */}
+      <section className="scenic-hero-section" id="features">
+        <div className="difference-banner-wrapper">
+          <img
+            src="/difference-showcase-sep21.png"
+            alt="Built around the person behind the wheel - The GoRush Difference"
+            className="difference-banner-img"
+          />
+          {/* Real Interactive Button over 'Get Started' */}
+          <button
+            type="button"
+            className="difference-banner-real-btn"
+            onClick={onJoinClick}
+            title="Get Started"
+            id="difference-get-started-btn"
+          >
+            <span>Get Started</span>
+            <span className="difference-banner-btn-arrow">
+              <ArrowRight size={15} />
+            </span>
+          </button>
 
-            <h1 className="driver-first-headline">
-              Built around the <br/> person <br/>
-              <span className="driver-first-headline-accent">behind the wheel.</span>
-            </h1>
-
-            <p className="driver-first-desc">
-              You bring the drive. We bring the tools, trust and technology to make every working day feel more like yours.
-            </p>
-
-            <div className="driver-first-features-row">
-              <div className="driver-feature-item">
-                <div className="feature-icon-box">
-                  <Navigation size={18} />
-                </div>
-                <div className="feature-text">
-                  <strong>Drive Smarter</strong>
-                  <span>Live GPS & optimized routes</span>
-                </div>
-              </div>
-
-              <div className="driver-feature-item">
-                <div className="feature-icon-box">
-                  <ShieldCheck size={18} />
-                </div>
-                <div className="feature-text">
-                  <strong>Feel Safer</strong>
-                  <span>24/7 support & emergency help</span>
-                </div>
-              </div>
-
-              <div className="driver-feature-item">
-                <div className="feature-icon-box">
-                  <TrendingUp size={18} />
-                </div>
-                <div className="feature-text">
-                  <strong>Earn More</strong>
-                  <span>Transparent earnings & instant payouts</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="driver-first-cta-row">
-              <button
-                type="button"
-                className="nav-become-driver-btn"
-                onClick={onJoinClick}
-              >
-                <span>Get Started</span>
-                <ArrowRight size={16} />
-              </button>
-              
-              <div className="video-cta-wrap">
-                <button type="button" className="video-play-btn">
-                   <div className="play-triangle"></div>
-                </button>
-                <div className="video-cta-text">
-                  <strong>See How It Works</strong>
-                  <span>2 min video</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="driver-first-right-col" aria-hidden="true">
-             {/* Driver Image overlay */}
-             <img src="/driver-hero-new.png" alt="Driver" className="driver-overlay-img" />
-
-             <div className="floating-sign-board">
-                <div className="sign-board-content">
-                  More Miles <br/> More Freedom
-                </div>
-                <div className="sign-board-poles">
-                   <div className="pole"></div>
-                   <div className="pole"></div>
-                </div>
-             </div>
-
-             <div className="floating-badge-clean">
-               <div className="badge-icon"><Leaf size={16} /></div>
-               <div className="badge-text">
-                 <strong>Cleaner Cities</strong>
-                 <span>Brighter Tomorrows</span>
-               </div>
-             </div>
-          </div>
+          {/* Interactive Link over 'See How It Works' */}
+          <Link
+            to="/how-it-works"
+            className="difference-banner-video-btn"
+            title="See How It Works"
+            id="difference-see-how-btn"
+            aria-label="See How It Works"
+          />
         </div>
       </section>
 
-      {/* The 4 Core Pillars - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3cb8e798c8191840ff06f0e633fbc */}
+      {/* The 4 Core Pillars */}
       <section className="pillars-showcase-section-wrap">
-        <div className="pillars-scenery-left" aria-hidden="true">
-          <img src="/pillars-scenery-left.webp" alt="" />
-        </div>
-        <div className="pillars-scenery-right" aria-hidden="true">
-          <img src="/pillars-scenery-right.webp" alt="" />
-        </div>
 
         <div className="pillars-inner-container">
           <div className="pillars-eyebrow-pill">
@@ -309,14 +237,8 @@ export default function WhyGoRushPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Head-to-Head Comparison Table - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3c8e119348191b0934883adb9e75d */}
+      {/* Head-to-Head Comparison Table */}
       <section className="comparison-showcase-section-wrap">
-        <div className="comparison-scenery-left" aria-hidden="true">
-          <img src="/comparison-scenery-left.webp" alt="" />
-        </div>
-        <div className="comparison-scenery-right" aria-hidden="true">
-          <img src="/comparison-scenery-right.webp" alt="" />
-        </div>
 
         <div className="comparison-inner-container">
           <div className="comparison-eyebrow-tag">
@@ -421,17 +343,8 @@ export default function WhyGoRushPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Driver Perks & Protection - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa39c0e6e4481918ef7f201cf5ae0cd */}
+      {/* Driver Perks & Protection */}
       <section className="perks-showcase-section-wrap">
-        {/* Scenic Left Backdrop (Winding Road & Skyline) */}
-        <div className="perks-scenery-left" aria-hidden="true">
-          <img src="/perks-scenery-left-clean.webp" alt="" />
-        </div>
-
-        {/* Scenic Right Backdrop (Shield & Skyline) */}
-        <div className="perks-scenery-right" aria-hidden="true">
-          <img src="/perks-scenery-right-clean.webp" alt="" />
-        </div>
 
         <div className="perks-inner-container">
           {/* Eyebrow Badge */}

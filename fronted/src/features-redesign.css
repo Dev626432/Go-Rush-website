@@ -13,7 +13,7 @@
   flex-direction: column !important;
   justify-content: center !important;
   padding: clamp(55px, 6vh, 85px) clamp(24px, 4vw, 80px) clamp(85px, 9vh, 125px) !important;
-  background: #f4f8ec url('/features-scenic-bg.webp') center bottom / cover no-repeat !important;
+  background: #f4f8ec center bottom / cover no-repeat !important;
   overflow: hidden !important;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
