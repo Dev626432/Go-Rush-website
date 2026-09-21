@@ -28,6 +28,7 @@ import {
   Wallet,
   Zap,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { api } from '../services/api';
 import './pages.css';
 import '../earnings-hero-redesign.css';
@@ -107,96 +108,46 @@ export default function EarningsPage({ onJoinClick }) {
 
   return (
     <div className="subpage-wrap">
-      {/* Earnings Hero Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3900293188191aba452864ff1c1e8 */}
-      <section className="earnings-hero-redesign-wrap">
-        {/* Top Mini Brand Bar */}
-        <div className="earnings-top-brand-bar">
-          <div className="earnings-top-logo">
-            <span>Go</span><span className="logo-accent">Rush</span>
-          </div>
-          <div className="earnings-top-divider" />
-          <div className="earnings-top-tagline">
-            <span>DRIVE • EARN • GROW</span>
-          </div>
+      {/* Earnings Hero Section - Sealed Showcase Banner */}
+      <section className="earnings-banner-section" id="earnings-hero">
+        <div className="earnings-banner-wrapper">
+          <img
+            src="/earnings-showcase-sep21.png"
+            alt="Earn with complete clarity. Paid every single day - GoRush"
+            className="earnings-banner-img"
+          />
+          {/* Real Interactive Button over 'Start Driving Today' */}
+          <button
+            type="button"
+            className="earnings-banner-real-btn"
+            onClick={onJoinClick}
+            title="Start Driving Today"
+            id="earnings-start-driving-btn"
+          >
+            <span>Start Driving Today</span>
+            <span className="earnings-banner-btn-arrow">
+              <ArrowRight size={16} />
+            </span>
+          </button>
+
+          {/* Interactive Link over 'See How It Works' */}
+          <Link
+            to="/how-it-works"
+            className="earnings-banner-video-btn"
+            title="See How It Works"
+            id="earnings-see-how-btn"
+            aria-label="See How It Works"
+          />
+
+          {/* Interactive Top-Right 'Become a Driver' */}
+          <button
+            type="button"
+            className="earnings-banner-nav-btn"
+            onClick={onJoinClick}
+            title="Become a Driver"
+            aria-label="Become a Driver"
+          />
         </div>
-
-        <div className="earnings-hero-main-container">
-          {/* Left Content Column */}
-          <div className="earnings-hero-left-content">
-            <div className="earnings-eyebrow-badge">
-              <BarChart3 size={13} />
-              <span>TRANSPARENT INCOME & PAYOUTS</span>
-            </div>
-
-            <h1 className="earnings-display-headline">
-              <span className="earnings-headline-line">Earn with complete</span>
-              <span className="earnings-headline-line">clarity.</span>
-              <span className="earnings-script-wrap">
-                <em className="earnings-headline-script">Paid every single day.</em>
-                <svg className="earnings-swoosh-svg" viewBox="0 0 280 14" fill="none">
-                  <path d="M 8 8 Q 140 14 270 5" stroke="#729837" strokeWidth="2.8" strokeLinecap="round" />
-                </svg>
-              </span>
-            </h1>
-
-            <p className="earnings-lead-desc">
-              No hidden fees, no opaque algorithms. Estimate your take-home pay based on your vehicle,
-              preferred city, and weekly working hours.
-            </p>
-
-            <div className="earnings-feature-cards-row">
-              <div className="earnings-stat-card-pill">
-                <div className="earnings-stat-icon-box">%</div>
-                <div className="earnings-stat-text">
-                  <strong>10% Flat commission</strong>
-                  <span>No hidden charges</span>
-                </div>
-              </div>
-
-              <div className="earnings-stat-card-pill">
-                <div className="earnings-stat-icon-box">⚡</div>
-                <div className="earnings-stat-text">
-                  <strong>100% Peak surge to driver</strong>
-                  <span>You keep what you earn</span>
-                </div>
-              </div>
-
-              <div className="earnings-stat-card-pill">
-                <div className="earnings-stat-icon-box">💳</div>
-                <div className="earnings-stat-text">
-                  <strong>Daily 11:30 PM UPI payout</strong>
-                  <span>Direct to your bank</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="earnings-bottom-ticker">
-              <span className="earnings-ticker-line" />
-              <div className="earnings-ticker-badge">
-                <ShieldCheck size={13} />
-                <span>FAIR • TRANSPARENT • DRIVER FIRST</span>
-              </div>
-              <span className="earnings-ticker-line" />
-            </div>
-          </div>
-
-          {/* Right Visual Column (Phone Mockup, City Skyline, Road & Badges) */}
-          <div className="earnings-hero-right-visual" aria-hidden="true">
-            <img
-              src="/earnings-hero-artwork.webp"
-              alt="GoRush Earnings Phone UI and Real-time Estimates"
-              className="earnings-showcase-img"
-            />
-          </div>
-        </div>
-
-        {/* Bottom-Left Foliage Leaf Accent */}
-        <img
-          src="/earnings-hero-leaves.webp"
-          alt=""
-          className="earnings-hero-leaves-corner"
-          aria-hidden="true"
-        />
       </section>
 
       {/* Interactive Calculator Section - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa391692c948191b0510016ec9d98a3 */}
