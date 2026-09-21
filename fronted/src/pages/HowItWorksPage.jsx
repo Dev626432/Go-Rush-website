@@ -7,6 +7,7 @@ import {
   CarFront,
   Check,
   ChevronDown,
+  ChevronRight,
   Clock3,
   FileCheck2,
   FileText,
@@ -215,105 +216,141 @@ export default function HowItWorksPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Vehicle Eligibility Requirements - Exact Match to ChatGPT Showcase: https://chatgpt.com/s/m_6aa3c20857348191945d87863dbf3615 */}
-      <section className="vehicle-criteria-section-wrap">
-        <div className="vehicle-scenery-left" aria-hidden="true">
-          <img src="/vehicle-scenery-left.webp" alt="" />
-        </div>
-        <div className="vehicle-scenery-right" aria-hidden="true">
-          <img src="/vehicle-scenery-right.webp" alt="" />
-        </div>
+      {/* Vehicle Eligibility Requirements - Sep 21 Edition with Real Interactive Buttons */}
+      <section className="criteria-showcase-section" id="vehicle-criteria">
+        <div className="criteria-container">
+          <div className="criteria-banner-wrapper">
+            {/* Cropped AI banner without fake top bar */}
+            <img
+              src="/criteria-showcase-sep21.png"
+              alt="GoRush Vehicle Requirements & Criteria"
+              className="criteria-banner-img"
+            />
 
-        <div className="vehicle-inner-container">
-          <div className="vehicle-eyebrow-pill">
-            <CarFront size={14} />
-            <span>VEHICLE & CRITERIA</span>
-          </div>
-
-          <h2 className="vehicle-headline">
-            What do you need
-            <span className="vehicle-script-wrap">
-              <em className="vehicle-headline-script">to drive?</em>
-              <svg className="vehicle-swoosh-svg" viewBox="0 0 170 12" fill="none" aria-hidden="true">
-                <path d="M 6 7 Q 85 12 164 4" stroke="#44772b" strokeWidth="2.8" strokeLinecap="round" />
-              </svg>
-            </span>
-          </h2>
-
-          <p className="vehicle-subtitle">
-            Select your vehicle category to view the checklist of required documents.
-          </p>
-
-          <div className="vehicle-tabs-row">
+            {/* Real Interactive Tab: Bike / Scooter */}
             <button
               type="button"
-              className={`vehicle-tab-btn ${selectedVehicle === 'bike' ? 'active' : ''}`}
+              className={`criteria-hitbox-tab criteria-hitbox-tab-bike ${selectedVehicle === 'bike' ? 'is-active' : ''}`}
               onClick={() => setSelectedVehicle('bike')}
+              title="Bike / Scooter Criteria"
+              aria-label="Bike / Scooter Criteria"
             >
-              <Bike size={18} />
-              <span>Bike / Scooter</span>
+              {selectedVehicle !== 'bike' && (
+                <span className="criteria-tab-inactive-pill">
+                  <Bike size={18} className="criteria-pill-icon" />
+                  <span className="criteria-pill-texts">
+                    <span className="criteria-pill-title">Bike / Scooter</span>
+                    <span className="criteria-pill-sub">Most Popular</span>
+                  </span>
+                </span>
+              )}
             </button>
+
+            {/* Real Interactive Tab: Auto Rickshaw */}
             <button
               type="button"
-              className={`vehicle-tab-btn ${selectedVehicle === 'auto' ? 'active' : ''}`}
+              className={`criteria-hitbox-tab criteria-hitbox-tab-auto ${selectedVehicle === 'auto' ? 'is-active' : ''}`}
               onClick={() => setSelectedVehicle('auto')}
+              title="Auto Rickshaw Criteria"
+              aria-label="Auto Rickshaw Criteria"
             >
-              <Navigation size={18} />
-              <span>Auto Rickshaw</span>
+              {selectedVehicle === 'auto' && (
+                <span className="criteria-tab-active-pill">
+                  <Navigation size={18} className="criteria-pill-icon" />
+                  <span className="criteria-pill-texts">
+                    <span className="criteria-pill-title">Auto Rickshaw</span>
+                    <span className="criteria-pill-sub">Earn More Daily</span>
+                  </span>
+                </span>
+              )}
             </button>
+
+            {/* Real Interactive Tab: Cab / Taxi */}
             <button
               type="button"
-              className={`vehicle-tab-btn ${selectedVehicle === 'cab' ? 'active' : ''}`}
+              className={`criteria-hitbox-tab criteria-hitbox-tab-cab ${selectedVehicle === 'cab' ? 'is-active' : ''}`}
               onClick={() => setSelectedVehicle('cab')}
+              title="Cab / Taxi Criteria"
+              aria-label="Cab / Taxi Criteria"
             >
-              <CarFront size={18} />
-              <span>Cab / Taxi</span>
+              {selectedVehicle === 'cab' && (
+                <span className="criteria-tab-active-pill">
+                  <CarFront size={18} className="criteria-pill-icon" />
+                  <span className="criteria-pill-texts">
+                    <span className="criteria-pill-title">Cab / Taxi</span>
+                    <span className="criteria-pill-sub">Drive Your Way</span>
+                  </span>
+                </span>
+              )}
             </button>
-          </div>
 
-          <div className="vehicle-showcase-card">
-            <div className="vehicle-summary-subcard">
-              <div className="vehicle-icon-circle">
-                {selectedVehicle === 'bike' && <Bike size={28} />}
-                {selectedVehicle === 'auto' && <Navigation size={28} />}
-                {selectedVehicle === 'cab' && <CarFront size={28} />}
-              </div>
-              <h3 className="vehicle-summary-title">{vehicleRequirements[selectedVehicle].badgeTitle}</h3>
-              <div className="vehicle-summary-subtitle">{vehicleRequirements[selectedVehicle].badgeSub}</div>
-              <p className="vehicle-summary-desc">{vehicleRequirements[selectedVehicle].desc}</p>
-              <div className="vehicle-safe-badge">
-                <div className="vehicle-check-circle" style={{ width: 18, height: 18 }}>
-                  <Check size={12} strokeWidth={3} />
+            {/* Real Interactive CTA Button over 'Join GoRush Today' */}
+            <button
+              type="button"
+              className="criteria-hitbox-join"
+              onClick={onJoinClick}
+              title="Join GoRush Today - Register as Driver"
+              aria-label="Join GoRush Today - Register as Driver"
+            >
+              <span className="criteria-join-pulse" />
+            </button>
+
+            {/* Dynamic Card Overlay when Auto or Cab is selected */}
+            {selectedVehicle !== 'bike' && (
+              <div className="criteria-card-overlay">
+                <div className="criteria-overlay-subcard">
+                  <div className="criteria-overlay-icon-circle">
+                    {selectedVehicle === 'auto' && <Navigation size={28} />}
+                    {selectedVehicle === 'cab' && <CarFront size={28} />}
+                  </div>
+                  <h3 className="criteria-overlay-title">{vehicleRequirements[selectedVehicle].badgeTitle}</h3>
+                  <div className="criteria-overlay-subtitle">{vehicleRequirements[selectedVehicle].badgeSub}</div>
+                  <p className="criteria-overlay-desc">{vehicleRequirements[selectedVehicle].desc}</p>
+
+                  <div className="criteria-overlay-badge-safe">
+                    <Check size={13} strokeWidth={3} />
+                    <span>{vehicleRequirements[selectedVehicle].safeText}</span>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="criteria-overlay-register-btn"
+                    onClick={onJoinClick}
+                  >
+                    <span>Register {vehicleRequirements[selectedVehicle].badgeTitle}</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
-                <span>{vehicleRequirements[selectedVehicle].safeText}</span>
-              </div>
-            </div>
 
-            <div className="vehicle-checklist-col">
-              <div className="vehicle-checklist-header">
-                <span className="vehicle-checklist-kicker">DOCUMENT CHECKLIST</span>
-                <div className="vehicle-mandatory-badge">
-                  <Check size={13} strokeWidth={2.8} />
-                  <span>All documents are mandatory</span>
-                </div>
-              </div>
-
-              <ul className="vehicle-checklist-list">
-                {vehicleRequirements[selectedVehicle].items.map((item) => (
-                  <li key={item} className="vehicle-checklist-item">
-                    <div className="vehicle-check-circle">
-                      <Check size={13} strokeWidth={2.8} />
+                <div className="criteria-overlay-checklist-col">
+                  <div className="criteria-overlay-checklist-header">
+                    <div className="criteria-overlay-checklist-title">
+                      <FileCheck2 size={16} />
+                      <span>DOCUMENT CHECKLIST</span>
                     </div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                    <div className="criteria-overlay-mandatory-tag">
+                      <Check size={12} strokeWidth={3} />
+                      <span>All documents are mandatory</span>
+                    </div>
+                  </div>
 
-          <div className="vehicle-bottom-ticker">
-            <span>PEOPLE • SAFETY • BETTER JOURNEYS</span>
-            <span className="vehicle-ticker-line" />
+                  <ul className="criteria-overlay-list">
+                    {vehicleRequirements[selectedVehicle].items.map((item, idx) => (
+                      <li key={idx} className="criteria-overlay-list-item" onClick={onJoinClick}>
+                        <div className="criteria-overlay-check-dot">
+                          <Check size={13} strokeWidth={3} />
+                        </div>
+                        <div className="criteria-overlay-item-text">
+                          <span className="criteria-overlay-item-main">{item}</span>
+                          <span className="criteria-overlay-item-sub">Verification approved in &lt; 2 hrs</span>
+                        </div>
+                        <ChevronRight size={15} className="criteria-overlay-chevron" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
