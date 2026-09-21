@@ -804,129 +804,27 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* FINAL CALL TO ACTION */}
-        <section className="final-cta-redesign-wrap" id="join">
-          {/* Top Bar: Left Kicker & Right Tagline */}
-          <div className="final-cta-topbar">
-            <div className="final-cta-top-kicker">
-              <Sparkles size={13} className="final-cta-kicker-icon" />
-              <span>THE ROAD IS YOURS</span>
-            </div>
-            <div className="final-cta-top-tagline">
-              <span>DRIVE</span>
-              <span className="dot">•</span>
-              <span>EARN</span>
-              <span className="dot">•</span>
-              <span>GROW</span>
-              <span className="dot">•</span>
-              <span>TOGETHER</span>
-            </div>
-          </div>
-
-          {/* Main 3-Column Layout */}
-          <div className="final-cta-main-layout">
-            {/* Left Feature Badges Stack */}
-            <div className="final-cta-left-stack">
-              <div className="final-cta-feature-pill">
-                <div className="final-cta-feat-icon-box">
-                  <Wallet size={16} />
-                </div>
-                <div className="final-cta-feat-text">
-                  <strong>Flexible</strong>
-                  <span>Earnings</span>
-                </div>
-              </div>
-
-              <div className="final-cta-feature-pill">
-                <div className="final-cta-feat-icon-box">
-                  <Clock3 size={16} />
-                </div>
-                <div className="final-cta-feat-text">
-                  <strong>Be Your</strong>
-                  <span>Own Boss</span>
-                </div>
-              </div>
-
-              <div className="final-cta-feature-pill">
-                <div className="final-cta-feat-icon-box">
-                  <Users size={16} />
-                </div>
-                <div className="final-cta-feat-text">
-                  <strong>A Growing</strong>
-                  <span>Community</span>
-                </div>
-              </div>
-
-              <div className="final-cta-script-quote">
-                <span>More Journeys</span>
-                <span>Brighter Tomorrows</span>
-                <svg className="final-cta-script-curve" viewBox="0 0 140 10" fill="none">
-                  <path d="M 5 6 Q 70 11 135 4" stroke="#688e36" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Center Hero Copy, Pill & CTA */}
-            <div className="final-cta-center-content">
-              <div className="final-cta-badge-pill">
-                <Zap size={13} />
-                <span>JOIN A BETTER TOMORROW</span>
-              </div>
-
-              <h2 className="final-cta-headline">
-                <span className="final-cta-headline-main">Your next chapter</span>
-                <span className="final-cta-headline-script-wrap">
-                  <em className="final-cta-headline-accent">starts here.</em>
-                  <svg className="final-cta-swoosh" viewBox="0 0 240 14" fill="none">
-                    <path d="M 10 7 Q 120 13 230 5" stroke="#7ca836" strokeWidth="3" strokeLinecap="round" />
-                  </svg>
-                </span>
-              </h2>
-
-              <p className="final-cta-desc">
-                Join thousands of drivers building a better way to work, one ride at a time.
-              </p>
-
-              <button
-                type="button"
-                className="final-cta-action-btn"
-                onClick={onJoinClick}
-              >
-                <span>Become a GoRush driver</span>
-                <ArrowRight size={16} className="final-cta-btn-arrow" />
-              </button>
-
-              <div className="final-cta-subnote">
-                <Clock3 size={13} className="final-cta-subnote-icon" />
-                <span>Registration takes less than 5 minutes</span>
-              </div>
-            </div>
-
-            {/* Right Side Visual Hero (Driver, Car, Phone & City) */}
-            <div className="final-cta-driver-showcase" aria-hidden="true">
-              <img
-                src="/driver-hero-new.png"
-                alt="Drive with GoRush Today"
-                className="final-cta-driver-img"
-              />
-            </div>
-          </div>
-
-          {/* Bottom-Left Leaf Accent */}
-          <img
-            src="/final-cta-leaves-clean.webp"
-            alt=""
-            className="final-cta-leaves-corner"
-            aria-hidden="true"
-          />
-
-          {/* Bottom Center Ticker */}
-          <div className="final-cta-bottom-ticker">
-            <span className="ticker-line" />
-            <span className="ticker-text">PEOPLE MOVE</span>
-            <span className="ticker-car">🚖</span>
-            <span className="ticker-text">OPPORTUNITIES GROW</span>
-            <span className="ticker-line" />
+        {/* FINAL CALL TO ACTION - CHATGPT SHOWCASE BANNER */}
+        <section className="final-cta-banner-section" id="join">
+          <div className="final-cta-banner-wrapper">
+            <img
+              src="/final-cta-showcase-sep21.png"
+              alt="Your next chapter starts here - Become a GoRush driver"
+              className="final-cta-banner-img"
+            />
+            {/* Real Interactive Button over 'Become a GoRush driver' */}
+            <button
+              type="button"
+              className="final-cta-banner-real-btn"
+              onClick={onJoinClick}
+              title="Become a GoRush driver"
+              id="final-cta-become-driver-btn"
+            >
+              <span>Become a GoRush driver</span>
+              <span className="final-cta-banner-btn-arrow">
+                <ArrowRight size={17} />
+              </span>
+            </button>
           </div>
         </section>
       </main>
