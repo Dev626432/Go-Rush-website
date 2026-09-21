@@ -138,15 +138,6 @@ export default function EarningsPage({ onJoinClick }) {
             id="earnings-see-how-btn"
             aria-label="See How It Works"
           />
-
-          {/* Interactive Top-Right 'Become a Driver' */}
-          <button
-            type="button"
-            className="earnings-banner-nav-btn"
-            onClick={onJoinClick}
-            title="Become a Driver"
-            aria-label="Become a Driver"
-          />
         </div>
       </section>
 
