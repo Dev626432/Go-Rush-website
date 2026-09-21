@@ -150,6 +150,8 @@
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 4px 12px rgba(20, 45, 30, 0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-become-driver-btn:hover {
@@ -327,7 +329,11 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .nav-become-driver-btn {
+    display: none !important;
+  }
+
   .site-header-redesign-wrap {
     padding-top: max(8px, env(safe-area-inset-top));
     padding-left: max(10px, env(safe-area-inset-left));
@@ -337,27 +343,18 @@
 
   .gorush-floating-navbar {
     height: 52px;
-    padding: 4px 6px 4px 12px;
+    padding: 4px 8px 4px 14px;
+    max-width: 100%;
   }
 
   .nav-brand-logo {
     height: 34px !important;
   }
 
-  .nav-become-driver-btn {
-    padding: 7px 11px;
-    font-size: 11px;
-    gap: 4px;
-  }
-
-  .nav-become-driver-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-
   .nav-mobile-toggle {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
+    display: flex;
   }
 
   .nav-mobile-dropdown {

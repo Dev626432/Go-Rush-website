@@ -232,6 +232,9 @@ export default function HomePage({ onJoinClick, action }) {
     video.loop = true;
     video.playsInline = true;
     video.preload = 'auto';
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('muted', '');
     video.setAttribute('aria-hidden', 'true');
     const source = document.createElement('source');
     source.src = 'https://res.cloudinary.com/zfpzqpwo/video/upload/v1788946371/image-to-video/i2v_4532ef3361d04aa0ac941e0535b2036b.mp4';
