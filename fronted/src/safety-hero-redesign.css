@@ -115,63 +115,6 @@
   transform: translateY(0);
 }
 
-/* Real Round Arrow Action Buttons inside Cards */
-.safety-arrow-btn {
-  position: absolute;
-  top: 67.5%;
-  width: 2.7%;
-  height: 5.6%;
-  border-radius: 50%;
-  border: 1.5px solid rgba(40, 110, 55, 0.4);
-  background: linear-gradient(135deg, #245830 0%, #153c1e 100%);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 15;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(18, 54, 25, 0.3);
-  padding: 0;
-  outline: none;
-}
-
-.safety-arrow-btn svg {
-  width: 48%;
-  height: 48%;
-  transition: transform 0.2s ease;
-}
-
-/* Exact Arrow Button Horizontal Placements */
-.safety-arrow-btn-1 {
-  left: 35.3%;
-}
-
-.safety-arrow-btn-2 {
-  left: 56.6%;
-}
-
-.safety-arrow-btn-3 {
-  left: 78.8%;
-}
-
-.safety-arrow-btn:hover {
-  background: linear-gradient(135deg, #2d703d 0%, #1c4e27 100%);
-  border-color: #a3e635;
-  transform: scale(1.15);
-  box-shadow: 
-    0 0 0 3px rgba(163, 230, 53, 0.35),
-    0 8px 18px rgba(18, 54, 25, 0.4);
-}
-
-.safety-arrow-btn:hover svg {
-  transform: translateX(2px);
-}
-
-.safety-arrow-btn:active {
-  transform: scale(0.95);
-}
-
 /* ==========================================================================
    RIGHT FLOATING BADGES (Verified Passengers, Real-time Monitoring, Hospital Network)
    ========================================================================== */

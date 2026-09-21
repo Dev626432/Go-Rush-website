@@ -132,21 +132,6 @@ export default function SafetyPage({ onJoinClick }) {
             </span>
           </button>
 
-          {/* Real Action Arrow Button 1 */}
-          <button
-            type="button"
-            className="safety-arrow-btn safety-arrow-btn-1"
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveModal('emergency');
-            }}
-            title="Connect with 24/7 Emergency Dispatch"
-            id="safety-arrow-1"
-            aria-label="Connect with 24/7 Emergency Dispatch"
-          >
-            <ArrowRight />
-          </button>
-
           {/* Real Interactive Card 2: ₹5 Lakh Accident Insurance */}
           <button
             type="button"
@@ -161,21 +146,6 @@ export default function SafetyPage({ onJoinClick }) {
             </span>
           </button>
 
-          {/* Real Action Arrow Button 2 */}
-          <button
-            type="button"
-            className="safety-arrow-btn safety-arrow-btn-2"
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveModal('insurance');
-            }}
-            title="View ₹5 Lakh Insurance Coverage"
-            id="safety-arrow-2"
-            aria-label="View ₹5 Lakh Insurance Coverage"
-          >
-            <ArrowRight />
-          </button>
-
           {/* Real Interactive Card 3: 1-Tap SOS Beacon */}
           <button
             type="button"
@@ -188,21 +158,6 @@ export default function SafetyPage({ onJoinClick }) {
             <span className="safety-card-live-indicator">
               <span className="live-dot" style={{ background: '#ef4444', boxShadow: '0 0 8px #ef4444' }} /> Ready
             </span>
-          </button>
-
-          {/* Real Action Arrow Button 3 */}
-          <button
-            type="button"
-            className="safety-arrow-btn safety-arrow-btn-3"
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveModal('sos');
-            }}
-            title="Test 1-Tap SOS Beacon"
-            id="safety-arrow-3"
-            aria-label="Test 1-Tap SOS Beacon"
-          >
-            <ArrowRight />
           </button>
 
           {/* Right Floating Badge 1: Verified Passengers */}
@@ -469,18 +424,6 @@ export default function SafetyPage({ onJoinClick }) {
             id="emergency-contact-sos-btn"
             aria-label="Call GoRush 24/7 Driver SOS Line"
           />
-          <a
-            href="tel:1800467874"
-            className="emergency-row-chevron-btn emergency-chevron-1"
-            onClick={(e) => {
-              e.stopPropagation();
-              showToast('📞 Dialing GoRush 24/7 Driver SOS: 1800-467-874');
-            }}
-            title="Call 1800-467-874"
-            aria-label="Call 1800-467-874"
-          >
-            <ChevronRight size={16} />
-          </a>
 
           {/* Real Interactive Contact Row 2: Direct Police Coordination */}
           <a
@@ -491,18 +434,6 @@ export default function SafetyPage({ onJoinClick }) {
             id="emergency-contact-police-btn"
             aria-label="Call Direct Police Coordination"
           />
-          <a
-            href="tel:112"
-            className="emergency-row-chevron-btn emergency-chevron-2"
-            onClick={(e) => {
-              e.stopPropagation();
-              showToast('🚨 Dialing Police Emergency: 112');
-            }}
-            title="Call 112 / 100"
-            aria-label="Call 112 / 100"
-          >
-            <ChevronRight size={16} />
-          </a>
 
           {/* Real Interactive Contact Row 3: Indore Safety Command Center */}
           <a
@@ -513,18 +444,6 @@ export default function SafetyPage({ onJoinClick }) {
             id="emergency-contact-indore-btn"
             aria-label="Call Indore Safety Command Center"
           />
-          <a
-            href="tel:+917314982200"
-            className="emergency-row-chevron-btn emergency-chevron-3"
-            onClick={(e) => {
-              e.stopPropagation();
-              showToast('🏛️ Dialing Indore Command Desk: +91 731 498 2200');
-            }}
-            title="Call +91 731 498 2200"
-            aria-label="Call +91 731 498 2200"
-          >
-            <ChevronRight size={16} />
-          </a>
 
           {/* Real Interactive Button: DRIVE SAFE WITH GoRush Banner */}
           <button
@@ -535,19 +454,6 @@ export default function SafetyPage({ onJoinClick }) {
             id="emergency-drive-safe-btn"
             aria-label="Drive Safe with GoRush"
           />
-          <button
-            type="button"
-            className="emergency-drive-safe-arrow-btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              onJoinClick();
-            }}
-            title="Join GoRush Driving Community"
-            id="emergency-drive-safe-arrow"
-            aria-label="Join GoRush"
-          >
-            <ArrowRight size={15} />
-          </button>
 
           {/* Real Interactive Micro-Feature Pills */}
           <button
