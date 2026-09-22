@@ -35,6 +35,7 @@ import '../earnings-hero-redesign.css';
 import '../calc-showcase-redesign.css';
 import '../incentives-showcase-redesign.css';
 import '../fare-anatomy-redesign.css';
+import '../subpage-cta-redesign.css';
 
 const cityMultipliers = {
   Indore: 1.0,
@@ -661,48 +662,78 @@ export default function EarningsPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Final Call to Action */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: '#14251b',
-          color: '#ffffff',
-          textAlign: 'center',
-        }}
-      >
-        <div className="subpage-container">
-          <h2
-            style={{
-              fontSize: 'clamp(32px, 4.5vw, 54px)',
-              fontWeight: 800,
-              margin: '0 0 16px',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Start putting more money in your pocket.
-          </h2>
-          <p
-            style={{
-              fontSize: '15px',
-              color: '#9db4a0',
-              maxWidth: '520px',
-              margin: '0 auto 30px',
-              lineHeight: 1.65,
-            }}
-          >
-            Join the driver community that believes in fair pay and daily settlements.
-          </p>
-          <button
-            type="button"
-            className="final-cta-action-btn"
-            onClick={onJoinClick}
-            id="earnings-final-cta-btn"
-          >
-            <span>Become a GoRush driver</span>
-            <span className="final-cta-btn-arrow-wrap">
+      {/* FINAL CALL TO ACTION - LUXURY REDESIGN */}
+      <section className="subpage-prefooter-cta" id="join">
+        <div className="subpage-cta-card-luxury">
+          <div className="subpage-cta-header-center">
+            <div className="subpage-cta-badge">
+              <Sparkles size={14} />
+              <span>Daily UPI Settlements · Real Numbers</span>
+            </div>
+            <h2 className="subpage-cta-headline">
+              Start putting <span>more money</span> in your pocket.
+            </h2>
+            <p className="subpage-cta-subtext">
+              Join thousands of full-time and part-time Indore captains earning ₹35,000–₹65,000 every month with guaranteed daily cash-outs.
+            </p>
+          </div>
+
+          <div className="subpage-cta-perks-grid">
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <IndianRupee size={22} />
+              </div>
+              <strong>Zero Commission Surge</strong>
+              <p>During peak Indore hours, 100% of the customer surge goes into your pocket, not corporate servers.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <TrendingUp size={22} />
+              </div>
+              <strong>Weekly Target Rewards</strong>
+              <p>Hit easily achievable milestone targets (e.g., 14 rides) for instant ₹300–₹800 cash bonus credit.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <Fuel size={22} />
+              </div>
+              <strong>Fuel & EV Recharge Tie-Ups</strong>
+              <p>Exclusive discounted fuel at top Indore petrol pumps and subsidized EV fast-charging stations.</p>
+            </div>
+          </div>
+
+          <div className="subpage-cta-actions-row">
+            <button
+              type="button"
+              className="subpage-cta-primary-pill"
+              onClick={onJoinClick}
+              id="earnings-final-cta-btn"
+            >
+              <span>Start Earning Today</span>
               <ArrowRight size={17} />
-            </span>
-          </button>
+            </button>
+            <Link to="/how-it-works" className="subpage-cta-secondary-pill">
+              <span>View Onboarding Steps</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="subpage-cta-bottom-trust">
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Daily Automated Bank Transfers</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>No Hidden Penalties</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Transparent Fare Breakup</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

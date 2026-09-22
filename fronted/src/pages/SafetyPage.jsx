@@ -24,10 +24,12 @@ import {
   X,
   Zap,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './pages.css';
 import '../safety-hero-redesign.css';
 import '../protocols-showcase-redesign.css';
 import '../emergency-showcase-redesign.css';
+import '../subpage-cta-redesign.css';
 
 const safetyFeatures = [
   {
@@ -639,48 +641,78 @@ export default function SafetyPage({ onJoinClick }) {
       </section>
 
 
-      {/* Final Call to Action */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: '#14251b',
-          color: '#ffffff',
-          textAlign: 'center',
-        }}
-      >
-        <div className="subpage-container">
-          <h2
-            style={{
-              fontSize: 'clamp(32px, 4.5vw, 54px)',
-              fontWeight: 800,
-              margin: '0 0 16px',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Drive with the confidence you deserve.
-          </h2>
-          <p
-            style={{
-              fontSize: '15px',
-              color: '#9db4a0',
-              maxWidth: '520px',
-              margin: '0 auto 30px',
-              lineHeight: 1.65,
-            }}
-          >
-            Join the platform that treats your safety and security as priority number one.
-          </p>
-          <button
-            type="button"
-            className="final-cta-action-btn"
-            onClick={onJoinClick}
-            id="safety-final-cta-btn"
-          >
-            <span>Become a GoRush driver</span>
-            <span className="final-cta-btn-arrow-wrap">
+      {/* FINAL CALL TO ACTION - LUXURY REDESIGN */}
+      <section className="subpage-prefooter-cta" id="join">
+        <div className="subpage-cta-card-luxury">
+          <div className="subpage-cta-header-center">
+            <div className="subpage-cta-badge">
+              <Sparkles size={14} />
+              <span>24/7 Indore Emergency Command Desk</span>
+            </div>
+            <h2 className="subpage-cta-headline">
+              Drive with the <span>confidence</span> you deserve.
+            </h2>
+            <p className="subpage-cta-subtext">
+              From our Vijay Nagar command center to in-app SOS triggers, GoRush puts the personal safety and financial security of captains first.
+            </p>
+          </div>
+
+          <div className="subpage-cta-perks-grid">
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <ShieldAlert size={22} />
+              </div>
+              <strong>One-Touch SOS Police Dispatch</strong>
+              <p>Direct integration with Indore police helpline (112) and our dedicated 24x7 local rapid response squad.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <ShieldCheck size={22} />
+              </div>
+              <strong>₹5,00,000 Accidental Cover</strong>
+              <p>Complete medical, hospitalization, and emergency insurance protection included with zero captain deduction.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <UserCheck size={22} />
+              </div>
+              <strong>100% Aadhaar Verified Riders</strong>
+              <p>Riders must authenticate before booking. Zero tolerance for abusive riders with instant permanent bans.</p>
+            </div>
+          </div>
+
+          <div className="subpage-cta-actions-row">
+            <button
+              type="button"
+              className="subpage-cta-primary-pill"
+              onClick={onJoinClick}
+              id="safety-final-cta-btn"
+            >
+              <span>Join Safe Driver Network</span>
               <ArrowRight size={17} />
-            </span>
-          </button>
+            </button>
+            <a href="tel:18004197874" className="subpage-cta-secondary-pill">
+              <span>Call 24/7 Safety Desk</span>
+              <Phone size={15} />
+            </a>
+          </div>
+
+          <div className="subpage-cta-bottom-trust">
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Real-Time GPS Route Tracking</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Family Live Location Share</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>24/7 Legal Dispute Assistance</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

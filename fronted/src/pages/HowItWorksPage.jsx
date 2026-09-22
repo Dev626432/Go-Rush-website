@@ -24,10 +24,12 @@ import {
   X,
   Zap,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './pages.css';
 import '../onboarding-hero-redesign.css';
 import '../vehicle-criteria-redesign.css';
 import '../faq-showcase-redesign.css';
+import '../subpage-cta-redesign.css';
 
 const stepsData = [
   {
@@ -485,48 +487,78 @@ export default function HowItWorksPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Final Call to Action */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: '#14251b',
-          color: '#ffffff',
-          textAlign: 'center',
-        }}
-      >
-        <div className="subpage-container">
-          <h2
-            style={{
-              fontSize: 'clamp(32px, 4.5vw, 54px)',
-              fontWeight: 800,
-              margin: '0 0 16px',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Ready to get started?
-          </h2>
-          <p
-            style={{
-              fontSize: '15px',
-              color: '#9db4a0',
-              maxWidth: '520px',
-              margin: '0 auto 30px',
-              lineHeight: 1.65,
-            }}
-          >
-            Take 5 minutes to submit your details. Join thousands of verified drivers across India.
-          </p>
-          <button
-            type="button"
-            className="final-cta-action-btn"
-            onClick={onJoinClick}
-            id="howitworks-final-cta-btn"
-          >
-            <span>Become a GoRush driver</span>
-            <span className="final-cta-btn-arrow-wrap">
+      {/* FINAL CALL TO ACTION - LUXURY REDESIGN */}
+      <section className="subpage-prefooter-cta" id="join">
+        <div className="subpage-cta-card-luxury">
+          <div className="subpage-cta-header-center">
+            <div className="subpage-cta-badge">
+              <Sparkles size={14} />
+              <span>Fast Track 15-Min Onboarding</span>
+            </div>
+            <h2 className="subpage-cta-headline">
+              Ready to take your <span>first trip?</span>
+            </h2>
+            <p className="subpage-cta-subtext">
+              Submit basic KYC documents online, get verified by Indore team in 15 minutes, and hit the road to start earning immediately.
+            </p>
+          </div>
+
+          <div className="subpage-cta-perks-grid">
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <Smartphone size={22} />
+              </div>
+              <strong>100% Digital KYC</strong>
+              <p>Just snap your DL, RC, and Aadhaar from your phone. No physical visits or paperwork needed.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <Clock3 size={22} />
+              </div>
+              <strong>15-Minute Activation</strong>
+              <p>Our automated document verification engine clears eligible drivers on the very same day.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <BadgeCheck size={22} />
+              </div>
+              <strong>Zero Security Deposit</strong>
+              <p>Keep your savings safe. Absolutely zero joining fees, zero deposit, and no hidden deductions.</p>
+            </div>
+          </div>
+
+          <div className="subpage-cta-actions-row">
+            <button
+              type="button"
+              className="subpage-cta-primary-pill"
+              onClick={onJoinClick}
+              id="howitworks-final-cta-btn"
+            >
+              <span>Submit Driver Application</span>
               <ArrowRight size={17} />
-            </span>
-          </button>
+            </button>
+            <Link to="/why-gorush" className="subpage-cta-secondary-pill">
+              <span>Why GoRush vs Others?</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="subpage-cta-bottom-trust">
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Free GoRush Welcome Kit</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Direct Bank Account Linking</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>24/7 Captain Hotline</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

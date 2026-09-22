@@ -17,7 +17,9 @@ import {
   CarFront,
   Navigation,
   Send,
-  Lock
+  Lock,
+  Wallet,
+  Zap
 } from 'lucide-react';
 import '../footer-redesign.css';
 
@@ -43,6 +45,44 @@ export default function Footer({ onJoinClick, onAction }) {
   return (
     <footer className="site-footer-redesign">
       <div className="footer-inner-container">
+        {/* =========================================================
+            0. LIVE INDORE DISPATCH & DRIVER SHIFT TICKER
+            ========================================================= */}
+        <div className="footer-live-ticker-strip">
+          <div className="footer-ticker-inner">
+            <span className="footer-ticker-tag">
+              <Zap size={13} fill="currentColor" /> Live Indore Dispatch
+            </span>
+            <div className="footer-ticker-marquee">
+              <div className="footer-ticker-item">
+                <span>📍 Vijay Nagar:</span>
+                <strong>Vikram P.</strong>
+                <span className="gain">+₹2,140</span>
+                <span>today (14 rides)</span>
+              </div>
+              <span>•</span>
+              <div className="footer-ticker-item">
+                <span>📍 Airport (IDR):</span>
+                <strong>Anand S.</strong>
+                <span className="gain">+₹1,850</span>
+                <span>direct UPI transfer</span>
+              </div>
+              <span>•</span>
+              <div className="footer-ticker-item">
+                <span>📍 Palasia Point:</span>
+                <strong>Rohit M.</strong>
+                <span>New Captain Onboarded in 11 mins</span>
+              </div>
+              <span>•</span>
+              <div className="footer-ticker-item">
+                <span>⚡ Active Indore Incentive:</span>
+                <span className="gain">₹500 Weekend Target Bonus</span>
+                <span>Unlocked by 340+ drivers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* =========================================================
             1. PRE-FOOTER VIP NEWSLETTER & INCENTIVE NOTIFICATION STRIP
             ========================================================= */}
@@ -413,6 +453,60 @@ export default function Footer({ onJoinClick, onAction }) {
             <span className="security-pill">
               <Check size={14} /> DPIIT Recognized Indian Startup
             </span>
+          </div>
+        </div>
+
+        {/* =========================================================
+            3.5 INDORE OPERATIONAL HUBS & SURGE ZONES
+            ========================================================= */}
+        <div className="footer-hubs-strip">
+          <div className="footer-hubs-title">
+            <MapPin size={15} /> Indore High-Demand Operating Hubs
+          </div>
+          <div className="footer-hubs-list">
+            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Vijay Nagar Square: 1.4x Driver Surge active')}>
+              Vijay Nagar
+            </span>
+            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Indore Airport (IDR): 1.6x Priority Pickup active')}>
+              Airport (IDR)
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Palasia Point: Steady high trip frequency')}>
+              Palasia Point
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Bhawarkua Square: Active student & transit rides')}>
+              Bhawarkua
+            </span>
+            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Super Corridor IT Park: Evening Tech Park Surge')}>
+              Super Corridor
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Rajwada Heritage Market: High local demand')}>
+              Rajwada
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Rau Bypass: Outstation & highway trip hub')}>
+              Rau Bypass
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Silicon City: Morning office transit zone')}>
+              Silicon City
+            </span>
+          </div>
+        </div>
+
+        {/* =========================================================
+            3.6 INSTANT SETTLEMENTS & BANKING GATEWAYS
+            ========================================================= */}
+        <div className="footer-payments-bar">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Wallet size={15} color="#7bc44a" />
+            <span>Instant Daily Bank & UPI Payouts Supported:</span>
+          </div>
+          <div className="footer-payments-list">
+            <span className="footer-pay-pill">UPI AutoPay</span>
+            <span className="footer-pay-pill">Google Pay</span>
+            <span className="footer-pay-pill">PhonePe</span>
+            <span className="footer-pay-pill">Paytm Wallet</span>
+            <span className="footer-pay-pill">BHIM UPI</span>
+            <span className="footer-pay-pill">IMPS / NEFT Direct</span>
+            <span className="footer-pay-pill">100% Cash Direct</span>
           </div>
         </div>
 

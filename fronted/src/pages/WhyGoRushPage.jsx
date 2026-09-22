@@ -41,6 +41,7 @@ import '../driver-first-redesign.css';
 import '../perks-showcase-redesign.css';
 import '../comparison-showcase-redesign.css';
 import '../pillars-showcase-redesign.css';
+import '../subpage-cta-redesign.css';
 
 const pillars = [
   {
@@ -512,48 +513,78 @@ export default function WhyGoRushPage({ onJoinClick }) {
       </section>
 
 
-      {/* Final Call to Action */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: '#14251b',
-          color: '#ffffff',
-          textAlign: 'center',
-        }}
-      >
-        <div className="subpage-container">
-          <h2
-            style={{
-              fontSize: 'clamp(32px, 4.5vw, 54px)',
-              fontWeight: 800,
-              margin: '0 0 16px',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Experience the GoRush difference today.
-          </h2>
-          <p
-            style={{
-              fontSize: '15px',
-              color: '#9db4a0',
-              maxWidth: '520px',
-              margin: '0 auto 30px',
-              lineHeight: 1.65,
-            }}
-          >
-            Sign up takes less than 5 minutes. No deposits, zero registration charges, just fair work.
-          </p>
-          <button
-            type="button"
-            className="final-cta-action-btn"
-            onClick={onJoinClick}
-            id="whygorush-final-cta-btn"
-          >
-            <span>Become a GoRush driver</span>
-            <span className="final-cta-btn-arrow-wrap">
+      {/* FINAL CALL TO ACTION - LUXURY REDESIGN */}
+      <section className="subpage-prefooter-cta" id="join">
+        <div className="subpage-cta-card-luxury">
+          <div className="subpage-cta-header-center">
+            <div className="subpage-cta-badge">
+              <Sparkles size={14} />
+              <span>Indore Driver Movement · 0% Commission</span>
+            </div>
+            <h2 className="subpage-cta-headline">
+              Experience the <span>GoRush difference</span> today.
+            </h2>
+            <p className="subpage-cta-subtext">
+              Sign up takes less than 5 minutes. Zero deposits, instant daily bank settlements, and dignity on every mile you drive.
+            </p>
+          </div>
+
+          <div className="subpage-cta-perks-grid">
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <Wallet size={22} />
+              </div>
+              <strong>100% Fare Retention</strong>
+              <p>No sudden 25-30% deductions. What you see is what lands in your bank account every day.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <Zap size={22} />
+              </div>
+              <strong>Instant UPI Payouts</strong>
+              <p>Cash out after every shift directly to GPay, PhonePe, or Paytm with zero gateway fees.</p>
+            </div>
+
+            <div className="subpage-cta-perk-box">
+              <div className="subpage-cta-perk-icon-wrap">
+                <ShieldCheck size={22} />
+              </div>
+              <strong>24/7 Indore Offline Hub</strong>
+              <p>Face-to-face assistance at Vijay Nagar Square. Real humans who treat you with genuine respect.</p>
+            </div>
+          </div>
+
+          <div className="subpage-cta-actions-row">
+            <button
+              type="button"
+              className="subpage-cta-primary-pill"
+              onClick={onJoinClick}
+              id="whygorush-final-cta-btn"
+            >
+              <span>Become a GoRush Driver</span>
               <ArrowRight size={17} />
-            </span>
-          </button>
+            </button>
+            <Link to="/earnings" className="subpage-cta-secondary-pill">
+              <span>Calculate Daily Earnings</span>
+              <ArrowUpRight size={16} />
+            </Link>
+          </div>
+
+          <div className="subpage-cta-bottom-trust">
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>₹0 Registration Charges</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>₹5 Lakh Accidental Cover</span>
+            </div>
+            <div className="subpage-cta-trust-tag">
+              <Check size={16} />
+              <span>Verified in 15 Minutes</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

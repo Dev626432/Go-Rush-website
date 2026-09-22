@@ -1095,6 +1095,25 @@ export default function HomePage({ onJoinClick, action }) {
                 <p className="final-cta-desc">
                   Earn on your own terms, receive instant payouts, and enjoy maximum respect. Register now and join thousands of empowered driver partners.
                 </p>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', margin: '32px 0 36px', textAlign: 'left' }}>
+                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '18px 20px' }}>
+                    <div style={{ color: '#d4ef62', marginBottom: '8px' }}><IndianRupee size={22} /></div>
+                    <strong style={{ display: 'block', fontSize: '15px', color: '#fff', marginBottom: '4px' }}>0% Surge Commission</strong>
+                    <span style={{ fontSize: '12.5px', color: '#9db4a0', lineHeight: 1.4 }}>Keep 100% of peak hour customer surge</span>
+                  </div>
+                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '18px 20px' }}>
+                    <div style={{ color: '#d4ef62', marginBottom: '8px' }}><Zap size={22} /></div>
+                    <strong style={{ display: 'block', fontSize: '15px', color: '#fff', marginBottom: '4px' }}>Instant UPI Transfers</strong>
+                    <span style={{ fontSize: '12.5px', color: '#9db4a0', lineHeight: 1.4 }}>Settlements deposited after every single shift</span>
+                  </div>
+                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '18px 20px' }}>
+                    <div style={{ color: '#d4ef62', marginBottom: '8px' }}><ShieldCheck size={22} /></div>
+                    <strong style={{ display: 'block', fontSize: '15px', color: '#fff', marginBottom: '4px' }}>₹5 Lakh Road Cover</strong>
+                    <span style={{ fontSize: '12.5px', color: '#9db4a0', lineHeight: 1.4 }}>Free comprehensive accident protection</span>
+                  </div>
+                </div>
+
                 <div className="final-cta-actions">
                   <button
                     type="button"

@@ -660,6 +660,180 @@
   }
 }
 
+/* ==========================================
+   2.5 LIVE DRIVER TICKER & INDORE HUBS STRIP
+   ========================================== */
+.footer-live-ticker-strip {
+  background: rgba(212, 239, 98, 0.04);
+  border-bottom: 1px solid rgba(212, 239, 98, 0.12);
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.footer-ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.footer-ticker-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d4ef62;
+  color: #0d1e13;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.footer-ticker-marquee {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  font-size: 12.5px;
+  color: #9cb2a1;
+}
+
+.footer-ticker-marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.footer-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.footer-ticker-item strong {
+  color: #ffffff;
+}
+
+.footer-ticker-item span.gain {
+  color: #7bc44a;
+  font-weight: 700;
+}
+
+/* Indore Hubs Bar */
+.footer-hubs-strip {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-hubs-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #d4ef62;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-hubs-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-hub-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  padding: 5px 13px;
+  font-size: 11.5px;
+  color: #a4bba8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-hub-chip:hover {
+  background: rgba(212, 239, 98, 0.12);
+  border-color: rgba(212, 239, 98, 0.35);
+  color: #d4ef62;
+  transform: translateY(-1px);
+}
+
+.footer-hub-chip.active-zone {
+  border-color: rgba(123, 196, 74, 0.4);
+  color: #d4ef62;
+}
+
+.footer-hub-chip.active-zone::after {
+  content: '⚡ High Surge';
+  font-size: 9.5px;
+  background: rgba(212, 239, 98, 0.2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+/* Payment & Payouts Security Bar */
+.footer-payments-bar {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: #8da492;
+}
+
+.footer-payments-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-pay-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c7d8cb;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .footer-live-ticker-strip {
+    padding: 10px 0;
+  }
+  .footer-hubs-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-payments-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 480px) {
   .site-footer-redesign {
     padding-bottom: max(16px, env(safe-area-inset-bottom));
