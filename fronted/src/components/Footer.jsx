@@ -345,9 +345,9 @@ export default function Footer({ onJoinClick, onAction }) {
                 <AlertTriangle size={15} />
                 <span>Police 112 SOS</span>
               </a>
-              <a href="tel:18004197874" className="footer-roadside-btn desk">
+              <a href="tel:9755125038" className="footer-roadside-btn desk">
                 <Phone size={15} />
-                <span>1800-419-RUSH Desk</span>
+                <span>Helpline: 9755125038</span>
               </a>
               <button
                 type="button"
@@ -382,13 +382,13 @@ export default function Footer({ onJoinClick, onAction }) {
             </p>
 
             <div className="footer-contact-cards">
-              <a href="tel:18004197874" className="footer-contact-item">
+              <a href="tel:9755125038" className="footer-contact-item" id="footer-call-contact-card">
                 <div className="footer-contact-icon-wrap">
                   <Phone size={16} />
                 </div>
                 <div className="footer-contact-info">
-                  <strong>1800-419-RUSH (7874)</strong>
-                  <span>24/7 Driver Toll-Free Helpline</span>
+                  <strong>+91 97551 25038</strong>
+                  <span>24/7 Driver Contact Helpline</span>
                 </div>
               </a>
 
@@ -406,19 +406,21 @@ export default function Footer({ onJoinClick, onAction }) {
                 </div>
               </div>
 
-              <div
+              <a
+                href="https://wa.me/919755125038"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="footer-contact-item"
-                style={{ cursor: 'pointer' }}
-                onClick={() => handleActionClick('WhatsApp helpline: +91 98930 46787')}
+                id="footer-whatsapp-contact-card"
               >
                 <div className="footer-contact-icon-wrap">
                   <MessageCircle size={16} />
                 </div>
                 <div className="footer-contact-info">
-                  <strong>+91 98930 GORUSH</strong>
-                  <span>Official WhatsApp Support Desk</span>
+                  <strong>+91 97551 25038</strong>
+                  <span>Official WhatsApp Contact Desk</span>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -533,6 +535,17 @@ export default function Footer({ onJoinClick, onAction }) {
                   <span>Lost & Found Support</span>
                   <ChevronRight size={14} />
                 </button>
+              </li>
+              <li>
+                <a
+                  href="tel:9755125038"
+                  className="footer-nav-link"
+                  id="footer-contact-link-col"
+                  style={{ color: '#d4ef62', fontWeight: 700 }}
+                >
+                  <Phone size={14} />
+                  <span>Contact: +91 97551 25038</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -765,6 +778,15 @@ export default function Footer({ onJoinClick, onAction }) {
             >
               Accessibility
             </button>
+            <span>·</span>
+            <a
+              href="tel:9755125038"
+              className="footer-legal-link"
+              id="footer-legal-contact-btn"
+              style={{ color: '#d4ef62', textDecoration: 'none', fontWeight: 700 }}
+            >
+              Contact
+            </a>
           </div>
 
           <div className="footer-region-badge">

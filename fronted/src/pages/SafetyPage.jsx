@@ -273,12 +273,12 @@ export default function SafetyPage({ onJoinClick }) {
             </div>
 
             <a
-              href="tel:18004678741"
+              href="tel:9755125038"
               className="safety-modal-primary-btn"
               id="safety-emergency-call-btn"
             >
               <PhoneCall size={18} />
-              <span>Call Dispatch Desk Now (1800-467-8741)</span>
+              <span>Call Contact Helpline (+91 97551 25038)</span>
             </a>
           </div>
         </div>
@@ -443,10 +443,10 @@ export default function SafetyPage({ onJoinClick }) {
           <div className="emergency-hotlines-grid">
             {/* Hotline 1 */}
             <a
-              href="tel:1800467874"
+              href="tel:9755125038"
               className="emergency-hotline-card"
               id="emergency-contact-sos-btn"
-              onClick={() => showToast('📞 Connecting to GoRush Driver SOS Line: 1800-467-874')}
+              onClick={() => showToast('📞 Connecting to GoRush Driver Helpline: +91 97551 25038')}
             >
               <div>
                 <div className="emergency-card-top">
@@ -455,13 +455,13 @@ export default function SafetyPage({ onJoinClick }) {
                   </div>
                   <span className="emergency-live-indicator">🟢 24/7 Active</span>
                 </div>
-                <h3 className="emergency-hotline-title">GoRush Driver SOS Line</h3>
+                <h3 className="emergency-hotline-title">GoRush Direct Contact Line</h3>
                 <p className="emergency-hotline-desc">
-                  Toll-free emergency helpline reserved exclusively for active GoRush driver partners.
+                  Direct contact helpline for active GoRush captains, vehicle onboarding, and rider support.
                 </p>
               </div>
               <div className="emergency-call-pill">
-                <span>1800-467-874</span>
+                <span>+91 97551 25038</span>
                 <Phone size={15} />
               </div>
             </a>
@@ -693,9 +693,9 @@ export default function SafetyPage({ onJoinClick }) {
               <span>Join Safe Driver Network</span>
               <ArrowRight size={17} />
             </button>
-            <a href="tel:18004197874" className="subpage-cta-secondary-pill">
-              <span>Call 24/7 Safety Desk</span>
+            <a href="tel:9755125038" className="subpage-cta-secondary-pill">
               <Phone size={15} />
+              <span>Contact Desk: 9755125038</span>
             </a>
           </div>
 

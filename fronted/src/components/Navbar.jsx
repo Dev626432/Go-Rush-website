@@ -23,6 +23,7 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
     { label: 'How it Works', path: '/how-it-works' },
     { label: 'Benefits', path: '/earnings' },
     { label: 'Support', path: '/safety' },
+    { label: 'Contact', href: 'tel:9755125038' },
   ];
 
   return (
@@ -41,6 +42,19 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
         {/* Center: Navigation Links with Icons */}
         <nav className="nav-center-menu" aria-label="Main Navigation">
           {navLinks.map((item) => {
+            if (item.href) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="nav-link-item"
+                  id="nav-contact-link"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>{item.label}</span>
+                </a>
+              );
+            }
             const isActive = location.pathname === item.path;
             return (
               <Link
@@ -80,6 +94,19 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
 
       <div className={`nav-mobile-dropdown ${menuOpen ? 'open' : ''}`}>
         {navLinks.map((item) => {
+          if (item.href) {
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className="nav-mobile-link"
+                id="nav-mobile-contact-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span>{item.label}</span>
+              </a>
+            );
+          }
           const isActive = location.pathname === item.path;
           return (
             <Link
