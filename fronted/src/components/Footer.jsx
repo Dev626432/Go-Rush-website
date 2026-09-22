@@ -38,7 +38,7 @@ import {
 } from 'lucide-react';
 import '../footer-redesign.css';
 
-export default function Footer({ onJoinClick, onAction }) {
+export default function Footer({ onJoinClick, onContactClick, onAction }) {
   const [emailOrPhone, setEmailOrPhone] = useState('');
   const [newsletterSent, setNewsletterSent] = useState(false);
 
@@ -351,7 +351,14 @@ export default function Footer({ onJoinClick, onAction }) {
                 <AlertTriangle size={15} />
                 <span>Police 112 SOS</span>
               </a>
-              <a href="tel:9755125038" className="footer-roadside-btn desk">
+              <a
+                href="tel:9755125038"
+                className="footer-roadside-btn desk"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onContactClick) onContactClick();
+                }}
+              >
                 <Phone size={15} />
                 <span>Helpline: 9755125038</span>
               </a>
@@ -388,13 +395,21 @@ export default function Footer({ onJoinClick, onAction }) {
             </p>
 
             <div className="footer-contact-cards">
-              <a href="tel:9755125038" className="footer-contact-item" id="footer-call-contact-card">
+              <a
+                href="tel:9755125038"
+                className="footer-contact-item"
+                id="footer-call-contact-card"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onContactClick) onContactClick();
+                }}
+              >
                 <div className="footer-contact-icon-wrap">
                   <Phone size={16} />
                 </div>
                 <div className="footer-contact-info">
                   <strong>+91 97551 25038</strong>
-                  <span>24/7 Driver Contact Helpline</span>
+                  <span>24/7 Driver Contact Helpline (Click to Open)</span>
                 </div>
               </a>
 
@@ -493,6 +508,10 @@ export default function Footer({ onJoinClick, onAction }) {
                 <a
                   href="tel:9755125038"
                   className="footer-nav-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onContactClick) onContactClick();
+                  }}
                   style={{ color: '#d4ef62', fontWeight: 700 }}
                 >
                   <Phone size={14} />
@@ -557,6 +576,10 @@ export default function Footer({ onJoinClick, onAction }) {
                   href="tel:9755125038"
                   className="footer-nav-link"
                   id="footer-contact-link-col"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onContactClick) onContactClick();
+                  }}
                   style={{ color: '#d4ef62', fontWeight: 700 }}
                 >
                   <Phone size={14} />
@@ -606,6 +629,10 @@ export default function Footer({ onJoinClick, onAction }) {
             <div style={{ marginTop: '16px' }}>
               <a
                 href="tel:9755125038"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onContactClick) onContactClick();
+                }}
                 style={{
                   color: '#d4ef62',
                   fontSize: '12.5px',
@@ -815,7 +842,11 @@ export default function Footer({ onJoinClick, onAction }) {
               href="tel:9755125038"
               className="footer-legal-link"
               id="footer-legal-contact-btn"
-              style={{ color: '#d4ef62', textDecoration: 'none', fontWeight: 700 }}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onContactClick) onContactClick();
+              }}
+              style={{ color: '#d4ef62', textDecoration: 'none', fontWeight: 700, cursor: 'pointer' }}
             >
               Contact (9755125038)
             </a>

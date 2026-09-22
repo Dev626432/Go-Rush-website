@@ -5,6 +5,7 @@ import { Check } from 'lucide-react';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import DriverForm from './components/DriverForm.jsx';
+import ContactModal from './components/ContactModal.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 
 import HomePage from './pages/HomePage.jsx';
@@ -21,6 +22,7 @@ import './typography-redesign.css';
 
 export default function App() {
   const [formOpen, setFormOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [notice, setNotice] = useState('');
   const [loading, setLoading] = useState(true);
   const [exiting, setExiting] = useState(false);
@@ -120,6 +122,7 @@ export default function App() {
       {!isDriverPortal && (
         <Navbar
           onJoinClick={() => setFormOpen(true)}
+          onContactClick={() => setContactOpen(true)}
           onLoginClick={() => window.location.href = '/driver'}
         />
       )}
@@ -159,11 +162,18 @@ export default function App() {
 
       {/* Persistent Global Footer (Hidden on Driver Portal) */}
       {!isDriverPortal && (
-        <Footer onJoinClick={() => setFormOpen(true)} onAction={action} />
+        <Footer
+          onJoinClick={() => setFormOpen(true)}
+          onContactClick={() => setContactOpen(true)}
+          onAction={action}
+        />
       )}
 
       {/* Global Registration Popup Modal */}
       {formOpen && <DriverForm close={() => setFormOpen(false)} action={action} />}
+
+      {/* Global Contact Helpline Modal */}
+      {contactOpen && <ContactModal close={() => setContactOpen(false)} />}
     </div>
   );
 }

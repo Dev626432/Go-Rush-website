@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import '../navbar-redesign.css';
 
-export default function Navbar({ onJoinClick, onLoginClick }) {
+export default function Navbar({ onJoinClick, onContactClick, onLoginClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -23,8 +23,16 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
     { label: 'How it Works', path: '/how-it-works' },
     { label: 'Benefits', path: '/earnings' },
     { label: 'Support', path: '/safety' },
-    { label: 'Contact', href: 'tel:9755125038' },
+    { label: 'Contact', isContact: true },
   ];
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    if (onContactClick) {
+      onContactClick();
+    }
+  };
 
   return (
     <header className="site-header-redesign-wrap">
@@ -42,17 +50,28 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
         {/* Center: Navigation Links with Icons */}
         <nav className="nav-center-menu" aria-label="Main Navigation">
           {navLinks.map((item) => {
-            if (item.href) {
+            if (item.isContact) {
               return (
-                <a
+                <button
                   key={item.label}
-                  href={item.href}
+                  type="button"
                   className="nav-link-item"
                   id="nav-contact-link"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={handleContactClick}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    color: '#d4ef62',
+                    fontWeight: 700
+                  }}
                 >
-                  <span>{item.label}</span>
-                </a>
+                  <Phone size={13} color="#d4ef62" />
+                  <span>Contact (9755125038)</span>
+                </button>
               );
             }
             const isActive = location.pathname === item.path;
@@ -94,17 +113,30 @@ export default function Navbar({ onJoinClick, onLoginClick }) {
 
       <div className={`nav-mobile-dropdown ${menuOpen ? 'open' : ''}`}>
         {navLinks.map((item) => {
-          if (item.href) {
+          if (item.isContact) {
             return (
-              <a
+              <button
                 key={item.label}
-                href={item.href}
+                type="button"
                 className="nav-mobile-link"
                 id="nav-mobile-contact-link"
-                onClick={() => setMenuOpen(false)}
+                onClick={handleContactClick}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  width: '100%',
+                  textAlign: 'left',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  color: '#d4ef62',
+                  fontWeight: 700
+                }}
               >
-                <span>{item.label}</span>
-              </a>
+                <Phone size={15} />
+                <span>Contact Desk: 9755125038</span>
+              </button>
             );
           }
           const isActive = location.pathname === item.path;
