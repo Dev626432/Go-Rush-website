@@ -1307,7 +1307,9 @@ export default function HomePage({ onJoinClick, action }) {
                 </div>
                 <div className="real-helpline-copy">
                   <small>24/7 Indore Local Captain Desk</small>
-                  <strong>0731-498-2200</strong>
+                  <a href="tel:9755125038" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <strong>+91 97551 25038</strong>
+                  </a>
                 </div>
               </div>
             </div>

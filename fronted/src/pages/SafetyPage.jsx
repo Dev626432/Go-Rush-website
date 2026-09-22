@@ -263,8 +263,8 @@ export default function SafetyPage({ onJoinClick }) {
                 <div className="stat-box-val">Direct Integration</div>
               </div>
               <div className="safety-modal-stat-box">
-                <div className="stat-box-label">Toll-Free Priority Line</div>
-                <div className="stat-box-val">1800-467-8741</div>
+                <div className="stat-box-label">Priority Direct Helpline</div>
+                <div className="stat-box-val">+91 97551 25038</div>
               </div>
               <div className="safety-modal-stat-box">
                 <div className="stat-box-label">Languages Supported</div>
@@ -493,10 +493,10 @@ export default function SafetyPage({ onJoinClick }) {
 
             {/* Hotline 3 */}
             <a
-              href="tel:+917314982200"
+              href="tel:9755125038"
               className="emergency-hotline-card"
               id="emergency-contact-indore-btn"
-              onClick={() => showToast('🏛️ Connecting to Indore Command Center: +91 731 498 2200')}
+              onClick={() => showToast('🏛️ Connecting to Indore Command Center: +91 97551 25038')}
             >
               <div>
                 <div className="emergency-card-top">
@@ -511,7 +511,7 @@ export default function SafetyPage({ onJoinClick }) {
                 </p>
               </div>
               <div className="emergency-call-pill">
-                <span>+91 731 498 2200</span>
+                <span>+91 97551 25038</span>
                 <Phone size={15} />
               </div>
             </a>

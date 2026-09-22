@@ -215,7 +215,9 @@ export default function Footer({ onJoinClick, onAction }) {
                 “GoRush aane se hamari har mahine ₹10,000–₹12,000 ki commission bachti hai. Pura paisa sham ko bina kisi cut ke seedhe bank account me transfer ho jata hai.”
               </p>
               <div className="footer-voice-author">
-                <div className="footer-voice-avatar">MV</div>
+                <div className="footer-voice-avatar" style={{ background: 'rgba(212, 239, 98, 0.15)', color: '#d4ef62', border: '1px solid rgba(212, 239, 98, 0.3)' }}>
+                  <UserCheck size={18} />
+                </div>
                 <div className="footer-voice-info">
                   <strong>Mukesh Verma</strong>
                   <span>Auto Captain · Vijay Nagar, Indore</span>
@@ -229,7 +231,9 @@ export default function Footer({ onJoinClick, onAction }) {
                 “Airport duty me booking cancel hone ka koi dar nahi rehta. Rate pehle hi pata chal jata hai aur support center wale sach me phone uthakar baat sunte hain.”
               </p>
               <div className="footer-voice-author">
-                <div className="footer-voice-avatar">AP</div>
+                <div className="footer-voice-avatar" style={{ background: 'rgba(212, 239, 98, 0.15)', color: '#d4ef62', border: '1px solid rgba(212, 239, 98, 0.3)' }}>
+                  <UserCheck size={18} />
+                </div>
                 <div className="footer-voice-info">
                   <strong>Arvind Patidar</strong>
                   <span>Sedan Cab Captain · Palasia Point</span>
@@ -243,7 +247,9 @@ export default function Footer({ onJoinClick, onAction }) {
                 “College ke baad 4 ghante bike chalata hoon. Fuel ka kharcha nikal kar roz ₹800–₹1,100 bach jate hain. Student ke liye isse behtar platform nahi ho sakta.”
               </p>
               <div className="footer-voice-author">
-                <div className="footer-voice-avatar">SK</div>
+                <div className="footer-voice-avatar" style={{ background: 'rgba(212, 239, 98, 0.15)', color: '#d4ef62', border: '1px solid rgba(212, 239, 98, 0.3)' }}>
+                  <UserCheck size={18} />
+                </div>
                 <div className="footer-voice-info">
                   <strong>Sameer Khan</strong>
                   <span>Moto Captain · Bhawarkua Hub</span>
@@ -483,6 +489,16 @@ export default function Footer({ onJoinClick, onAction }) {
                   <ChevronRight size={14} />
                 </button>
               </li>
+              <li>
+                <a
+                  href="tel:9755125038"
+                  className="footer-nav-link"
+                  style={{ color: '#d4ef62', fontWeight: 700 }}
+                >
+                  <Phone size={14} />
+                  <span>Captain Support: 9755125038</span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -587,7 +603,23 @@ export default function Footer({ onJoinClick, onAction }) {
               </button>
             </div>
 
-            <div style={{ marginTop: '20px' }}>
+            <div style={{ marginTop: '16px' }}>
+              <a
+                href="tel:9755125038"
+                style={{
+                  color: '#d4ef62',
+                  fontSize: '12.5px',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  marginBottom: '10px'
+                }}
+              >
+                <Phone size={14} />
+                <span>Contact Desk: 9755125038</span>
+              </a>
               <div style={{ fontSize: '11px', color: '#7a9180', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Lock size={13} color="#7bc44a" /> 256-Bit Bank Grade Encryption
               </div>
@@ -785,7 +817,7 @@ export default function Footer({ onJoinClick, onAction }) {
               id="footer-legal-contact-btn"
               style={{ color: '#d4ef62', textDecoration: 'none', fontWeight: 700 }}
             >
-              Contact
+              Contact (9755125038)
             </a>
           </div>
 
