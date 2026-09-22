@@ -1,0 +1,407 @@
+/**
+ * GORUSH TYPOGRAPHY REDESIGN SYSTEM
+ * Human-Crafted, Ultra-Modern Mobility App Typography
+ * Eliminates all AI-generated serif tropes, typewriter monospaces, and awkward scales.
+ */
+
+:root {
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Brand Colors for Human-designed Typography */
+  --text-heading: #122417;
+  --text-body: #3c5042;
+  --text-subtle: #5f7465;
+  --text-muted: #788d7e;
+  
+  /* Accent Greens */
+  --accent-forest: #14251b;
+  --accent-lime: #d4ef62;
+  --accent-green: #487d27;
+  --accent-emerald: #1e3f28;
+}
+
+/* 1. GLOBAL BASE RESET TO MODERN SANS-SERIF */
+html, body {
+  font-family: var(--font-primary) !important;
+  color: var(--text-heading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, select, textarea, optgroup {
+  font-family: var(--font-primary) !important;
+}
+
+/* 2. ELIMINATE ALL AI-GENERATED PLAYFAIR SERIF FONTS */
+/* In real mobility apps like Rapido, Uber & Bolt, headings use pure modern sans-serif with weight/color contrast */
+* {
+  --font-serif: var(--font-primary);
+}
+
+em, i {
+  font-style: normal;
+}
+
+/* Heading Emphasized Words (Formerly Playfair Display Serif Italic) */
+h1 em, h2 em, h3 em, h4 em,
+.hero-copy h1 em,
+.intro-heading h2 em,
+.earnings-copy h2 em,
+.safety-copy h2 em,
+.final-cta h2 em,
+.driver-form h2 em,
+.subpage-title em,
+.subpage-section-header h2 em,
+.scenic-header-title em,
+.title-serif-italic,
+.hero-title em,
+.section-title em,
+.difference-header h2 em,
+.pillars-header h2 em,
+.perks-header h2 em,
+.criteria-header h2 em,
+.calc-header h2 em,
+.protocol-header h2 em,
+.faq-header h2 em,
+.quote-content em,
+.driver-quote em {
+  font-family: var(--font-primary) !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  color: #3b7420 !important;
+  background: linear-gradient(135deg, #1b3d22 0%, #467923 60%, #639b2e 100%);
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline !important;
+}
+
+/* On Dark Surfaces (like Hero Banner, Dark CTA, and Earnings Dark Card) */
+.earnings-section h2 em,
+.earnings-hero-redesign h1 em,
+.final-cta-redesign h2 em,
+.final-cta.dark h2 em,
+.hero-video-title em,
+.dark-panel em,
+.stats-strip strong,
+.earnings-dark em {
+  background: linear-gradient(135deg, #d4ef62 0%, #b8e635 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #d4ef62 !important;
+}
+
+/* 3. ELIMINATE AI-GENERATED TYPEWRITER MONOSPACE ('DM Mono') */
+/* Replace tiny 8px-10px mono with crisp, readable modern app labels */
+.hero-kicker,
+.final-kicker,
+.section-label,
+.card-eyebrow,
+.route-stamp,
+.safety-center small,
+.safety-chip,
+.quote-author > div,
+.final-note,
+.driver-form label,
+.phone-input span,
+.eyebrow,
+.live-pill,
+.new-tag,
+.brand-lockup span,
+.nav-label,
+.subpage-badge,
+.onboarding-kicker,
+.difference-badge,
+.criteria-kicker,
+.perks-kicker,
+.pillars-kicker,
+.calc-badge,
+.protocol-badge,
+.faq-badge,
+.hiw-step-num-badge span,
+.subpage-badge-pill,
+.subpage-chip-tag,
+[class*="kicker"],
+[class*="eyebrow"],
+[class*="pill-label"],
+[class*="step-tag"] {
+  font-family: var(--font-primary) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+}
+
+/* 4. BALANCED, HUMAN-SCALED HEADLINES (NO OVERBLOWN 93px AI SIZES) */
+/* Hero Main H1 */
+h1,
+.hero-copy h1,
+.subpage-title,
+.title-sans-line,
+.scenic-header-title,
+.onboarding-hero-title,
+.earnings-hero-title,
+.safety-hero-title {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(34px, 4.4vw, 52px) !important;
+  font-weight: 850 !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--text-heading);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Section H2 Headings */
+h2,
+.intro-heading h2,
+.earnings-copy h2,
+.safety-copy h2,
+.final-cta h2,
+.subpage-section-header h2,
+.difference-header h2,
+.pillars-header h2,
+.perks-header h2,
+.criteria-header h2,
+.calc-header h2,
+.protocol-header h2,
+.faq-header h2,
+.form-success h2 {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(26px, 3.2vw, 38px) !important;
+  font-weight: 800 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--text-heading);
+}
+
+/* Card H3 Headings */
+h3,
+.feature-card h3,
+.steps-grid h3,
+.difference-card h3,
+.pillar-card h3,
+.perk-card h3,
+.criteria-card h3,
+.faq-question,
+.hiw-step-content h3 {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(18px, 1.8vw, 22px) !important;
+  font-weight: 750 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text-heading);
+}
+
+/* 5. HUMAN-READABLE BODY COPY (NO MICROSCOPIC 10px / 11px FONTS) */
+p,
+.hero-copy > p,
+.intro-heading p,
+.earnings-copy > p,
+.safety-copy > p,
+.final-cta p,
+.driver-form > p,
+.subpage-lead,
+.scenic-header-subtitle,
+.onboarding-hero-desc,
+.difference-card p,
+.subpage-section-header p,
+.pillar-card p,
+.perk-card p,
+.criteria-card p,
+.faq-answer {
+  font-family: var(--font-body) !important;
+  font-size: clamp(14px, 1.15vw, 16px) !important;
+  line-height: 1.65 !important;
+  color: var(--text-body) !important;
+}
+
+/* Feature card body copy */
+.feature-card > p,
+.steps-grid p,
+.subpage-feature-card p,
+.benefit-card p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: var(--text-subtle) !important;
+}
+
+/* Feature card list items */
+.feature-card li,
+.criteria-checklist li,
+.perk-checklist li {
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  color: var(--text-body) !important;
+  font-weight: 500 !important;
+}
+
+/* 6. STATS & NUMBERS: CRISP TABULAR SANS (NO SERIF NUMBERS) */
+.stats-strip strong,
+.earnings-float strong,
+.big-amount,
+.calc-big-amount,
+.safety-center span,
+.why-pillar-stat strong,
+.stat-card > strong,
+.hiw-step-num-badge strong,
+.hero-stat-number,
+.kpi-number {
+  font-family: var(--font-primary) !important;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.05 !important;
+}
+
+.hiw-step-num-badge strong {
+  font-size: 24px !important;
+}
+
+.calc-big-amount {
+  font-size: clamp(38px, 4.5vw, 54px) !important;
+}
+
+.stats-strip strong {
+  font-size: clamp(24px, 2.5vw, 32px) !important;
+  color: var(--accent-lime) !important;
+}
+
+.stats-strip span {
+  font-family: var(--font-primary) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* 7. BUTTONS & CTAS: BOLD, CONFIDENT & TOUCH-FRIENDLY */
+.primary-cta,
+.header-cta,
+.light-cta,
+.play-cta,
+.driver-register-btn,
+.calc-cta-btn,
+.subpage-primary-btn,
+.site-nav button,
+.header-login,
+.form-submit {
+  font-family: var(--font-primary) !important;
+  font-size: 14px !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.primary-cta,
+.subpage-primary-btn {
+  padding: 13px 22px !important;
+}
+
+/* Nav items */
+.site-nav button,
+.header-login {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+}
+
+/* 8. QUOTE / TESTIMONIAL SECTION REDESIGN (NO 100px ORNATE SERIF) */
+.quote-mark {
+  font-family: var(--font-primary) !important;
+  font-size: 64px !important;
+  line-height: 0.8 !important;
+  color: #769f37 !important;
+}
+
+.quote-section blockquote,
+.driver-quote blockquote {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(20px, 2.5vw, 28px) !important;
+  font-weight: 650 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.025em !important;
+  color: #1a3222 !important;
+  font-style: normal !important;
+}
+
+.quote-author strong {
+  font-family: var(--font-primary) !important;
+  font-size: 14px !important;
+  font-weight: 750 !important;
+  color: #14251b !important;
+}
+
+.quote-author small {
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #5d7363 !important;
+}
+
+/* 9. DRIVER ONBOARDING FORM TYPOGRAPHY */
+.driver-form h2 {
+  font-size: clamp(24px, 3.2vw, 32px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.driver-form label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #3b5042 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}
+
+.driver-form input,
+.driver-form select {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #14251b !important;
+  border-radius: 8px !important;
+}
+
+/* 10. MOBILE SPECIFIC TYPOGRAPHY REFINEMENTS (< 700px) */
+@media (max-width: 700px) {
+  h1,
+  .hero-copy h1,
+  .subpage-title,
+  .title-sans-line,
+  .scenic-header-title {
+    font-size: clamp(28px, 7.8vw, 36px) !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  h2,
+  .intro-heading h2,
+  .earnings-copy h2,
+  .safety-copy h2,
+  .final-cta h2,
+  .subpage-section-header h2 {
+    font-size: clamp(22px, 5.8vw, 28px) !important;
+    line-height: 1.22 !important;
+  }
+
+  p,
+  .hero-copy > p,
+  .subpage-lead,
+  .scenic-header-subtitle {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+  }
+
+  .subpage-badge,
+  .hero-kicker,
+  .section-label,
+  .card-eyebrow {
+    font-size: 11px !important;
+  }
+
+  .primary-cta,
+  .subpage-primary-btn {
+    font-size: 14.5px !important;
+    padding: 13px 20px !important;
+  }
+}

@@ -17,6 +17,7 @@ import DriverDashboardPage from './pages/DriverDashboardPage.jsx';
 import './website.css';
 import './loader.css';
 import './pages/pages.css';
+import './typography-redesign.css';
 
 export default function App() {
   const [formOpen, setFormOpen] = useState(false);
