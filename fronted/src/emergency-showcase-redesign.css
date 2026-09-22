@@ -1,251 +1,173 @@
 /* ==========================================================================
-   GoRush - Central Emergency Desk (Sealed Showcase Banner with Real Active Buttons)
-   Image: /emergency-showcase-sep21.png (1810 x 869)
+   GoRush - Central Emergency Desk (100% Handcrafted Web Component)
    ========================================================================== */
 
-.emergency-showcase-banner-section {
+.emergency-desk-section {
   position: relative;
   width: 100%;
-  background: #edf5ea;
+  background: linear-gradient(180deg, #f7f9f2 0%, #edf4e4 100%);
+  padding: 95px 24px 85px;
   overflow: hidden;
-  border-bottom: 1px solid rgba(20, 37, 27, 0.07);
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  border-top: 1px solid rgba(110, 150, 50, 0.15);
+  border-bottom: 1px solid rgba(110, 150, 50, 0.15);
 }
 
-.emergency-showcase-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1810px;
+.emergency-desk-inner {
+  max-width: 1100px;
   margin: 0 auto;
-  line-height: 0;
+  position: relative;
+  z-index: 2;
 }
 
-.emergency-showcase-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  user-select: none;
-  -webkit-user-drag: none;
+.emergency-header-center {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 48px;
 }
 
-/* ==========================================================================
-   INTERACTIVE CONTACT ROWS (Inside Dark Green Card)
-   ========================================================================== */
+.emergency-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #dc2626;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
 
-.emergency-interactive-row {
-  position: absolute;
-  left: 48.62%;
-  width: 34.20%;
-  height: 12.0%;
-  border-radius: 16px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 1.5px solid transparent;
-  outline: none;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+.emergency-main-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  line-height: 1.12;
+  margin: 0 0 16px 0;
+}
+
+.emergency-main-title em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+.emergency-main-subtitle {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: #556c58;
+  margin: 0;
+}
+
+/* 3 Clickable Phone Hotlines Grid */
+.emergency-hotlines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.emergency-hotline-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 28px;
+  border: 1.5px solid rgba(110, 150, 50, 0.18);
+  box-shadow: 0 12px 32px rgba(20, 37, 27, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.emergency-hotline-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(220, 38, 38, 0.4);
+  box-shadow: 0 18px 42px rgba(220, 38, 38, 0.12);
+}
+
+.emergency-card-top {
   display: flex;
   align-items: center;
-  text-decoration: none;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-.emergency-row-1 {
-  top: 29.2%;
+.emergency-card-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: #fef2f2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.emergency-row-2 {
-  top: 44.2%;
+.emergency-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 163, 74, 0.2);
 }
 
-.emergency-row-3 {
-  top: 59.2%;
+.emergency-hotline-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #14251b;
+  margin: 0 0 8px 0;
 }
 
-.emergency-interactive-row:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(163, 230, 53, 0.5);
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.25),
-    0 0 0 2px rgba(163, 230, 53, 0.2);
-  transform: translateX(4px);
+.emergency-hotline-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #556c58;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
 }
 
-.emergency-interactive-row:active {
-  transform: translateX(2px) scale(0.99);
+.emergency-call-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #14251b;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: background 0.2s ease;
 }
 
-/* ==========================================================================
-   BOTTOM-LEFT QUOTE / DRIVE SAFE CTA BANNER
-   ========================================================================== */
-
-.emergency-drive-safe-card {
-  position: absolute;
-  left: 13.8%;
-  top: 76.5%;
-  width: 30.5%;
-  height: 11.5%;
-  border-radius: 18px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 1.5px solid transparent;
-  outline: none;
-  transition: all 0.22s ease;
+.emergency-hotline-card:hover .emergency-call-pill {
+  background: #dc2626;
 }
 
-.emergency-drive-safe-card:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(30, 94, 46, 0.4);
-  box-shadow: 0 8px 24px rgba(18, 54, 25, 0.15);
-  transform: translateY(-2px);
+/* Responsive */
+@media (max-width: 860px) {
+  .emergency-hotlines-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* ==========================================================================
-   MICRO FEATURE PILLS (24/7 Monitoring, Quick Response, Your Safety)
-   ========================================================================== */
-
-.emergency-micro-pill-hitbox {
-  position: absolute;
-  top: 65.5%;
-  height: 9.0%;
-  border-radius: 9999px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 1.5px solid transparent;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.emergency-pill-1 {
-  left: 14.0%;
-  width: 8.5%;
-}
-
-.emergency-pill-2 {
-  left: 23.8%;
-  width: 8.5%;
-}
-
-.emergency-pill-3 {
-  left: 33.6%;
-  width: 9.2%;
-}
-
-.emergency-micro-pill-hitbox:hover {
-  background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(30, 94, 46, 0.3);
-  box-shadow: 0 4px 14px rgba(18, 54, 25, 0.12);
-  transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   RIGHT BADGES & FLOATING APP SCREEN
-   ========================================================================== */
-
-.emergency-right-badge-hitbox {
-  position: absolute;
-  right: 1.5%;
-  width: 11.5%;
-  border-radius: 9999px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 1.5px solid transparent;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.emergency-badge-alone {
-  top: 15.0%;
-  height: 6.5%;
-}
-
-.emergency-badge-support {
-  top: 42.0%;
-  height: 6.5%;
-}
-
-.emergency-right-badge-hitbox:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(163, 230, 53, 0.5);
-  box-shadow: 0 4px 16px rgba(18, 54, 25, 0.12);
-  transform: translateY(-2px);
-}
-
-/* Smartphone Showcase hitbox */
-.emergency-smartphone-hitbox {
-  position: absolute;
-  right: 4.5%;
-  top: 53.0%;
-  width: 15.0%;
-  height: 38.0%;
-  border-radius: 28px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 2px solid transparent;
-  outline: none;
-  transition: all 0.25s ease;
-}
-
-.emergency-smartphone-hitbox:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(163, 230, 53, 0.4);
-  box-shadow: 0 12px 36px rgba(16, 46, 22, 0.25);
-  transform: scale(1.02);
-}
-
-/* Eyebrow Pill Hitbox */
-.emergency-eyebrow-hitbox {
-  position: absolute;
-  left: 14.0%;
-  top: 17.0%;
-  width: 18.0%;
-  height: 6.0%;
-  border-radius: 9999px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 1.5px solid transparent;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.emergency-eyebrow-hitbox:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(30, 94, 46, 0.3);
-}
-
-/* Bottom Trust Badges */
-.emergency-trust-strip-hitbox {
-  position: absolute;
-  bottom: 5.5%;
-  height: 6.5%;
-  border-radius: 9999px;
-  cursor: pointer;
-  z-index: 10;
-  background: transparent;
-  border: 1.5px solid transparent;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.emergency-trust-1 {
-  left: 20.0%;
-  width: 18.0%;
-}
-
-.emergency-trust-2 {
-  left: 41.0%;
-  width: 18.0%;
-}
-
-.emergency-trust-3 {
-  left: 61.0%;
-  width: 18.0%;
-}
-
-.emergency-trust-strip-hitbox:hover {
-  background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(30, 94, 46, 0.25);
+@media (max-width: 640px) {
+  .emergency-desk-section {
+    padding: 70px 16px 60px;
+  }
 }

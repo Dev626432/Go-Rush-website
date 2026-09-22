@@ -1,461 +1,270 @@
 /* ==========================================================================
-   GoRush - Driver FAQs Showcase Redesign (Sep 21 Edition)
-   Showcase banner with real interactive buttons & dynamic accordions
+   GoRush - Driver FAQs Section (100% Handcrafted Web Component)
    ========================================================================== */
 
-.faq-showcase-section {
+.faq-section-wrap {
   position: relative;
   width: 100%;
-  background: linear-gradient(180deg, #f4fbf4 0%, #ebf6ec 50%, #e6f3e8 100%);
-  padding: 40px 20px 70px;
+  background: #ffffff;
+  padding: 100px 24px 90px;
   overflow: hidden;
-  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  border-top: 1px solid rgba(20, 37, 27, 0.08);
+  border-bottom: 1px solid rgba(20, 37, 27, 0.08);
 }
 
-.faq-container {
-  max-width: 1340px;
+.faq-inner-container {
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
+  z-index: 2;
 }
 
-/* Aspect-ratio preserving relative banner wrapper */
-.faq-banner-wrapper {
-  position: relative;
-  width: 100%;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 16px 45px rgba(20, 44, 25, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
-  background: #edf6eb;
-  line-height: 0;
+/* Header */
+.faq-header-center {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 46px;
 }
 
-.faq-banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   Category Tab Buttons (All Questions, Onboarding, Documents, Payments, etc.)
-   ========================================================================== */
-
-.faq-hitbox-category {
-  position: absolute;
-  top: 37.44%;
-  height: 5.53%;
-  border-radius: 9999px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
+.faq-eyebrow-pill {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all 0.2s ease;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.faq-hitbox-category:hover {
-  transform: translateY(-2px);
-}
-
-.faq-hitbox-category:active {
-  transform: translateY(0) scale(0.97);
-}
-
-/* Tab positions */
-.faq-cat-all {
-  left: 20.42%;
-  width: 9.8%;
-}
-
-.faq-cat-onboarding {
-  left: 31.0%;
-  width: 9.5%;
-}
-
-.faq-cat-documents {
-  left: 41.2%;
-  width: 9.5%;
-}
-
-.faq-cat-payments {
-  left: 51.4%;
-  width: 9.2%;
-}
-
-.faq-cat-account {
-  left: 61.3%;
-  width: 8.8%;
-}
-
-.faq-cat-support {
-  left: 70.8%;
-  width: 8.6%;
-}
-
-/* Active tab highlight overlay (when selected tab is not 'All Questions') */
-.faq-cat-active-overlay {
-  position: absolute;
-  inset: 0;
-  background: #0d2616;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: #ffffff;
-  font-size: clamp(10px, 0.8vw, 13px);
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(110, 160, 50, 0.1);
+  border: 1px solid rgba(110, 160, 50, 0.22);
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(13, 38, 22, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  animation: catPillFade 0.2s ease;
+  letter-spacing: 0.15em;
+  color: #385923;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-/* Inactive overlay for All Questions when another is active */
-.faq-cat-inactive-overlay {
-  position: absolute;
-  inset: 0;
-  background: #ffffff;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: #1a321e;
-  font-size: clamp(10px, 0.8vw, 13px);
-  font-weight: 700;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2ebe1;
-  animation: catPillFade 0.2s ease;
-}
-
-@keyframes catPillFade {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.faq-hitbox-category:hover::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 9999px;
-  border: 2px solid rgba(43, 122, 57, 0.35);
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   Accordion Item Hitboxes (Real Interactive Question Click Targets)
-   ========================================================================== */
-
-.faq-hitbox-row {
-  position: absolute;
-  left: 20.42%;
-  width: 59.05%;
-  border-radius: 18px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-  outline: none;
-  transition: all 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.faq-hitbox-row:hover {
-  background: rgba(43, 122, 57, 0.04);
-}
-
-.faq-hitbox-row:hover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  border: 2px solid rgba(43, 122, 57, 0.3);
-  pointer-events: none;
-}
-
-/* Positions matching graphic */
-.faq-row-0 {
-  top: 45.51%;
-  height: 22.81%;
-}
-
-.faq-row-1 {
-  top: 69.70%;
-  height: 7.49%;
-}
-
-.faq-row-2 {
-  top: 78.34%;
-  height: 7.49%;
-}
-
-.faq-row-3 {
-  top: 86.98%;
-  height: 7.49%;
-}
-
-/* ==========================================================================
-   Dynamic Accordion Detail Overlay (when items 1, 2, or 3 are opened)
-   ========================================================================== */
-
-.faq-answer-card-overlay {
-  position: absolute;
-  left: 20.42%;
-  top: 45.51%;
-  width: 59.05%;
-  height: 48.96%;
-  background: #ffffff;
-  border-radius: 24px;
-  border: 1px solid #dbead8;
-  box-shadow: 0 16px 40px rgba(18, 44, 22, 0.12);
-  z-index: 15;
-  padding: 24px 28px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  animation: faqCardPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  line-height: normal;
-}
-
-@keyframes faqCardPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.faq-answer-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #edf4ea;
-}
-
-.faq-answer-header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.faq-answer-icon-wrap {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: #e8f5e5;
-  color: #1e4521;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.faq-answer-card-question {
-  font-size: clamp(15px, 1.25vw, 20px);
-  font-weight: 800;
-  color: #112415;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.faq-answer-close-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #f0f7ef;
-  border: 1px solid #dcebda;
-  color: #264b28;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  flex-shrink: 0;
-}
-
-.faq-answer-close-btn:hover {
-  background: #193a1c;
-  color: #ffffff;
-  transform: rotate(90deg);
-}
-
-.faq-answer-card-body {
-  padding: 14px 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.faq-answer-card-text {
-  font-size: clamp(13px, 0.95vw, 15px);
-  color: #384d3b;
-  line-height: 1.6;
+.faq-headline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(34px, 4.2vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  line-height: 1.12;
   margin: 0 0 16px 0;
 }
 
-.faq-answer-protip-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #eaf6e7;
-  border: 1px solid #cee5c9;
-  border-radius: 12px;
-  padding: 10px 14px;
-  color: #1d4620;
-  font-size: clamp(11.5px, 0.8vw, 13.5px);
+.faq-headline em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
   font-weight: 600;
+  color: #558525;
 }
 
-.faq-answer-card-footer {
+.faq-subline {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: #5d7360;
+  margin: 0;
+}
+
+/* Category Filter Pills */
+.faq-categories-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.faq-cat-pill {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #f4f8ee;
+  border: 1px solid rgba(110, 150, 50, 0.2);
+  color: #38533c;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.faq-cat-pill:hover {
+  background: #e8f2de;
+  border-color: rgba(110, 150, 50, 0.4);
+}
+
+.faq-cat-pill.active {
+  background: #14251b;
+  color: #ffffff;
+  border-color: #14251b;
+  box-shadow: 0 4px 14px rgba(20, 37, 27, 0.15);
+}
+
+/* Accordion List */
+.faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.faq-accordion-item {
+  background: #f8faf4;
+  border: 1.5px solid rgba(110, 150, 50, 0.18);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-accordion-item.is-open {
+  background: #ffffff;
+  border-color: rgba(110, 150, 50, 0.45);
+  box-shadow: 0 12px 32px rgba(20, 37, 27, 0.06);
+}
+
+.faq-accordion-header {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 12px;
-  border-top: 1px solid #edf4ea;
-}
-
-.faq-answer-footer-tag {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #58715a;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.faq-answer-footer-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #152b19;
-  color: #ffffff;
-  border: none;
-  border-radius: 10px;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.faq-answer-footer-btn:hover {
-  background: #255a2d;
-  transform: translateY(-1px);
-}
-
-/* ==========================================================================
-   Support CTA Hitbox (Bottom Right)
-   ========================================================================== */
-
-.faq-hitbox-support {
-  position: absolute;
-  left: 83.33%;
-  top: 84.68%;
-  width: 15.18%;
-  height: 9.79%;
-  border-radius: 20px;
+  padding: 22px 28px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 10;
-  outline: none;
-  transition: all 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  gap: 18px;
 }
 
-.faq-hitbox-support:hover {
-  transform: scale(1.04);
+.faq-question-text {
+  font-size: 17px;
+  font-weight: 800;
+  color: #14251b;
+  letter-spacing: -0.02em;
 }
 
-.faq-hitbox-support:hover::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 22px;
-  border: 2px solid rgba(43, 122, 57, 0.5);
-  pointer-events: none;
+.faq-accordion-chevron {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #eef6e4;
+  color: #3e6822;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background 0.2s ease;
 }
 
-.faq-hitbox-support:active {
-  transform: scale(0.97);
+.faq-accordion-item.is-open .faq-accordion-chevron {
+  transform: rotate(180deg);
+  background: #14251b;
+  color: #d4ef62;
 }
 
-/* ==========================================================================
-   Left Stats Badges Hitboxes (Hover effects)
-   ========================================================================== */
+.faq-accordion-body {
+  padding: 0 28px 24px;
+}
 
-.faq-stats-hitbox {
-  position: absolute;
-  left: 4.5%;
-  width: 11.5%;
-  height: 8.5%;
-  border-radius: 16px;
+.faq-answer-text {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #556c58;
+  margin: 0 0 16px 0;
+}
+
+.faq-protip-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #f2f8ea;
+  border: 1px dashed rgba(110, 150, 50, 0.35);
+  border-radius: 12px;
+  font-size: 13px;
+  color: #2b4b24;
+}
+
+.faq-protip-box strong {
+  color: #1a3c17;
+}
+
+/* Bottom Support Banner */
+.faq-support-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #14251b 0%, #0d1a12 100%);
+  border-radius: 20px;
+  padding: 24px 32px;
+  color: #ffffff;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.faq-support-strip-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-support-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(212, 239, 98, 0.15);
+  color: #d4ef62;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-support-text strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+
+.faq-support-text span {
+  font-size: 13px;
+  color: #9cbca1;
+}
+
+.faq-support-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #d4ef62;
+  color: #122817;
+  font-size: 13.5px;
+  font-weight: 800;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
   cursor: pointer;
-  z-index: 5;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-.faq-stats-hitbox:hover {
-  background: rgba(43, 122, 57, 0.06);
-  transform: translateX(4px);
+.faq-support-action-btn:hover {
+  background: #e3f77f;
+  transform: translateY(-2px);
 }
 
-.faq-stats-top {
-  top: 46.5%;
-}
-
-.faq-stats-mid {
-  top: 59.5%;
-}
-
-.faq-stats-bot {
-  top: 72.5%;
-}
-
-/* ==========================================================================
-   Responsive Adaptations
-   ========================================================================== */
-
-@media (max-width: 900px) {
-  .faq-showcase-section {
-    padding: 30px 14px 50px;
+/* Responsive */
+@media (max-width: 640px) {
+  .faq-section-wrap {
+    padding: 70px 16px 60px;
   }
-
-  .faq-answer-card-overlay {
-    padding: 16px 18px;
+  .faq-accordion-header {
+    padding: 18px 20px;
   }
-}
-
-@media (max-width: 680px) {
-  .faq-answer-card-overlay {
-    left: 4%;
-    width: 92%;
-    top: 35%;
-    height: 60%;
-    padding: 14px;
+  .faq-question-text {
+    font-size: 15.5px;
   }
-
-  .faq-answer-protip-box {
-    font-size: 11px;
-    padding: 8px 10px;
+  .faq-accordion-body {
+    padding: 0 20px 20px;
   }
 }

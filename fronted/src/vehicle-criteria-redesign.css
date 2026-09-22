@@ -1,542 +1,292 @@
 /* ==========================================================================
-   GoRush - Vehicle & Criteria Redesign (Sep 21 Edition)
-   Showcase banner with real interactive buttons & vehicle switching
+   GoRush - Vehicle & Criteria Section (100% Handcrafted Web Component)
    ========================================================================== */
 
-.criteria-showcase-section {
+.criteria-section-wrap {
   position: relative;
   width: 100%;
-  background: linear-gradient(180deg, #f4f8ec 0%, #edf5e6 50%, #eaf3e1 100%);
-  padding: 40px 20px 60px;
+  background: linear-gradient(180deg, #f7fbf3 0%, #eef6e6 100%);
+  padding: 100px 24px 90px;
   overflow: hidden;
-  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
+  border-top: 1px solid rgba(110, 150, 50, 0.15);
+  border-bottom: 1px solid rgba(110, 150, 50, 0.15);
 }
 
-.criteria-container {
-  max-width: 1340px;
+.criteria-inner-container {
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  z-index: 2;
 }
 
-/* Aspect-ratio preserving relative banner wrapper */
-.criteria-banner-wrapper {
-  position: relative;
-  width: 100%;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 16px 45px rgba(22, 44, 27, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
-  background: #edf5e7;
-  line-height: 0;
+/* Header */
+.criteria-header-center {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 48px;
 }
 
-.criteria-banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
+.criteria-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(110, 160, 50, 0.12);
+  border: 1px solid rgba(110, 160, 50, 0.25);
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #385923;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-/* ==========================================================================
-   Real Interactive Tab Buttons (positioned over graphic pills)
-   ========================================================================== */
+.criteria-headline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(34px, 4.2vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #14251b;
+  line-height: 1.12;
+  margin: 0 0 16px 0;
+}
 
-.criteria-hitbox-tab {
-  position: absolute;
-  top: 23.91%;
-  height: 8.74%;
-  border-radius: 9999px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
+.criteria-headline em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #558525;
+}
+
+.criteria-subline {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: #556c58;
+  margin: 0;
+}
+
+/* Vehicle Switcher Tabs */
+.criteria-tabs-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
-.criteria-hitbox-tab:hover {
+.criteria-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1.5px solid rgba(110, 150, 50, 0.2);
+  color: #334e38;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(20, 37, 27, 0.03);
+}
+
+.criteria-tab-btn:hover {
+  border-color: rgba(110, 150, 50, 0.45);
   transform: translateY(-2px);
 }
 
-.criteria-hitbox-tab:active {
-  transform: translateY(0) scale(0.97);
-}
-
-/* Tab specific positions */
-.criteria-hitbox-tab-bike {
-  left: 26.66%;
-  width: 15.04%;
-}
-
-.criteria-hitbox-tab-auto {
-  left: 42.70%;
-  width: 14.93%;
-}
-
-.criteria-hitbox-tab-cab {
-  left: 58.52%;
-  width: 14.93%;
-}
-
-/* When a tab is in active state (e.g. Auto or Cab selected, or Bike clicked) */
-.criteria-tab-active-pill {
-  position: absolute;
-  inset: 0;
-  background: #0d2616;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px;
+.criteria-tab-btn.active {
+  background: #14251b;
   color: #ffffff;
-  box-shadow: 0 8px 24px rgba(13, 38, 22, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  animation: tabPillPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
+  border-color: #14251b;
+  box-shadow: 0 8px 24px rgba(20, 37, 27, 0.2);
 }
 
-/* When Bike is inactive because Auto or Cab is selected, show white inactive pill over Bike */
-.criteria-tab-inactive-pill {
-  position: absolute;
-  inset: 0;
+.criteria-tab-btn.active svg {
+  color: #d4ef62;
+}
+
+/* Vehicle Criteria Showcase Card */
+.criteria-content-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr;
+  gap: 32px;
   background: #ffffff;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px;
-  color: #1a321e;
-  box-shadow: 0 4px 14px rgba(22, 44, 27, 0.08);
-  border: 1px solid #e0ebe0;
-  animation: tabPillPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
+  border-radius: 28px;
+  padding: 40px;
+  border: 1.5px solid rgba(110, 150, 50, 0.2);
+  box-shadow: 0 16px 48px rgba(20, 37, 27, 0.06);
 }
 
-@keyframes tabPillPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.criteria-pill-icon {
-  flex-shrink: 0;
-}
-
-.criteria-tab-active-pill .criteria-pill-icon {
-  color: #55c866;
-}
-
-.criteria-tab-inactive-pill .criteria-pill-icon {
-  color: #274828;
-}
-
-.criteria-pill-texts {
+.criteria-card-left {
   display: flex;
   flex-direction: column;
-  text-align: left;
-  line-height: 1.15;
-}
-
-.criteria-pill-title {
-  font-size: clamp(11px, 1vw, 15px);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.criteria-tab-active-pill .criteria-pill-title {
-  color: #ffffff;
-}
-
-.criteria-tab-inactive-pill .criteria-pill-title {
-  color: #112515;
-}
-
-.criteria-pill-sub {
-  font-size: clamp(9px, 0.75vw, 12px);
-  font-weight: 500;
-}
-
-.criteria-tab-active-pill .criteria-pill-sub {
-  color: #a4ceaa;
-}
-
-.criteria-tab-inactive-pill .criteria-pill-sub {
-  color: #607963;
-}
-
-/* Hover rings on default tabs */
-.criteria-hitbox-tab:hover::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 9999px;
-  border: 2px solid rgba(43, 122, 57, 0.4);
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   Real CTA Button (positioned over 'Join GoRush Today' at bottom-right)
-   ========================================================================== */
-
-.criteria-hitbox-join {
-  position: absolute;
-  left: 90.0%;
-  top: 80.5%;
-  width: 9.6%;
-  height: 18.0%;
+  justify-content: space-between;
+  background: #f8faf3;
   border-radius: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-  outline: none;
-  transition: all 0.22s ease;
+  padding: 32px;
+  border: 1px solid rgba(110, 150, 50, 0.15);
+}
+
+.criteria-card-left-top {
+  margin-bottom: 24px;
+}
+
+.criteria-vehicle-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #1e3f28;
+  color: #d4ef62;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(30, 63, 40, 0.2);
 }
 
-.criteria-hitbox-join:hover {
-  transform: scale(1.06) rotate(-2deg);
+.criteria-vehicle-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #14251b;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.03em;
 }
 
-.criteria-hitbox-join:hover::after {
-  content: 'Join as Driver →';
-  position: absolute;
-  top: -34px;
-  right: 0;
-  background: #122818;
+.criteria-vehicle-sub {
+  font-size: 14px;
+  font-weight: 700;
+  color: #558826;
+  margin-bottom: 14px;
+}
+
+.criteria-vehicle-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #556c58;
+  margin: 0;
+}
+
+.criteria-register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #14251b;
   color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(20, 37, 27, 0.18);
+  margin-top: 24px;
+}
+
+.criteria-register-btn:hover {
+  background: #0d1a12;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(20, 37, 27, 0.28);
+}
+
+/* Right Checklist Column */
+.criteria-card-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.criteria-checklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(110, 150, 50, 0.18);
+}
+
+.criteria-checklist-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2e4c23;
+  text-transform: uppercase;
+}
+
+.criteria-fast-badge {
+  font-family: 'DM Mono', monospace;
   font-size: 11px;
   font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  pointer-events: none;
-  animation: tooltipFade 0.2s ease;
+  color: #4a7726;
+  background: #eef6e4;
+  padding: 4px 10px;
+  border-radius: 999px;
 }
 
-@keyframes tooltipFade {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.criteria-hitbox-join:active {
-  transform: scale(0.98);
-}
-
-.criteria-join-pulse {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #398c46;
-  opacity: 0;
-  animation: joinPulseAnim 2s infinite ease-in-out;
-  pointer-events: none;
-}
-
-@keyframes joinPulseAnim {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(2.4);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-}
-
-/* ==========================================================================
-   Dynamic Vehicle Card Overlay (when Auto or Cab is selected)
-   ========================================================================== */
-
-.criteria-card-overlay {
-  position: absolute;
-  left: 10.23%;
-  top: 35.63%;
-  width: 79.59%;
-  height: 54.14%;
-  border-radius: 28px;
-  background: #ffffff;
-  box-shadow: 0 16px 42px rgba(20, 44, 25, 0.08);
-  display: grid;
-  grid-template-columns: 34% 66%;
-  padding: 24px 28px;
-  box-sizing: border-box;
-  gap: 24px;
-  z-index: 5;
-  animation: cardFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-  line-height: normal;
-}
-
-@keyframes cardFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.985);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Left Subcard inside Overlay */
-.criteria-overlay-subcard {
-  background: #f4faf2;
-  border-radius: 20px;
-  padding: 20px 18px;
-  border: 1px solid #e3efe0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.criteria-overlay-icon-circle {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #daf0d5;
-  color: #1b431e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.criteria-overlay-title {
-  font-size: clamp(18px, 1.5vw, 24px);
-  font-weight: 800;
-  color: #0f2214;
-  margin: 0 0 2px 0;
-  letter-spacing: -0.02em;
-}
-
-.criteria-overlay-subtitle {
-  font-size: clamp(11px, 0.85vw, 13px);
-  font-weight: 600;
-  color: #4b664e;
-  margin-bottom: 10px;
-}
-
-.criteria-overlay-desc {
-  font-size: clamp(11px, 0.8vw, 13px);
-  color: #455a48;
-  line-height: 1.45;
-  margin: 0 0 14px 0;
-  flex: 1;
-}
-
-.criteria-overlay-badge-safe {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #e2f1de;
-  border: 1px solid #c9dec4;
-  color: #19441d;
-  font-size: clamp(10px, 0.75vw, 12px);
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  margin-bottom: 12px;
-  width: fit-content;
-}
-
-.criteria-overlay-register-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #142a19;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-size: clamp(11px, 0.8vw, 13px);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  width: 100%;
-}
-
-.criteria-overlay-register-btn:hover {
-  background: #1f4227;
-  transform: translateY(-1px);
-}
-
-/* Right Checklist inside Overlay */
-.criteria-overlay-checklist-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.criteria-overlay-checklist-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #edf4eb;
-  margin-bottom: 8px;
-}
-
-.criteria-overlay-checklist-title {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: clamp(10px, 0.75vw, 12px);
-  font-weight: 800;
-  color: #4a5c4d;
-  letter-spacing: 0.08em;
-}
-
-.criteria-overlay-mandatory-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: #ebf6e7;
-  color: #215126;
-  font-size: clamp(9px, 0.7vw, 11px);
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 9999px;
-}
-
-.criteria-overlay-list {
+.criteria-items-list {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  flex: 1;
-  justify-content: space-evenly;
+  gap: 14px;
 }
 
-.criteria-overlay-list-item {
+.criteria-item-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 7px 12px;
-  background: #f8fbf6;
-  border-radius: 12px;
-  border: 1px solid #eef5ec;
-  transition: all 0.18s ease;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #fbfdf9;
+  border: 1px solid rgba(110, 150, 50, 0.12);
+  border-radius: 14px;
+  transition: all 0.2s ease;
 }
 
-.criteria-overlay-list-item:hover {
-  background: #eef7eb;
-  border-color: #dbead7;
-  transform: translateX(3px);
+.criteria-item-row:hover {
+  background: #f2f8ea;
+  border-color: rgba(110, 150, 50, 0.3);
+  transform: translateX(4px);
 }
 
-.criteria-overlay-check-dot {
-  width: 24px;
-  height: 24px;
+.criteria-item-check {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: #256a31;
-  color: #ffffff;
+  background: #e3f0d4;
+  color: #4a7726;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.criteria-overlay-item-text {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.criteria-item-text {
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e3324;
 }
 
-.criteria-overlay-item-main {
-  font-size: clamp(11px, 0.85vw, 13.5px);
-  font-weight: 700;
-  color: #122416;
-}
-
-.criteria-overlay-item-sub {
-  font-size: clamp(9px, 0.7vw, 11px);
-  color: #657e68;
-}
-
-.criteria-overlay-chevron {
-  color: #9ab39c;
-  flex-shrink: 0;
-}
-
-/* ==========================================================================
-   Clickable Checkpoints on Default Bike Graphic
-   ========================================================================== */
-
-.criteria-bike-clickpoint {
-  position: absolute;
-  cursor: pointer;
-  z-index: 8;
-  border-radius: 10px;
-  transition: all 0.18s ease;
-}
-
-.criteria-bike-clickpoint:hover {
-  background: rgba(43, 138, 59, 0.08);
-}
-
-/* ==========================================================================
-   Responsive Adaptations
-   ========================================================================== */
-
+/* Responsive */
 @media (max-width: 900px) {
-  .criteria-showcase-section {
-    padding: 30px 14px 45px;
-  }
-
-  .criteria-card-overlay {
-    padding: 16px 18px;
-    gap: 14px;
-  }
-
-  .criteria-overlay-desc {
-    display: none;
-  }
-
-  .criteria-overlay-list {
-    gap: 4px;
+  .criteria-content-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
   }
 }
 
-@media (max-width: 680px) {
-  .criteria-card-overlay {
-    grid-template-columns: 1fr;
-    overflow-y: auto;
-    padding: 12px;
-  }
-
-  .criteria-overlay-subcard {
-    padding: 12px;
-  }
-
-  .criteria-overlay-register-btn {
-    padding: 8px 10px;
+@media (max-width: 640px) {
+  .criteria-section-wrap {
+    padding: 70px 16px 60px;
   }
 }

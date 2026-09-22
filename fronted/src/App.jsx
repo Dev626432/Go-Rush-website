@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Check } from 'lucide-react';
 
 import Navbar from './components/Navbar.jsx';
@@ -12,6 +12,7 @@ import HowItWorksPage from './pages/HowItWorksPage.jsx';
 import WhyGoRushPage from './pages/WhyGoRushPage.jsx';
 import EarningsPage from './pages/EarningsPage.jsx';
 import SafetyPage from './pages/SafetyPage.jsx';
+import DriverDashboardPage from './pages/DriverDashboardPage.jsx';
 
 import './website.css';
 import './loader.css';
@@ -23,6 +24,9 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [exiting, setExiting] = useState(false);
   const [progress, setProgress] = useState(0);
+  const location = useLocation();
+
+  const isDriverPortal = location.pathname.startsWith('/driver') || location.pathname.startsWith('/dashboard');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,8 +44,8 @@ export default function App() {
     const fallbackTimer = setTimeout(() => {
       setProgress(100);
       setExiting(true);
-      setTimeout(() => setLoading(false), 450);
-    }, 2200);
+      setTimeout(() => setLoading(false), 300);
+    }, 1800);
 
     return () => {
       clearInterval(interval);
@@ -68,7 +72,7 @@ export default function App() {
   return (
     <div className="site-shell">
       {/* Brand Preloader */}
-      {loading && (
+      {loading && !isDriverPortal && (
         <div className={`gorush-preloader ${exiting ? 'fade-out' : ''}`}>
           <div className="loader-center">
             <div className="loader-spinner-outer" />
@@ -111,11 +115,13 @@ export default function App() {
         </div>
       )}
 
-      {/* Persistent Global Header */}
-      <Navbar
-        onJoinClick={() => setFormOpen(true)}
-        onLoginClick={() => action('Driver login is coming soon')}
-      />
+      {/* Persistent Global Header (Hidden on Driver Portal) */}
+      {!isDriverPortal && (
+        <Navbar
+          onJoinClick={() => setFormOpen(true)}
+          onLoginClick={() => window.location.href = '/driver'}
+        />
+      )}
 
       {/* Dynamic Page Routing */}
       <Routes>
@@ -139,11 +145,21 @@ export default function App() {
           path="/safety"
           element={<SafetyPage onJoinClick={() => setFormOpen(true)} />}
         />
+        <Route
+          path="/driver"
+          element={<DriverDashboardPage action={action} />}
+        />
+        <Route
+          path="/dashboard"
+          element={<Navigate to="/driver" replace />}
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
-      {/* Persistent Global Footer */}
-      <Footer onJoinClick={() => setFormOpen(true)} onAction={action} />
+      {/* Persistent Global Footer (Hidden on Driver Portal) */}
+      {!isDriverPortal && (
+        <Footer onJoinClick={() => setFormOpen(true)} onAction={action} />
+      )}
 
       {/* Global Registration Popup Modal */}
       {formOpen && <DriverForm close={() => setFormOpen(false)} action={action} />}

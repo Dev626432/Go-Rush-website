@@ -82,25 +82,6 @@ export default function EarningsPage({ onJoinClick }) {
   
   const [earnings, setEarnings] = useState(() => computeLocalEarnings('Indore', 'bike', 7, 6));
   const [isCalculating, setIsCalculating] = useState(false);
-  const [activeIncentiveCard, setActiveIncentiveCard] = useState(null);
-  const [incentiveBubbles, setIncentiveBubbles] = useState([]);
-
-  const handleIncentiveTap = (cardNum) => {
-    setActiveIncentiveCard(cardNum);
-    const newBubbles = Array.from({ length: 8 }).map((_, i) => ({
-      id: Math.random(),
-      left: Math.random() * 70 + 15 + '%',
-      size: Math.random() * 22 + 12,
-      duration: (Math.random() * 0.4 + 1.0).toFixed(2),
-      delay: (i * 0.08).toFixed(2),
-    }));
-    setIncentiveBubbles(newBubbles);
-    setTimeout(() => {
-      setActiveIncentiveCard(null);
-      setIncentiveBubbles([]);
-    }, 1600);
-  };
-
   const currentVehicle = vehicleRates[vehicle] || vehicleRates.bike;
 
   useEffect(() => {
@@ -131,36 +112,87 @@ export default function EarningsPage({ onJoinClick }) {
 
   return (
     <div className="subpage-wrap">
-      {/* Earnings Hero Section - Sealed Showcase Banner */}
+      {/* Earnings Hero Section - 100% Handcrafted Web Component */}
       <section className="earnings-banner-section" id="earnings-hero">
-        <div className="earnings-banner-wrapper">
-          <img
-            src="/earnings-showcase-sep21.png"
-            alt="Earn with complete clarity. Paid every single day - GoRush"
-            className="earnings-banner-img"
-          />
-          {/* Real Interactive Button over 'Start Driving Today' */}
-          <button
-            type="button"
-            className="earnings-banner-real-btn"
-            onClick={onJoinClick}
-            title="Start Driving Today"
-            id="earnings-start-driving-btn"
-          >
-            <span>Start Driving Today</span>
-            <span className="earnings-banner-btn-arrow">
-              <ArrowRight size={16} />
-            </span>
-          </button>
+        <div className="earnings-hero-inner">
+          <div className="earnings-header-badge">
+            <Sparkles size={13} />
+            <span>TRANSPARENT EARNINGS GUARANTEE</span>
+          </div>
+          <h1 className="earnings-header-title">
+            Earn with complete clarity. <em>Paid every single day.</em>
+          </h1>
+          <p className="earnings-header-subtitle">
+            Flat 10% platform commission, zero hidden vehicle deductions, and instantaneous UPI payouts after every shift.
+          </p>
 
-          {/* Interactive Link over 'See How It Works' */}
-          <Link
-            to="/how-it-works"
-            className="earnings-banner-video-btn"
-            title="See How It Works"
-            id="earnings-see-how-btn"
-            aria-label="See How It Works"
-          />
+          <div className="earnings-highlights-grid">
+            <div className="earnings-highlight-card">
+              <div>
+                <div className="earnings-card-top-stat">
+                  <span className="earnings-stat-big">10%</span>
+                  <div className="earnings-stat-icon-wrap">
+                    <Percent size={22} />
+                  </div>
+                </div>
+                <h3 className="earnings-card-title">Flat Commission</h3>
+                <p className="earnings-card-desc">
+                  Keep 90% of every passenger rupee. Traditional apps cut up to 30% plus extra hidden fees.
+                </p>
+              </div>
+            </div>
+
+            <div className="earnings-highlight-card">
+              <div>
+                <div className="earnings-card-top-stat">
+                  <span className="earnings-stat-big">DAILY</span>
+                  <div className="earnings-stat-icon-wrap">
+                    <Wallet size={22} />
+                  </div>
+                </div>
+                <h3 className="earnings-card-title">Instant Settlements</h3>
+                <p className="earnings-card-desc">
+                  Your money is credited straight to your UPI or bank account automatically by midnight.
+                </p>
+              </div>
+            </div>
+
+            <div className="earnings-highlight-card">
+              <div>
+                <div className="earnings-card-top-stat">
+                  <span className="earnings-stat-big">100%</span>
+                  <div className="earnings-stat-icon-wrap">
+                    <Gift size={22} />
+                  </div>
+                </div>
+                <h3 className="earnings-card-title">Tip Retention</h3>
+                <p className="earnings-card-desc">
+                  Every single rupee tipped by happy passengers goes directly into your pocket with 0% platform take.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="earnings-hero-bottom-strip">
+            <div className="earnings-strip-left">
+              <div className="earnings-strip-icon">
+                <ShieldCheck size={22} />
+              </div>
+              <div className="earnings-strip-text">
+                <strong>Transparent Pay Slip & Live Route Tracker</strong>
+                <span>Know what you earn mile by mile with zero surprise deductions.</span>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="earnings-hero-primary-btn"
+              onClick={onJoinClick}
+              id="earnings-start-driving-btn"
+            >
+              <span>Start Driving Today</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -465,205 +497,166 @@ export default function EarningsPage({ onJoinClick }) {
         </div>
       </section>
 
-
-      {/* Transparent Fare Anatomy - Sep 21 Edition with Cleaned Banner & Interactive Hitboxes */}
+      {/* Transparent Fare Anatomy - 100% Handcrafted Web Component */}
       <section className="anatomy-showcase-section" id="fare-anatomy">
-        <div className="anatomy-container">
-          <div className="anatomy-banner-wrapper">
-            {/* Cleaned AI Banner without fake top bar */}
-            <img
-              src="/fare-anatomy-sep21.png"
-              alt="Where does your money go? Anatomy of a Fare - GoRush"
-              className="anatomy-banner-img"
-            />
+        <div className="anatomy-inner-container">
+          <div className="anatomy-header-center">
+            <div className="anatomy-eyebrow-badge">
+              <Banknote size={13} />
+              <span>WHERE DOES YOUR MONEY GO?</span>
+            </div>
+            <h2 className="anatomy-main-title">
+              Anatomy of a <em>GoRush fare.</em>
+            </h2>
+            <p className="anatomy-main-subtitle">
+              We take the guesswork out of commissions. Here is exactly how a typical ₹300 trip fare is split.
+            </p>
+          </div>
 
-            {/* Interactive Driver Card Hitbox (You Keep 90% - ₹270.00) */}
-            <button
-              type="button"
-              className="anatomy-hitbox-driver"
-              onClick={onJoinClick}
-              title="You Keep 90% (₹270.00) - Register as Driver"
-              aria-label="You Keep 90% (₹270.00) - Register as Driver"
-            />
+          <div className="anatomy-split-card">
+            {/* Driver Col */}
+            <div className="anatomy-driver-col">
+              <div>
+                <div className="anatomy-driver-badge">
+                  <Sparkles size={13} />
+                  <span>YOU KEEP 90%</span>
+                </div>
+                <div className="anatomy-driver-pct">90%</div>
+                <div className="anatomy-driver-amount">₹270.00 from a ₹300 Fare</div>
+                <p className="anatomy-driver-desc">
+                  Credited directly to your daily bank account or collected directly in cash. No platform withholding or retroactive penalty deductions.
+                </p>
+              </div>
+              <ul className="anatomy-driver-points">
+                <li>
+                  <Check size={16} /> 0% surprise platform commission
+                </li>
+                <li>
+                  <Check size={16} /> Instant UPI settlement every single day
+                </li>
+                <li>
+                  <Check size={16} /> 100% of tips kept with zero deduction
+                </li>
+              </ul>
+            </div>
 
-            {/* Interactive More Rides, More Earnings Pill */}
-            <button
-              type="button"
-              className="anatomy-hitbox-pill"
-              onClick={onJoinClick}
-              title="More Rides, More Earnings - Start Driving"
-              aria-label="More Rides, More Earnings - Start Driving"
-            />
+            {/* Platform Col */}
+            <div className="anatomy-platform-col">
+              <div className="anatomy-platform-box">
+                <div className="anatomy-platform-header">
+                  <div className="anatomy-platform-pct">10%</div>
+                  <div className="anatomy-platform-amount">₹30.00</div>
+                </div>
+                <h3 className="anatomy-platform-title">Platform Operating Fee</h3>
+                <p className="anatomy-platform-desc">
+                  Covers AWS servers, high-precision GPS maps, 24/7 human safety marshals, and customer marketing to keep ride demand high.
+                </p>
+              </div>
 
-            {/* Interactive Platform Fee Card Hitbox (10% - ₹30.00) */}
-            <button
-              type="button"
-              className="anatomy-hitbox-platform"
-              onClick={onJoinClick}
-              title="Platform Fee 10% (₹30.00) Covers 24/7 Support & Safety"
-              aria-label="Platform Fee 10% (₹30.00) Covers 24/7 Support & Safety"
-            />
-
-            {/* Interactive Bottom Bar (Fair Pricing, Transparent Split, etc.) */}
-            <button
-              type="button"
-              className="anatomy-hitbox-bar"
-              onClick={onJoinClick}
-              title="Fair Pricing, Transparent Split & Community Growth"
-              aria-label="Fair Pricing, Transparent Split & Community Growth"
-            />
+              <div className="anatomy-tips-box">
+                <div className="anatomy-tips-icon">
+                  <Gift size={20} />
+                </div>
+                <div className="anatomy-tips-text">
+                  <strong>100% Rider Tips Kept Directly</strong>
+                  <p>When passengers tip for great service, 100% passes straight to you with zero platform fee.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Bonus Boosters & Surge - Sep 21 Edition with Bubbling Cards & Real Buttons */}
+      {/* Bonus Boosters & Surge - 100% Handcrafted Web Component */}
       <section className="incentives-showcase-section" id="incentives-program">
-        <div className="incentives-container">
-          <div className="incentives-banner-wrapper">
-            {/* Cleaned AI Banner without fake top bar */}
-            <img
-              src="/incentives-showcase-sep21.png"
-              alt="Boost your daily income - GoRush Incentive Program"
-              className="incentives-banner-img"
-            />
+        <div className="incentives-inner-container">
+          <div className="incentives-header-center">
+            <div className="incentives-eyebrow-badge">
+              <Zap size={13} />
+              <span>BOOST YOUR DAILY INCOME</span>
+            </div>
+            <h2 className="incentives-main-title">
+              GoRush incentive & <em>surge program.</em>
+            </h2>
+            <p className="incentives-main-subtitle">
+              Extra reward multipliers that reward consistency, peak-hour availability, and 5-star customer ratings.
+            </p>
+          </div>
 
-            {/* Card 1 Tap Hitbox: 100% Peak Hour Surge */}
-            <div
-              className={`incentives-hitbox-card incentives-card-1 ${activeIncentiveCard === 1 ? 'is-active' : ''}`}
-              onClick={() => handleIncentiveTap(1)}
-              title="Tap for 100% Peak Hour Surge details"
-            >
-              {activeIncentiveCard === 1 && (
-                <>
-                  <div className="incentives-bubble-wrap">
-                    {incentiveBubbles.map((b) => (
-                      <span
-                        key={b.id}
-                        className="incentive-bubble"
-                        style={{
-                          left: b.left,
-                          width: `${b.size}px`,
-                          height: `${b.size}px`,
-                          animationDuration: `${b.duration}s`,
-                          animationDelay: `${b.delay}s`,
-                        }}
-                      />
-                    ))}
+          <div className="incentives-cards-grid">
+            {/* Booster 1 */}
+            <div className="incentive-feature-card" onClick={onJoinClick}>
+              <div>
+                <div className="incentive-card-top-row">
+                  <div className="incentive-card-icon-box">
+                    <Zap size={24} />
                   </div>
-                  <div className="incentive-reward-pill">
-                    <Zap size={14} />
-                    <span>⚡ 2.0x Peak Surge Active!</span>
-                  </div>
-                </>
-              )}
+                  <span className="incentive-card-rate-badge">UP TO 2.0x</span>
+                </div>
+                <h3 className="incentive-card-title">100% Surge Pass-Through</h3>
+                <p className="incentive-card-desc">
+                  During peak rush hours and rain showers, fares automatically surge. You receive the full multiplier without app fee skimming.
+                </p>
+              </div>
+              <button type="button" className="incentive-card-action-btn">
+                <span>Earn More in Peak Hours</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
 
-            {/* Real Button 1: Earn More in Peak Hours -> */}
-            <button
-              type="button"
-              className="incentives-real-btn incentives-btn-1"
-              onClick={onJoinClick}
-              title="Earn More in Peak Hours - Join GoRush"
-              aria-label="Earn More in Peak Hours - Join GoRush"
-            />
-
-            {/* Card 2 Tap Hitbox: Daily Milestone Streaks */}
-            <div
-              className={`incentives-hitbox-card incentives-card-2 ${activeIncentiveCard === 2 ? 'is-active' : ''}`}
-              onClick={() => handleIncentiveTap(2)}
-              title="Tap for Daily Milestone Streaks details"
-            >
-              {activeIncentiveCard === 2 && (
-                <>
-                  <div className="incentives-bubble-wrap">
-                    {incentiveBubbles.map((b) => (
-                      <span
-                        key={b.id}
-                        className="incentive-bubble"
-                        style={{
-                          left: b.left,
-                          width: `${b.size}px`,
-                          height: `${b.size}px`,
-                          animationDuration: `${b.duration}s`,
-                          animationDelay: `${b.delay}s`,
-                        }}
-                      />
-                    ))}
+            {/* Booster 2 */}
+            <div className="incentive-feature-card" onClick={onJoinClick}>
+              <div>
+                <div className="incentive-card-top-row">
+                  <div className="incentive-card-icon-box">
+                    <TrendingUp size={24} />
                   </div>
-                  <div className="incentive-reward-pill">
-                    <Gift size={14} />
-                    <span>🎁 ₹550 Daily Cash Bonus!</span>
-                  </div>
-                </>
-              )}
+                  <span className="incentive-card-rate-badge">₹350+ BONUS</span>
+                </div>
+                <h3 className="incentive-card-title">Daily Milestone Streaks</h3>
+                <p className="incentive-card-desc">
+                  Complete 10 rides in a single day and unlock extra cash bonuses credited automatically into your evening settlement.
+                </p>
+              </div>
+              <button type="button" className="incentive-card-action-btn">
+                <span>Ride More, Earn More</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
 
-            {/* Real Button 2: Ride More, Earn More -> */}
-            <button
-              type="button"
-              className="incentives-real-btn incentives-btn-2"
-              onClick={onJoinClick}
-              title="Ride More, Earn More - Join GoRush"
-              aria-label="Ride More, Earn More - Join GoRush"
-            />
-
-            {/* Card 3 Tap Hitbox: Zero Tip Deductions */}
-            <div
-              className={`incentives-hitbox-card incentives-card-3 ${activeIncentiveCard === 3 ? 'is-active' : ''}`}
-              onClick={() => handleIncentiveTap(3)}
-              title="Tap for Zero Tip Deductions details"
-            >
-              {activeIncentiveCard === 3 && (
-                <>
-                  <div className="incentives-bubble-wrap">
-                    {incentiveBubbles.map((b) => (
-                      <span
-                        key={b.id}
-                        className="incentive-bubble"
-                        style={{
-                          left: b.left,
-                          width: `${b.size}px`,
-                          height: `${b.size}px`,
-                          animationDuration: `${b.duration}s`,
-                          animationDelay: `${b.delay}s`,
-                        }}
-                      />
-                    ))}
+            {/* Booster 3 */}
+            <div className="incentive-feature-card" onClick={onJoinClick}>
+              <div>
+                <div className="incentive-card-top-row">
+                  <div className="incentive-card-icon-box">
+                    <Gift size={24} />
                   </div>
-                  <div className="incentive-reward-pill">
-                    <Heart size={14} />
-                    <span>💚 100% Tips Kept Directly!</span>
-                  </div>
-                </>
-              )}
+                  <span className="incentive-card-rate-badge">0% CUT</span>
+                </div>
+                <h3 className="incentive-card-title">Zero Tip Deductions</h3>
+                <p className="incentive-card-desc">
+                  We believe passenger gratuity belongs solely to the person behind the wheel. Every rupee tipped is 100% yours.
+                </p>
+              </div>
+              <button type="button" className="incentive-card-action-btn">
+                <span>Keep What You Earn</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
+          </div>
 
-            {/* Real Button 3: Keep What You Earn -> */}
+          <div className="incentives-bottom-trust">
+            <div className="incentives-bottom-text">
+              <strong>Fair, Transparent Rewards:</strong> Performance bonuses and surge pass-throughs are calculated real-time in your driver dashboard.
+            </div>
             <button
               type="button"
-              className="incentives-real-btn incentives-btn-3"
+              className="incentives-join-btn"
               onClick={onJoinClick}
-              title="Keep What You Earn - Join GoRush"
-              aria-label="Keep What You Earn - Join GoRush"
-            />
-
-            {/* Interactive Signboard (Left bottom) */}
-            <button
-              type="button"
-              className="incentives-signboard-hitbox"
-              onClick={onJoinClick}
-              title="Drive, Earn, Grow Together - Register as Driver"
-              aria-label="Drive, Earn, Grow Together - Register as Driver"
-            />
-
-            {/* Interactive Bottom Transparency Bar */}
-            <button
-              type="button"
-              className="incentives-bottom-bar-hitbox"
-              onClick={onJoinClick}
-              title="Fair, Transparent Rewards & Performance Bonuses"
-              aria-label="Fair, Transparent Rewards & Performance Bonuses"
-            />
+            >
+              <span>Join GoRush Driver Partner</span>
+              <ArrowRight size={15} />
+            </button>
           </div>
         </div>
       </section>
