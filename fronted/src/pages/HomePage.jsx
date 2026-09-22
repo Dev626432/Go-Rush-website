@@ -51,6 +51,7 @@ import '../quote-redesign.css';
 import '../final-cta-redesign.css';
 import '../onboarding-hero-redesign.css';
 import '../home-hero-scenic.css';
+import '../human-mobility-redesign.css';
 
 const featureGroups = [
   {
@@ -146,27 +147,79 @@ const earningsData = {
   },
 };
 
-const driverQuotes = [
+const fleetData = {
+  auto: {
+    name: 'Indore Auto',
+    icon: '🛺',
+    dailyEst: '₹1,350 - ₹1,800',
+    monthlyEst: '₹38,500',
+    rides: '14 - 18 rides/day',
+    pingRoute: 'Vijay Nagar Sq ➔ Palasia Point (5.4 km)',
+    pingFare: '₹140',
+    demand: '🔥 High (Station & Bhanwarkua)',
+  },
+  bike: {
+    name: 'Bike Taxi',
+    icon: '🛵',
+    dailyEst: '₹800 - ₹1,150',
+    monthlyEst: '₹24,500',
+    rides: '12 - 16 rides/day',
+    pingRoute: 'Holkar Science ➔ Chappan Dukan (3.8 km)',
+    pingFare: '₹65',
+    demand: '⚡ High Surge (Student Hubs)',
+  },
+  cab: {
+    name: 'Cab / Sedan',
+    icon: '🚗',
+    dailyEst: '₹2,200 - ₹3,100',
+    monthlyEst: '₹62,000',
+    rides: '8 - 12 trips/day',
+    pingRoute: 'Indore Airport ➔ Super Corridor TCS (12 km)',
+    pingFare: '₹380',
+    demand: '✈️ High (Airport & Pithampur)',
+  },
+  parcel: {
+    name: 'Parcel Delivery',
+    icon: '📦',
+    dailyEst: '₹950 - ₹1,400',
+    monthlyEst: '₹29,000',
+    rides: '15 - 20 drops/day',
+    pingRoute: 'Rajwada Market ➔ Rau Bypass (9.2 km)',
+    pingFare: '₹175',
+    demand: '📦 Retail (Siyaganj & Cloth Market)',
+  },
+};
+
+const indoreCaptains = [
   {
-    initials: 'NM',
-    name: 'Nitin Menon',
-    role: 'GoRush driver · Indore',
-    avatarBg: '#c8816c',
-    text: 'gave me the flexibility to be present for my family without putting my goals on hold.',
+    name: 'Mukesh Rathore',
+    vehicle: 'Indore Auto Captain',
+    plate: 'MP 09 TA 3842',
+    hub: 'Bhanwarkua Hub',
+    dailyAvg: '₹1,580/day',
+    rating: '4.96 ★',
+    trips: '2,840+ Rides',
+    quote: 'Dusri apps 25-30% commission kaat leti thi. GoRush par zero commission hai, daily ₹450-₹500 zyada bachte hain jo seedha mere baccho ki school fees mein jaate hain. PhonePe par instant settlement sabse bada sahara hai.',
   },
   {
-    initials: 'PS',
-    name: 'Pooja Sharma',
-    role: 'GoRush driver · Indore',
-    avatarBg: '#7ca872',
-    text: 'transparent fares and instant daily payouts gave me complete control over my income and my time.',
+    name: 'Sandeep Patidar',
+    vehicle: 'Bike Taxi Captain',
+    plate: 'MP 09 VQ 9120',
+    hub: 'Vijay Nagar Hub',
+    dailyAvg: '₹920/day',
+    rating: '4.92 ★',
+    trips: '1,950+ Rides',
+    quote: 'College ke baad 4-5 ghante bike taxi chalata hu. Daily ₹800-₹1,000 ban jate hain aur koi zabardasti ki shifts nahi hain. Vijay Nagar aur Chappan Dukan par demand hamesha rehti hai.',
   },
   {
-    initials: 'AR',
-    name: 'Arjun Rathore',
-    role: 'GoRush driver · Indore',
-    avatarBg: '#597fa6',
-    text: 'the 24/7 safety team and live trip sharing give me and my family absolute confidence every single night.',
+    name: 'Devendra Singh',
+    vehicle: 'Sedan Cab Captain',
+    plate: 'MP 09 CX 1184',
+    hub: 'Airport & Super Corridor',
+    dailyAvg: '₹2,650/day',
+    rating: '4.98 ★',
+    trips: '3,410+ Rides',
+    quote: 'Airport aur Pithampur corporate trips par poora customer fare mujhe milta hai. GoRush ka Indore local helpline hamesha responsive rehta hai, koi remote call center ka jhanjhat nahi.',
   },
 ];
 
@@ -183,7 +236,7 @@ const AnimatedStat = ({ text, label }) => {
     const isFloat = match[1].includes('.');
     
     let current = isFloat ? 0.0 : 1;
-    const duration = 3500; // Increased duration for slower animation
+    const duration = 3500;
     const fps = 30;
     const steps = duration / (1000 / fps);
     const stepTime = 1000 / fps;
@@ -215,9 +268,12 @@ export default function HomePage({ onJoinClick, action }) {
   const setFormOpen = () => {
     if (onJoinClick) onJoinClick();
   };
+  const [selectedVehicle, setSelectedVehicle] = useState('auto');
+  const [phoneInput, setPhoneInput] = useState('');
+  const [submittedOtp, setSubmittedOtp] = useState(false);
   const [activeQuoteIdx, setActiveQuoteIdx] = useState(0);
-  const nextQuote = () => setActiveQuoteIdx((prev) => (prev + 1) % driverQuotes.length);
-  const prevQuote = () => setActiveQuoteIdx((prev) => (prev - 1 + driverQuotes.length) % driverQuotes.length);
+  const nextQuote = () => setActiveQuoteIdx((prev) => (prev + 1) % indoreCaptains.length);
+  const prevQuote = () => setActiveQuoteIdx((prev) => (prev - 1 + indoreCaptains.length) % indoreCaptains.length);
 
   const [earningsPeriod, setEarningsPeriod] = useState('this-week');
   const [periodDropdownOpen, setPeriodDropdownOpen] = useState(false);
@@ -273,75 +329,178 @@ export default function HomePage({ onJoinClick, action }) {
   return (
     <div className="home-page-wrap">
       <main id="top">
-        {/* HERO SECTION */}
-        <section className="hero-section">
-          <div className="hero-copy">
-            <div className="hero-kicker">
-              <span className="pulse-dot" /> Now welcoming drivers in Indore
-            </div>
-            <h1>
-              More miles.
-              <br />
-              <em>More freedom.</em>
-              <br />
-              More you.
-            </h1>
-            <p>
-              GoRush is the driver-first platform for people who want to move through the city on their own terms and earn
-              fairly along the way.
-            </p>
-            <div className="hero-actions">
-              <button className="primary-cta" onClick={onJoinClick}>
-                Start driving <ArrowRight size={17} />
-              </button>
-              <Link to="/how-it-works" className="play-cta">
-                <span>
-                  <Play size={13} fill="currentColor" />
-                </span>{' '}
-                See how it works
-              </Link>
-            </div>
-            <div className="hero-trust">
-              <div className="trust-avatars">
-                <i>AK</i>
-                <i>RS</i>
-                <i>NM</i>
-                <b>+</b>
+        {/* REAL HUMAN MOBILITY HERO SECTION */}
+        <section className="real-hero-section">
+          <div className="real-hero-container">
+            {/* Left Column: Authentic Brand Pitch */}
+            <div className="real-hero-left">
+              <div className="real-hero-badge">
+                <span className="live-green-dot" />
+                <span>Indore's 0% Commission Captain Platform</span>
               </div>
-              <span>
-                <strong>48,000+ drivers</strong>
-                <br />
-                are already moving forward
-              </span>
-            </div>
-          </div>
 
-          <div className="hero-art">
-            <div className="sun-disc" />
-            <div className="city-lines" />
-            <div className="hero-scooter">
-              <Bike size={155} strokeWidth={1.1} />
-            </div>
-            <div className="route-stamp">
-              <Navigation size={15} />
-              <span>
-                YOUR ROUTE
-                <br />
-                <strong>YOUR RULES</strong>
-              </span>
-            </div>
-            <div className="earnings-float">
-              <div className="float-icon">
-                <TrendingUp size={16} />
+              <h1 className="real-hero-title">
+                Apni Gaadi, Poori Kamai.<br />
+                <span className="accent-highlight">Zero Commission</span> Every Single Day.
+              </h1>
+
+              <p className="real-hero-sub">
+                Join 10,000+ Indore Auto, Cab, Bike & Parcel captains earning up to ₹38,000/month. No platform cuts, instant daily UPI settlements to PhonePe/GPay, and ₹5,00,000 free family accidental insurance.
+              </p>
+
+              <div className="real-hero-ctas">
+                <button
+                  type="button"
+                  className="real-hero-primary-btn"
+                  onClick={onJoinClick}
+                  id="hero-join-indore-fleet-btn"
+                >
+                  <span>Join Indore Fleet Today</span>
+                  <ArrowRight size={18} />
+                </button>
+                <a href="#comparison" className="real-hero-secondary-btn">
+                  <span>GoRush vs Ola/Uber</span>
+                  <ArrowUpRight size={16} />
+                </a>
               </div>
-              <span>THIS MONTH</span>
-              <strong>₹38,420</strong>
-              <small>↑ 18.4% this week</small>
+
+              <div className="real-hero-guarantees">
+                <div className="real-guarantee-item">
+                  <div className="real-guarantee-icon"><IndianRupee size={16} /></div>
+                  <div className="real-guarantee-text">
+                    <strong>0% Platform Commission</strong>
+                    <span>Customer fare is 100% yours</span>
+                  </div>
+                </div>
+                <div className="real-guarantee-item">
+                  <div className="real-guarantee-icon"><Zap size={16} /></div>
+                  <div className="real-guarantee-text">
+                    <strong>Instant UPI Payouts</strong>
+                    <span>Direct deposit after every trip</span>
+                  </div>
+                </div>
+                <div className="real-guarantee-item">
+                  <div className="real-guarantee-icon"><ShieldCheck size={16} /></div>
+                  <div className="real-guarantee-text">
+                    <strong>₹5,00,000 Free Cover</strong>
+                    <span>Accidental & medical shield</span>
+                  </div>
+                </div>
+                <div className="real-guarantee-item">
+                  <div className="real-guarantee-icon"><MapPin size={16} /></div>
+                  <div className="real-guarantee-text">
+                    <strong>3 Physical Indore Hubs</strong>
+                    <span>Vijay Nagar & Bhanwarkua desks</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="rating-float">
-              <Star size={14} fill="currentColor" />
-              <strong>4.92</strong>
-              <span>driver rating</span>
+
+            {/* Right Column: Real Onboarding & Earnings Simulator Widget */}
+            <div className="real-hero-card">
+              <div className="real-card-header">
+                <div className="real-card-header-left">
+                  <strong>Captain Earnings Simulator</strong>
+                  <span>Select your vehicle to calculate Indore income</span>
+                </div>
+                <div className="real-card-live-chip">
+                  <span className="dot" />
+                  <span>482 Online</span>
+                </div>
+              </div>
+
+              {/* Vehicle Tabs */}
+              <div className="real-vehicle-tabs">
+                {(['auto', 'bike', 'cab', 'parcel']).map((vehKey) => (
+                  <button
+                    key={vehKey}
+                    type="button"
+                    className={`real-veh-tab ${selectedVehicle === vehKey ? 'active' : ''}`}
+                    onClick={() => setSelectedVehicle(vehKey)}
+                  >
+                    <span className="tab-icon">{fleetData[vehKey].icon}</span>
+                    <strong>{fleetData[vehKey].name.split(' ')[0]}</strong>
+                    <span>{fleetData[vehKey].name.split(' ')[1] || 'Fleet'}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Real Earnings Estimate Box */}
+              <div className="real-sim-box">
+                <div className="real-sim-row">
+                  <span className="real-sim-label">Est. Monthly Earnings</span>
+                  <div className="real-sim-amount">
+                    {fleetData[selectedVehicle].monthlyEst} <small>/ mo</small>
+                  </div>
+                </div>
+                <div className="real-sim-perks">
+                  <span>Daily Avg: <strong>{fleetData[selectedVehicle].dailyEst}</strong></span>
+                  <span>Demand: <strong>{fleetData[selectedVehicle].demand}</strong></span>
+                </div>
+              </div>
+
+              {/* Live Ride Ping Preview */}
+              <div className="real-live-ride-ping">
+                <div className="real-ping-icon">
+                  <Navigation size={16} />
+                </div>
+                <div className="real-ping-text">
+                  <strong>{fleetData[selectedVehicle].pingRoute}</strong>
+                  <span>Live Booking Ping · 0% Commission Cut</span>
+                </div>
+                <div className="real-ping-fare">
+                  <strong>{fleetData[selectedVehicle].pingFare}</strong>
+                  <small>100% IN HAND</small>
+                </div>
+              </div>
+
+              {/* Quick Mobile Onboarding */}
+              <form
+                className="real-onboard-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (phoneInput.length >= 10) {
+                    setSubmittedOtp(true);
+                    setTimeout(() => {
+                      if (onJoinClick) onJoinClick();
+                      setSubmittedOtp(false);
+                    }, 1200);
+                  } else {
+                    if (onJoinClick) onJoinClick();
+                  }
+                }}
+                style={{ marginTop: '14px' }}
+              >
+                <div className="real-input-group">
+                  <div className="real-input-prefix">
+                    <span>🇮🇳</span> +91
+                  </div>
+                  <input
+                    type="tel"
+                    className="real-input-field"
+                    placeholder="Enter 10-digit mobile number"
+                    maxLength={10}
+                    value={phoneInput}
+                    onChange={(e) => setPhoneInput(e.target.value.replace(/\D/g, ''))}
+                  />
+                </div>
+                <button type="submit" className="real-submit-btn">
+                  {submittedOtp ? (
+                    <span>OTP Sent! Opening Registration...</span>
+                  ) : (
+                    <>
+                      <span>Start Driving with GoRush</span>
+                      <ArrowRight size={17} />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              <div className="real-card-foot-trust">
+                <span><Check size={13} color="#46a11f" /> Instant Approval</span>
+                <span><Check size={13} color="#46a11f" /> No Hidden Fees</span>
+                <span><Check size={13} color="#46a11f" /> Indore Verified</span>
+              </div>
             </div>
           </div>
         </section>
@@ -351,6 +510,84 @@ export default function HomePage({ onJoinClick, action }) {
           {stats.map(([number, label]) => (
             <AnimatedStat key={label} text={number} label={label} />
           ))}
+        </section>
+
+        {/* GROUND-LEVEL COMPARISON: GORUSH VS OLA/UBER */}
+        <section className="real-comparison-section" id="comparison">
+          <div className="real-comparison-inner">
+            <div className="real-section-header">
+              <div className="real-section-eyebrow">
+                <Banknote size={14} />
+                <span>The Honest Indore Comparison</span>
+              </div>
+              <h2 className="real-section-title">
+                Why 10,000+ Indore Captains Switched to GoRush
+              </h2>
+              <p className="real-section-desc">
+                Traditional aggregator apps take up to 30% of every ride. Here is what your hard work actually brings home on GoRush vs others.
+              </p>
+            </div>
+
+            <div className="real-compare-grid">
+              {/* Card 1: Traditional Aggregators */}
+              <div className="real-compare-card others">
+                <span className="real-compare-card-badge">Traditional Apps (Ola / Uber)</span>
+                <h3 className="real-compare-title">25% - 30% Commission Cut</h3>
+                <p className="real-compare-subtitle">You drive in Indore heat, but a big slice of every customer payment is deducted before you see a single rupee.</p>
+                <ul className="real-compare-list">
+                  <li>
+                    <X size={18} className="real-compare-icon-cross" />
+                    <span><strong>High Commission Deduction:</strong> ₹300–₹500 cut every day from your earnings.</span>
+                  </li>
+                  <li>
+                    <X size={18} className="real-compare-icon-cross" />
+                    <span><strong>Delayed Weekly Payouts:</strong> Forced to wait until Tuesday/Wednesday for your own cash.</span>
+                  </li>
+                  <li>
+                    <X size={18} className="real-compare-icon-cross" />
+                    <span><strong>Trip Rejection Penalties:</strong> Blocked or penalized for declining unprofitable long pickups.</span>
+                  </li>
+                  <li>
+                    <X size={18} className="real-compare-icon-cross" />
+                    <span><strong>No Local Support Hub:</strong> Call centers with automated bots, zero local Indore offices.</span>
+                  </li>
+                </ul>
+                <div className="real-compare-bottom-stat">
+                  <span className="real-compare-stat-label">Lost in Commission Every Month</span>
+                  <strong className="real-compare-stat-val">-₹12,500/mo</strong>
+                </div>
+              </div>
+
+              {/* Card 2: GoRush */}
+              <div className="real-compare-card gorush">
+                <span className="real-compare-card-badge">The GoRush Standard</span>
+                <h3 className="real-compare-title">100% Fare Goes into Your Pocket</h3>
+                <p className="real-compare-subtitle">Zero commission model. Just a nominal ₹15 daily platform access pass. Everything the passenger pays is 100% yours.</p>
+                <ul className="real-compare-list">
+                  <li>
+                    <Check size={18} className="real-compare-icon-check" />
+                    <span><strong>0% Commission Cut:</strong> If the fare is ₹150, you take home the full ₹150 in cash or UPI.</span>
+                  </li>
+                  <li>
+                    <Check size={18} className="real-compare-icon-check" />
+                    <span><strong>Instant Daily UPI Settlement:</strong> 1-tap transfer directly into your PhonePe, GPay, or Paytm anytime.</span>
+                  </li>
+                  <li>
+                    <Check size={18} className="real-compare-icon-check" />
+                    <span><strong>Complete Captain Freedom:</strong> Set your preferred drop route (e.g. Return Home to Rau or Palasia).</span>
+                  </li>
+                  <li>
+                    <Check size={18} className="real-compare-icon-check" />
+                    <span><strong>3 Physical Indore Desks:</strong> Walk-in captain centers at Vijay Nagar & Bhanwarkua with live helpline.</span>
+                  </li>
+                </ul>
+                <div className="real-compare-bottom-stat">
+                  <span className="real-compare-stat-label">Extra Money You Save with GoRush</span>
+                  <strong className="real-compare-stat-val">+₹13,200/mo</strong>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* THE GORUSH DIFFERENCE - 100% HANDCRAFTED NATIVE WEB */}
@@ -951,132 +1188,112 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* QUOTE / TESTIMONIAL REDESIGNED */}
-        <section className="quote-redesign-wrap" id="stories">
-          {/* Soft Decorative Corner Leaves */}
-          <svg className="quote-leaf-top-left" viewBox="0 0 100 100" fill="none">
-            <path
-              d="M15,85 Q35,30 85,15 Q65,65 15,85 Z M40,45 Q75,40 85,15"
-              stroke="#558026"
-              strokeWidth="2"
-              fill="rgba(110, 160, 50, 0.12)"
-            />
-          </svg>
-          <svg className="quote-leaf-bottom-left" viewBox="0 0 120 120" fill="none">
-            <path
-              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
-              stroke="#558026"
-              strokeWidth="2"
-              fill="rgba(110, 160, 50, 0.14)"
-            />
-          </svg>
-          <svg className="quote-leaf-bottom-right" viewBox="0 0 120 120" fill="none">
-            <path
-              d="M15,100 Q40,40 100,15 Q75,75 15,100 Z M45,55 Q85,50 100,15"
-              stroke="#558026"
-              strokeWidth="2"
-              fill="rgba(110, 160, 50, 0.14)"
-            />
-          </svg>
-
-          {/* Top-Center Label */}
-          <div className="quote-section-label">
-            <span className="quote-label-line" />
-            REAL STORIES. REAL IMPACT
-            <span className="quote-label-line" />
-          </div>
-
-          {/* Cursive Handwritten Quotes */}
-          <div className="quote-script-left">
-            People
-            <br />
-            Like You
-            <br />
-            <em>Make It Real</em>
-          </div>
-
-          <div className="quote-script-right">
-            Same
-            <br />
-            Journeys
-            <br />
-            Bigger
-            <br />
-            <em>Stories</em>
-          </div>
-
-          {/* Top-Right Tracked Text Stamp */}
-          <div className="quote-badge-top-right">
-            <span>MORE</span>
-            <span>PEOPLE</span>
-            <span>BRIGHTER</span>
-            <span>TOMORROWS</span>
-          </div>
-
-          {/* Bottom-Left Brand Stamp */}
-          <div className="quote-stamp-bottom-left">
-            <div className="quote-heart-badge">
-              <Heart size={13} />
+        {/* REAL INDORE CAPTAIN VOICES & STORIES */}
+        <section className="real-captains-section" id="stories">
+          <div className="real-section-header">
+            <div className="real-section-eyebrow">
+              <Star size={14} />
+              <span>Verified Indore Captains</span>
             </div>
-            <span>DRIVE</span>
-            <span>EARN</span>
-            <span>GROW</span>
-            <div className="quote-stamp-line" />
+            <h2 className="real-section-title">
+              Real Drivers. Real Earnings. Real Indore Stories.
+            </h2>
+            <p className="real-section-desc">
+              Listen to the captains moving Indore every day. No paid actors—just honest numbers and real experiences.
+            </p>
           </div>
 
-          {/* Main Stage: Carousel with Left / Right Arrows */}
-          <div className="quote-stage-container">
-            <button
-              type="button"
-              className="quote-nav-btn prev"
-              onClick={prevQuote}
-              aria-label="Previous story"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <div className="quote-main-card">
-              <div className="quote-bubble-mark">“</div>
-              <blockquote className="quote-statement">
-                <span className="quote-brand-accent">GoRush</span>
-                {driverQuotes[activeQuoteIdx].text}
-              </blockquote>
-
-              <div className="quote-author-row">
-                <div
-                  className="quote-author-avatar"
-                  style={{ background: driverQuotes[activeQuoteIdx].avatarBg }}
-                >
-                  {driverQuotes[activeQuoteIdx].initials}
+          <div className="real-captains-grid">
+            {indoreCaptains.map((capt) => (
+              <div key={capt.name} className="real-captain-card">
+                <div>
+                  <div className="real-captain-top">
+                    <div className="real-captain-photo">
+                      {capt.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div className="real-captain-meta">
+                      <strong>{capt.name}</strong>
+                      <span>{capt.vehicle} · {capt.hub}</span>
+                      <span className="real-captain-plate">{capt.plate}</span>
+                    </div>
+                  </div>
+                  <p className="real-captain-quote">"{capt.quote}"</p>
                 </div>
-                <div className="quote-author-meta">
-                  <strong>{driverQuotes[activeQuoteIdx].name}</strong>
-                  <span>{driverQuotes[activeQuoteIdx].role}</span>
+                <div className="real-captain-stats">
+                  <div className="real-captain-stat-item">
+                    <span>Daily Avg</span>
+                    <strong>{capt.dailyAvg}</strong>
+                  </div>
+                  <div className="real-captain-stat-item" style={{ textAlign: 'center' }}>
+                    <span>Rating</span>
+                    <strong style={{ color: '#d97706' }}>{capt.rating}</strong>
+                  </div>
+                  <div className="real-captain-stat-item" style={{ textAlign: 'right' }}>
+                    <span>Experience</span>
+                    <strong>{capt.trips}</strong>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PHYSICAL INDORE CAPTAIN HUBS & HELPDESK */}
+        <section className="real-hubs-section" id="hubs">
+          <div className="real-hubs-inner">
+            <div className="real-hubs-header">
+              <div className="real-hubs-title-box">
+                <h2>Visit Our Physical Indore Driver Centers</h2>
+                <p>Need offline help with document verification, FASTag, or insurance? Walk into any GoRush center.</p>
+              </div>
+              <div className="real-hubs-helpline">
+                <div className="real-helpline-icon">
+                  <Headphones size={20} />
+                </div>
+                <div className="real-helpline-copy">
+                  <small>24/7 Indore Local Captain Desk</small>
+                  <strong>0731-498-2200</strong>
                 </div>
               </div>
             </div>
 
-            <button
-              type="button"
-              className="quote-nav-btn next"
-              onClick={nextQuote}
-              aria-label="Next story"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+            <div className="real-hubs-grid">
+              <div className="real-hub-card">
+                <div className="real-hub-location-name">📍 Vijay Nagar Captain Center</div>
+                <div className="real-hub-address">
+                  Plot 14, Near Orbit Mall Road, Scheme 54, Vijay Nagar, Indore - 452010
+                </div>
+                <div className="real-hub-facilities">
+                  <span className="real-hub-tag">Free Chai Station</span>
+                  <span className="real-hub-tag">Instant Verification Desk</span>
+                  <span className="real-hub-tag">Phone Mount Fitting</span>
+                </div>
+              </div>
 
-          {/* Dot Indicators */}
-          <div className="quote-dots-nav">
-            {driverQuotes.map((q, idx) => (
-              <button
-                key={q.name}
-                type="button"
-                className={`quote-dot-pill ${activeQuoteIdx === idx ? 'active' : ''}`}
-                onClick={() => setActiveQuoteIdx(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
+              <div className="real-hub-card">
+                <div className="real-hub-location-name">📍 Bhanwarkua Fleet Hub</div>
+                <div className="real-hub-address">
+                  Bholaram Ustad Marg, Opposite Tower Square, Bhanwarkua, Indore - 452001
+                </div>
+                <div className="real-hub-facilities">
+                  <span className="real-hub-tag">Auto & Bike Onboarding</span>
+                  <span className="real-hub-tag">Emergency Fastag Replacement</span>
+                  <span className="real-hub-tag">Driver Rest Lounge</span>
+                </div>
+              </div>
+
+              <div className="real-hub-card">
+                <div className="real-hub-location-name">📍 Indore Railway Station Desk</div>
+                <div className="real-hub-address">
+                  Station Road, Chhoti Gwaltoli, Near Platform 1 Exit, Indore - 452007
+                </div>
+                <div className="real-hub-facilities">
+                  <span className="real-hub-tag">24/7 Night Helpdesk</span>
+                  <span className="real-hub-tag">Station Queue Assistance</span>
+                  <span className="real-hub-tag">SOS Squad Dispatch</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

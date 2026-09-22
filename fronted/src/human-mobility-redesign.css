@@ -1,0 +1,962 @@
+/**
+ * GORUSH HUMAN MOBILITY DESIGN SYSTEM
+ * 100% Authentic, Pragmatic Indian Mobility Tech Platform (Like Rapido Captain / Uber Driver India / Namma Yatri)
+ * Zero AI decorative fluff (No sun-discs, fake cyber lines, cartoon leaves, or cursive poetry)
+ */
+
+/* =========================================================
+   1. HERO SECTION REDESIGN: REAL PRODUCT & ONBOARDING
+   ========================================================= */
+.real-hero-section {
+  background: radial-gradient(ellipse at 20% 0%, #1a3224 0%, #0d1a12 100%);
+  color: #f7f9f3;
+  padding: 48px clamp(20px, 5vw, 80px) 60px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(212, 239, 98, 0.12);
+}
+
+.real-hero-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: clamp(32px, 4vw, 64px);
+  align-items: center;
+}
+
+/* Hero Left Copy */
+.real-hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.real-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 239, 98, 0.12);
+  border: 1px solid rgba(212, 239, 98, 0.28);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #d4ef62;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.real-hero-badge .live-green-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #75c54a;
+  box-shadow: 0 0 10px #75c54a;
+  animation: radarPulse 2s infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(117, 197, 74, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(117, 197, 74, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(117, 197, 74, 0); }
+}
+
+.real-hero-title {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: clamp(34px, 4.4vw, 52px) !important;
+  font-weight: 850 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em !important;
+  color: #ffffff !important;
+  margin: 0 0 18px 0;
+}
+
+.real-hero-title span.accent-highlight {
+  color: #d4ef62;
+  background: linear-gradient(135deg, #d4ef62 0%, #a4df32 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.real-hero-sub {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: #b0c4b5;
+  max-width: 540px;
+  margin: 0 0 28px 0;
+}
+
+.real-hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+
+.real-hero-primary-btn {
+  background: #d4ef62;
+  color: #0e1e14;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(212, 239, 98, 0.28);
+  transition: all 0.25s ease;
+}
+
+.real-hero-primary-btn:hover {
+  background: #e1f77d;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(212, 239, 98, 0.38);
+}
+
+.real-hero-secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f2f7ef;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  padding: 13px 22px;
+  font-size: 14.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.real-hero-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(212, 239, 98, 0.4);
+  color: #ffffff;
+}
+
+/* 4 Core Driver Guarantees */
+.real-hero-guarantees {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.real-guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.real-guarantee-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(212, 239, 98, 0.12);
+  color: #d4ef62;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.real-guarantee-text strong {
+  display: block;
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 750;
+}
+
+.real-guarantee-text span {
+  display: block;
+  font-size: 11.5px;
+  color: #92a796;
+}
+
+/* =========================================================
+   HERO RIGHT: REAL INTERACTIVE ONBOARDING WIDGET
+   ========================================================= */
+.real-hero-card {
+  background: #ffffff;
+  color: #122417;
+  border-radius: 20px;
+  padding: 28px 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.real-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf2ea;
+}
+
+.real-card-header-left strong {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  color: #122417;
+}
+
+.real-card-header-left span {
+  font-size: 12px;
+  color: #5d7363;
+}
+
+.real-card-live-chip {
+  background: #eef7e6;
+  border: 1px solid #c9e6ba;
+  color: #2e6118;
+  font-size: 11px;
+  font-weight: 750;
+  padding: 5px 10px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.real-card-live-chip span.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #46a11f;
+}
+
+/* Vehicle Selector Tabs */
+.real-vehicle-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.real-veh-tab {
+  background: #f4f6f1;
+  border: 1.5px solid #e1e7dc;
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.real-veh-tab:hover {
+  background: #edf3e7;
+  border-color: #bcd9a8;
+}
+
+.real-veh-tab.active {
+  background: #14251b;
+  border-color: #14251b;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(20, 37, 27, 0.2);
+}
+
+.real-veh-tab .tab-icon {
+  font-size: 20px;
+}
+
+.real-veh-tab strong {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.real-veh-tab span {
+  font-size: 10px;
+  color: #647a69;
+}
+
+.real-veh-tab.active span {
+  color: #d4ef62;
+  font-weight: 600;
+}
+
+/* Earnings Simulation Bar */
+.real-sim-box {
+  background: #f9fbf7;
+  border: 1px solid #dce8d5;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.real-sim-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.real-sim-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4b6151;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.real-sim-amount {
+  font-size: 24px;
+  font-weight: 850;
+  color: #14251b;
+  letter-spacing: -0.03em;
+}
+
+.real-sim-amount small {
+  font-size: 13px;
+  color: #55705b;
+  font-weight: 600;
+}
+
+.real-sim-perks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #d5e2cd;
+  font-size: 11.5px;
+  color: #456149;
+}
+
+.real-sim-perks strong {
+  color: #276916;
+}
+
+/* Interactive Mobile Number Form */
+.real-onboard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.real-input-group {
+  display: flex;
+  border: 1.5px solid #d8e1d4;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+  background: #ffffff;
+}
+
+.real-input-group:focus-within {
+  border-color: #14251b;
+  box-shadow: 0 0 0 3px rgba(20, 37, 27, 0.1);
+}
+
+.real-input-prefix {
+  background: #f4f7f1;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 750;
+  color: #14251b;
+  border-right: 1px solid #d8e1d4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.real-input-field {
+  flex: 1;
+  border: none;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #14251b;
+  outline: none;
+}
+
+.real-input-field::placeholder {
+  color: #92a396;
+}
+
+.real-submit-btn {
+  width: 100%;
+  background: #14251b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.real-submit-btn:hover {
+  background: #1e3929;
+  transform: translateY(-1px);
+}
+
+.real-card-foot-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #6a7e6f;
+}
+
+.real-card-foot-trust span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* =========================================================
+   2. LIVE ACTIVE RIDE PING SIMULATION WIDGET
+   ========================================================= */
+.real-live-ride-ping {
+  margin-top: 14px;
+  background: #eff6e8;
+  border: 1px solid #c9e2b6;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.real-ping-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2f691b;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.real-ping-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.real-ping-text strong {
+  display: block;
+  font-size: 12px;
+  color: #1a3818;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.real-ping-text span {
+  display: block;
+  font-size: 10.5px;
+  color: #55794d;
+}
+
+.real-ping-fare {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.real-ping-fare strong {
+  display: block;
+  font-size: 14px;
+  color: #174210;
+  font-weight: 800;
+}
+
+.real-ping-fare small {
+  display: block;
+  font-size: 9.5px;
+  color: #2b701c;
+  font-weight: 700;
+}
+
+/* =========================================================
+   3. INDORE GROUND-LEVEL COMPARISON: GORUSH VS OTHERS
+   ========================================================= */
+.real-comparison-section {
+  padding: 70px clamp(20px, 5vw, 80px);
+  background: #f7f6ee;
+  border-bottom: 1px solid #e1e7dc;
+}
+
+.real-comparison-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.real-section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 44px;
+}
+
+.real-section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f0df;
+  color: #3b6623;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.real-section-title {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  color: #122417;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.real-section-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #566c5b;
+  margin: 0;
+}
+
+/* Comparison Cards Grid */
+.real-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.real-compare-card {
+  border-radius: 20px;
+  padding: 32px 28px;
+  position: relative;
+}
+
+.real-compare-card.others {
+  background: #ffffff;
+  border: 1.5px solid #e4e7e0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.real-compare-card.gorush {
+  background: #14251b;
+  color: #ffffff;
+  border: 2px solid #d4ef62;
+  box-shadow: 0 18px 45px rgba(20, 37, 27, 0.2);
+}
+
+.real-compare-card-badge {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.real-compare-card.others .real-compare-card-badge {
+  color: #bf4530;
+}
+
+.real-compare-card.gorush .real-compare-card-badge {
+  color: #d4ef62;
+  background: rgba(212, 239, 98, 0.15);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.real-compare-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 8px 0;
+}
+
+.real-compare-card.gorush .real-compare-title {
+  color: #ffffff;
+}
+
+.real-compare-card.others .real-compare-title {
+  color: #1f2d22;
+}
+
+.real-compare-subtitle {
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+.real-compare-card.others .real-compare-subtitle {
+  color: #728475;
+}
+
+.real-compare-card.gorush .real-compare-subtitle {
+  color: #a6bda9;
+}
+
+/* Feature Rows in Compare Card */
+.real-compare-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.real-compare-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.real-compare-card.others .real-compare-list li {
+  color: #4b5e50;
+}
+
+.real-compare-card.gorush .real-compare-list li {
+  color: #dcead9;
+}
+
+.real-compare-icon-cross {
+  color: #df4432;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.real-compare-icon-check {
+  color: #d4ef62;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Monthly Bottom Impact */
+.real-compare-bottom-stat {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.real-compare-card.others .real-compare-bottom-stat {
+  border-top-color: #e5ece0;
+}
+
+.real-compare-stat-label {
+  font-size: 12px;
+  color: #90a594;
+  font-weight: 600;
+}
+
+.real-compare-card.others .real-compare-stat-label {
+  color: #6a7e70;
+}
+
+.real-compare-stat-val {
+  font-size: 26px;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+}
+
+.real-compare-card.gorush .real-compare-stat-val {
+  color: #d4ef62;
+}
+
+.real-compare-card.others .real-compare-stat-val {
+  color: #d33c2a;
+}
+
+/* =========================================================
+   4. REAL INDORE CAPTAIN PROFILES & TESTIMONIALS
+   ========================================================= */
+.real-captains-section {
+  padding: 70px clamp(20px, 5vw, 80px);
+  background: #ffffff;
+  border-bottom: 1px solid #e5ece0;
+}
+
+.real-captains-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.real-captain-card {
+  background: #f8faf5;
+  border: 1.5px solid #e1e9dc;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+  transition: all 0.25s ease;
+}
+
+.real-captain-card:hover {
+  transform: translateY(-4px);
+  border-color: #4a8027;
+  box-shadow: 0 14px 34px rgba(20, 37, 27, 0.08);
+}
+
+.real-captain-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.real-captain-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: #14251b;
+  color: #d4ef62;
+  font-size: 18px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.real-captain-meta strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: #122417;
+}
+
+.real-captain-meta span {
+  display: block;
+  font-size: 12px;
+  color: #5d7363;
+  margin-top: 2px;
+}
+
+.real-captain-plate {
+  display: inline-block;
+  background: #fed530;
+  color: #111111;
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.real-captain-quote {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #384d3e;
+  margin: 0 0 18px 0;
+  font-style: italic;
+}
+
+.real-captain-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #e1e9dc;
+  font-size: 12px;
+}
+
+.real-captain-stat-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 850;
+  color: #204719;
+}
+
+.real-captain-stat-item span {
+  color: #728775;
+}
+
+/* =========================================================
+   5. PHYSICAL INDORE DRIVER HUBS & HELPDESK
+   ========================================================= */
+.real-hubs-section {
+  padding: 60px clamp(20px, 5vw, 80px);
+  background: #14251b;
+  color: #ffffff;
+}
+
+.real-hubs-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.real-hubs-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+.real-hubs-title-box h2 {
+  color: #ffffff !important;
+  font-size: clamp(24px, 3vw, 34px) !important;
+  margin: 0 0 8px 0;
+}
+
+.real-hubs-title-box p {
+  color: #a8c2ad !important;
+  font-size: 14.5px !important;
+  margin: 0;
+}
+
+.real-hubs-helpline {
+  background: rgba(212, 239, 98, 0.12);
+  border: 1px solid rgba(212, 239, 98, 0.3);
+  border-radius: 12px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.real-helpline-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d4ef62;
+  color: #14251b;
+  display: grid;
+  place-items: center;
+}
+
+.real-helpline-copy small {
+  display: block;
+  font-size: 10px;
+  color: #d4ef62;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.real-helpline-copy strong {
+  display: block;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+}
+
+.real-hubs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.real-hub-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.real-hub-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 239, 98, 0.3);
+}
+
+.real-hub-location-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.real-hub-address {
+  font-size: 13px;
+  color: #9cb5a0;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+}
+
+.real-hub-facilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.real-hub-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d4ef62;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUT (< 900px and < 700px)
+   ========================================================= */
+@media (max-width: 900px) {
+  .real-hero-container {
+    grid-template-columns: 1fr;
+  }
+  .real-compare-grid {
+    grid-template-columns: 1fr;
+  }
+  .real-captains-grid {
+    grid-template-columns: 1fr;
+  }
+  .real-hubs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .real-hero-section {
+    padding: 36px 16px 44px;
+  }
+  .real-hero-card {
+    padding: 20px 16px;
+  }
+  .real-hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .real-hero-primary-btn,
+  .real-hero-secondary-btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .real-hero-guarantees {
+    grid-template-columns: 1fr;
+  }
+  .real-vehicle-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
