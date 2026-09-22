@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  AlertTriangle,
   ArrowRight,
+  Bike,
+  Building2,
+  CarFront,
   Check,
   ChevronRight,
+  Clock3,
   Globe2,
   Headphones,
+  HeartHandshake,
+  IndianRupee,
+  Lock,
   Mail,
   MapPin,
   MessageCircle,
+  Navigation,
+  Package,
   Phone,
+  PhoneCall,
+  Radio,
+  Send,
+  Shield,
+  ShieldAlert,
   ShieldCheck,
   Smartphone,
   Sparkles,
   Star,
-  CarFront,
-  Navigation,
-  Send,
-  Lock,
+  Tag,
+  TrendingUp,
+  UserCheck,
   Wallet,
+  Wrench,
   Zap
 } from 'lucide-react';
 import '../footer-redesign.css';
@@ -55,14 +70,14 @@ export default function Footer({ onJoinClick, onAction }) {
             </span>
             <div className="footer-ticker-marquee">
               <div className="footer-ticker-item">
-                <span>📍 Vijay Nagar:</span>
+                <span>📍 Vijay Nagar Square:</span>
                 <strong>Vikram P.</strong>
                 <span className="gain">+₹2,140</span>
                 <span>today (14 rides)</span>
               </div>
               <span>•</span>
               <div className="footer-ticker-item">
-                <span>📍 Airport (IDR):</span>
+                <span>📍 Indore Airport (IDR):</span>
                 <strong>Anand S.</strong>
                 <span className="gain">+₹1,850</span>
                 <span>direct UPI transfer</span>
@@ -79,25 +94,181 @@ export default function Footer({ onJoinClick, onAction }) {
                 <span className="gain">₹500 Weekend Target Bonus</span>
                 <span>Unlocked by 340+ drivers</span>
               </div>
+              <span>•</span>
+              <div className="footer-ticker-item">
+                <span>📍 Bhawarkua:</span>
+                <strong>Manoj K.</strong>
+                <span className="gain">+₹1,420</span>
+                <span>today (Student shift)</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* =========================================================
-            1. PRE-FOOTER VIP NEWSLETTER & INCENTIVE NOTIFICATION STRIP
+            1. DRIVER FLEET CATEGORIES & VEHICLE QUICK GUIDE
+            ========================================================= */}
+        <section className="footer-fleet-strip">
+          <div className="footer-strip-heading">
+            <div className="footer-strip-title-wrap">
+              <CarFront size={20} color="#d4ef62" />
+              <h3 className="footer-strip-title">GoRush Indore Driver Fleet Categories</h3>
+              <span className="footer-strip-badge">0% Commission Across All</span>
+            </div>
+            <button
+              type="button"
+              onClick={onJoinClick}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#d4ef62',
+                fontSize: '12.5px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px'
+              }}
+            >
+              <span>Onboard Your Vehicle</span>
+              <ChevronRight size={15} />
+            </button>
+          </div>
+
+          <div className="footer-fleet-grid">
+            <div className="footer-fleet-card" onClick={() => handleActionClick('GoRush Auto: Bajaj/TVS/Piaggio CNG & EV Autos eligible in Indore')}>
+              <div className="footer-fleet-top">
+                <div className="footer-fleet-icon">
+                  <Navigation size={18} />
+                </div>
+                <span className="footer-fleet-tag">High Local Demand</span>
+              </div>
+              <strong>GoRush Auto (CNG & EV)</strong>
+              <p>Short-distance city transit across Indore. Zero commission surge deduction on peak hours.</p>
+              <span className="footer-fleet-earning">
+                <IndianRupee size={13} /> ₹1,800–₹2,600 / Day
+              </span>
+            </div>
+
+            <div className="footer-fleet-card" onClick={() => handleActionClick('GoRush Cab: WagonR, Dzire, Ertiga, Tigor EV eligible in Indore')}>
+              <div className="footer-fleet-top">
+                <div className="footer-fleet-icon">
+                  <CarFront size={18} />
+                </div>
+                <span className="footer-fleet-tag">Airport Priority</span>
+              </div>
+              <strong>GoRush Cab (Mini / Sedan / EV)</strong>
+              <p>AC intercity and city rides. Airport return queue priority and guaranteed long-route fares.</p>
+              <span className="footer-fleet-earning">
+                <IndianRupee size={13} /> ₹2,800–₹4,500 / Day
+              </span>
+            </div>
+
+            <div className="footer-fleet-card" onClick={() => handleActionClick('GoRush Moto: 100cc+ Bikes & Electric Scooters eligible in Indore')}>
+              <div className="footer-fleet-top">
+                <div className="footer-fleet-icon">
+                  <Bike size={18} />
+                </div>
+                <span className="footer-fleet-tag">Flexible Shifts</span>
+              </div>
+              <strong>GoRush Moto (Bike Taxi)</strong>
+              <p>Beat Indore traffic with bike rides. Perfect for students and part-time flexible earning.</p>
+              <span className="footer-fleet-earning">
+                <IndianRupee size={13} /> ₹900–₹1,500 / Day
+              </span>
+            </div>
+
+            <div className="footer-fleet-card" onClick={() => handleActionClick('GoRush Express Parcel: Same-day local packages & document courier')}>
+              <div className="footer-fleet-top">
+                <div className="footer-fleet-icon">
+                  <Package size={18} />
+                </div>
+                <span className="footer-fleet-tag">Instant Delivery</span>
+              </div>
+              <strong>GoRush Parcel Delivery</strong>
+              <p>Intra-city express courier service. Zero wait times between pickup and immediate drop-off.</p>
+              <span className="footer-fleet-earning">
+                <IndianRupee size={13} /> ₹1,100–₹1,800 / Day
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            2. CAPTAIN VOICES & REAL INDORE TESTIMONIALS
+            ========================================================= */}
+        <section className="footer-voice-strip">
+          <div className="footer-strip-heading">
+            <div className="footer-strip-title-wrap">
+              <HeartHandshake size={20} color="#d4ef62" />
+              <h3 className="footer-strip-title">Real Words From Indore Captains</h3>
+              <span className="footer-strip-badge">Verified Partners</span>
+            </div>
+            <span style={{ fontSize: '12px', color: '#8ca191' }}>
+              4.94★ Average Driver Satisfaction Score
+            </span>
+          </div>
+
+          <div className="footer-voice-grid">
+            <div className="footer-voice-card">
+              <p className="footer-voice-quote">
+                “GoRush aane se hamari har mahine ₹10,000–₹12,000 ki commission bachti hai. Pura paisa sham ko bina kisi cut ke seedhe bank account me transfer ho jata hai.”
+              </p>
+              <div className="footer-voice-author">
+                <div className="footer-voice-avatar">MV</div>
+                <div className="footer-voice-info">
+                  <strong>Mukesh Verma</strong>
+                  <span>Auto Captain · Vijay Nagar, Indore</span>
+                </div>
+                <span className="footer-voice-stars">★★★★★</span>
+              </div>
+            </div>
+
+            <div className="footer-voice-card">
+              <p className="footer-voice-quote">
+                “Airport duty me booking cancel hone ka koi dar nahi rehta. Rate pehle hi pata chal jata hai aur support center wale sach me phone uthakar baat sunte hain.”
+              </p>
+              <div className="footer-voice-author">
+                <div className="footer-voice-avatar">AP</div>
+                <div className="footer-voice-info">
+                  <strong>Arvind Patidar</strong>
+                  <span>Sedan Cab Captain · Palasia Point</span>
+                </div>
+                <span className="footer-voice-stars">★★★★★</span>
+              </div>
+            </div>
+
+            <div className="footer-voice-card">
+              <p className="footer-voice-quote">
+                “College ke baad 4 ghante bike chalata hoon. Fuel ka kharcha nikal kar roz ₹800–₹1,100 bach jate hain. Student ke liye isse behtar platform nahi ho sakta.”
+              </p>
+              <div className="footer-voice-author">
+                <div className="footer-voice-avatar">SK</div>
+                <div className="footer-voice-info">
+                  <strong>Sameer Khan</strong>
+                  <span>Moto Captain · Bhawarkua Hub</span>
+                </div>
+                <span className="footer-voice-stars">★★★★★</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            3. VIP NEWSLETTER & INCENTIVE NOTIFICATION STRIP
             ========================================================= */}
         <section className="footer-newsletter-strip">
           <div className="newsletter-box-card">
             <div className="newsletter-text-col">
               <div className="newsletter-badge">
                 <span className="newsletter-badge-dot" />
-                <span>Indore Driver Network · Live Dispatch</span>
+                <span>Indore Driver Network · Live Alerts</span>
               </div>
               <h3 className="newsletter-heading">
                 Never miss a high-surge zone or <span>₹500 daily bonus.</span>
               </h3>
               <p className="newsletter-subtext">
-                Receive instant WhatsApp and SMS alerts for peak weekend zones, airport queues, and festival driver incentives in Indore.
+                Receive instant WhatsApp and SMS alerts for peak weekend surge maps, airport queues, and festival driver incentives in Indore.
               </p>
             </div>
 
@@ -155,7 +326,43 @@ export default function Footer({ onJoinClick, onAction }) {
         </section>
 
         {/* =========================================================
-            2. MAIN 4-COLUMN FOOTER NAVIGATION GRID
+            4. 24/7 ROADSIDE EMERGENCY ASSISTANCE BAR
+            ========================================================= */}
+        <div className="footer-roadside-strip">
+          <div className="footer-roadside-card">
+            <div className="footer-roadside-left">
+              <div className="footer-roadside-icon-pill">
+                <ShieldAlert size={22} />
+              </div>
+              <div className="footer-roadside-text">
+                <strong>24/7 Captain Safety & Emergency Response Network</strong>
+                <span>Active road paramedic patrol & instant accident assistance across Indore Municipal limits.</span>
+              </div>
+            </div>
+
+            <div className="footer-roadside-actions">
+              <a href="tel:112" className="footer-roadside-btn sos">
+                <AlertTriangle size={15} />
+                <span>Police 112 SOS</span>
+              </a>
+              <a href="tel:18004197874" className="footer-roadside-btn desk">
+                <Phone size={15} />
+                <span>1800-419-RUSH Desk</span>
+              </a>
+              <button
+                type="button"
+                className="footer-roadside-btn desk"
+                onClick={() => handleActionClick('Free Roadside Mechanical Assistance: Free puncture repair & towing within 15 km of Vijay Nagar')}
+              >
+                <Wrench size={15} />
+                <span>Free Puncture & Towing</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* =========================================================
+            5. MAIN 4-COLUMN FOOTER NAVIGATION DIRECTORY
             ========================================================= */}
         <div className="footer-main-grid">
           {/* COLUMN 1: Brand & Contact Hub */}
@@ -215,7 +422,7 @@ export default function Footer({ onJoinClick, onAction }) {
             </div>
           </div>
 
-          {/* COLUMN 2: For Drivers */}
+          {/* COLUMN 2: For Captains */}
           <div className="footer-nav-col">
             <h3>For Captains</h3>
             <ul className="footer-links-list">
@@ -277,7 +484,7 @@ export default function Footer({ onJoinClick, onAction }) {
             </ul>
           </div>
 
-          {/* COLUMN 3: Safety & Trust */}
+          {/* COLUMN 3: Safety & Riders */}
           <div className="footer-nav-col">
             <h3>Safety & Riders</h3>
             <ul className="footer-links-list">
@@ -376,7 +583,61 @@ export default function Footer({ onJoinClick, onAction }) {
         </div>
 
         {/* =========================================================
-            3. SOCIAL MEDIA PILLS & SECURITY ACCREDITATIONS
+            6. INDORE OPERATIONAL HUBS & SURGE ZONES
+            ========================================================= */}
+        <div className="footer-hubs-strip">
+          <div className="footer-hubs-title">
+            <MapPin size={15} /> Indore High-Demand Operating Hubs
+          </div>
+          <div className="footer-hubs-list">
+            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Vijay Nagar Square: 1.4x Driver Surge active')}>
+              Vijay Nagar
+            </span>
+            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Indore Airport (IDR): 1.6x Priority Pickup active')}>
+              Airport (IDR)
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Palasia Point: Steady high trip frequency')}>
+              Palasia Point
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Bhawarkua Square: Active student & transit rides')}>
+              Bhawarkua
+            </span>
+            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Super Corridor IT Park: Evening Tech Park Surge')}>
+              Super Corridor
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Rajwada Heritage Market: High local demand')}>
+              Rajwada
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Rau Bypass: Outstation & highway trip hub')}>
+              Rau Bypass
+            </span>
+            <span className="footer-hub-chip" onClick={() => handleActionClick('Silicon City: Morning office transit zone')}>
+              Silicon City
+            </span>
+          </div>
+        </div>
+
+        {/* =========================================================
+            7. INSTANT SETTLEMENTS & BANKING GATEWAYS
+            ========================================================= */}
+        <div className="footer-payments-bar">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Wallet size={15} color="#7bc44a" />
+            <span>Instant Daily Bank & UPI Payouts Supported:</span>
+          </div>
+          <div className="footer-payments-list">
+            <span className="footer-pay-pill">UPI AutoPay</span>
+            <span className="footer-pay-pill">Google Pay</span>
+            <span className="footer-pay-pill">PhonePe</span>
+            <span className="footer-pay-pill">Paytm Wallet</span>
+            <span className="footer-pay-pill">BHIM UPI</span>
+            <span className="footer-pay-pill">IMPS / NEFT Direct</span>
+            <span className="footer-pay-pill">100% Cash Direct</span>
+          </div>
+        </div>
+
+        {/* =========================================================
+            8. SOCIAL MEDIA PILLS & SECURITY ACCREDITATIONS
             ========================================================= */}
         <div className="footer-middle-bar">
           <div className="footer-social-wrapper">
@@ -457,61 +718,7 @@ export default function Footer({ onJoinClick, onAction }) {
         </div>
 
         {/* =========================================================
-            3.5 INDORE OPERATIONAL HUBS & SURGE ZONES
-            ========================================================= */}
-        <div className="footer-hubs-strip">
-          <div className="footer-hubs-title">
-            <MapPin size={15} /> Indore High-Demand Operating Hubs
-          </div>
-          <div className="footer-hubs-list">
-            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Vijay Nagar Square: 1.4x Driver Surge active')}>
-              Vijay Nagar
-            </span>
-            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Indore Airport (IDR): 1.6x Priority Pickup active')}>
-              Airport (IDR)
-            </span>
-            <span className="footer-hub-chip" onClick={() => handleActionClick('Palasia Point: Steady high trip frequency')}>
-              Palasia Point
-            </span>
-            <span className="footer-hub-chip" onClick={() => handleActionClick('Bhawarkua Square: Active student & transit rides')}>
-              Bhawarkua
-            </span>
-            <span className="footer-hub-chip active-zone" onClick={() => handleActionClick('Super Corridor IT Park: Evening Tech Park Surge')}>
-              Super Corridor
-            </span>
-            <span className="footer-hub-chip" onClick={() => handleActionClick('Rajwada Heritage Market: High local demand')}>
-              Rajwada
-            </span>
-            <span className="footer-hub-chip" onClick={() => handleActionClick('Rau Bypass: Outstation & highway trip hub')}>
-              Rau Bypass
-            </span>
-            <span className="footer-hub-chip" onClick={() => handleActionClick('Silicon City: Morning office transit zone')}>
-              Silicon City
-            </span>
-          </div>
-        </div>
-
-        {/* =========================================================
-            3.6 INSTANT SETTLEMENTS & BANKING GATEWAYS
-            ========================================================= */}
-        <div className="footer-payments-bar">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Wallet size={15} color="#7bc44a" />
-            <span>Instant Daily Bank & UPI Payouts Supported:</span>
-          </div>
-          <div className="footer-payments-list">
-            <span className="footer-pay-pill">UPI AutoPay</span>
-            <span className="footer-pay-pill">Google Pay</span>
-            <span className="footer-pay-pill">PhonePe</span>
-            <span className="footer-pay-pill">Paytm Wallet</span>
-            <span className="footer-pay-pill">BHIM UPI</span>
-            <span className="footer-pay-pill">IMPS / NEFT Direct</span>
-            <span className="footer-pay-pill">100% Cash Direct</span>
-          </div>
-        </div>
-
-        {/* =========================================================
-            4. BOTTOM COPYRIGHT & LEGAL BAR
+            9. BOTTOM COPYRIGHT & LEGAL BAR
             ========================================================= */}
         <div className="footer-bottom-bar">
           <p className="footer-copyright-text">

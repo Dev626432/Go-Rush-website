@@ -1,29 +1,29 @@
 /* =========================================================
-   GORUSH LUXURY MANUAL FOOTER REDESIGN
+   GORUSH LUXURY MANUAL FOOTER REDESIGN (V3 - COMPLETE EDITION)
    Handcrafted for Desktop & Mobile (iOS / Android)
    ========================================================= */
 
 .site-footer-redesign {
   position: relative;
-  background: linear-gradient(180deg, #0d1a12 0%, #060e09 100%);
+  background: linear-gradient(180deg, #0b1810 0%, #060e09 50%, #030805 100%);
   color: #e5ece6;
   font-family: 'Plus Jakarta Sans', Manrope, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
-  border-top: 1px solid rgba(212, 239, 98, 0.15);
-  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.35);
+  border-top: 1px solid rgba(212, 239, 98, 0.18);
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.45);
   padding: 0;
   margin: 0;
   width: 100%;
 }
 
-/* Ambient Background Glow */
+/* Ambient Radial Lighting */
 .site-footer-redesign::before {
   content: '';
   position: absolute;
-  top: -150px;
-  right: 10%;
-  width: 500px;
-  height: 500px;
+  top: -120px;
+  right: 8%;
+  width: 550px;
+  height: 550px;
   background: radial-gradient(circle, rgba(123, 196, 74, 0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
@@ -33,16 +33,16 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 5%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(212, 239, 98, 0.04) 0%, transparent 70%);
+  left: 4%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(212, 239, 98, 0.05) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
 .footer-inner-container {
-  max-width: 1280px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 60px);
   position: relative;
@@ -50,18 +50,275 @@
 }
 
 /* ==========================================
-   1. VIP PRE-FOOTER NEWSLETTER & INCENTIVE STRIP
+   0. LIVE DRIVER DISPATCH & SHIFT TICKER
+   ========================================== */
+.footer-live-ticker-strip {
+  background: rgba(212, 239, 98, 0.04);
+  border-bottom: 1px solid rgba(212, 239, 98, 0.12);
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.footer-ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.footer-ticker-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d4ef62;
+  color: #0d1e13;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.footer-ticker-marquee {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  font-size: 13px;
+  color: #a2b9a7;
+}
+
+.footer-ticker-marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.footer-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.footer-ticker-item strong {
+  color: #ffffff;
+}
+
+.footer-ticker-item span.gain {
+  color: #7bc44a;
+  font-weight: 700;
+}
+
+/* ==========================================
+   1. DRIVER FLEET CATEGORIES SELECTOR
+   ========================================== */
+.footer-fleet-strip {
+  padding: 42px 0 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-strip-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-strip-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-strip-title {
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.footer-strip-badge {
+  background: rgba(212, 239, 98, 0.12);
+  border: 1px solid rgba(212, 239, 98, 0.25);
+  color: #d4ef62;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.footer-fleet-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 18px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-fleet-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 239, 98, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.footer-fleet-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-fleet-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(212, 239, 98, 0.12);
+  border: 1px solid rgba(212, 239, 98, 0.25);
+  color: #d4ef62;
+  display: grid;
+  place-items: center;
+}
+
+.footer-fleet-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #7bc44a;
+  background: rgba(123, 196, 74, 0.1);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.footer-fleet-card strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-fleet-card p {
+  font-size: 12px;
+  color: #92a996;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-fleet-earning {
+  font-size: 11.5px;
+  color: #d4ef62;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================
+   2. CAPTAIN VOICES & TESTIMONIALS
+   ========================================== */
+.footer-voice-strip {
+  padding: 38px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.footer-voice-card {
+  background: linear-gradient(135deg, rgba(25, 45, 32, 0.4) 0%, rgba(14, 25, 18, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: all 0.25s ease;
+}
+
+.footer-voice-card:hover {
+  border-color: rgba(212, 239, 98, 0.3);
+  transform: translateY(-2px);
+}
+
+.footer-voice-quote {
+  font-size: 13px;
+  color: #c4d7c8;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.footer-voice-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-voice-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d4ef62;
+  color: #0b1a11;
+  font-weight: 800;
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+}
+
+.footer-voice-info strong {
+  display: block;
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.footer-voice-info span {
+  display: block;
+  font-size: 11px;
+  color: #7b9480;
+}
+
+.footer-voice-stars {
+  color: #eab308;
+  font-size: 11px;
+}
+
+/* ==========================================
+   3. VIP NEWSLETTER & INCENTIVE STRIP
    ========================================== */
 .footer-newsletter-strip {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 48px 0 42px;
+  padding: 42px 0 38px;
 }
 
 .newsletter-box-card {
-  background: linear-gradient(135deg, rgba(26, 48, 34, 0.7) 0%, rgba(15, 29, 21, 0.9) 100%);
-  border: 1px solid rgba(212, 239, 98, 0.2);
+  background: linear-gradient(135deg, rgba(26, 48, 34, 0.75) 0%, rgba(15, 29, 21, 0.9) 100%);
+  border: 1px solid rgba(212, 239, 98, 0.22);
   border-radius: 20px;
-  padding: 32px clamp(20px, 4vw, 44px);
+  padding: 30px clamp(20px, 4vw, 42px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -198,13 +455,107 @@
 }
 
 /* ==========================================
-   2. MAIN 4-COLUMN FOOTER GRID
+   4. 24/7 ROADSIDE EMERGENCY ASSISTANCE BAR
+   ========================================== */
+.footer-roadside-strip {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-roadside-card {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 16px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-roadside-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-roadside-icon-pill {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.footer-roadside-text strong {
+  display: block;
+  font-size: 14.5px;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.footer-roadside-text span {
+  display: block;
+  font-size: 12px;
+  color: #a4bba8;
+  margin-top: 2px;
+}
+
+.footer-roadside-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-roadside-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-roadside-btn.sos {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+}
+
+.footer-roadside-btn.sos:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.footer-roadside-btn.desk {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.footer-roadside-btn.desk:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #d4ef62;
+  color: #d4ef62;
+}
+
+/* ==========================================
+   5. MAIN 4-COLUMN FOOTER GRID
    ========================================== */
 .footer-main-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
   gap: clamp(32px, 4.5vw, 64px);
-  padding: 60px 0 50px;
+  padding: 56px 0 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -445,286 +796,8 @@
 }
 
 /* ==========================================
-   3. SOCIAL ICONS & SECURITY PILLS ROW
+   6. INDORE HUBS & REGIONAL EXPANSION STRIP
    ========================================== */
-.footer-middle-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-social-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.footer-social-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: #8da492;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.footer-social-icons {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer-social-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #b5c7ba;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-}
-
-.footer-social-btn:hover {
-  background: #d4ef62;
-  color: #0c1811;
-  border-color: #d4ef62;
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 18px rgba(212, 239, 98, 0.3);
-}
-
-.footer-security-trust-pills {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.security-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11.5px;
-  color: #8fa594;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.security-pill svg {
-  color: #7bc44a;
-}
-
-/* ==========================================
-   4. BOTTOM LEGAL & REGIONAL COPYRIGHT ROW
-   ========================================== */
-.footer-bottom-bar {
-  padding: 26px 0 max(26px, env(safe-area-inset-bottom));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 12px;
-  color: #7b9280;
-}
-
-.footer-copyright-text {
-  margin: 0;
-  line-height: 1.5;
-}
-
-.footer-legal-links-wrap {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.footer-legal-link {
-  color: #7b9280;
-  text-decoration: none;
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: 12px;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.footer-legal-link:hover {
-  color: #d4ef62;
-  text-decoration: underline;
-}
-
-.footer-region-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(212, 239, 98, 0.08);
-  border: 1px solid rgba(212, 239, 98, 0.2);
-  color: #d4ef62;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 11.5px;
-}
-
-.footer-region-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #7bc44a;
-  box-shadow: 0 0 6px #7bc44a;
-}
-
-/* ==========================================
-   5. RESPONSIVE BREAKPOINTS (TABLET & IPHONE)
-   ========================================== */
-@media (max-width: 1024px) {
-  .footer-main-grid {
-    grid-template-columns: 1.2fr 1fr 1fr;
-  }
-  .footer-app-col {
-    grid-column: span 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-  .footer-app-badges-group {
-    flex-direction: row;
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .newsletter-box-card {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 24px 20px;
-    gap: 20px;
-  }
-  .newsletter-form-col {
-    max-width: 100%;
-  }
-  .newsletter-form {
-    flex-direction: column;
-    padding: 8px;
-  }
-  .newsletter-submit-btn {
-    justify-content: center;
-    min-height: 44px;
-  }
-  .footer-main-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 36px 24px;
-    padding: 44px 0 36px;
-  }
-  .footer-brand-col {
-    grid-column: span 2;
-  }
-  .footer-app-col {
-    grid-column: span 2;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .footer-app-badges-group {
-    flex-direction: column;
-    width: 100%;
-  }
-  .footer-app-btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 46px;
-  }
-  .footer-middle-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-  }
-  .footer-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-}
-
-/* ==========================================
-   2.5 LIVE DRIVER TICKER & INDORE HUBS STRIP
-   ========================================== */
-.footer-live-ticker-strip {
-  background: rgba(212, 239, 98, 0.04);
-  border-bottom: 1px solid rgba(212, 239, 98, 0.12);
-  padding: 12px 0;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.footer-ticker-inner {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-}
-
-.footer-ticker-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #d4ef62;
-  color: #0d1e13;
-  font-size: 10.5px;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-}
-
-.footer-ticker-marquee {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: none;
-  font-size: 12.5px;
-  color: #9cb2a1;
-}
-
-.footer-ticker-marquee::-webkit-scrollbar {
-  display: none;
-}
-
-.footer-ticker-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.footer-ticker-item strong {
-  color: #ffffff;
-}
-
-.footer-ticker-item span.gain {
-  color: #7bc44a;
-  font-weight: 700;
-}
-
-/* Indore Hubs Bar */
 .footer-hubs-strip {
   padding: 24px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -820,7 +893,226 @@
   letter-spacing: 0.02em;
 }
 
+/* ==========================================
+   7. SOCIAL ICONS & SECURITY PILLS ROW
+   ========================================== */
+.footer-middle-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-social-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8da492;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #b5c7ba;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.footer-social-btn:hover {
+  background: #d4ef62;
+  color: #0c1811;
+  border-color: #d4ef62;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(212, 239, 98, 0.3);
+}
+
+.footer-security-trust-pills {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.security-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: #8fa594;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.security-pill svg {
+  color: #7bc44a;
+}
+
+/* ==========================================
+   8. BOTTOM LEGAL & REGIONAL COPYRIGHT ROW
+   ========================================== */
+.footer-bottom-bar {
+  padding: 24px 0 max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+  color: #7b9280;
+}
+
+.footer-copyright-text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footer-legal-links-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-legal-link {
+  color: #7b9280;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-link:hover {
+  color: #d4ef62;
+  text-decoration: underline;
+}
+
+.footer-region-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 239, 98, 0.08);
+  border: 1px solid rgba(212, 239, 98, 0.2);
+  color: #d4ef62;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 11.5px;
+}
+
+.footer-region-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7bc44a;
+  box-shadow: 0 0 6px #7bc44a;
+}
+
+/* ==========================================
+   9. RESPONSIVE BREAKPOINTS (TABLET & IPHONE)
+   ========================================== */
+@media (max-width: 1024px) {
+  .footer-fleet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-voice-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-main-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+  .footer-app-col {
+    grid-column: span 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .footer-app-badges-group {
+    flex-direction: row;
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 768px) {
+  .newsletter-box-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+  .newsletter-form-col {
+    max-width: 100%;
+  }
+  .newsletter-form {
+    flex-direction: column;
+    padding: 8px;
+  }
+  .newsletter-submit-btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
+    padding: 44px 0 36px;
+  }
+  .footer-brand-col {
+    grid-column: span 2;
+  }
+  .footer-app-col {
+    grid-column: span 2;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .footer-app-badges-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .footer-app-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 46px;
+  }
+  .footer-middle-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
   .footer-live-ticker-strip {
     padding: 10px 0;
   }
@@ -837,6 +1129,9 @@
 @media (max-width: 480px) {
   .site-footer-redesign {
     padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  .footer-fleet-grid {
+    grid-template-columns: 1fr;
   }
   .footer-main-grid {
     grid-template-columns: 1fr;
