@@ -45,12 +45,12 @@ import '../subpage-cta-redesign.css';
 
 const pillars = [
   {
-    badge: 'FAIR FARES',
+    badge: 'ZERO COMMISSION',
     icon: BadgePercent,
-    title: 'Flat 10% Platform Fee',
-    desc: 'Traditional platforms cut 25% to 30% from your hard work. GoRush charges a flat, transparent 10% fee, ensuring more than 90% stays in your pocket on every trip.',
-    statNum: '10%',
-    statLabel: 'Flat fee vs 28% market avg',
+    title: '0% Platform Commission Cut',
+    desc: 'Traditional platforms cut 25% to 30% from your hard work. GoRush charges 0% commission on passenger rides with a nominal daily pass, ensuring 100% of the customer fare stays in your pocket on every trip.',
+    statNum: '0%',
+    statLabel: 'Commission cut vs 28% market avg',
   },
   {
     badge: 'FREEDOM',
