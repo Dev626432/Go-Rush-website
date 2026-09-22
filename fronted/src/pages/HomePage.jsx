@@ -52,6 +52,7 @@ import '../final-cta-redesign.css';
 import '../onboarding-hero-redesign.css';
 import '../home-hero-scenic.css';
 import '../human-mobility-redesign.css';
+import '../motion-experience.css';
 
 const featureGroups = [
   {
@@ -190,6 +191,52 @@ const fleetData = {
   },
 };
 
+const vehicleFarePerTrip = {
+  auto: 105,
+  bike: 65,
+  cab: 285,
+  parcel: 85,
+};
+
+const indoreLiveDispatches = [
+  {
+    icon: '🛺',
+    vehicle: 'Indore Auto',
+    pickup: 'Bhanwarkua Square',
+    drop: 'Regal Circle / High Court',
+    dist: '4.8 km · 14 mins',
+    fare: '₹125',
+    tag: '⚡ Instant Dispatch',
+  },
+  {
+    icon: '🛵',
+    vehicle: 'Bike Taxi',
+    pickup: 'Chappan Dukan Street',
+    drop: 'Bombay Hospital Square',
+    dist: '3.6 km · 9 mins',
+    fare: '₹65',
+    tag: '🔥 High Student Area',
+  },
+  {
+    icon: '🚗',
+    vehicle: 'Sedan Cab',
+    pickup: 'Indore Airport Terminal 1',
+    drop: 'Super Corridor TCS Campus',
+    dist: '11.4 km · 21 mins',
+    fare: '₹370',
+    tag: '✈️ Airport Priority',
+  },
+  {
+    icon: '📦',
+    vehicle: 'Parcel Express',
+    pickup: 'Siyaganj Market',
+    drop: 'Annapurna Mandir Road',
+    dist: '5.2 km · 16 mins',
+    fare: '₹145',
+    tag: '📦 Merchant Dispatch',
+  },
+];
+
 const indoreCaptains = [
   {
     name: 'Mukesh Rathore',
@@ -278,6 +325,20 @@ export default function HomePage({ onJoinClick, action }) {
   const [earningsPeriod, setEarningsPeriod] = useState('this-week');
   const [periodDropdownOpen, setPeriodDropdownOpen] = useState(false);
   const activeEarnings = earningsData[earningsPeriod] || earningsData['this-week'];
+
+  const [tripsPerDay, setTripsPerDay] = useState(14);
+  const [activeDispatchIdx, setActiveDispatchIdx] = useState(0);
+
+  useEffect(() => {
+    const dispatchTimer = setInterval(() => {
+      setActiveDispatchIdx((prev) => (prev + 1) % indoreLiveDispatches.length);
+    }, 3800);
+    return () => clearInterval(dispatchTimer);
+  }, []);
+
+  const currentFareRate = vehicleFarePerTrip[selectedVehicle] || 105;
+  const computedDailyIncome = tripsPerDay * currentFareRate;
+  const computedMonthlyIncome = computedDailyIncome * 26;
   useEffect(() => {
     const artwork = document.querySelector('.hero-section');
     if (!artwork || artwork.querySelector('.hero-background-video')) return undefined;
@@ -329,6 +390,25 @@ export default function HomePage({ onJoinClick, action }) {
   return (
     <div className="home-page-wrap">
       <main id="top">
+        {/* LIVE NETWORK TICKER */}
+        <div className="motion-ticker-bar">
+          <div className="motion-ticker-inner">
+            <div className="motion-ticker-item">
+              <span className="ticker-dot" />
+              <span>Indore Network: <strong>482 Captains Online</strong></span>
+            </div>
+            <div className="motion-ticker-item">
+              <span>Vijay Nagar Surge: <span className="ticker-surge">1.2x Active</span></span>
+            </div>
+            <div className="motion-ticker-item">
+              <span>Live Booking: <strong>{indoreLiveDispatches[activeDispatchIdx].pickup} ➔ {indoreLiveDispatches[activeDispatchIdx].drop}</strong></span>
+            </div>
+            <div className="motion-ticker-item">
+              <span>Zero Commission: <strong style={{ color: '#d4ef62' }}>100% Fare to Driver</strong></span>
+            </div>
+          </div>
+        </div>
+
         {/* REAL HUMAN MOBILITY HERO SECTION */}
         <section className="real-hero-section">
           <div className="real-hero-container">
@@ -401,7 +481,7 @@ export default function HomePage({ onJoinClick, action }) {
               <div className="real-card-header">
                 <div className="real-card-header-left">
                   <strong>Captain Earnings Simulator</strong>
-                  <span>Select your vehicle to calculate Indore income</span>
+                  <span>Select vehicle & trips to calculate real take-home</span>
                 </div>
                 <div className="real-card-live-chip">
                   <span className="dot" />
@@ -425,16 +505,34 @@ export default function HomePage({ onJoinClick, action }) {
                 ))}
               </div>
 
+              {/* Interactive Daily Trips Slider */}
+              <div className="motion-slider-wrap">
+                <div className="motion-slider-header">
+                  <span>Daily Trips:</span>
+                  <strong>{tripsPerDay} Trips (~{Math.round(tripsPerDay * 0.6)} hrs/day)</strong>
+                </div>
+                <input
+                  type="range"
+                  min="4"
+                  max="24"
+                  step="1"
+                  value={tripsPerDay}
+                  onChange={(e) => setTripsPerDay(Number(e.target.value))}
+                  className="motion-range-input"
+                  aria-label="Trips per day slider"
+                />
+              </div>
+
               {/* Real Earnings Estimate Box */}
               <div className="real-sim-box">
                 <div className="real-sim-row">
-                  <span className="real-sim-label">Est. Monthly Earnings</span>
+                  <span className="real-sim-label">Est. Monthly Take-Home (26 Days)</span>
                   <div className="real-sim-amount">
-                    {fleetData[selectedVehicle].monthlyEst} <small>/ mo</small>
+                    ₹{computedMonthlyIncome.toLocaleString('en-IN')} <small>/ mo</small>
                   </div>
                 </div>
                 <div className="real-sim-perks">
-                  <span>Daily Avg: <strong>{fleetData[selectedVehicle].dailyEst}</strong></span>
+                  <span>Daily Avg: <strong>₹{computedDailyIncome.toLocaleString('en-IN')}/day</strong></span>
                   <span>Demand: <strong>{fleetData[selectedVehicle].demand}</strong></span>
                 </div>
               </div>
@@ -447,6 +545,9 @@ export default function HomePage({ onJoinClick, action }) {
                 <div className="real-ping-text">
                   <strong>{fleetData[selectedVehicle].pingRoute}</strong>
                   <span>Live Booking Ping · 0% Commission Cut</span>
+                  <div className="motion-ping-timer-bar">
+                    <div className="motion-ping-timer-fill" />
+                  </div>
                 </div>
                 <div className="real-ping-fare">
                   <strong>{fleetData[selectedVehicle].pingFare}</strong>
@@ -736,246 +837,200 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* EARNINGS */}
-        <section className="earnings-redesign-wrap" id="earnings">
-          {/* Central Background: Rider on Highway at Night toward City */}
-          <div className="earnings-bg-layer">
-            <img
-              src="/earnings-rider-bg.jpg"
-              alt="GoRush Night Road Rider"
-              className="earnings-bg-image"
-            />
-            <div className="earnings-bg-vignette" />
-          </div>
+        {/* LIVE FLEET TELEMETRY & SETTLEMENT ENGINE - 100% HANDCRAFTED NATIVE MOTION */}
+        <section className="earnings-redesign-wrap" id="earnings" style={{ padding: '60px 0 80px', background: '#09130d' }}>
+          <div className="motion-telemetry-stage">
+            <div className="motion-grid-backdrop" />
 
-          {/* Glowing Route Curve & Map Pin */}
-          <div className="earnings-route-overlay">
-            <div className="earnings-pin-container">
-              <div className="earnings-pin-marker">
-                <MapPin size={22} />
-                <span className="pin-glow-ring" />
-              </div>
-              <div className="earnings-pin-tooltip">
-                <span>More Rides.</span>
-                <small>More Freedom.</small>
-              </div>
-            </div>
-          </div>
-
-          {/* Top Right Handwritten Script */}
-          <div className="earnings-script-quote">
-            Good People
-            <br />
-            Great Journeys
-          </div>
-
-          <div className="earnings-container">
-            {/* LEFT COLUMN: Copy, Features Timeline & CTA */}
-            <div className="earnings-left-col">
-              <div className="earnings-eyebrow">
-                YOUR WORK. YOUR WORTH <span className="earnings-eyebrow-line" />
-              </div>
-
-              <h2 className="earnings-headline">
-                Know what you earn.
-                <br />
-                <em>Keep what you can.</em>
-              </h2>
-
-              <p className="earnings-desc">
-                No mystery math. See the fare, platform fee, tips, incentives and your final take-home amount before you commit to a ride.
-              </p>
-
-              {/* Connected Feature Timeline */}
-              <div className="earnings-timeline">
-                <div className="earnings-timeline-line" />
-
-                <div className="earnings-timeline-item">
-                  <div className="timeline-icon-box">
-                    <Wallet size={20} />
-                  </div>
-                  <div className="timeline-text">
-                    <div className="timeline-title-row">
-                      <span className="timeline-num">01</span>
-                      <strong className="timeline-title">Transparent fares</strong>
-                    </div>
-                    <p className="timeline-desc">Every ride shows a clear estimate.</p>
-                  </div>
+            {/* Top Telemetry Header */}
+            <div className="motion-telemetry-topbar">
+              <div className="motion-telemetry-title-col">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                  <span className="motion-telemetry-badge-live">
+                    <span className="ticker-dot" /> LIVE INDORE TELEMETRY
+                  </span>
+                  <span style={{ fontSize: '12px', color: '#d4ef62', fontWeight: 750 }}>
+                    0% Platform Commission Protocol · MP-09
+                  </span>
                 </div>
-
-                <div className="earnings-timeline-item">
-                  <div className="timeline-icon-box">
-                    <BarChart3 size={20} />
-                  </div>
-                  <div className="timeline-text">
-                    <div className="timeline-title-row">
-                      <span className="timeline-num">02</span>
-                      <strong className="timeline-title">Weekly incentives</strong>
-                    </div>
-                    <p className="timeline-desc">Hit targets, unlock bonuses and peak-hour boosts.</p>
-                  </div>
-                </div>
-
-                <div className="earnings-timeline-item">
-                  <div className="timeline-icon-box">
-                    <Zap size={20} />
-                  </div>
-                  <div className="timeline-text">
-                    <div className="timeline-title-row">
-                      <span className="timeline-num">03</span>
-                      <strong className="timeline-title">Flexible payouts</strong>
-                    </div>
-                    <p className="timeline-desc">Withdraw to your bank or UPI when you need it.</p>
-                  </div>
-                </div>
+                <h3>Transparent Fares. Zero Deductions. Every Mile.</h3>
+                <p>Live GPS ride routing and instant settlement ledger directly from the GoRush Indore dispatch network.</p>
               </div>
-
-              {/* CTA + Social Proof Avatars */}
-              <div className="earnings-action-row">
-                <button className="earnings-primary-btn" onClick={() => setFormOpen(true)}>
-                  See your earning potential <ArrowRight size={16} />
+              <div>
+                <button
+                  type="button"
+                  className="real-hero-primary-btn"
+                  onClick={() => setFormOpen(true)}
+                  style={{ padding: '10px 20px', fontSize: '13px' }}
+                >
+                  <span>Start Earning Now</span>
+                  <ArrowRight size={15} />
                 </button>
-
-                <div className="earnings-social-proof">
-                  <div className="earnings-avatar-stack" aria-label="GoRush Top Drivers">
-                    <span className="earnings-avatar-item" style={{ background: '#d9c4aa' }}>AK</span>
-                    <span className="earnings-avatar-item" style={{ background: '#9cb8a0' }}>RS</span>
-                    <span className="earnings-avatar-item" style={{ background: '#d4ef62' }}>★</span>
-                  </div>
-                  <div className="earnings-social-text">
-                    <strong>48,000+ drivers</strong>
-                    <span>are earning better with GoRush</span>
-                  </div>
-                </div>
               </div>
             </div>
 
-            {/* RIGHT COLUMN: Driver Statement Card & Floating Badges */}
-            <div className="earnings-right-col">
-              <div className="earnings-card-wrapper">
-                {/* Outer Glow Halo */}
-                <div className="earnings-card-glow" />
+            {/* Two Column Layout: Left Animated Route Vector, Right Interactive Statement */}
+            <div className="motion-telemetry-layout">
+              {/* Left Column: Live GPS Route Canvas */}
+              <div className="motion-route-canvas-box">
+                <div className="motion-canvas-label">
+                  <span>GPS RADAR · INDORE ZONE 01</span>
+                  <strong>{indoreLiveDispatches[activeDispatchIdx].dist}</strong>
+                </div>
 
-                {/* Main Card */}
-                <div className="driver-statement-card">
-                  <div className="statement-card-top">
-                    <span className="statement-tag">DRIVER STATEMENT</span>
-                    <div style={{ position: 'relative' }}>
-                      <button
-                        type="button"
-                        className="statement-dropdown-btn"
-                        onClick={() => setPeriodDropdownOpen(!periodDropdownOpen)}
-                      >
-                        {activeEarnings.label} <ChevronDown size={13} />
-                      </button>
-                      {periodDropdownOpen && (
-                        <div
-                          style={{
-                            position: 'absolute',
-                            right: 0,
-                            top: '110%',
-                            background: '#ffffff',
-                            borderRadius: '12px',
-                            boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-                            border: '1px solid #dbe5d4',
-                            zIndex: 20,
-                            overflow: 'hidden',
-                            minWidth: '120px',
-                          }}
-                        >
-                          {['this-week', 'last-week', 'this-month'].map((key) => (
-                            <button
-                              key={key}
-                              type="button"
-                              onClick={() => {
-                                setEarningsPeriod(key);
-                                setPeriodDropdownOpen(false);
-                              }}
-                              style={{
-                                display: 'block',
-                                width: '100%',
-                                textAlign: 'left',
-                                padding: '8px 14px',
-                                background: earningsPeriod === key ? '#eff6e6' : '#ffffff',
-                                border: 'none',
-                                cursor: 'pointer',
-                                fontSize: '11px',
-                                fontWeight: earningsPeriod === key ? '800' : '600',
-                                color: earningsPeriod === key ? '#2a441e' : '#4a5d4d',
-                              }}
-                            >
-                              {earningsData[key].label}
-                            </button>
-                          ))}
-                        </div>
-                      )}
+                <div className="motion-gps-vector-stage">
+                  {/* Waypoint Pills */}
+                  <div className="motion-waypoint-pill start">
+                    <span className="pulse-indicator" />
+                    <span>{indoreLiveDispatches[activeDispatchIdx].pickup}</span>
+                  </div>
+
+                  <div className="motion-waypoint-pill mid">
+                    <span>Palasia Sq Hub</span>
+                  </div>
+
+                  <div className="motion-waypoint-pill end">
+                    <span className="pulse-indicator" />
+                    <span>{indoreLiveDispatches[activeDispatchIdx].drop}</span>
+                  </div>
+
+                  {/* SVG Route Geometry */}
+                  <svg className="motion-gps-svg" viewBox="0 0 500 220" preserveAspectRatio="none">
+                    {/* Background faint path */}
+                    <path
+                      d="M 50,45 Q 180,110 260,65 T 450,185"
+                      className="motion-route-path-bg"
+                    />
+                    {/* Neon Glow Outer */}
+                    <path
+                      d="M 50,45 Q 180,110 260,65 T 450,185"
+                      className="motion-route-path-glow"
+                    />
+                    {/* Animated Flowing Dashes */}
+                    <path
+                      d="M 50,45 Q 180,110 260,65 T 450,185"
+                      className="motion-route-path-flow"
+                    />
+                  </svg>
+
+                  {/* Traveling Vehicle Marker */}
+                  <div className="motion-vehicle-pulse-dot" title="Live Captain Vehicle">
+                    {indoreLiveDispatches[activeDispatchIdx].icon}
+                  </div>
+                </div>
+
+                {/* Live Dispatch Ping Toast with auto-rotation */}
+                <div className="motion-live-dispatch-toast">
+                  <div className="motion-toast-left">
+                    <div className="motion-toast-icon">
+                      <Navigation size={16} />
+                    </div>
+                    <div className="motion-toast-text">
+                      <strong>{indoreLiveDispatches[activeDispatchIdx].vehicle}: {indoreLiveDispatches[activeDispatchIdx].tag}</strong>
+                      <span>{indoreLiveDispatches[activeDispatchIdx].pickup} ➔ {indoreLiveDispatches[activeDispatchIdx].drop}</span>
                     </div>
                   </div>
-
-                  <div className="statement-period-row">
-                    <span className="statement-month">{activeEarnings.month}</span>
-                    <span className="statement-week">{activeEarnings.subPeriod}</span>
+                  <div className="motion-toast-fare">
+                    <strong>{indoreLiveDispatches[activeDispatchIdx].fare}</strong>
+                    <span>100% TO DRIVER</span>
                   </div>
+                </div>
+              </div>
 
-                  <div className="statement-amount-display">
-                    ₹{activeEarnings.amount}
-                    <small>{activeEarnings.decimal}</small>
-                  </div>
-
-                  <div className="statement-growth">
-                    <TrendingUp size={13} /> {activeEarnings.growth}
-                  </div>
-
-                  {/* Dynamic Interactive Bar Chart */}
-                  <div className="statement-chart">
-                    {activeEarnings.bars.map((bar, idx) => (
-                      <div key={`${bar.day}-${idx}`} className="chart-bar-col">
-                        <div className="chart-tooltip">{bar.amount}</div>
-                        <div
-                          className="chart-bar-fill"
-                          style={{ height: `${bar.height}%` }}
-                        />
-                        <span className="chart-day-label">{bar.day}</span>
+              {/* Right Column: Interactive Driver Statement */}
+              <div className="motion-statement-card">
+                <div className="motion-statement-top">
+                  <strong>Captain Settlement Ledger</strong>
+                  <div style={{ position: 'relative' }}>
+                    <button
+                      type="button"
+                      className="statement-dropdown-btn"
+                      onClick={() => setPeriodDropdownOpen(!periodDropdownOpen)}
+                    >
+                      {activeEarnings.label} <ChevronDown size={13} />
+                    </button>
+                    {periodDropdownOpen && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          right: 0,
+                          top: '110%',
+                          background: '#ffffff',
+                          borderRadius: '12px',
+                          boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+                          border: '1px solid #dbe5d4',
+                          zIndex: 20,
+                          overflow: 'hidden',
+                          minWidth: '120px',
+                        }}
+                      >
+                        {['this-week', 'last-week', 'this-month'].map((key) => (
+                          <button
+                            key={key}
+                            type="button"
+                            onClick={() => {
+                              setEarningsPeriod(key);
+                              setPeriodDropdownOpen(false);
+                            }}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              textAlign: 'left',
+                              padding: '8px 14px',
+                              background: earningsPeriod === key ? '#eff6e6' : '#ffffff',
+                              border: 'none',
+                              cursor: 'pointer',
+                              fontSize: '11px',
+                              fontWeight: earningsPeriod === key ? '800' : '600',
+                              color: earningsPeriod === key ? '#2a441e' : '#4a5d4d',
+                            }}
+                          >
+                            {earningsData[key].label}
+                          </button>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-
-                  <div className="statement-card-bottom">
-                    <span className="statement-net-label">Net driver earnings</span>
-                    <strong className="statement-net-val">{activeEarnings.net}</strong>
+                    )}
                   </div>
                 </div>
 
-                {/* Floating Chip 1: Growth Badge (+18.4% vs last week) */}
-                <div className="floating-chip-growth">
-                  <div className="chip-growth-icon">
-                    <ArrowUpRight size={17} strokeWidth={2.5} />
-                  </div>
-                  <div className="chip-growth-text">
-                    <strong>+18.4%</strong>
-                    <span>vs last week</span>
-                  </div>
+                <div style={{ fontSize: '11.5px', color: '#667d6c', marginBottom: '4px' }}>
+                  {activeEarnings.month} · {activeEarnings.subPeriod}
                 </div>
 
-                {/* Floating Chip 2: Peak Hours Badge */}
-                <div className="floating-chip-peak">
-                  <div className="chip-peak-icon">
-                    <Crown size={16} />
-                  </div>
-                  <div className="chip-peak-text">
-                    <strong>Peak Hours</strong>
-                    <span>Higher earnings</span>
-                  </div>
+                <div className="motion-statement-amount">
+                  ₹{activeEarnings.amount}
+                  <small style={{ fontSize: '20px', color: '#7b9181' }}>{activeEarnings.decimal}</small>
                 </div>
 
-                {/* Floating Chip 3: Effort Badge */}
-                <div className="floating-chip-effort">
-                  <div className="chip-effort-icon">
-                    <Leaf size={15} />
+                <div className="motion-statement-growth">
+                  <TrendingUp size={14} />
+                  <span>{activeEarnings.growth}</span>
+                </div>
+
+                {/* Animated Interactive Bar Chart */}
+                <div className="motion-bars-grid">
+                  {activeEarnings.bars.map((bar, idx) => (
+                    <div key={`${bar.day}-${idx}`} className="motion-bar-col">
+                      <div className="motion-bar-track">
+                        <div
+                          className="motion-bar-active-fill"
+                          style={{ height: `${bar.height}%` }}
+                          title={`${bar.day}: ${bar.amount}`}
+                        />
+                      </div>
+                      <span className="motion-bar-day">{bar.day}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="motion-statement-foot">
+                  <div>
+                    <span style={{ display: 'block', fontSize: '11px', color: '#7a8e7e' }}>0% Commission Deduction</span>
+                    <strong style={{ color: '#25741b' }}>₹0 Platform Cut</strong>
                   </div>
-                  <div className="chip-effort-text">
-                    <strong>Your Effort</strong>
-                    <span>Drives Better Tomorrows.</span>
+                  <div style={{ textAlign: 'right' }}>
+                    <span style={{ display: 'block', fontSize: '11px', color: '#7a8e7e' }}>Net Transferred to UPI</span>
+                    <strong style={{ fontSize: '20px', color: '#122417' }}>{activeEarnings.net}</strong>
                   </div>
                 </div>
               </div>

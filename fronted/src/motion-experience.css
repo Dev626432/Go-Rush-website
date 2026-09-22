@@ -1,0 +1,663 @@
+/**
+ * GORUSH MOTION EXPERIENCE & LIVE TELEMETRY
+ * Handcrafted interactive motion, animated live GPS telemetry,
+ * real-time income sliders, and driver app screen interactions.
+ * Zero static AI images or fake cursive decorations.
+ */
+
+/* =========================================================
+   1. LIVE DISPATCH TICKER (TOP OF HERO)
+   ========================================================= */
+.motion-ticker-bar {
+  background: #09130d;
+  border-bottom: 1px solid rgba(212, 239, 98, 0.15);
+  padding: 8px 16px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.motion-ticker-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #9db2a2;
+}
+
+.motion-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.motion-ticker-item strong {
+  color: #ffffff;
+  font-weight: 750;
+}
+
+.motion-ticker-item .ticker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #75c54a;
+  box-shadow: 0 0 8px #75c54a;
+  animation: radarBlink 1.8s infinite;
+}
+
+.motion-ticker-item .ticker-surge {
+  color: #d4ef62;
+  background: rgba(212, 239, 98, 0.15);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 11px;
+}
+
+@keyframes radarBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* =========================================================
+   2. HERO INTERACTIVE EARNINGS SLIDER & LIVE MOTION
+   ========================================================= */
+.motion-slider-wrap {
+  margin: 14px 0 16px;
+  background: #f4f7f1;
+  border: 1px solid #dce5d5;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.motion-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.motion-slider-header span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4b6251;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.motion-slider-header strong {
+  font-size: 14px;
+  font-weight: 850;
+  color: #14251b;
+}
+
+.motion-range-input {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #cbd8c5;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  accent-color: #2b691b;
+}
+
+.motion-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #235914;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.motion-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #14251b;
+}
+
+/* Countdown Accept Timer on Ride Ping */
+.motion-ping-timer-bar {
+  height: 3px;
+  background: rgba(20, 37, 27, 0.1);
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.motion-ping-timer-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #46a11f, #d4ef62);
+  border-radius: 2px;
+  animation: pingCountdown 15s linear infinite;
+}
+
+@keyframes pingCountdown {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
+
+/* =========================================================
+   3. EARNINGS SECTION: LIVE TELEMETRY STAGE (NO AI IMAGES!)
+   ========================================================= */
+.motion-telemetry-stage {
+  position: relative;
+  background: #0d1a12;
+  border: 1px solid rgba(212, 239, 98, 0.15);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 40px clamp(20px, 4vw, 50px);
+  margin: 40px auto 0;
+  max-width: 1200px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Live Animated Grid Background */
+.motion-grid-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(212, 239, 98, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 239, 98, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Top Telemetry Header */
+.motion-telemetry-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
+}
+
+.motion-telemetry-title-col h3 {
+  font-size: clamp(20px, 2.4vw, 26px) !important;
+  font-weight: 850 !important;
+  color: #ffffff !important;
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.motion-telemetry-title-col p {
+  color: #9cb5a0 !important;
+  font-size: 13.5px !important;
+  margin: 0;
+}
+
+.motion-telemetry-badge-live {
+  background: rgba(117, 197, 74, 0.15);
+  border: 1px solid rgba(117, 197, 74, 0.4);
+  color: #75c54a;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Two Column Telemetry Stage Layout */
+.motion-telemetry-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left: Interactive Live Route Canvas */
+.motion-route-canvas-box {
+  background: rgba(20, 37, 27, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.motion-canvas-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: #8da593;
+  margin-bottom: 16px;
+}
+
+.motion-canvas-label strong {
+  color: #d4ef62;
+  font-weight: 750;
+}
+
+.motion-gps-vector-stage {
+  width: 100%;
+  height: 220px;
+  position: relative;
+}
+
+/* SVG Route Tracer */
+.motion-gps-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.motion-route-path-bg {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 6;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.motion-route-path-glow {
+  stroke: rgba(212, 239, 98, 0.28);
+  stroke-width: 12;
+  fill: none;
+  stroke-linecap: round;
+  filter: blur(5px);
+}
+
+.motion-route-path-flow {
+  stroke: #d4ef62;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 12 10;
+  animation: routeDashFlow 1.4s linear infinite;
+}
+
+@keyframes routeDashFlow {
+  from {
+    stroke-dashoffset: 44;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Moving GPS Vehicle Marker */
+.motion-vehicle-pulse-dot {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #14251b;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  box-shadow: 0 0 18px rgba(212, 239, 98, 0.8), 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 2px solid #d4ef62;
+  z-index: 10;
+  animation: travelIndoreRoute 12s ease-in-out infinite;
+}
+
+@keyframes travelIndoreRoute {
+  0% {
+    left: 12%;
+    top: 20%;
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+  25% {
+    left: 38%;
+    top: 45%;
+    transform: translate(-50%, -50%) rotate(30deg);
+  }
+  50% {
+    left: 56%;
+    top: 32%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+  75% {
+    left: 74%;
+    top: 66%;
+    transform: translate(-50%, -50%) rotate(40deg);
+  }
+  100% {
+    left: 88%;
+    top: 78%;
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+}
+
+/* Waypoint Markers on Canvas */
+.motion-waypoint-pill {
+  position: absolute;
+  background: #14251b;
+  border: 1px solid #d4ef62;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 750;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.motion-waypoint-pill.start {
+  left: 6%;
+  top: 14%;
+}
+
+.motion-waypoint-pill.mid {
+  left: 50%;
+  top: 24%;
+}
+
+.motion-waypoint-pill.end {
+  right: 6%;
+  bottom: 14%;
+}
+
+.motion-waypoint-pill .pulse-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4ef62;
+  box-shadow: 0 0 8px #d4ef62;
+}
+
+/* Live Trip Dispatch Notification Banner */
+.motion-live-dispatch-toast {
+  margin-top: 18px;
+  background: rgba(212, 239, 98, 0.08);
+  border: 1px solid rgba(212, 239, 98, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.motion-toast-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.motion-toast-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #d4ef62;
+  color: #0e1e14;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.motion-toast-text strong {
+  display: block;
+  font-size: 12.5px;
+  color: #ffffff;
+}
+
+.motion-toast-text span {
+  display: block;
+  font-size: 11px;
+  color: #9cb5a0;
+}
+
+.motion-toast-fare {
+  text-align: right;
+}
+
+.motion-toast-fare strong {
+  display: block;
+  font-size: 16px;
+  color: #d4ef62;
+  font-weight: 850;
+}
+
+.motion-toast-fare span {
+  display: block;
+  font-size: 9.5px;
+  color: #79bf4a;
+  font-weight: 750;
+}
+
+/* Right: Interactive Driver Statement & Income Simulator */
+.motion-statement-card {
+  background: #ffffff;
+  color: #122417;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.motion-statement-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.motion-statement-top strong {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #556c5a;
+}
+
+.motion-statement-amount {
+  font-size: clamp(34px, 4.2vw, 48px);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  color: #14251b;
+  line-height: 1;
+  margin: 0 0 6px 0;
+}
+
+.motion-statement-growth {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #2b701c;
+  font-size: 12px;
+  font-weight: 750;
+  margin-bottom: 20px;
+}
+
+/* Interactive Bar Graph in Motion */
+.motion-bars-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  align-items: flex-end;
+  height: 120px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e7dc;
+  margin-bottom: 16px;
+}
+
+.motion-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.motion-bar-track {
+  width: 100%;
+  max-width: 28px;
+  background: #f0f4ec;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  overflow: hidden;
+}
+
+.motion-bar-active-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #91c73a 0%, #38691f 100%);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-bar-day {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6a7e70;
+}
+
+.motion-statement-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #4b6151;
+}
+
+.motion-statement-foot strong {
+  font-size: 18px;
+  font-weight: 850;
+  color: #14251b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .motion-telemetry-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   4. HUMAN TYPOGRAPHY & SCALE CALIBRATION (NO AI TEMPLATE SCALING)
+   ========================================================= */
+.home-page-wrap h1,
+.real-hero-title {
+  font-size: clamp(30px, 3.8vw, 48px) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.035em !important;
+  font-weight: 850 !important;
+}
+
+.home-page-wrap h2,
+.real-section-title,
+.scenic-header-title,
+.safety-headline,
+.onboarding-main-title,
+.quote-headline {
+  font-size: clamp(24px, 2.6vw, 36px) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.025em !important;
+  font-weight: 850 !important;
+}
+
+.home-page-wrap h3,
+.real-compare-title,
+.difference-card-title,
+.safety-card-title,
+.onboarding-step-title {
+  font-size: clamp(17px, 1.5vw, 20px) !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em !important;
+  font-weight: 800 !important;
+}
+
+.real-hero-sub,
+.real-section-desc,
+.scenic-header-subtitle,
+.safety-subline,
+.onboarding-main-subtitle {
+  font-size: clamp(14px, 1.1vw, 15.5px) !important;
+  line-height: 1.62 !important;
+  color: #9cb2a2 !important;
+}
+
+.real-hero-badge,
+.real-section-eyebrow,
+.scenic-header-badge,
+.safety-eyebrow-pill,
+.onboarding-eyebrow-badge {
+  font-size: 11.5px !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+.real-guarantee-text strong,
+.timeline-title,
+.real-ping-text strong {
+  font-size: 13.5px !important;
+  font-weight: 750 !important;
+}
+
+.real-guarantee-text span,
+.timeline-desc,
+.real-ping-text span {
+  font-size: 11.5px !important;
+}
+
+/* Mobile Responsiveness for Motion Elements */
+@media (max-width: 640px) {
+  .motion-ticker-bar {
+    padding: 6px 12px;
+  }
+  .motion-ticker-inner {
+    gap: 12px;
+    font-size: 11px;
+    justify-content: flex-start;
+    white-space: nowrap;
+  }
+  .motion-ticker-item:nth-child(n+3) {
+    display: none;
+  }
+  .motion-telemetry-stage {
+    padding: 24px 16px;
+    border-radius: 16px;
+    margin-top: 20px;
+  }
+  .motion-gps-vector-stage {
+    height: 180px;
+  }
+  .motion-waypoint-pill {
+    font-size: 9.5px;
+    padding: 3px 7px;
+  }
+  .motion-statement-card {
+    padding: 20px 16px;
+  }
+  .motion-statement-amount {
+    font-size: 30px;
+  }
+  .motion-bars-grid {
+    height: 95px;
+    gap: 5px;
+  }
+  .motion-live-dispatch-toast {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .motion-toast-fare {
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+}
