@@ -399,6 +399,7 @@ export default function EarningsPage({ onJoinClick }) {
                   src="/calc-road-art.webp"
                   alt=""
                   className="calc-road-art-img"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   aria-hidden="true"
                 />
               </div>

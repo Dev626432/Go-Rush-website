@@ -48,6 +48,7 @@ export default function DriverDashboardPage({ action }) {
           <img
             src="/gorush-logo.png"
             alt="GoRush"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
             style={{ width: '34px', height: '34px', borderRadius: '10px', objectFit: 'contain', display: 'block' }}
           />
           <div>

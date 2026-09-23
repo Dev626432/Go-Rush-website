@@ -43,6 +43,7 @@ export default function Navbar({ onJoinClick, onContactClick, onLoginClick }) {
             src="/gorush-nav-logo.png"
             alt="GoRush - Drive. Earn. Grow."
             className="nav-brand-logo"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
             style={{ height: '42px', objectFit: 'contain' }}
           />
         </Link>

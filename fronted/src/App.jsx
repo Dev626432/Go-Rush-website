@@ -81,7 +81,11 @@ export default function App() {
             <div className="loader-spinner-outer" />
             <div className="loader-spinner-inner" />
             <div className="loader-logo-card">
-              <img src="/gorush-logo.png" alt="GoRush Logo" />
+              <img
+                src="/gorush-logo.png"
+                alt="GoRush Logo"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
             </div>
           </div>
 

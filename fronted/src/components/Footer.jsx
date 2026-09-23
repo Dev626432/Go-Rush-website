@@ -381,7 +381,12 @@ export default function Footer({ onJoinClick, onContactClick, onAction }) {
           {/* COLUMN 1: Brand & Contact Hub */}
           <div className="footer-brand-col">
             <Link className="footer-brand-link" to="/">
-              <img src="/gorush-logo.png" alt="GoRush" className="footer-brand-logo-img" />
+              <img
+                src="/gorush-logo.png"
+                alt="GoRush"
+                className="footer-brand-logo-img"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
               <div className="footer-brand-text">
                 <span className="footer-brand-name">
                   Go<span>Rush</span>
