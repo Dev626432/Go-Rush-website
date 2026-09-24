@@ -339,6 +339,14 @@ export default function HomePage({ onJoinClick, action }) {
   const currentFareRate = vehicleFarePerTrip[selectedVehicle] || 105;
   const computedDailyIncome = tripsPerDay * currentFareRate;
   const computedMonthlyIncome = computedDailyIncome * 26;
+  const heroVideoRef = useRef(null);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.play().catch(() => {});
+    }
+  }, []);
+
   useEffect(() => {
     const artwork = document.querySelector('.hero-section');
     if (!artwork || artwork.querySelector('.hero-background-video')) return undefined;
@@ -390,6 +398,102 @@ export default function HomePage({ onJoinClick, action }) {
   return (
     <div className="home-page-wrap">
       <main id="top">
+        {/* FIRST SECTION: ORIGINAL 10-SECOND VIDEO HERO CLIP */}
+        <section className="hero-section">
+          <video
+            ref={heroVideoRef}
+            className="hero-background-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="https://res.cloudinary.com/zfpzqpwo/image/upload/f_auto,q_auto/pexels-neilstha-firman-1119718312-35985469"
+            aria-hidden="true"
+          >
+            <source
+              src="https://res.cloudinary.com/zfpzqpwo/video/upload/v1788946371/image-to-video/i2v_4532ef3361d04aa0ac941e0535b2036b.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="hero-copy">
+            <div className="hero-kicker">
+              <span className="pulse-dot" /> Now welcoming drivers in Indore
+            </div>
+            <h1>
+              More miles.
+              <br />
+              <em>More freedom.</em>
+              <br />
+              More you.
+            </h1>
+            <p>
+              GoRush is the driver-first platform for people who want to move through the city on their own terms and earn
+              fairly along the way.
+            </p>
+            <div className="hero-actions">
+              <button className="primary-cta" onClick={onJoinClick}>
+                Start driving <ArrowRight size={17} />
+              </button>
+              <Link to="/how-it-works" className="play-cta">
+                <span>
+                  <Play size={13} fill="currentColor" />
+                </span>{' '}
+                See how it works
+              </Link>
+            </div>
+            <div className="hero-trust">
+              <div className="trust-avatars">
+                <i>AK</i>
+                <i>RS</i>
+                <i>NM</i>
+                <b>+</b>
+              </div>
+              <span>
+                <strong>48,000+ drivers</strong>
+                <br />
+                are already moving forward
+              </span>
+            </div>
+          </div>
+
+          <div className="hero-art">
+            <div className="sun-disc" />
+            <div className="city-lines" />
+            <div className="hero-scooter">
+              <Bike size={155} strokeWidth={1.1} />
+            </div>
+            <div className="route-stamp">
+              <Navigation size={15} />
+              <span>
+                YOUR ROUTE
+                <br />
+                <strong>YOUR RULES</strong>
+              </span>
+            </div>
+            <div className="earnings-float">
+              <div className="float-icon">
+                <TrendingUp size={16} />
+              </div>
+              <span>THIS MONTH</span>
+              <strong>₹38,420</strong>
+              <small>↑ 18.4% this week</small>
+            </div>
+            <div className="rating-float">
+              <Star size={14} fill="currentColor" />
+              <strong>4.92</strong>
+              <span>driver rating</span>
+            </div>
+          </div>
+        </section>
+
+        {/* STATS STRIP */}
+        <section className="stats-strip">
+          {stats.map(([number, label]) => (
+            <AnimatedStat key={label} text={number} label={label} />
+          ))}
+        </section>
+
         {/* LIVE NETWORK TICKER */}
         <div className="motion-ticker-bar">
           <div className="motion-ticker-inner">
