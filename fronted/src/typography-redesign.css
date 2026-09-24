@@ -46,7 +46,6 @@ em, i {
 
 /* Heading Emphasized Words (Formerly Playfair Display Serif Italic) */
 h1 em, h2 em, h3 em, h4 em,
-.hero-copy h1 em,
 .intro-heading h2 em,
 .earnings-copy h2 em,
 .safety-copy h2 em,
@@ -79,6 +78,8 @@ h1 em, h2 em, h3 em, h4 em,
 }
 
 /* On Dark Surfaces (like Hero Banner, Dark CTA, and Earnings Dark Card) */
+.hero-section .hero-copy h1 em,
+.hero-copy h1 em,
 .earnings-section h2 em,
 .earnings-hero-redesign h1 em,
 .final-cta-redesign h2 em,

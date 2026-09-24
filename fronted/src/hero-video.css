@@ -33,7 +33,7 @@
   width: 100%;
   height: 100%;
   border-radius: 0;
-  background: linear-gradient(90deg, rgba(9, 24, 15, 0.72) 0%, rgba(9, 24, 15, 0.42) 48%, rgba(9, 24, 15, 0.18) 100%);
+  background: linear-gradient(90deg, rgba(5, 14, 8, 0.88) 0%, rgba(6, 17, 10, 0.76) 48%, rgba(6, 17, 10, 0.45) 100%);
   z-index: -1;
   pointer-events: none;
 }
@@ -42,45 +42,135 @@
   display: none;
 }
 
-.hero-copy,
-.hero-copy .hero-kicker,
-.hero-copy h1,
-.hero-copy > p,
-.hero-copy .hero-actions,
-.hero-copy .hero-trust {
-  color: #f8faef;
+.hero-section .hero-copy,
+.hero-copy {
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
 }
 
+.hero-section .hero-copy h1,
+.hero-copy h1 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.04em !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.98) !important;
+}
+
+.hero-section .hero-copy h1 em,
 .hero-copy h1 em {
-  color: var(--acid);
+  color: #d4ef62 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #d4ef62 !important;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.98), 0 0 18px rgba(212, 239, 98, 0.5) !important;
+  font-style: normal !important;
 }
 
-.hero-copy .hero-kicker,
-.hero-copy > p,
-.hero-copy .hero-trust {
-  color: rgba(248, 250, 239, 0.78);
+.hero-section .hero-copy > p,
+.hero-copy > p {
+  color: #f1f7ea !important;
+  -webkit-text-fill-color: #f1f7ea !important;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  line-height: 1.68 !important;
+  font-weight: 500 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95) !important;
+  max-width: 580px !important;
 }
 
-.hero-copy .hero-trust strong {
-  color: #f8faef;
+.hero-section .hero-copy .hero-kicker,
+.hero-copy .hero-kicker {
+  color: #e5f2df !important;
+  -webkit-text-fill-color: #e5f2df !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 24, 15, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 239, 98, 0.3);
+  width: fit-content;
 }
 
+.hero-section .hero-copy .hero-kicker .pulse-dot,
+.hero-copy .hero-kicker .pulse-dot {
+  background: #a3e635;
+  box-shadow: 0 0 0 4px rgba(163, 230, 53, 0.4);
+}
+
+.hero-section .hero-copy .hero-actions .primary-cta,
+.hero-copy .hero-actions .primary-cta {
+  background: linear-gradient(135deg, #d4ef62 0%, #b4e428 100%) !important;
+  color: #0c1811 !important;
+  -webkit-text-fill-color: #0c1811 !important;
+  font-weight: 850 !important;
+  font-size: 13.5px !important;
+  padding: 13px 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 24px rgba(212, 239, 98, 0.35) !important;
+  transition: all 0.25s ease !important;
+}
+
+.hero-section .hero-copy .hero-actions .primary-cta:hover,
+.hero-copy .hero-actions .primary-cta:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  background: linear-gradient(135deg, #e0ff66 0%, #c4f235 100%) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 32px rgba(212, 239, 98, 0.55) !important;
+}
+
+.hero-section .hero-copy .play-cta,
 .hero-copy .play-cta {
-  color: #f8faef;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 11px 20px !important;
+  border-radius: 999px !important;
+  transition: all 0.25s ease !important;
 }
 
+.hero-section .hero-copy .play-cta:hover,
+.hero-copy .play-cta:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+.hero-section .hero-copy .play-cta span,
 .hero-copy .play-cta span {
-  border-color: rgba(248, 250, 239, 0.6);
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.hero-section .hero-trust,
+.hero-copy .hero-trust {
+  color: rgba(255, 255, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.88) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.hero-section .hero-trust strong,
+.hero-copy .hero-trust strong {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .hero-copy > * {
   opacity: 0;
   transform: translateY(22px);
   animation: hero-reveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.hero-copy {
-  max-width: 720px;
 }
 
 .hero-copy .hero-kicker { animation-delay: 0.12s; }
@@ -154,20 +244,24 @@
   }
 
   .hero-section::before {
-    background: linear-gradient(180deg, rgba(9, 24, 15, 0.82) 0%, rgba(9, 24, 15, 0.65) 60%, rgba(9, 24, 15, 0.5) 100%);
+    background: linear-gradient(180deg, rgba(5, 14, 8, 0.90) 0%, rgba(5, 14, 8, 0.78) 50%, rgba(5, 14, 8, 0.90) 100%) !important;
   }
 
   .hero-copy h1 {
-    font-size: clamp(34px, 8.5vw, 44px);
-    line-height: 1.05;
-    margin: 16px 0 14px;
-    letter-spacing: -0.04em;
+    font-size: clamp(34px, 8.5vw, 44px) !important;
+    line-height: 1.05 !important;
+    margin: 16px 0 14px !important;
+    letter-spacing: -0.04em !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 
   .hero-copy > p {
-    font-size: 13.5px;
-    line-height: 1.6;
-    max-width: 100%;
+    font-size: 14.5px !important;
+    line-height: 1.62 !important;
+    max-width: 100% !important;
+    color: #f1f7ea !important;
+    -webkit-text-fill-color: #f1f7ea !important;
   }
 
   .hero-actions {
