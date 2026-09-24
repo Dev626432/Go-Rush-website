@@ -24,12 +24,10 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import './pages.css';
 import '../onboarding-hero-redesign.css';
 import '../vehicle-criteria-redesign.css';
 import '../faq-showcase-redesign.css';
-import '../subpage-cta-redesign.css';
 
 const stepsData = [
   {
@@ -153,109 +151,28 @@ export default function HowItWorksPage({ onJoinClick }) {
 
   return (
     <div className="subpage-wrap">
-      {/* HOW IT WORKS / ONBOARDING - 100% HANDCRAFTED NATIVE WEB */}
+      {/* HOW IT WORKS / ONBOARDING - NEW CHATGPT REDESIGN */}
+      {/* HOW IT WORKS / ONBOARDING - CHATGPT SHOWCASE */}
       <section className="new-onboarding-section" id="how-it-works">
-        <div className="onboarding-inner-container">
-          <div className="onboarding-header-center">
-            <div className="onboarding-eyebrow-badge">
-              <Sparkles size={13} />
-              <span>Simple 3-Step Process</span>
-            </div>
-            <h1 className="onboarding-main-title">
-              Your journey to earning <em>starts in minutes.</em>
-            </h1>
-            <p className="onboarding-main-subtitle">
-              No long paper queues or bureaucratic delays. Everything is managed seamlessly from your phone with instant automated verification.
-            </p>
-          </div>
-
-          <div className="onboarding-steps-row">
-            {/* Step 1 */}
-            <div className="onboarding-step-card">
-              <div className="step-card-num-row">
-                <span className="step-big-num">01</span>
-                <span className="step-time-badge">2 MINS</span>
-              </div>
-              <div className="step-card-icon-box">
-                <Smartphone size={22} />
-              </div>
-              <h3 className="step-card-title">Register Your Profile</h3>
-              <p className="step-card-desc">
-                Enter your mobile number, select your vehicle category (bike, auto, or cab), and set up your personal driver account in seconds.
-              </p>
-              <ul className="step-card-checklist">
-                <li>
-                  <Check size={14} /> Quick OTP verification
-                </li>
-                <li>
-                  <Check size={14} /> Choose preferred city & zone
-                </li>
-              </ul>
-            </div>
-
-            {/* Step 2 */}
-            <div className="onboarding-step-card">
-              <div className="step-card-num-row">
-                <span className="step-big-num">02</span>
-                <span className="step-time-badge">3 MINS</span>
-              </div>
-              <div className="step-card-icon-box">
-                <FileCheck2 size={22} />
-              </div>
-              <h3 className="step-card-title">Upload Documents</h3>
-              <p className="step-card-desc">
-                Snap clear photos of your Driving License, Vehicle RC, and Aadhaar card directly through the app. Our AI instantly validates your files.
-              </p>
-              <ul className="step-card-checklist">
-                <li>
-                  <Check size={14} /> Instant automated OCR scanning
-                </li>
-                <li>
-                  <Check size={14} /> Bank passbook or UPI for payouts
-                </li>
-              </ul>
-            </div>
-
-            {/* Step 3 */}
-            <div className="onboarding-step-card">
-              <div className="step-card-num-row">
-                <span className="step-big-num">03</span>
-                <span className="step-time-badge">READY!</span>
-              </div>
-              <div className="step-card-icon-box">
-                <Zap size={22} />
-              </div>
-              <h3 className="step-card-title">Get Approved & Drive</h3>
-              <p className="step-card-desc">
-                Receive your partner badge within 24 hours. Switch online, receive nearby ride requests, and start earning instantly.
-              </p>
-              <ul className="step-card-checklist">
-                <li>
-                  <Check size={14} /> ₹500 First Week Welcome Bonus
-                </li>
-                <li>
-                  <Check size={14} /> Free safety kit & phone mount
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* CTA Capsule */}
-          <div className="onboarding-bottom-cta">
-            <div className="onboarding-cta-copy">
-              <h3>Ready to take the driver seat?</h3>
-              <p>Sign up now. Your documents are verified rapidly so you can start making money today.</p>
-            </div>
-            <button
-              type="button"
-              className="onboarding-cta-btn"
-              onClick={onJoinClick}
-              id="onboarding-become-driver-btn"
-            >
-              <span>Become a GoRush driver</span>
+        <div className="onboarding-banner-wrapper">
+          <img
+            src="/onboarding-showcase-sep20.png"
+            alt="Your next chapter starts here - GoRush"
+            className="onboarding-banner-img"
+          />
+          {/* Real Interactive Button over 'Become a GoRush driver' */}
+          <button
+            type="button"
+            className="onboarding-banner-real-btn"
+            onClick={onJoinClick}
+            title="Become a GoRush driver"
+            id="onboarding-become-driver-btn"
+          >
+            <span>Become a GoRush driver</span>
+            <span className="onboarding-banner-btn-arrow">
               <ArrowRight size={17} />
-            </button>
-          </div>
+            </span>
+          </button>
         </div>
       </section>
 
@@ -308,257 +225,386 @@ export default function HowItWorksPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Vehicle Eligibility Requirements - 100% Handcrafted Web Component */}
-      <section className="criteria-section-wrap" id="vehicle-criteria">
-        <div className="criteria-inner-container">
-          <div className="criteria-header-center">
-            <div className="criteria-eyebrow-pill">
-              <Sparkles size={13} />
-              <span>VEHICLE ELIGIBILITY & CRITERIA</span>
-            </div>
-            <h2 className="criteria-headline">
-              Drive with what you <em>already own.</em>
-            </h2>
-            <p className="criteria-subline">
-              Select your vehicle category to see specific paperwork and checklist requirements.
-            </p>
-          </div>
+      {/* Vehicle Eligibility Requirements - Sep 21 Edition with Real Interactive Buttons */}
+      <section className="criteria-showcase-section" id="vehicle-criteria">
+        <div className="criteria-container">
+          <div className="criteria-banner-wrapper">
+            {/* Cropped AI banner without fake top bar */}
+            <img
+              src="/criteria-showcase-sep21.png"
+              alt="GoRush Vehicle Requirements & Criteria"
+              className="criteria-banner-img"
+            />
 
-          {/* Category Tabs */}
-          <div className="criteria-tabs-bar">
+            {/* Real Interactive Tab: Bike / Scooter */}
             <button
               type="button"
-              className={`criteria-tab-btn ${selectedVehicle === 'bike' ? 'active' : ''}`}
+              className={`criteria-hitbox-tab criteria-hitbox-tab-bike ${selectedVehicle === 'bike' ? 'is-active' : ''}`}
               onClick={() => setSelectedVehicle('bike')}
+              title="Bike / Scooter Criteria"
+              aria-label="Bike / Scooter Criteria"
             >
-              <Bike size={18} />
-              <span>2-Wheeler (Bike / EV)</span>
+              {selectedVehicle !== 'bike' && (
+                <span className="criteria-tab-inactive-pill">
+                  <Bike size={18} className="criteria-pill-icon" />
+                  <span className="criteria-pill-texts">
+                    <span className="criteria-pill-title">Bike / Scooter</span>
+                    <span className="criteria-pill-sub">Most Popular</span>
+                  </span>
+                </span>
+              )}
             </button>
+
+            {/* Real Interactive Tab: Auto Rickshaw */}
             <button
               type="button"
-              className={`criteria-tab-btn ${selectedVehicle === 'auto' ? 'active' : ''}`}
+              className={`criteria-hitbox-tab criteria-hitbox-tab-auto ${selectedVehicle === 'auto' ? 'is-active' : ''}`}
               onClick={() => setSelectedVehicle('auto')}
+              title="Auto Rickshaw Criteria"
+              aria-label="Auto Rickshaw Criteria"
             >
-              <Navigation size={18} />
-              <span>3-Wheeler (Auto Rickshaw)</span>
+              {selectedVehicle === 'auto' && (
+                <span className="criteria-tab-active-pill">
+                  <Navigation size={18} className="criteria-pill-icon" />
+                  <span className="criteria-pill-texts">
+                    <span className="criteria-pill-title">Auto Rickshaw</span>
+                    <span className="criteria-pill-sub">Earn More Daily</span>
+                  </span>
+                </span>
+              )}
             </button>
+
+            {/* Real Interactive Tab: Cab / Taxi */}
             <button
               type="button"
-              className={`criteria-tab-btn ${selectedVehicle === 'cab' ? 'active' : ''}`}
+              className={`criteria-hitbox-tab criteria-hitbox-tab-cab ${selectedVehicle === 'cab' ? 'is-active' : ''}`}
               onClick={() => setSelectedVehicle('cab')}
+              title="Cab / Taxi Criteria"
+              aria-label="Cab / Taxi Criteria"
             >
-              <CarFront size={18} />
-              <span>4-Wheeler (Cab / Taxi)</span>
+              {selectedVehicle === 'cab' && (
+                <span className="criteria-tab-active-pill">
+                  <CarFront size={18} className="criteria-pill-icon" />
+                  <span className="criteria-pill-texts">
+                    <span className="criteria-pill-title">Cab / Taxi</span>
+                    <span className="criteria-pill-sub">Drive Your Way</span>
+                  </span>
+                </span>
+              )}
             </button>
-          </div>
 
-          {/* Dynamic Content Card */}
-          <div className="criteria-content-card">
-            <div className="criteria-card-left">
-              <div className="criteria-card-left-top">
-                <div className="criteria-vehicle-icon-box">
-                  {selectedVehicle === 'bike' && <Bike size={28} />}
-                  {selectedVehicle === 'auto' && <Navigation size={28} />}
-                  {selectedVehicle === 'cab' && <CarFront size={28} />}
-                </div>
-                <h3 className="criteria-vehicle-title">{vehicleRequirements[selectedVehicle].badgeTitle}</h3>
-                <div className="criteria-vehicle-sub">{vehicleRequirements[selectedVehicle].badgeSub}</div>
-                <p className="criteria-vehicle-desc">{vehicleRequirements[selectedVehicle].desc}</p>
-              </div>
+            {/* Real Interactive CTA Button over 'Join GoRush Today' */}
+            <button
+              type="button"
+              className="criteria-hitbox-join"
+              onClick={onJoinClick}
+              title="Join GoRush Today - Register as Driver"
+              aria-label="Join GoRush Today - Register as Driver"
+            >
+              <span className="criteria-join-pulse" />
+            </button>
 
-              <button
-                type="button"
-                className="criteria-register-btn"
-                onClick={onJoinClick}
-              >
-                <span>Register {vehicleRequirements[selectedVehicle].badgeTitle}</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
-
-            <div className="criteria-card-right">
-              <div className="criteria-checklist-header">
-                <div className="criteria-checklist-title">
-                  <FileCheck2 size={16} />
-                  <span>MANDATORY DOCUMENTS</span>
-                </div>
-                <span className="criteria-fast-badge">Approval &lt; 2 Hours</span>
-              </div>
-
-              <ul className="criteria-items-list">
-                {vehicleRequirements[selectedVehicle].items.map((item, idx) => (
-                  <li key={idx} className="criteria-item-row">
-                    <div className="criteria-item-check">
-                      <Check size={14} />
-                    </div>
-                    <span className="criteria-item-text">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Driver FAQs - 100% Handcrafted Accordion Component */}
-      <section className="faq-section-wrap" id="faq-showcase">
-        <div className="faq-inner-container">
-          <div className="faq-header-center">
-            <div className="faq-eyebrow-pill">
-              <Sparkles size={13} />
-              <span>DRIVER HELP & COMMON QUESTIONS</span>
-            </div>
-            <h2 className="faq-headline">
-              Got questions? We've got <em>answers.</em>
-            </h2>
-            <p className="faq-subline">
-              Everything you need to know about joining GoRush, onboarding, payouts, and driving terms.
-            </p>
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="faq-categories-row">
-            {['All Questions', 'Onboarding', 'Payments'].map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`faq-cat-pill ${selectedFaqCat === cat ? 'active' : ''}`}
-                onClick={() => setSelectedFaqCat(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Accordion List */}
-          <div className="faq-accordion-list">
-            {faqs
-              .filter((f) => selectedFaqCat === 'All Questions' || f.category === selectedFaqCat)
-              .map((faq, idx) => {
-                const isOpen = openFaq === idx;
-                return (
-                  <div className={`faq-accordion-item ${isOpen ? 'is-open' : ''}`} key={faq.q}>
-                    <button
-                      type="button"
-                      className="faq-accordion-header"
-                      onClick={() => setOpenFaq(isOpen ? -1 : idx)}
-                    >
-                      <span className="faq-question-text">{faq.q}</span>
-                      <div className="faq-accordion-chevron">
-                        <ChevronDown size={18} />
-                      </div>
-                    </button>
-                    {isOpen && (
-                      <div className="faq-accordion-body">
-                        <p className="faq-answer-text">{faq.a}</p>
-                        {faq.tip && (
-                          <div className="faq-protip-box">
-                            <Check size={15} />
-                            <span><strong>Pro Tip:</strong> {faq.tip}</span>
-                          </div>
-                        )}
-                      </div>
-                    )}
+            {/* Dynamic Card Overlay when Auto or Cab is selected */}
+            {selectedVehicle !== 'bike' && (
+              <div className="criteria-card-overlay">
+                <div className="criteria-overlay-subcard">
+                  <div className="criteria-overlay-icon-circle">
+                    {selectedVehicle === 'auto' && <Navigation size={28} />}
+                    {selectedVehicle === 'cab' && <CarFront size={28} />}
                   </div>
-                );
-              })}
-          </div>
+                  <h3 className="criteria-overlay-title">{vehicleRequirements[selectedVehicle].badgeTitle}</h3>
+                  <div className="criteria-overlay-subtitle">{vehicleRequirements[selectedVehicle].badgeSub}</div>
+                  <p className="criteria-overlay-desc">{vehicleRequirements[selectedVehicle].desc}</p>
 
-          {/* Bottom Support Strip */}
-          <div className="faq-support-strip">
-            <div className="faq-support-strip-left">
-              <div className="faq-support-icon-circle">
-                <MessageSquare size={22} />
+                  <div className="criteria-overlay-badge-safe">
+                    <Check size={13} strokeWidth={3} />
+                    <span>{vehicleRequirements[selectedVehicle].safeText}</span>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="criteria-overlay-register-btn"
+                    onClick={onJoinClick}
+                  >
+                    <span>Register {vehicleRequirements[selectedVehicle].badgeTitle}</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                <div className="criteria-overlay-checklist-col">
+                  <div className="criteria-overlay-checklist-header">
+                    <div className="criteria-overlay-checklist-title">
+                      <FileCheck2 size={16} />
+                      <span>DOCUMENT CHECKLIST</span>
+                    </div>
+                    <div className="criteria-overlay-mandatory-tag">
+                      <Check size={12} strokeWidth={3} />
+                      <span>All documents are mandatory</span>
+                    </div>
+                  </div>
+
+                  <ul className="criteria-overlay-list">
+                    {vehicleRequirements[selectedVehicle].items.map((item, idx) => (
+                      <li key={idx} className="criteria-overlay-list-item" onClick={onJoinClick}>
+                        <div className="criteria-overlay-check-dot">
+                          <Check size={13} strokeWidth={3} />
+                        </div>
+                        <div className="criteria-overlay-item-text">
+                          <span className="criteria-overlay-item-main">{item}</span>
+                          <span className="criteria-overlay-item-sub">Verification approved in &lt; 2 hrs</span>
+                        </div>
+                        <ChevronRight size={15} className="criteria-overlay-chevron" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="faq-support-text">
-                <strong>Still have questions or need assistance?</strong>
-                <span>Our partner helpline is available 24 hours a day to guide you through registration.</span>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="faq-support-action-btn"
-              onClick={onJoinClick}
-            >
-              <span>Speak to Driver Desk</span>
-              <ArrowRight size={15} />
-            </button>
+            )}
           </div>
         </div>
       </section>
 
-      {/* FINAL CALL TO ACTION - LUXURY REDESIGN */}
-      <section className="subpage-prefooter-cta" id="join">
-        <div className="subpage-cta-card-luxury">
-          <div className="subpage-cta-header-center">
-            <div className="subpage-cta-badge">
-              <Sparkles size={14} />
-              <span>Fast Track 15-Min Onboarding</span>
-            </div>
-            <h2 className="subpage-cta-headline">
-              Ready to take your <span>first trip?</span>
-            </h2>
-            <p className="subpage-cta-subtext">
-              Submit basic KYC documents online, get verified by Indore team in 15 minutes, and hit the road to start earning immediately.
-            </p>
-          </div>
+      {/* Driver FAQs - Sep 21 Edition with Real Interactive Buttons */}
+      <section className="faq-showcase-section" id="faq-showcase">
+        <div className="faq-container">
+          <div className="faq-banner-wrapper">
+            {/* Cleaned AI Banner without fake top bar */}
+            <img
+              src="/faq-showcase-sep21.png"
+              alt="Got questions? We've got answers - GoRush Driver FAQs"
+              className="faq-banner-img"
+            />
 
-          <div className="subpage-cta-perks-grid">
-            <div className="subpage-cta-perk-box">
-              <div className="subpage-cta-perk-icon-wrap">
-                <Smartphone size={22} />
-              </div>
-              <strong>100% Digital KYC</strong>
-              <p>Just snap your DL, RC, and Aadhaar from your phone. No physical visits or paperwork needed.</p>
-            </div>
-
-            <div className="subpage-cta-perk-box">
-              <div className="subpage-cta-perk-icon-wrap">
-                <Clock3 size={22} />
-              </div>
-              <strong>15-Minute Activation</strong>
-              <p>Our automated document verification engine clears eligible drivers on the very same day.</p>
-            </div>
-
-            <div className="subpage-cta-perk-box">
-              <div className="subpage-cta-perk-icon-wrap">
-                <BadgeCheck size={22} />
-              </div>
-              <strong>Zero Security Deposit</strong>
-              <p>Keep your savings safe. Absolutely zero joining fees, zero deposit, and no hidden deductions.</p>
-            </div>
-          </div>
-
-          <div className="subpage-cta-actions-row">
+            {/* Category Tab 1: All Questions */}
             <button
               type="button"
-              className="subpage-cta-primary-pill"
-              onClick={onJoinClick}
-              id="howitworks-final-cta-btn"
+              className={`faq-hitbox-category faq-cat-all ${selectedFaqCat === 'All Questions' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('All Questions')}
+              title="View All Questions"
+              aria-label="View All Questions"
             >
-              <span>Submit Driver Application</span>
-              <ArrowRight size={17} />
+              {selectedFaqCat !== 'All Questions' && (
+                <span className="faq-cat-inactive-overlay">
+                  <span>All Questions</span>
+                </span>
+              )}
             </button>
-            <Link to="/why-gorush" className="subpage-cta-secondary-pill">
-              <span>Why GoRush vs Others?</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
 
-          <div className="subpage-cta-bottom-trust">
-            <div className="subpage-cta-trust-tag">
-              <Check size={16} />
-              <span>Free GoRush Welcome Kit</span>
-            </div>
-            <div className="subpage-cta-trust-tag">
-              <Check size={16} />
-              <span>Direct Bank Account Linking</span>
-            </div>
-            <div className="subpage-cta-trust-tag">
-              <Check size={16} />
-              <span>24/7 Captain Hotline</span>
-            </div>
+            {/* Category Tab 2: Onboarding */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-onboarding ${selectedFaqCat === 'Onboarding' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Onboarding')}
+              title="Onboarding Questions"
+              aria-label="Onboarding Questions"
+            >
+              {selectedFaqCat === 'Onboarding' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Onboarding</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 3: Documents */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-documents ${selectedFaqCat === 'Documents' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Documents')}
+              title="Documents Questions"
+              aria-label="Documents Questions"
+            >
+              {selectedFaqCat === 'Documents' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Documents</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 4: Payments */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-payments ${selectedFaqCat === 'Payments' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Payments')}
+              title="Payments Questions"
+              aria-label="Payments Questions"
+            >
+              {selectedFaqCat === 'Payments' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Payments</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 5: Account */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-account ${selectedFaqCat === 'Account' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Account')}
+              title="Account Questions"
+              aria-label="Account Questions"
+            >
+              {selectedFaqCat === 'Account' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Account</span>
+                </span>
+              )}
+            </button>
+
+            {/* Category Tab 6: Support */}
+            <button
+              type="button"
+              className={`faq-hitbox-category faq-cat-support ${selectedFaqCat === 'Support' ? 'is-active' : ''}`}
+              onClick={() => setSelectedFaqCat('Support')}
+              title="Support Questions"
+              aria-label="Support Questions"
+            >
+              {selectedFaqCat === 'Support' && (
+                <span className="faq-cat-active-overlay">
+                  <span>Support</span>
+                </span>
+              )}
+            </button>
+
+            {/* Accordion Row 0 (Already expanded in graphic by default) */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-0"
+              onClick={() => setOpenFaq(openFaq === 0 ? -1 : 0)}
+              title="Toggle Question: Document Verification"
+              aria-label="Toggle Question: Document Verification"
+            />
+
+            {/* Accordion Row 1: Joining Fee */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-1"
+              onClick={() => setOpenFaq(openFaq === 1 ? -1 : 1)}
+              title="View Question: Joining Fee or Deposit"
+              aria-label="View Question: Joining Fee or Deposit"
+            />
+
+            {/* Accordion Row 2: Driving Hours */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-2"
+              onClick={() => setOpenFaq(openFaq === 2 ? -1 : 2)}
+              title="View Question: Driving Hours"
+              aria-label="View Question: Driving Hours"
+            />
+
+            {/* Accordion Row 3: Receive Earnings */}
+            <button
+              type="button"
+              className="faq-hitbox-row faq-row-3"
+              onClick={() => setOpenFaq(openFaq === 3 ? -1 : 3)}
+              title="View Question: Receive Earnings"
+              aria-label="View Question: Receive Earnings"
+            />
+
+            {/* Dynamic Card Overlay when Item 1, 2, or 3 is opened */}
+            {openFaq > 0 && faqs[openFaq] && (
+              <div className="faq-answer-card-overlay">
+                <div className="faq-answer-card-header">
+                  <div className="faq-answer-header-left">
+                    <div className="faq-answer-icon-wrap">
+                      {openFaq === 1 && <IndianRupee size={22} />}
+                      {openFaq === 2 && <Clock3 size={22} />}
+                      {openFaq === 3 && <Wallet size={22} />}
+                    </div>
+                    <h3 className="faq-answer-card-question">{faqs[openFaq].q}</h3>
+                  </div>
+                  <button
+                    type="button"
+                    className="faq-answer-close-btn"
+                    onClick={() => setOpenFaq(0)}
+                    title="Close"
+                    aria-label="Close"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <div className="faq-answer-card-body">
+                  <p className="faq-answer-card-text">{faqs[openFaq].a}</p>
+                  <div className="faq-answer-protip-box">
+                    <Check size={16} strokeWidth={3} />
+                    <span><strong>Pro Tip:</strong> {faqs[openFaq].tip}</span>
+                  </div>
+                </div>
+
+                <div className="faq-answer-card-footer">
+                  <span className="faq-answer-footer-tag">CATEGORY: {faqs[openFaq].category}</span>
+                  <button
+                    type="button"
+                    className="faq-answer-footer-btn"
+                    onClick={onJoinClick}
+                  >
+                    <span>Register as Driver</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Real Interactive Support CTA at bottom-right */}
+            <button
+              type="button"
+              className="faq-hitbox-support"
+              onClick={onJoinClick}
+              title="Need more help? Chat with our support team"
+              aria-label="Need more help? Chat with our support team"
+            />
+
+            {/* Left Stats Badges (Interactive hover feedback) */}
+            <div className="faq-stats-hitbox faq-stats-top" title="Over 10,000 Verified Drivers" />
+            <div className="faq-stats-hitbox faq-stats-mid" title="Rated 4.9 out of 5 Stars" />
+            <div className="faq-stats-hitbox faq-stats-bot" title="100% Safe, Secure & Reliable" />
           </div>
+        </div>
+      </section>
+
+      {/* Final Call to Action */}
+      <section
+        style={{
+          padding: '80px 24px',
+          background: '#14251b',
+          color: '#ffffff',
+          textAlign: 'center',
+        }}
+      >
+        <div className="subpage-container">
+          <h2
+            style={{
+              fontSize: 'clamp(32px, 4.5vw, 54px)',
+              fontWeight: 800,
+              margin: '0 0 16px',
+              letterSpacing: '-0.03em',
+            }}
+          >
+            Ready to get started?
+          </h2>
+          <p
+            style={{
+              fontSize: '15px',
+              color: '#9db4a0',
+              maxWidth: '520px',
+              margin: '0 auto 30px',
+              lineHeight: 1.65,
+            }}
+          >
+            Take 5 minutes to submit your details. Join thousands of verified drivers across India.
+          </p>
+          <button
+            type="button"
+            className="final-cta-action-btn"
+            onClick={onJoinClick}
+            id="howitworks-final-cta-btn"
+          >
+            <span>Become a GoRush driver</span>
+            <span className="final-cta-btn-arrow-wrap">
+              <ArrowRight size={17} />
+            </span>
+          </button>
         </div>
       </section>
     </div>

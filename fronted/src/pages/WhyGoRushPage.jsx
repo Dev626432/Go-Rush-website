@@ -41,16 +41,15 @@ import '../driver-first-redesign.css';
 import '../perks-showcase-redesign.css';
 import '../comparison-showcase-redesign.css';
 import '../pillars-showcase-redesign.css';
-import '../subpage-cta-redesign.css';
 
 const pillars = [
   {
-    badge: 'ZERO COMMISSION',
+    badge: 'FAIR FARES',
     icon: BadgePercent,
-    title: '0% Platform Commission Cut',
-    desc: 'Traditional platforms cut 25% to 30% from your hard work. GoRush charges 0% commission on passenger rides with a nominal daily pass, ensuring 100% of the customer fare stays in your pocket on every trip.',
-    statNum: '0%',
-    statLabel: 'Commission cut vs 28% market avg',
+    title: 'Flat 10% Platform Fee',
+    desc: 'Traditional platforms cut 25% to 30% from your hard work. GoRush charges a flat, transparent 10% fee, ensuring more than 90% stays in your pocket on every trip.',
+    statNum: '10%',
+    statLabel: 'Flat fee vs 28% market avg',
   },
   {
     badge: 'FREEDOM',
@@ -114,149 +113,36 @@ const perks = [
 export default function WhyGoRushPage({ onJoinClick }) {
   return (
     <div className="subpage-wrap">
-      {/* Hero Section - The GoRush Difference (100% Handcrafted Web) */}
+      {/* Hero Section - The GoRush Difference Showcase Banner */}
       <section className="scenic-hero-section" id="features">
-        <div className="scenic-hero-inner">
-          <div className="scenic-header-badge">
-            <Sparkles size={13} />
-            <span>The GoRush Standard</span>
-          </div>
-          <h1 className="scenic-header-title">
-            Built around the person <em>behind the wheel.</em>
-          </h1>
-          <p className="scenic-header-subtitle">
-            Fair commissions, predictable earnings, and human-first driver care from the moment you hit go. Experience a platform engineered for your growth.
-          </p>
+        <div className="difference-banner-wrapper">
+          <img
+            src="/difference-showcase-sep21.png"
+            alt="Built around the person behind the wheel - The GoRush Difference"
+            className="difference-banner-img"
+          />
+          {/* Real Interactive Button over 'Get Started' */}
+          <button
+            type="button"
+            className="difference-banner-real-btn"
+            onClick={onJoinClick}
+            title="Get Started"
+            id="difference-get-started-btn"
+          >
+            <span>Get Started</span>
+            <span className="difference-banner-btn-arrow">
+              <ArrowRight size={15} />
+            </span>
+          </button>
 
-          <div className="difference-cards-grid">
-            {/* Card 1 */}
-            <div className="difference-card">
-              <div>
-                <div className="difference-card-badge">TRANSPARENT</div>
-                <div className="difference-card-icon-box">
-                  <Wallet size={24} />
-                </div>
-                <h3 className="difference-card-title">Clear, Fair Pay Every Mile</h3>
-                <p className="difference-card-desc">
-                  No hidden deductions or unpredictable algorithms. Know your fare upfront with instant weekly settlements directly into your bank.
-                </p>
-                <ul className="difference-card-points">
-                  <li className="difference-card-point">
-                    <Check size={16} /> Instant UPI & direct deposit
-                  </li>
-                  <li className="difference-card-point">
-                    <Check size={16} /> 0% surprise platform commission
-                  </li>
-                  <li className="difference-card-point">
-                    <Check size={16} /> Surge & peak hour bonus pass-through
-                  </li>
-                </ul>
-              </div>
-              <div className="difference-card-highlight">
-                <div>
-                  <span>Weekly Average</span>
-                  <strong>₹14,500+</strong>
-                </div>
-                <span>Full-time Partner</span>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="difference-card">
-              <div>
-                <div className="difference-card-badge">SECURITY</div>
-                <div className="difference-card-icon-box">
-                  <ShieldCheck size={24} />
-                </div>
-                <h3 className="difference-card-title">Comprehensive Protection</h3>
-                <p className="difference-card-desc">
-                  Drive with peace of mind. Every trip is covered by complimentary accidental medical coverage and dedicated round-the-clock emergency response.
-                </p>
-                <ul className="difference-card-points">
-                  <li className="difference-card-point">
-                    <Check size={16} /> ₹5,00,000 accidental cover
-                  </li>
-                  <li className="difference-card-point">
-                    <Check size={16} /> 24/7 in-app SOS & rapid marshal response
-                  </li>
-                  <li className="difference-card-point">
-                    <Check size={16} /> Driver identity & rating protection
-                  </li>
-                </ul>
-              </div>
-              <div className="difference-card-highlight">
-                <div>
-                  <span>Coverage</span>
-                  <strong>Active 24/7</strong>
-                </div>
-                <span>Zero Premium</span>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="difference-card">
-              <div>
-                <div className="difference-card-badge">CONTROL</div>
-                <div className="difference-card-icon-box">
-                  <Navigation size={24} />
-                </div>
-                <h3 className="difference-card-title">Total Flexibility & Autonomy</h3>
-                <p className="difference-card-desc">
-                  You choose when, where, and how long to drive. Pick your preferred delivery hubs, set home routes, and log off whenever family calls.
-                </p>
-                <ul className="difference-card-points">
-                  <li className="difference-card-point">
-                    <Check size={16} /> Set preferred return destination
-                  </li>
-                  <li className="difference-card-point">
-                    <Check size={16} /> No minimum mandatory hours
-                  </li>
-                  <li className="difference-card-point">
-                    <Check size={16} /> Live demand heatmaps for quick bookings
-                  </li>
-                </ul>
-              </div>
-              <div className="difference-card-highlight">
-                <div>
-                  <span>Flexibility</span>
-                  <strong>100% Freedom</strong>
-                </div>
-                <span>Your Terms</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Actions Bar */}
-          <div className="scenic-actions-bar">
-            <div className="scenic-actions-info">
-              <div className="scenic-actions-icon">
-                <ShieldCheck size={22} />
-              </div>
-              <div className="scenic-actions-text">
-                <strong>Ready to see the difference for yourself?</strong>
-                <span>Join over 10,000+ drivers already earning with dignity on GoRush.</span>
-              </div>
-            </div>
-            <div className="scenic-actions-btns">
-              <button
-                type="button"
-                className="scenic-primary-cta"
-                onClick={onJoinClick}
-                id="difference-get-started-btn"
-              >
-                <span>Get Started</span>
-                <ArrowRight size={16} />
-              </button>
-              <Link
-                to="/how-it-works"
-                className="scenic-secondary-link"
-                id="difference-see-how-btn"
-              >
-                <span>See How It Works</span>
-                <ArrowUpRight size={15} />
-              </Link>
-            </div>
-          </div>
+          {/* Interactive Link over 'See How It Works' */}
+          <Link
+            to="/how-it-works"
+            className="difference-banner-video-btn"
+            title="See How It Works"
+            id="difference-see-how-btn"
+            aria-label="See How It Works"
+          />
         </div>
       </section>
 
@@ -307,146 +193,22 @@ export default function WhyGoRushPage({ onJoinClick }) {
         </div>
       </section>
 
-      {/* Head-to-Head Comparison Matrix (100% Handcrafted Web Component) */}
-      <section className="comparison-section-wrap" id="comparison">
-        <div className="comparison-inner-container">
-          <div className="comparison-header-center">
-            <div className="comparison-eyebrow-pill">
-              <Sparkles size={13} />
-              <span>HEAD-TO-HEAD COMPARISON</span>
-            </div>
-            <h2 className="comparison-headline">
-              Numbers that speak <em>for themselves.</em>
-            </h2>
-            <p className="comparison-subline">
-              See why thousands of drivers are migrating from legacy aggregator apps to GoRush every single week.
-            </p>
-          </div>
-
-          <div className="comparison-table-wrap">
-            {/* Header */}
-            <div className="comparison-table-header">
-              <span className="comparison-col-title">Feature / Metric</span>
-              <div className="comparison-brand-col">
-                <span className="comparison-badge-gorush">
-                  <span className="star-dot">★</span> GoRush
-                </span>
-              </div>
-              <span className="comparison-badge-others">Legacy Aggregators</span>
-            </div>
-
-            {/* Row 1: Platform Fee */}
-            <div className="comparison-row">
-              <div className="comparison-feature-name">
-                <strong>Platform Commission</strong>
-                <span>Direct cut taken from passenger fare</span>
-              </div>
-              <div className="comparison-cell-gorush">
-                <div className="icon-check-circle"><Check size={15} /></div>
-                <span>Flat 10% transparent fee</span>
-              </div>
-              <div className="comparison-cell-others">
-                <div className="icon-x-circle"><X size={15} /></div>
-                <span>25% – 32% + hidden deductions</span>
-              </div>
-            </div>
-
-            {/* Row 2: Payout Speed */}
-            <div className="comparison-row">
-              <div className="comparison-feature-name">
-                <strong>Payout Frequency</strong>
-                <span>How fast your earnings reach your account</span>
-              </div>
-              <div className="comparison-cell-gorush">
-                <div className="icon-check-circle"><Check size={15} /></div>
-                <span>Instant UPI & daily settlements</span>
-              </div>
-              <div className="comparison-cell-others">
-                <div className="icon-x-circle"><X size={15} /></div>
-                <span>Weekly or delayed cycle</span>
-              </div>
-            </div>
-
-            {/* Row 3: Destination Transparency */}
-            <div className="comparison-row">
-              <div className="comparison-feature-name">
-                <strong>Destination Transparency</strong>
-                <span>Knowing where you're going before accepting</span>
-              </div>
-              <div className="comparison-cell-gorush">
-                <div className="icon-check-circle"><Check size={15} /></div>
-                <span>Full drop landmark & fare shown</span>
-              </div>
-              <div className="comparison-cell-others">
-                <div className="icon-x-circle"><X size={15} /></div>
-                <span>Blind trips / hidden destination</span>
-              </div>
-            </div>
-
-            {/* Row 4: Trip Rejection Penalties */}
-            <div className="comparison-row">
-              <div className="comparison-feature-name">
-                <strong>Declining Rides</strong>
-                <span>Freedom to skip trips that don't make financial sense</span>
-              </div>
-              <div className="comparison-cell-gorush">
-                <div className="icon-check-circle"><Check size={15} /></div>
-                <span>0 penalties or acceptance blocks</span>
-              </div>
-              <div className="comparison-cell-others">
-                <div className="icon-x-circle"><X size={15} /></div>
-                <span>Account shadowbans & suspensions</span>
-              </div>
-            </div>
-
-            {/* Row 5: Accidental Insurance */}
-            <div className="comparison-row">
-              <div className="comparison-feature-name">
-                <strong>Accidental Medical Cover</strong>
-                <span>Emergency protection during active duty</span>
-              </div>
-              <div className="comparison-cell-gorush">
-                <div className="icon-check-circle"><Check size={15} /></div>
-                <span>₹5,00,000 automatic free coverage</span>
-              </div>
-              <div className="comparison-cell-others">
-                <div className="icon-x-circle"><X size={15} /></div>
-                <span>Deducted from driver payout or zero</span>
-              </div>
-            </div>
-
-            {/* Row 6: Driver Support */}
-            <div className="comparison-row">
-              <div className="comparison-feature-name">
-                <strong>Customer Support Channel</strong>
-                <span>Help when you're stuck on the road</span>
-              </div>
-              <div className="comparison-cell-gorush">
-                <div className="icon-check-circle"><Check size={15} /></div>
-                <span>24/7 Human Phone & City Hubs</span>
-              </div>
-              <div className="comparison-cell-others">
-                <div className="icon-x-circle"><X size={15} /></div>
-                <span>Chatbots & generic script replies</span>
-              </div>
-            </div>
-
-            {/* Bottom Callout inside Table */}
-            <div className="comparison-bottom-cta">
-              <p>
-                Ready to take home up to <strong>₹6,000 more every month</strong> by cutting out greedy commissions?
-              </p>
-              <button
-                type="button"
-                className="comparison-join-btn"
-                onClick={onJoinClick}
-                id="comparison-join-btn"
-              >
-                <span>Switch to GoRush</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
-          </div>
+      {/* Head-to-Head Comparison Table - Showcase Banner */}
+      <section className="comparison-banner-section" id="comparison">
+        <div className="comparison-banner-wrapper">
+          <img
+            src="/comparison-showcase.png"
+            alt="GoRush vs Legacy Apps - Compare numbers and transparent policies"
+            className="comparison-banner-img"
+          />
+          {/* Interactive Hitbox over GoRush Platform Card */}
+          <button
+            type="button"
+            className="comparison-banner-interactive-hitbox"
+            onClick={onJoinClick}
+            title="Join GoRush Platform - Built for drivers, not just rides"
+            aria-label="Join GoRush Platform"
+          />
         </div>
       </section>
 
@@ -513,78 +275,48 @@ export default function WhyGoRushPage({ onJoinClick }) {
       </section>
 
 
-      {/* FINAL CALL TO ACTION - LUXURY REDESIGN */}
-      <section className="subpage-prefooter-cta" id="join">
-        <div className="subpage-cta-card-luxury">
-          <div className="subpage-cta-header-center">
-            <div className="subpage-cta-badge">
-              <Sparkles size={14} />
-              <span>Indore Driver Movement · 0% Commission</span>
-            </div>
-            <h2 className="subpage-cta-headline">
-              Experience the <span>GoRush difference</span> today.
-            </h2>
-            <p className="subpage-cta-subtext">
-              Sign up takes less than 5 minutes. Zero deposits, instant daily bank settlements, and dignity on every mile you drive.
-            </p>
-          </div>
-
-          <div className="subpage-cta-perks-grid">
-            <div className="subpage-cta-perk-box">
-              <div className="subpage-cta-perk-icon-wrap">
-                <Wallet size={22} />
-              </div>
-              <strong>100% Fare Retention</strong>
-              <p>No sudden 25-30% deductions. What you see is what lands in your bank account every day.</p>
-            </div>
-
-            <div className="subpage-cta-perk-box">
-              <div className="subpage-cta-perk-icon-wrap">
-                <Zap size={22} />
-              </div>
-              <strong>Instant UPI Payouts</strong>
-              <p>Cash out after every shift directly to GPay, PhonePe, or Paytm with zero gateway fees.</p>
-            </div>
-
-            <div className="subpage-cta-perk-box">
-              <div className="subpage-cta-perk-icon-wrap">
-                <ShieldCheck size={22} />
-              </div>
-              <strong>24/7 Indore Offline Hub</strong>
-              <p>Face-to-face assistance at Vijay Nagar Square. Real humans who treat you with genuine respect.</p>
-            </div>
-          </div>
-
-          <div className="subpage-cta-actions-row">
-            <button
-              type="button"
-              className="subpage-cta-primary-pill"
-              onClick={onJoinClick}
-              id="whygorush-final-cta-btn"
-            >
-              <span>Become a GoRush Driver</span>
+      {/* Final Call to Action */}
+      <section
+        style={{
+          padding: '80px 24px',
+          background: '#14251b',
+          color: '#ffffff',
+          textAlign: 'center',
+        }}
+      >
+        <div className="subpage-container">
+          <h2
+            style={{
+              fontSize: 'clamp(32px, 4.5vw, 54px)',
+              fontWeight: 800,
+              margin: '0 0 16px',
+              letterSpacing: '-0.03em',
+            }}
+          >
+            Experience the GoRush difference today.
+          </h2>
+          <p
+            style={{
+              fontSize: '15px',
+              color: '#9db4a0',
+              maxWidth: '520px',
+              margin: '0 auto 30px',
+              lineHeight: 1.65,
+            }}
+          >
+            Sign up takes less than 5 minutes. No deposits, zero registration charges, just fair work.
+          </p>
+          <button
+            type="button"
+            className="final-cta-action-btn"
+            onClick={onJoinClick}
+            id="whygorush-final-cta-btn"
+          >
+            <span>Become a GoRush driver</span>
+            <span className="final-cta-btn-arrow-wrap">
               <ArrowRight size={17} />
-            </button>
-            <Link to="/earnings" className="subpage-cta-secondary-pill">
-              <span>Calculate Daily Earnings</span>
-              <ArrowUpRight size={16} />
-            </Link>
-          </div>
-
-          <div className="subpage-cta-bottom-trust">
-            <div className="subpage-cta-trust-tag">
-              <Check size={16} />
-              <span>₹0 Registration Charges</span>
-            </div>
-            <div className="subpage-cta-trust-tag">
-              <Check size={16} />
-              <span>₹5 Lakh Accidental Cover</span>
-            </div>
-            <div className="subpage-cta-trust-tag">
-              <Check size={16} />
-              <span>Verified in 15 Minutes</span>
-            </div>
-          </div>
+            </span>
+          </button>
         </div>
       </section>
     </div>
