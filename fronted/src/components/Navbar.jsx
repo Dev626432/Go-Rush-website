@@ -5,6 +5,7 @@ import {
   BarChart3,
   Home,
   Menu,
+  Phone,
   Settings,
   ShieldCheck,
   User,
