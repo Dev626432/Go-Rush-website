@@ -1,170 +1,237 @@
 /* ==========================================================================
-   GoRush - Driver Safety Protocols (100% Handcrafted Web Component)
+   GoRush - Driver Safety Best Practices (Road Protocols Showcase Banner)
+   Image: /protocols-showcase-sep21.png (1810 x 869)
    ========================================================================== */
 
-.protocols-section-wrap {
+.protocols-showcase-banner-section {
   position: relative;
   width: 100%;
-  background: #ffffff;
-  padding: 95px 24px 85px;
+  background: #edf5ea;
+  padding: clamp(32px, 4vw, 60px) clamp(16px, 3vw, 32px);
   overflow: hidden;
-  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
-  border-top: 1px solid rgba(20, 37, 27, 0.08);
-  border-bottom: 1px solid rgba(20, 37, 27, 0.08);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(20, 37, 27, 0.07);
 }
 
-.protocols-inner-container {
-  max-width: 1100px;
-  margin: 0 auto;
+.protocols-showcase-wrapper {
   position: relative;
-  z-index: 2;
-}
-
-.protocols-header-center {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 48px;
-}
-
-.protocols-eyebrow-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(110, 160, 50, 0.1);
-  border: 1px solid rgba(110, 160, 50, 0.25);
-  border-radius: 999px;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #385923;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.protocols-main-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(32px, 4vw, 50px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: #14251b;
-  line-height: 1.12;
-  margin: 0 0 16px 0;
-}
-
-.protocols-main-title em {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 600;
-  color: #558525;
-}
-
-.protocols-main-subtitle {
-  font-size: clamp(15px, 1.2vw, 17px);
-  line-height: 1.65;
-  color: #556c58;
-  margin: 0;
-}
-
-/* 3 Protocol Cards Grid */
-.protocols-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.protocol-step-card {
-  background: #f8faf4;
-  border-radius: 24px;
-  padding: 34px 28px;
-  border: 1.5px solid rgba(110, 150, 50, 0.16);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.protocol-step-card:hover {
-  transform: translateY(-6px);
-  background: #ffffff;
-  border-color: rgba(110, 150, 50, 0.4);
-  box-shadow: 0 16px 40px rgba(20, 37, 27, 0.08);
-}
-
-.protocol-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
-}
-
-.protocol-card-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 28px;
-  font-weight: 900;
-  color: #4a7726;
-  line-height: 1;
-}
-
-.protocol-card-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  background: #1e3f28;
-  color: #d4ef62;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.protocol-card-title {
-  font-size: 20px;
-  font-weight: 800;
-  color: #14251b;
-  margin: 0 0 12px 0;
-}
-
-.protocol-card-desc {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #556c58;
-  margin: 0 0 20px 0;
-  flex-grow: 1;
-}
-
-.protocol-action-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #eef6e4;
-  color: #2f591d;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(110, 150, 50, 0.25);
-  cursor: pointer;
-  transition: all 0.2s ease;
   width: 100%;
-  justify-content: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  line-height: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(22, 44, 27, 0.08);
 }
 
-.protocol-action-pill-btn:hover {
-  background: #14251b;
-  color: #d4ef62;
-  border-color: #14251b;
+.protocols-showcase-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* Responsive */
-@media (max-width: 860px) {
-  .protocols-cards-grid {
-    grid-template-columns: 1fr;
+/* ==========================================================================
+   4 PROTOCOL CARDS HITBOXES
+   ========================================================================== */
+
+.protocols-interactive-card {
+  position: absolute;
+  top: 31.0%;
+  width: 18.5%;
+  height: 46.5%;
+  border-radius: 24px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 2px solid transparent;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.protocols-card-1 {
+  left: 11.10%;
+}
+
+.protocols-card-2 {
+  left: 31.16%;
+}
+
+.protocols-card-3 {
+  left: 50.94%;
+}
+
+.protocols-card-4 {
+  left: 70.88%;
+}
+
+.protocols-interactive-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(30, 94, 46, 0.35);
+  box-shadow: 
+    0 12px 32px -4px rgba(18, 54, 25, 0.16),
+    0 0 0 3px rgba(95, 138, 50, 0.12);
+  transform: translateY(-3px) scale(1.01);
+}
+
+.protocols-interactive-card:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* ==========================================================================
+   4 ACTION BUTTON HITBOXES (VERIFY RIDE, STAY CONNECTED, REST, REPORT)
+   ========================================================================== */
+
+.protocols-action-btn-hitbox {
+  position: absolute;
+  top: 72.0%;
+  height: 5.5%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 15;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.22s ease;
+  display: block;
+}
+
+.protocols-btn-1 {
+  left: 14.5%;
+  width: 11.5%;
+}
+
+.protocols-btn-2 {
+  left: 34.5%;
+  width: 12.0%;
+}
+
+.protocols-btn-3 {
+  left: 54.2%;
+  width: 12.0%;
+}
+
+.protocols-btn-4 {
+  left: 74.2%;
+  width: 12.0%;
+}
+
+.protocols-action-btn-hitbox:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(163, 230, 53, 0.6);
+  box-shadow: 0 4px 14px rgba(16, 46, 22, 0.2);
+  transform: scale(1.04);
+}
+
+.protocols-action-btn-hitbox:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   LEFT HIGHWAY SIGNBOARD (PEOPLE MOVE BETTER TOGETHER)
+   ========================================================================== */
+
+.protocols-signboard-hitbox {
+  position: absolute;
+  left: 1.0%;
+  top: 50.0%;
+  width: 9.5%;
+  height: 30.0%;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 2px solid transparent;
+  outline: none;
+  transition: all 0.22s ease;
+}
+
+.protocols-signboard-hitbox:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(163, 230, 53, 0.5);
+  box-shadow: 0 6px 20px rgba(18, 54, 25, 0.18);
+  transform: scale(1.02);
+}
+
+/* Eyebrow Road Protocols */
+.protocols-eyebrow-hitbox {
+  position: absolute;
+  left: 43.5%;
+  top: 6.5%;
+  width: 13.0%;
+  height: 5.0%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.protocols-eyebrow-hitbox:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(30, 94, 46, 0.3);
+}
+
+/* Bottom Quote Bar */
+.protocols-quote-hitbox {
+  position: absolute;
+  left: 32.0%;
+  top: 89.0%;
+  width: 36.0%;
+  height: 6.5%;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.protocols-quote-hitbox:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(30, 94, 46, 0.3);
+  box-shadow: 0 4px 14px rgba(18, 54, 25, 0.12);
+}
+
+/* Right pin badge */
+.protocols-right-pin-hitbox {
+  position: absolute;
+  right: 6.0%;
+  top: 50.0%;
+  width: 3.5%;
+  height: 8.0%;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  background: transparent;
+  border: 1.5px solid transparent;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.protocols-right-pin-hitbox:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(163, 230, 53, 0.5);
+  transform: scale(1.15);
+}
+
+@media (max-width: 768px) {
+  .protocols-action-btn-hitbox::after {
+    content: '';
+    position: absolute;
+    inset: -8px -6px;
   }
-}
 
-@media (max-width: 640px) {
-  .protocols-section-wrap {
-    padding: 70px 16px 60px;
+  .protocols-action-btn-hitbox:active {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(163, 230, 53, 0.9);
   }
 }

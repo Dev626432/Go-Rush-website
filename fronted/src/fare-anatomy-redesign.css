@@ -1,251 +1,199 @@
 /* ==========================================================================
-   GoRush - Fare Anatomy Section (100% Handcrafted Web Component)
+   GoRush - Anatomy of a Fare Showcase Redesign (Sep 21 Edition)
+   Showcase banner with real interactive hitboxes & driver registration
    ========================================================================== */
 
 .anatomy-showcase-section {
   position: relative;
   width: 100%;
-  background: #ffffff;
-  padding: 95px 24px 85px;
+  background: linear-gradient(180deg, #f4f8ec 0%, #edf5e6 50%, #eaf3e1 100%);
+  padding: clamp(32px, 4vw, 60px) clamp(16px, 3vw, 32px);
   overflow: hidden;
-  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
-  border-top: 1px solid rgba(20, 37, 27, 0.08);
-  border-bottom: 1px solid rgba(20, 37, 27, 0.08);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.anatomy-inner-container {
-  max-width: 1100px;
+.anatomy-container {
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
+  box-sizing: border-box;
 }
 
-.anatomy-header-center {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 48px;
+/* Aspect-ratio preserving relative banner wrapper */
+.anatomy-banner-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(22, 44, 27, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: #edf5e7;
+  line-height: 0;
+  margin: 0 auto;
 }
 
-.anatomy-eyebrow-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(110, 160, 50, 0.1);
-  border: 1px solid rgba(110, 160, 50, 0.25);
-  border-radius: 999px;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #385923;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.anatomy-main-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(32px, 4vw, 50px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: #14251b;
-  line-height: 1.12;
-  margin: 0 0 16px 0;
-}
-
-.anatomy-main-title em {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 600;
-  color: #558525;
-}
-
-.anatomy-main-subtitle {
-  font-size: clamp(15px, 1.2vw, 17px);
-  line-height: 1.65;
-  color: #556c58;
-  margin: 0;
-}
-
-/* Visual Fare Split Card */
-.anatomy-split-card {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 24px;
-  background: #f8faf4;
-  border-radius: 28px;
-  padding: 36px;
-  border: 1.5px solid rgba(110, 150, 50, 0.2);
-  box-shadow: 0 16px 48px rgba(20, 37, 27, 0.05);
-}
-
-.anatomy-driver-col {
-  background: linear-gradient(135deg, #14251b 0%, #0d1a12 100%);
-  border-radius: 22px;
-  padding: 34px 30px;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.anatomy-driver-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgba(212, 239, 98, 0.15);
-  color: #d4ef62;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  align-self: flex-start;
-}
-
-.anatomy-driver-pct {
-  font-size: clamp(48px, 6vw, 68px);
-  font-weight: 900;
-  font-family: 'DM Mono', monospace;
-  color: #d4ef62;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.anatomy-driver-amount {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 14px;
-}
-
-.anatomy-driver-desc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #9cbca1;
-  margin-bottom: 24px;
-}
-
-.anatomy-driver-points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 18px;
-}
-
-.anatomy-driver-points li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #d1e5d5;
-}
-
-.anatomy-driver-points svg {
-  color: #d4ef62;
-}
-
-/* Platform 10% column */
-.anatomy-platform-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.anatomy-platform-box {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 26px 24px;
-  border: 1px solid rgba(110, 150, 50, 0.16);
-}
-
-.anatomy-platform-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.anatomy-platform-pct {
-  font-family: 'DM Mono', monospace;
-  font-size: 28px;
-  font-weight: 900;
-  color: #385923;
-}
-
-.anatomy-platform-amount {
-  font-size: 14px;
-  font-weight: 700;
-  color: #647b67;
-}
-
-.anatomy-platform-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: #14251b;
-  margin: 0 0 8px 0;
-}
-
-.anatomy-platform-desc {
-  font-size: 13px;
-  line-height: 1.55;
-  color: #556c58;
-  margin: 0;
-}
-
-.anatomy-tips-box {
-  background: #f0fdf4;
-  border-radius: 20px;
-  padding: 24px;
-  border: 1px solid rgba(34, 197, 94, 0.25);
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.anatomy-tips-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #dcfce7;
-  color: #16a34a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.anatomy-tips-text strong {
+.anatomy-banner-img {
+  width: 100%;
+  height: auto;
   display: block;
-  font-size: 15px;
-  font-weight: 800;
-  color: #14532d;
-  margin-bottom: 4px;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
 }
 
-.anatomy-tips-text p {
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: #166534;
-  margin: 0;
+/* ==========================================================================
+   Interactive Hitboxes over Graphic Elements
+   ========================================================================== */
+
+/* Driver Keep Card (90%) */
+.anatomy-hitbox-driver {
+  position: absolute;
+  left: 12.43%;
+  top: 40.05%;
+  width: 36.74%;
+  height: 40.05%;
+  border-radius: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Responsive */
-@media (max-width: 860px) {
-  .anatomy-split-card {
-    grid-template-columns: 1fr;
-    padding: 24px;
+.anatomy-hitbox-driver:hover {
+  background: rgba(43, 138, 59, 0.04);
+}
+
+.anatomy-hitbox-driver:hover::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 26px;
+  border: 2px solid rgba(43, 138, 59, 0.35);
+  pointer-events: none;
+}
+
+/* Platform Fee Card (10%) */
+.anatomy-hitbox-platform {
+  position: absolute;
+  left: 50.55%;
+  top: 40.05%;
+  width: 36.91%;
+  height: 40.05%;
+  border-radius: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.anatomy-hitbox-platform:hover {
+  background: rgba(184, 115, 51, 0.04);
+}
+
+.anatomy-hitbox-platform:hover::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 26px;
+  border: 2px solid rgba(184, 115, 51, 0.35);
+  pointer-events: none;
+}
+
+/* More Rides, More Earnings Pill Button */
+.anatomy-hitbox-pill {
+  position: absolute;
+  left: 34.14%;
+  top: 65.82%;
+  width: 12.98%;
+  height: 9.67%;
+  border-radius: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 12;
+  outline: none;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.anatomy-hitbox-pill:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.anatomy-hitbox-pill:hover::after {
+  content: 'Drive with GoRush →';
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #112615;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  animation: fareTooltipFade 0.2s ease;
+}
+
+@keyframes fareTooltipFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 }
 
-@media (max-width: 640px) {
+.anatomy-hitbox-pill:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Bottom Bar Hitbox (Fair Pricing, Transparent Split, etc.) */
+.anatomy-hitbox-bar {
+  position: absolute;
+  left: 21.66%;
+  top: 82.28%;
+  width: 56.69%;
+  height: 9.44%;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.anatomy-hitbox-bar:hover {
+  background: rgba(43, 122, 57, 0.04);
+}
+
+.anatomy-hitbox-bar:hover::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  border: 2px solid rgba(43, 122, 57, 0.3);
+  pointer-events: none;
+}
+
+/* Responsive Adaptations */
+@media (max-width: 900px) {
   .anatomy-showcase-section {
-    padding: 70px 16px 60px;
+    padding: 30px 14px 45px;
   }
 }

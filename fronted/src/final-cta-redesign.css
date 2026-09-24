@@ -1,197 +1,120 @@
 /* =========================================================
-   GORUSH - FINAL CALL TO ACTION (100% HANDCRAFTED NATIVE WEB)
+   GORUSH - FINAL CALL TO ACTION (SEALED BANNER SHOWCASE)
+   Your next chapter starts here - Become a GoRush driver
    ========================================================= */
 
 .final-cta-banner-section {
   position: relative;
   width: 100%;
-  background: #f7f9f2;
-  padding: 100px 24px 90px;
+  background: #f7f6f0;
   overflow: hidden;
-  font-family: 'Plus Jakarta Sans', Manrope, -apple-system, sans-serif;
-  border-top: 1px solid rgba(20, 37, 27, 0.08);
+  border-top: 1px solid rgba(20, 37, 27, 0.06);
 }
 
-.final-cta-container {
-  max-width: 1200px;
+.final-cta-banner-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
-  position: relative;
+  line-height: 0;
 }
 
-.final-cta-card {
-  position: relative;
-  background: linear-gradient(135deg, #13271b 0%, #0c1811 50%, #06120b 100%);
-  border-radius: 36px;
-  padding: 80px 60px;
-  text-align: center;
+.final-cta-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Real Interactive Button over 'Become a GoRush driver' */
+.final-cta-banner-real-btn {
+  position: absolute;
+  left: 29.62%;
+  top: 60.86%;
+  width: 20.35%;
+  height: 8.11%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(180deg, #093423 0%, #052317 100%);
   color: #ffffff;
-  overflow: hidden;
-  border: 1px solid rgba(163, 230, 53, 0.25);
+  border: 1.5px solid rgba(133, 204, 78, 0.45);
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: clamp(10px, 1.1vw, 16px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
   box-shadow: 
-    0 24px 60px rgba(12, 24, 17, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 10px 24px -2px rgba(9, 45, 28, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  overflow: hidden;
+  user-select: none;
+  z-index: 10;
+  text-decoration: none;
+  padding: 0 16px;
 }
 
-/* Ambient Glow Orbs */
-.final-cta-card::before {
+.final-cta-banner-real-btn::after {
   content: '';
   position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 350px;
-  background: radial-gradient(ellipse, rgba(163, 230, 53, 0.22) 0%, transparent 70%);
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
   pointer-events: none;
 }
 
-.final-cta-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 780px;
-  margin: 0 auto;
+.final-cta-banner-real-btn:hover {
+  background: linear-gradient(180deg, #104e35 0%, #083623 100%);
+  border-color: rgba(163, 230, 53, 0.8);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    0 14px 32px -2px rgba(12, 55, 34, 0.65),
+    0 0 0 3px rgba(133, 204, 78, 0.28);
 }
 
-.final-cta-badge {
+.final-cta-banner-real-btn:hover::after {
+  left: 150%;
+}
+
+.final-cta-banner-real-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(9, 45, 28, 0.3);
+}
+
+.final-cta-banner-btn-arrow {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: rgba(163, 230, 53, 0.12);
-  border: 1px solid rgba(163, 230, 53, 0.3);
-  border-radius: 999px;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #a3e635;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-
-.final-cta-headline {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(36px, 4.8vw, 62px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.08;
-  color: #ffffff;
-  margin: 0 0 18px 0;
-}
-
-.final-cta-headline em {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 600;
-  color: #d4ef62;
-}
-
-.final-cta-desc {
-  font-size: clamp(15px, 1.3vw, 18px);
-  line-height: 1.65;
-  color: #9cbca1;
-  max-width: 620px;
-  margin: 0 auto 40px;
-}
-
-.final-cta-actions {
-  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.final-cta-primary-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #d4ef62;
-  color: #14251b;
-  font-size: 15px;
-  font-weight: 800;
-  padding: 16px 36px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 28px rgba(212, 239, 98, 0.35);
-  transition: all 0.25s ease;
-  text-decoration: none;
-}
-
-.final-cta-primary-btn:hover {
-  background: #e2fa7a;
-  transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(212, 239, 98, 0.5);
-}
-
-.final-cta-call-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 16px 28px;
-  border-radius: 999px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-
-.final-cta-call-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-.final-cta-trust-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  font-size: 13px;
-  color: #8dae93;
-}
-
-.final-cta-trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.final-cta-trust-item svg {
-  color: #a3e635;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .final-cta-banner-section {
-    padding: 70px 20px 60px;
-  }
-  .final-cta-card {
-    padding: 56px 28px;
-    border-radius: 28px;
-  }
+.final-cta-banner-real-btn:hover .final-cta-banner-btn-arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 600px) {
-  .final-cta-banner-section {
-    padding: 50px 16px 40px;
-  }
-  .final-cta-card {
-    padding: 44px 20px 38px;
-    border-radius: 22px;
-  }
-  .final-cta-primary-btn,
-  .final-cta-call-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  .final-cta-trust-bar {
-    flex-direction: column;
-    gap: 8px;
+  .final-cta-banner-real-btn {
+    font-size: 8px;
+    gap: 4px;
+    padding: 0 6px;
   }
 }
