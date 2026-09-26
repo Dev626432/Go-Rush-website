@@ -76,3 +76,68 @@ body{margin:0;background:var(--cream);color:var(--forest);font-family:Manrope,sa
   box-sizing: border-box !important;
   overflow: hidden !important;
 }
+
+/* =========================================================
+   GLOBAL BANNER BUTTON OVERLAYS - ELIMINATE DOUBLE TEXT GHOSTING
+   Showcase banner images already have the button text printed in high-res.
+   The HTML buttons serve as interactive click hitboxes with hover rings.
+   Hiding inner span/svg prevents overlapping / double-highlighted text.
+   ========================================================= */
+.difference-banner-real-btn,
+.onboarding-banner-real-btn,
+.safety-banner-real-btn,
+.final-cta-banner-real-btn,
+.earnings-banner-real-btn {
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  transition: all 0.22s ease !important;
+}
+
+.difference-banner-real-btn span,
+.difference-banner-real-btn svg,
+.difference-banner-btn-arrow,
+.difference-banner-real-btn::after,
+.onboarding-banner-real-btn span,
+.onboarding-banner-real-btn svg,
+.onboarding-banner-btn-arrow,
+.onboarding-banner-real-btn::after,
+.safety-banner-real-btn span,
+.safety-banner-real-btn svg,
+.safety-banner-btn-arrow,
+.safety-banner-real-btn::after,
+.final-cta-banner-real-btn span,
+.final-cta-banner-real-btn svg,
+.final-cta-banner-btn-arrow,
+.final-cta-banner-real-btn::after,
+.earnings-banner-real-btn span,
+.earnings-banner-real-btn svg,
+.earnings-banner-btn-arrow,
+.earnings-banner-real-btn::after {
+  display: none !important;
+}
+
+.difference-banner-real-btn:hover,
+.onboarding-banner-real-btn:hover,
+.safety-banner-real-btn:hover,
+.final-cta-banner-real-btn:hover,
+.earnings-banner-real-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(163, 230, 53, 0.65) !important;
+  box-shadow: 0 4px 18px rgba(16, 46, 22, 0.25) !important;
+  transform: scale(1.03) !important;
+}
+
+.difference-banner-real-btn:active,
+.onboarding-banner-real-btn:active,
+.safety-banner-real-btn:active,
+.final-cta-banner-real-btn:active,
+.earnings-banner-real-btn:active {
+  transform: scale(0.97) !important;
+  background: rgba(255, 255, 255, 0.32) !important;
+}
+
