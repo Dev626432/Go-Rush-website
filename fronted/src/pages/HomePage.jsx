@@ -215,14 +215,6 @@ export default function HomePage({ onJoinClick, action }) {
   const setFormOpen = () => {
     if (onJoinClick) onJoinClick();
   };
-  const heroVideoRef = useRef(null);
-
-  useEffect(() => {
-    if (heroVideoRef.current) {
-      heroVideoRef.current.play().catch(() => {});
-    }
-  }, []);
-
   const [activeQuoteIdx, setActiveQuoteIdx] = useState(0);
   const nextQuote = () => setActiveQuoteIdx((prev) => (prev + 1) % driverQuotes.length);
   const prevQuote = () => setActiveQuoteIdx((prev) => (prev - 1 + driverQuotes.length) % driverQuotes.length);
@@ -236,12 +228,10 @@ export default function HomePage({ onJoinClick, action }) {
     const video = document.createElement('video');
     video.className = 'hero-background-video';
     video.autoplay = true;
-    video.defaultMuted = true;
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
     video.preload = 'auto';
-    video.poster = 'https://res.cloudinary.com/zfpzqpwo/image/upload/f_auto,q_auto/pexels-neilstha-firman-1119718312-35985469';
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     video.setAttribute('muted', '');
@@ -251,8 +241,6 @@ export default function HomePage({ onJoinClick, action }) {
     source.type = 'video/mp4';
     video.appendChild(source);
     artwork.prepend(video);
-    // Safari iOS explicit play call with silent catch for Low Power Mode
-    video.play().catch(() => {});
     return () => video.remove();
   }, []);
 
@@ -284,7 +272,6 @@ export default function HomePage({ onJoinClick, action }) {
         {/* HERO SECTION */}
         <section className="hero-section">
           <video
-            ref={heroVideoRef}
             className="hero-background-video"
             autoPlay
             muted
@@ -377,149 +364,36 @@ export default function HomePage({ onJoinClick, action }) {
           ))}
         </section>
 
-        {/* THE GORUSH DIFFERENCE - 100% HANDCRAFTED NATIVE WEB */}
+        {/* THE GORUSH DIFFERENCE - CHATGPT SHOWCASE BANNER */}
         <section className="scenic-hero-section" id="features">
-          <div className="scenic-hero-inner">
-            <div className="scenic-header-badge">
-              <Sparkles size={13} />
-              <span>The GoRush Standard</span>
-            </div>
-            <h2 className="scenic-header-title">
-              Built around the person <em>behind the wheel.</em>
-            </h2>
-            <p className="scenic-header-subtitle">
-              Fair commissions, predictable earnings, and human-first driver care from the moment you hit go. Experience a platform engineered for your growth.
-            </p>
+          <div className="difference-banner-wrapper">
+            <img
+              src="/difference-showcase-sep21.png"
+              alt="Built around the person behind the wheel - The GoRush Difference"
+              className="difference-banner-img"
+            />
+            {/* Real Interactive Button over 'Get Started' */}
+            <button
+              type="button"
+              className="difference-banner-real-btn"
+              onClick={onJoinClick}
+              title="Get Started"
+              id="difference-get-started-btn"
+            >
+              <span>Get Started</span>
+              <span className="difference-banner-btn-arrow">
+                <ArrowRight size={15} />
+              </span>
+            </button>
 
-            <div className="difference-cards-grid">
-              {/* Card 1 */}
-              <div className="difference-card">
-                <div>
-                  <div className="difference-card-badge">TRANSPARENT</div>
-                  <div className="difference-card-icon-box">
-                    <Wallet size={24} />
-                  </div>
-                  <h3 className="difference-card-title">Clear, Fair Pay Every Mile</h3>
-                  <p className="difference-card-desc">
-                    No hidden deductions or unpredictable algorithms. Know your fare upfront with instant weekly settlements directly into your bank.
-                  </p>
-                  <ul className="difference-card-points">
-                    <li className="difference-card-point">
-                      <Check size={16} /> Instant UPI & direct deposit
-                    </li>
-                    <li className="difference-card-point">
-                      <Check size={16} /> 0% surprise platform commission
-                    </li>
-                    <li className="difference-card-point">
-                      <Check size={16} /> Surge & peak hour bonus pass-through
-                    </li>
-                  </ul>
-                </div>
-                <div className="difference-card-highlight">
-                  <div>
-                    <span>Weekly Average</span>
-                    <strong>₹14,500+</strong>
-                  </div>
-                  <span>Full-time Partner</span>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="difference-card">
-                <div>
-                  <div className="difference-card-badge">SECURITY</div>
-                  <div className="difference-card-icon-box">
-                    <ShieldCheck size={24} />
-                  </div>
-                  <h3 className="difference-card-title">Comprehensive Protection</h3>
-                  <p className="difference-card-desc">
-                    Drive with peace of mind. Every trip is covered by complimentary accidental medical coverage and dedicated round-the-clock emergency response.
-                  </p>
-                  <ul className="difference-card-points">
-                    <li className="difference-card-point">
-                      <Check size={16} /> ₹5,00,000 accidental cover
-                    </li>
-                    <li className="difference-card-point">
-                      <Check size={16} /> 24/7 in-app SOS & rapid marshal response
-                    </li>
-                    <li className="difference-card-point">
-                      <Check size={16} /> Driver identity & rating protection
-                    </li>
-                  </ul>
-                </div>
-                <div className="difference-card-highlight">
-                  <div>
-                    <span>Coverage</span>
-                    <strong>Active 24/7</strong>
-                  </div>
-                  <span>Zero Premium</span>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="difference-card">
-                <div>
-                  <div className="difference-card-badge">CONTROL</div>
-                  <div className="difference-card-icon-box">
-                    <Navigation size={24} />
-                  </div>
-                  <h3 className="difference-card-title">Total Flexibility & Autonomy</h3>
-                  <p className="difference-card-desc">
-                    You choose when, where, and how long to drive. Pick your preferred delivery hubs, set home routes, and log off whenever family calls.
-                  </p>
-                  <ul className="difference-card-points">
-                    <li className="difference-card-point">
-                      <Check size={16} /> Set preferred return destination
-                    </li>
-                    <li className="difference-card-point">
-                      <Check size={16} /> No minimum mandatory hours
-                    </li>
-                    <li className="difference-card-point">
-                      <Check size={16} /> Live demand heatmaps for quick bookings
-                    </li>
-                  </ul>
-                </div>
-                <div className="difference-card-highlight">
-                  <div>
-                    <span>Flexibility</span>
-                    <strong>100% Freedom</strong>
-                  </div>
-                  <span>Your Terms</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Actions Bar */}
-            <div className="scenic-actions-bar">
-              <div className="scenic-actions-info">
-                <div className="scenic-actions-icon">
-                  <BadgeCheck size={22} />
-                </div>
-                <div className="scenic-actions-text">
-                  <strong>Ready to see the difference for yourself?</strong>
-                  <span>Join over 10,000+ drivers already earning with dignity on GoRush.</span>
-                </div>
-              </div>
-              <div className="scenic-actions-btns">
-                <button
-                  type="button"
-                  className="scenic-primary-cta"
-                  onClick={onJoinClick}
-                  id="difference-get-started-btn"
-                >
-                  <span>Get Started</span>
-                  <ArrowRight size={16} />
-                </button>
-                <Link
-                  to="/how-it-works"
-                  className="scenic-secondary-link"
-                  id="difference-see-how-btn"
-                >
-                  <span>See How It Works</span>
-                  <ArrowUpRight size={15} />
-                </Link>
-              </div>
-            </div>
+            {/* Interactive Link over 'See How It Works' */}
+            <Link
+              to="/how-it-works"
+              className="difference-banner-video-btn"
+              title="See How It Works"
+              id="difference-see-how-btn"
+              aria-label="See How It Works"
+            />
           </div>
         </section>
 
@@ -624,10 +498,10 @@ export default function HomePage({ onJoinClick, action }) {
                 </button>
 
                 <div className="earnings-social-proof">
-                  <div className="earnings-avatar-stack" aria-label="GoRush Top Drivers">
-                    <span className="earnings-avatar-item" style={{ background: '#d9c4aa' }}>AK</span>
-                    <span className="earnings-avatar-item" style={{ background: '#9cb8a0' }}>RS</span>
-                    <span className="earnings-avatar-item" style={{ background: '#d4ef62' }}>★</span>
+                  <div className="earnings-avatar-stack">
+                    <img src="/driver-avatar-1.jpg" alt="GoRush Driver" className="earnings-avatar-item" />
+                    <img src="/driver-avatar-2.jpg" alt="GoRush Driver" className="earnings-avatar-item" />
+                    <img src="/driver-avatar-3.jpg" alt="GoRush Driver" className="earnings-avatar-item" />
                   </div>
                   <div className="earnings-social-text">
                     <strong>48,000+ drivers</strong>
@@ -770,208 +644,52 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* HOW IT WORKS / ONBOARDING - 100% HANDCRAFTED NATIVE WEB */}
+        {/* HOW IT WORKS / ONBOARDING - NEW CHATGPT REDESIGN */}
+        {/* HOW IT WORKS / ONBOARDING - CHATGPT SHOWCASE */}
         <section className="new-onboarding-section" id="how-it-works">
-          <div className="onboarding-inner-container">
-            <div className="onboarding-header-center">
-              <div className="onboarding-eyebrow-badge">
-                <Sparkles size={13} />
-                <span>Simple 3-Step Process</span>
-              </div>
-              <h2 className="onboarding-main-title">
-                Your journey to earning <em>starts in minutes.</em>
-              </h2>
-              <p className="onboarding-main-subtitle">
-                No long paper queues or bureaucratic delays. Everything is managed seamlessly from your phone with instant automated verification.
-              </p>
-            </div>
-
-            <div className="onboarding-steps-row">
-              {/* Step 1 */}
-              <div className="onboarding-step-card">
-                <div className="step-card-num-row">
-                  <span className="step-big-num">01</span>
-                  <span className="step-time-badge">2 MINS</span>
-                </div>
-                <div className="step-card-icon-box">
-                  <UserPlus size={22} />
-                </div>
-                <h3 className="step-card-title">Register Your Profile</h3>
-                <p className="step-card-desc">
-                  Enter your mobile number, select your vehicle category (bike, auto, or cab), and set up your personal driver account in seconds.
-                </p>
-                <ul className="step-card-checklist">
-                  <li>
-                    <Check size={14} /> Quick OTP verification
-                  </li>
-                  <li>
-                    <Check size={14} /> Choose preferred city & zone
-                  </li>
-                </ul>
-              </div>
-
-              {/* Step 2 */}
-              <div className="onboarding-step-card">
-                <div className="step-card-num-row">
-                  <span className="step-big-num">02</span>
-                  <span className="step-time-badge">3 MINS</span>
-                </div>
-                <div className="step-card-icon-box">
-                  <FileCheck2 size={22} />
-                </div>
-                <h3 className="step-card-title">Upload Documents</h3>
-                <p className="step-card-desc">
-                  Snap clear photos of your Driving License, Vehicle RC, and Aadhaar card directly through the app. Our AI instantly validates your files.
-                </p>
-                <ul className="step-card-checklist">
-                  <li>
-                    <Check size={14} /> Instant automated OCR scanning
-                  </li>
-                  <li>
-                    <Check size={14} /> Bank passbook or UPI for payouts
-                  </li>
-                </ul>
-              </div>
-
-              {/* Step 3 */}
-              <div className="onboarding-step-card">
-                <div className="step-card-num-row">
-                  <span className="step-big-num">03</span>
-                  <span className="step-time-badge">READY!</span>
-                </div>
-                <div className="step-card-icon-box">
-                  <Zap size={22} />
-                </div>
-                <h3 className="step-card-title">Get Approved & Drive</h3>
-                <p className="step-card-desc">
-                  Receive your partner badge within 24 hours. Switch online, receive nearby ride requests, and start earning instantly.
-                </p>
-                <ul className="step-card-checklist">
-                  <li>
-                    <Check size={14} /> ₹500 First Week Welcome Bonus
-                  </li>
-                  <li>
-                    <Check size={14} /> Free safety kit & phone mount
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* CTA Capsule */}
-            <div className="onboarding-bottom-cta">
-              <div className="onboarding-cta-copy">
-                <h3>Ready to take the driver seat?</h3>
-                <p>Sign up now. Your documents are verified rapidly so you can start making money today.</p>
-              </div>
-              <button
-                type="button"
-                className="onboarding-cta-btn"
-                onClick={onJoinClick}
-                id="onboarding-become-driver-btn"
-              >
-                <span>Become a GoRush driver</span>
+          <div className="onboarding-banner-wrapper">
+            <img
+              src="/onboarding-showcase-sep20.png"
+              alt="Your next chapter starts here - GoRush"
+              className="onboarding-banner-img"
+            />
+            {/* Real Interactive Button over 'Become a GoRush driver' */}
+            <button
+              type="button"
+              className="onboarding-banner-real-btn"
+              onClick={onJoinClick}
+              title="Become a GoRush driver"
+              id="onboarding-become-driver-btn"
+            >
+              <span>Become a GoRush driver</span>
+              <span className="onboarding-banner-btn-arrow">
                 <ArrowRight size={17} />
-              </button>
-            </div>
+              </span>
+            </button>
           </div>
         </section>
 
-        {/* SAFETY SECTION - 100% HANDCRAFTED NATIVE WEB */}
+        {/* SAFETY SECTION REDESIGNED - CHATGPT IMAGE SHOWCASE */}
         <section className="safety-redesign-wrap" id="safety">
-          <div className="safety-inner-container">
-            <div className="safety-header-row">
-              <div className="safety-header-left">
-                <div className="safety-eyebrow-pill">
-                  <ShieldCheck size={13} />
-                  <span>Uncompromised Protection</span>
-                </div>
-                <h2 className="safety-headline">
-                  Confidence is part of <em>every single ride.</em>
-                </h2>
-                <p className="safety-subline">
-                  We treat driver safety with the highest priority. From live GPS tracking to emergency response teams, we’ve got your back on every road.
-                </p>
-              </div>
-              <div className="safety-status-badge">
-                <span className="safety-status-dot" />
-                <span>24/7 GoRush Safety Operations Active</span>
-              </div>
-            </div>
-
-            <div className="safety-cards-grid">
-              {/* Feature 1 */}
-              <div className="safety-feature-card">
-                <div>
-                  <div className="safety-card-icon-wrap">
-                    <Navigation size={24} />
-                  </div>
-                  <h3 className="safety-card-title">Live Trip Telemetry & GPS</h3>
-                  <p className="safety-card-desc">
-                    Every journey is monitored in real-time. Share your live location with loved ones automatically whenever you switch online.
-                  </p>
-                </div>
-                <div className="safety-card-tag">
-                  <BadgeCheck size={13} />
-                  <span>Real-time Geo-Tracking</span>
-                </div>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="safety-feature-card">
-                <div>
-                  <div className="safety-card-icon-wrap">
-                    <ShieldCheck size={24} />
-                  </div>
-                  <h3 className="safety-card-title">Instant SOS & Rapid Response</h3>
-                  <p className="safety-card-desc">
-                    One-touch emergency button alerts our safety dispatch center and nearest law enforcement with precision GPS coordinates.
-                  </p>
-                </div>
-                <div className="safety-card-tag">
-                  <Zap size={13} />
-                  <span>&lt; 3 Min Dispatch Protocol</span>
-                </div>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="safety-feature-card">
-                <div>
-                  <div className="safety-card-icon-wrap">
-                    <Headphones size={24} />
-                  </div>
-                  <h3 className="safety-card-title">24/7 Dedicated Driver Desk</h3>
-                  <p className="safety-card-desc">
-                    Speak directly to human support specialists anytime. Whether you encounter a route dispute or vehicle breakdown, we assist immediately.
-                  </p>
-                </div>
-                <div className="safety-card-tag">
-                  <Clock3 size={13} />
-                  <span>Zero Waiting Support</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Safety Strip */}
-            <div className="safety-bottom-strip">
-              <div className="safety-strip-copy">
-                <div className="safety-shield-icon">
-                  <ShieldCheck size={22} />
-                </div>
-                <div className="safety-strip-text">
-                  <strong>₹5,00,000 Accidental & Medical Shield</strong>
-                  <span>Automatic coverage for every verified driver partner from trip start to trip end.</span>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="safety-strip-cta"
-                onClick={onJoinClick}
-                id="safety-drive-confidence-btn"
-              >
-                <span>Drive with confidence</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
+          <div className="safety-banner-wrapper">
+            <img
+              src="/safety-showcase-sep20.png"
+              alt="Confidence is part of every ride - GoRush Safety"
+              className="safety-banner-img"
+            />
+            {/* Real Interactive Button over 'Drive with confidence' */}
+            <button
+              type="button"
+              className="safety-banner-real-btn"
+              onClick={onJoinClick}
+              title="Drive with confidence"
+              id="safety-drive-confidence-btn"
+            >
+              <span>Drive with confidence</span>
+              <span className="safety-banner-btn-arrow">
+                <ArrowRight size={15} />
+              </span>
+            </button>
           </div>
         </section>
 
@@ -1104,75 +822,27 @@ export default function HomePage({ onJoinClick, action }) {
           </div>
         </section>
 
-        {/* FINAL CALL TO ACTION - 100% HANDCRAFTED NATIVE WEB */}
+        {/* FINAL CALL TO ACTION - CHATGPT SHOWCASE BANNER */}
         <section className="final-cta-banner-section" id="join">
-          <div className="final-cta-container">
-            <div className="final-cta-card">
-              <div className="final-cta-inner">
-                <div className="final-cta-badge">
-                  <Sparkles size={13} />
-                  <span>Join the Mobility Revolution</span>
-                </div>
-                <h2 className="final-cta-headline">
-                  Your next chapter <em>starts here.</em>
-                </h2>
-                <p className="final-cta-desc">
-                  Earn on your own terms, receive instant payouts, and enjoy maximum respect. Register now and join thousands of empowered driver partners.
-                </p>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', margin: '32px 0 36px', textAlign: 'left' }}>
-                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '18px 20px' }}>
-                    <div style={{ color: '#d4ef62', marginBottom: '8px' }}><IndianRupee size={22} /></div>
-                    <strong style={{ display: 'block', fontSize: '15px', color: '#fff', marginBottom: '4px' }}>0% Surge Commission</strong>
-                    <span style={{ fontSize: '12.5px', color: '#9db4a0', lineHeight: 1.4 }}>Keep 100% of peak hour customer surge</span>
-                  </div>
-                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '18px 20px' }}>
-                    <div style={{ color: '#d4ef62', marginBottom: '8px' }}><Zap size={22} /></div>
-                    <strong style={{ display: 'block', fontSize: '15px', color: '#fff', marginBottom: '4px' }}>Instant UPI Transfers</strong>
-                    <span style={{ fontSize: '12.5px', color: '#9db4a0', lineHeight: 1.4 }}>Settlements deposited after every single shift</span>
-                  </div>
-                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '18px 20px' }}>
-                    <div style={{ color: '#d4ef62', marginBottom: '8px' }}><ShieldCheck size={22} /></div>
-                    <strong style={{ display: 'block', fontSize: '15px', color: '#fff', marginBottom: '4px' }}>₹5 Lakh Road Cover</strong>
-                    <span style={{ fontSize: '12.5px', color: '#9db4a0', lineHeight: 1.4 }}>Free comprehensive accident protection</span>
-                  </div>
-                </div>
-
-                <div className="final-cta-actions">
-                  <button
-                    type="button"
-                    className="final-cta-primary-btn"
-                    onClick={onJoinClick}
-                    id="final-cta-become-driver-btn"
-                  >
-                    <span>Become a GoRush driver</span>
-                    <ArrowRight size={17} />
-                  </button>
-                  <Link
-                    to="/why-gorush"
-                    className="final-cta-secondary-link"
-                    id="final-cta-why-link"
-                  >
-                    <span>Why GoRush?</span>
-                    <ArrowUpRight size={16} />
-                  </Link>
-                </div>
-                <div className="final-cta-trust-bar">
-                  <div className="trust-item">
-                    <Check size={15} />
-                    <span>Instant Daily Payouts</span>
-                  </div>
-                  <div className="trust-item">
-                    <Check size={15} />
-                    <span>Accidental Cover Included</span>
-                  </div>
-                  <div className="trust-item">
-                    <Check size={15} />
-                    <span>0% Joining Fees</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="final-cta-banner-wrapper">
+            <img
+              src="/final-cta-showcase-sep21.png"
+              alt="Your next chapter starts here - Become a GoRush driver"
+              className="final-cta-banner-img"
+            />
+            {/* Real Interactive Button over 'Become a GoRush driver' */}
+            <button
+              type="button"
+              className="final-cta-banner-real-btn"
+              onClick={onJoinClick}
+              title="Become a GoRush driver"
+              id="final-cta-become-driver-btn"
+            >
+              <span>Become a GoRush driver</span>
+              <span className="final-cta-banner-btn-arrow">
+                <ArrowRight size={17} />
+              </span>
+            </button>
           </div>
         </section>
       </main>
