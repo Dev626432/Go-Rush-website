@@ -1,9 +1,10 @@
-const API_URL = import.meta.env.VITE_API_URL || '/api';
+// Use local Vite proxy '/api' to eliminate cross-origin CORS/preflight issues
+const API_URL = '/api';
 
 // Helper to get token
 const getToken = () => localStorage.getItem('token');
 
-// Generic API caller
+// Generic API caller with resilient JSON and network error handling
 const apiCall = async (endpoint, method = 'GET', body = null, isAuth = false) => {
   const headers = {
     'Content-Type': 'application/json',
@@ -26,11 +27,28 @@ const apiCall = async (endpoint, method = 'GET', body = null, isAuth = false) =>
   }
 
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, options);
-    const data = await response.json();
+    let response;
+    try {
+      response = await fetch(`${API_URL}${endpoint}`, options);
+    } catch (networkErr) {
+      console.warn('Proxy call failed, falling back to direct port 5000:', networkErr);
+      // Fallback directly to localhost:5000 if proxy failed
+      response = await fetch(`http://localhost:5000/api${endpoint}`, options);
+    }
+
+    const rawText = await response.text();
+    let data = {};
+    if (rawText && rawText.trim().length > 0) {
+      try {
+        data = JSON.parse(rawText);
+      } catch (parseErr) {
+        console.error('Non-JSON response received from server:', rawText);
+        throw new Error(`Server returned unexpected response (Status ${response.status}).`);
+      }
+    }
 
     if (!response.ok) {
-      throw new Error(data.message || 'Something went wrong');
+      throw new Error(data.message || `Request failed with status ${response.status}`);
     }
 
     return data;
