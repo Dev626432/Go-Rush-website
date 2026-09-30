@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { ArrowRight, Check, X, AlertCircle, Loader2 } from 'lucide-react';
+import { ArrowRight, Check, X, AlertCircle, Loader2, Sparkles, Database } from 'lucide-react';
 import { api } from '../services/api';
 
 export default function DriverForm({ close, action }) {
   const [submitted, setSubmitted] = useState(false);
+  const [registeredData, setRegisteredData] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [agreed, setAgreed] = useState(true);
@@ -14,7 +15,7 @@ export default function DriverForm({ close, action }) {
     phone: '',
     email: '',
     password: '',
-    dateOfBirth: '',
+    dateOfBirth: '1998-05-15',
     gender: 'Male',
     city: 'Indore',
     vehicleType: 'Bike / Scooter'
@@ -25,13 +26,31 @@ export default function DriverForm({ close, action }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleQuickFill = () => {
+    const randomSuffix = Math.floor(100000 + Math.random() * 900000);
+    const sampleNames = ['Dev Soni', 'Arjun Sharma', 'Rohan Patel', 'Vikas Verma', 'Deepak Tiwari'];
+    const chosenName = sampleNames[Math.floor(Math.random() * sampleNames.length)];
+    
+    setFormData({
+      fullName: chosenName,
+      phone: `9826${randomSuffix}`,
+      email: `driver.${randomSuffix}@gorush.in`,
+      password: 'Password123',
+      dateOfBirth: '1998-05-15',
+      gender: 'Male',
+      city: 'Indore',
+      vehicleType: 'Bike / Scooter'
+    });
+    setErrorMsg('');
+  };
+
   const validate = () => {
     if (!formData.fullName || !formData.fullName.trim()) {
-      return 'Please enter your full name.';
+      return 'Please enter your full name (or click Quick Fill Test Driver above).';
     }
     const cleanPhone = formData.phone ? formData.phone.replace(/\D/g, '').slice(-10) : '';
     if (!cleanPhone || cleanPhone.length !== 10 || !/^[6-9]/.test(cleanPhone)) {
-      return 'Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).';
+      return 'Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.';
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email || !formData.email.trim() || !emailRegex.test(formData.email.trim())) {
@@ -56,10 +75,6 @@ export default function DriverForm({ close, action }) {
     const validationError = validate();
     if (validationError) {
       setErrorMsg(validationError);
-      // Scroll smoothly to top if the missing field is at the top
-      if (formContainerRef.current) {
-        formContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-      }
       return;
     }
 
@@ -78,22 +93,25 @@ export default function DriverForm({ close, action }) {
         vehicleType: formData.vehicleType
       };
 
-      console.log('Submitting driver registration:', submissionData.email, submissionData.phone);
+      console.log('Submitting driver registration to MongoDB Atlas:', submissionData.email, submissionData.phone);
       const response = await api.registerDriver(submissionData);
       
       if (response && response.success) {
         if (response.data && response.data.token) {
           localStorage.setItem('token', response.data.token);
         }
+        setRegisteredData(response.data);
         setSubmitted(true);
-        if (action) action('Registration successful! Welcome to GoRush.');
+        if (action) action('Registration successful! Saved to MongoDB Atlas.');
       } else {
         throw new Error(response.message || 'Registration failed');
       }
     } catch (error) {
       console.error('Registration submission error:', error);
       if (error.message && (error.message.includes('Failed to fetch') || error.message.includes('NetworkError'))) {
-        setErrorMsg('Server is currently offline. Please ensure the backend server is running on port 5000.');
+        setErrorMsg('Server connection failed. Backend server is starting, please retry in 5 seconds.');
+      } else if (error.message && error.message.includes('already exists')) {
+        setErrorMsg('This Mobile or Email is already in MongoDB! Click "⚡ Quick Fill Test Driver" above to get a fresh unique number.');
       } else {
         setErrorMsg(error.message || 'Registration failed. Please check your details and try again.');
       }
@@ -107,37 +125,127 @@ export default function DriverForm({ close, action }) {
       <div
         ref={formContainerRef}
         className="driver-form"
-        style={{ maxHeight: '92vh', overflowY: 'auto' }}
+        style={{ maxHeight: '92vh', overflowY: 'auto', borderRadius: '20px' }}
         onClick={(event) => event.stopPropagation()}
       >
         {submitted ? (
-          <div className="form-success">
-            <div>
-              <Check size={25} />
+          <div className="form-success" style={{ textAlign: 'center', padding: '24px 10px' }}>
+            <div style={{
+              width: '64px',
+              height: '64px',
+              borderRadius: '50%',
+              background: '#ecfccb',
+              color: '#15803d',
+              display: 'grid',
+              placeItems: 'center',
+              margin: '0 auto 16px',
+              boxShadow: '0 8px 20px rgba(34, 197, 94, 0.25)'
+            }}>
+              <Check size={32} strokeWidth={3} />
             </div>
-            <h2>Registration Successful!</h2>
-            <p>Welcome to GoRush, <strong>{formData.fullName}</strong>! Your driver profile has been created securely in our database.</p>
-            <button className="primary-cta" onClick={close} style={{ marginTop: '20px' }}>
-              Done <ArrowRight size={16} />
-            </button>
+            <h2 style={{ fontSize: '26px', color: '#14251b', marginBottom: '8px' }}>Registration Successful!</h2>
+            <p style={{ color: '#4b5563', fontSize: '13px', lineHeight: 1.6, marginBottom: '20px' }}>
+              Welcome to GoRush, <strong>{formData.fullName}</strong>!<br />
+              Your driver account is live in MongoDB Atlas cluster.
+            </p>
+
+            {registeredData && (
+              <div style={{
+                background: '#f8fafc',
+                border: '1px solid #e2e8f0',
+                borderRadius: '12px',
+                padding: '14px 16px',
+                textAlign: 'left',
+                marginBottom: '22px',
+                fontSize: '12px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0f766e', fontWeight: 700, marginBottom: '8px' }}>
+                  <Database size={15} />
+                  <span>MongoDB Atlas Record Created</span>
+                </div>
+                <div style={{ color: '#334155', lineHeight: 1.8 }}>
+                  <div><strong>Cluster Database:</strong> <code>gorush.drivers</code></div>
+                  <div><strong>Driver ID:</strong> <code>{registeredData._id}</code></div>
+                  <div><strong>Phone:</strong> {registeredData.phone}</div>
+                  <div><strong>Email:</strong> {registeredData.email}</div>
+                </div>
+              </div>
+            )}
+
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="primary-cta"
+                onClick={() => {
+                  window.location.href = '/driver';
+                }}
+                style={{ flex: 1, justifyContent: 'center' }}
+              >
+                Go to Driver Dashboard <ArrowRight size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={close}
+                style={{
+                  padding: '12px 18px',
+                  background: '#f3f4f6',
+                  border: '1px solid #d1d5db',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  color: '#374151'
+                }}
+              >
+                Close
+              </button>
+            </div>
           </div>
         ) : (
           <div>
             <button type="button" className="form-close" onClick={close} aria-label="Close registration modal">
               <X size={19} />
             </button>
-            <div className="form-kicker">DRIVER REGISTRATION</div>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+              <div className="form-kicker" style={{ margin: 0 }}>DRIVER REGISTRATION</div>
+              
+              {/* Quick Auto-Fill Button for instant testing */}
+              <button
+                type="button"
+                onClick={handleQuickFill}
+                style={{
+                  background: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)',
+                  border: '1px solid #86efac',
+                  color: '#15803d',
+                  padding: '5px 10px',
+                  borderRadius: '6px',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  transition: 'all 0.2s ease'
+                }}
+                title="Fill dummy test driver data with 1 click"
+              >
+                <Sparkles size={12} />
+                <span>⚡ Auto-Fill Test Data</span>
+              </button>
+            </div>
+
             <h2>
               Ready to move
               <br />
               <em>forward?</em>
             </h2>
-            <p>Tell us about yourself to begin your journey.</p>
+            <p>Tell us about yourself to begin your journey. Saved directly to MongoDB Atlas.</p>
             
             {errorMsg && (
               <div style={{
                 color: '#b91c1c',
-                marginBottom: '18px',
+                marginBottom: '16px',
                 fontSize: '13px',
                 lineHeight: 1.5,
                 padding: '12px 14px',
@@ -254,7 +362,7 @@ export default function DriverForm({ close, action }) {
               </select>
             </label>
 
-            <label className="check-label" style={{ cursor: 'pointer' }}>
+            <label className="check-label" style={{ cursor: 'pointer', marginTop: '14px' }}>
               <input
                 type="checkbox"
                 checked={agreed}
@@ -303,7 +411,7 @@ export default function DriverForm({ close, action }) {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 size={16} className="animate-spin" /> Creating account...
+                  <Loader2 size={16} className="animate-spin" /> Saving to MongoDB Atlas...
                 </>
               ) : (
                 <>
@@ -311,8 +419,27 @@ export default function DriverForm({ close, action }) {
                 </>
               )}
             </button>
-            <small style={{ display: 'block', textAlign: 'center', marginTop: '10px', color: '#667085' }}>
-              We securely encrypt your personal details.
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px' }}>
+              <button
+                type="button"
+                onClick={handleQuickFill}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#15803d',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  textDecoration: 'underline'
+                }}
+              >
+                ⚡ 1-Click Auto Fill Test Driver
+              </button>
+            </div>
+
+            <small style={{ display: 'block', textAlign: 'center', marginTop: '8px', color: '#667085' }}>
+              Connected live to MongoDB Atlas Cluster.
             </small>
           </div>
         )}

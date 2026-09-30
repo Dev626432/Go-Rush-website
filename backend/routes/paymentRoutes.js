@@ -7,13 +7,11 @@ const {
 } = require('../controllers/paymentController');
 const { protect } = require('../middleware/authMiddleware');
 
-router.use(protect);
-
 // Payment routes
-router.get('/payments/my', getMyPayments);
+router.get('/payments/my', protect, getMyPayments);
 
 // Payout routes
-router.get('/payouts/my', getMyPayouts);
-router.post('/payouts/request', requestPayout);
+router.get('/payouts/my', protect, getMyPayouts);
+router.post('/payouts/request', protect, requestPayout);
 
 module.exports = router;
