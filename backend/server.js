@@ -15,6 +15,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Request logger
+app.use((req, res, next) => {
+  console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
+  next();
+});
+
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const documentRoutes = require('./routes/documentRoutes');

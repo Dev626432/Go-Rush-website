@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, Check, X, AlertCircle } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ArrowRight, Check, X, AlertCircle, Loader2 } from 'lucide-react';
 import { api } from '../services/api';
 
 export default function DriverForm({ close, action }) {
@@ -7,6 +7,7 @@ export default function DriverForm({ close, action }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [agreed, setAgreed] = useState(true);
+  const formContainerRef = useRef(null);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -25,16 +26,16 @@ export default function DriverForm({ close, action }) {
   };
 
   const validate = () => {
-    if (!formData.fullName.trim()) {
+    if (!formData.fullName || !formData.fullName.trim()) {
       return 'Please enter your full name.';
     }
-    const cleanPhone = formData.phone.replace(/\D/g, '').slice(-10);
+    const cleanPhone = formData.phone ? formData.phone.replace(/\D/g, '').slice(-10) : '';
     if (!cleanPhone || cleanPhone.length !== 10 || !/^[6-9]/.test(cleanPhone)) {
       return 'Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).';
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-      return 'Please enter a valid email address.';
+    if (!formData.email || !formData.email.trim() || !emailRegex.test(formData.email.trim())) {
+      return 'Please enter a valid email address (e.g. name@example.com).';
     }
     if (!formData.password || formData.password.length < 6) {
       return 'Password must be at least 6 characters long.';
@@ -43,7 +44,7 @@ export default function DriverForm({ close, action }) {
       return 'Please select your date of birth.';
     }
     if (!agreed) {
-      return 'Please accept the GoRush terms and privacy policy to continue.';
+      return 'Please agree to the GoRush terms and privacy policy.';
     }
     return null;
   };
@@ -55,6 +56,10 @@ export default function DriverForm({ close, action }) {
     const validationError = validate();
     if (validationError) {
       setErrorMsg(validationError);
+      // Scroll smoothly to top if the missing field is at the top
+      if (formContainerRef.current) {
+        formContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       return;
     }
 
@@ -63,13 +68,19 @@ export default function DriverForm({ close, action }) {
     try {
       const cleanPhone = formData.phone.replace(/\D/g, '').slice(-10);
       const submissionData = {
-        ...formData,
         fullName: formData.fullName.trim(),
         email: formData.email.trim().toLowerCase(),
-        phone: cleanPhone
+        phone: cleanPhone,
+        password: formData.password,
+        dateOfBirth: formData.dateOfBirth,
+        gender: formData.gender,
+        city: formData.city,
+        vehicleType: formData.vehicleType
       };
 
+      console.log('Submitting driver registration:', submissionData.email, submissionData.phone);
       const response = await api.registerDriver(submissionData);
+      
       if (response && response.success) {
         if (response.data && response.data.token) {
           localStorage.setItem('token', response.data.token);
@@ -81,10 +92,10 @@ export default function DriverForm({ close, action }) {
       }
     } catch (error) {
       console.error('Registration submission error:', error);
-      if (error.message && error.message.includes('Failed to fetch')) {
-        setErrorMsg('Server is currently offline. Please ensure the GoRush backend server is running on port 5000.');
+      if (error.message && (error.message.includes('Failed to fetch') || error.message.includes('NetworkError'))) {
+        setErrorMsg('Server is currently offline. Please ensure the backend server is running on port 5000.');
       } else {
-        setErrorMsg(error.message || 'Registration failed. Please check your information and try again.');
+        setErrorMsg(error.message || 'Registration failed. Please check your details and try again.');
       }
     } finally {
       setIsSubmitting(false);
@@ -94,6 +105,7 @@ export default function DriverForm({ close, action }) {
   return (
     <div className="form-overlay" onClick={close}>
       <div
+        ref={formContainerRef}
         className="driver-form"
         style={{ maxHeight: '92vh', overflowY: 'auto' }}
         onClick={(event) => event.stopPropagation()}
@@ -110,7 +122,7 @@ export default function DriverForm({ close, action }) {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate>
+          <div>
             <button type="button" className="form-close" onClick={close} aria-label="Close registration modal">
               <X size={19} />
             </button>
@@ -149,12 +161,16 @@ export default function DriverForm({ close, action }) {
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder="e.g. Arjun Kumar"
-                required
+                style={{
+                  borderColor: errorMsg && !formData.fullName.trim() ? '#ef4444' : undefined
+                }}
               />
             </label>
             <label>
               Mobile number
-              <div className="phone-input">
+              <div className="phone-input" style={{
+                borderColor: errorMsg && (!formData.phone || formData.phone.replace(/\D/g, '').length < 10) ? '#ef4444' : undefined
+              }}>
                 <span>+91</span>
                 <input
                   name="phone"
@@ -162,8 +178,7 @@ export default function DriverForm({ close, action }) {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="9876543210"
-                  maxLength={13}
-                  required
+                  maxLength={14}
                 />
               </div>
             </label>
@@ -175,7 +190,9 @@ export default function DriverForm({ close, action }) {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="arjun@example.com"
-                required
+                style={{
+                  borderColor: errorMsg && !formData.email.trim() ? '#ef4444' : undefined
+                }}
               />
             </label>
             <label>
@@ -186,7 +203,9 @@ export default function DriverForm({ close, action }) {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="At least 6 characters"
-                required
+                style={{
+                  borderColor: errorMsg && (!formData.password || formData.password.length < 6) ? '#ef4444' : undefined
+                }}
               />
             </label>
             <label>
@@ -196,7 +215,9 @@ export default function DriverForm({ close, action }) {
                 type="date"
                 value={formData.dateOfBirth}
                 onChange={handleChange}
-                required
+                style={{
+                  borderColor: errorMsg && !formData.dateOfBirth ? '#ef4444' : undefined
+                }}
               />
             </label>
             
@@ -266,18 +287,23 @@ export default function DriverForm({ close, action }) {
             )}
             
             <button
-              type="submit"
+              type="button"
               className="primary-cta form-submit"
               disabled={isSubmitting}
+              onClick={handleSubmit}
               style={{
                 cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 opacity: isSubmitting ? 0.8 : 1,
-                marginTop: '16px'
+                marginTop: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px'
               }}
             >
               {isSubmitting ? (
                 <>
-                  <span className="btn-spinner" /> Creating account...
+                  <Loader2 size={16} className="animate-spin" /> Creating account...
                 </>
               ) : (
                 <>
@@ -288,7 +314,7 @@ export default function DriverForm({ close, action }) {
             <small style={{ display: 'block', textAlign: 'center', marginTop: '10px', color: '#667085' }}>
               We securely encrypt your personal details.
             </small>
-          </form>
+          </div>
         )}
       </div>
     </div>
