@@ -1,10 +1,18 @@
-// Use local Vite proxy '/api' to eliminate cross-origin CORS/preflight issues
-const API_URL = '/api';
+// Dynamic backend API URL detection
+const getApiEndpoints = (endpoint) => {
+  const hostname = (typeof window !== 'undefined' && window.location && window.location.hostname) || 'localhost';
+  return [
+    `http://${hostname}:5000/api${endpoint}`,
+    `http://127.0.0.1:5000/api${endpoint}`,
+    `http://localhost:5000/api${endpoint}`,
+    `/api${endpoint}`
+  ];
+};
 
 // Helper to get token
 const getToken = () => localStorage.getItem('token');
 
-// Generic API caller with resilient JSON and network error handling
+// Generic API caller with auto-fallback across direct backend and proxy ports
 const apiCall = async (endpoint, method = 'GET', body = null, isAuth = false) => {
   const headers = {
     'Content-Type': 'application/json',
@@ -26,36 +34,41 @@ const apiCall = async (endpoint, method = 'GET', body = null, isAuth = false) =>
     options.body = JSON.stringify(body);
   }
 
-  try {
-    let response;
+  const urlsToTry = getApiEndpoints(endpoint);
+  let lastError = null;
+
+  for (const url of urlsToTry) {
     try {
-      response = await fetch(`${API_URL}${endpoint}`, options);
-    } catch (networkErr) {
-      console.warn('Proxy call failed, falling back to direct port 5000:', networkErr);
-      // Fallback directly to localhost:5000 if proxy failed
-      response = await fetch(`http://localhost:5000/api${endpoint}`, options);
-    }
+      const response = await fetch(url, options);
 
-    const rawText = await response.text();
-    let data = {};
-    if (rawText && rawText.trim().length > 0) {
-      try {
-        data = JSON.parse(rawText);
-      } catch (parseErr) {
-        console.error('Non-JSON response received from server:', rawText);
-        throw new Error(`Server returned unexpected response (Status ${response.status}).`);
+      // If static dev server returns 405 or 404, try next direct endpoint
+      if (response.status === 405 || response.status === 404) {
+        console.warn(`URL ${url} returned ${response.status}, trying fallback endpoint...`);
+        continue;
       }
-    }
 
-    if (!response.ok) {
-      throw new Error(data.message || `Request failed with status ${response.status}`);
-    }
+      const rawText = await response.text();
+      let data = {};
+      if (rawText && rawText.trim().length > 0) {
+        try {
+          data = JSON.parse(rawText);
+        } catch (parseErr) {
+          console.error(`Non-JSON response from ${url}:`, rawText);
+        }
+      }
 
-    return data;
-  } catch (error) {
-    console.error(`API Error (${endpoint}):`, error);
-    throw error;
+      if (!response.ok) {
+        throw new Error(data.message || `Server request failed with status ${response.status}`);
+      }
+
+      return data;
+    } catch (err) {
+      lastError = err;
+      console.warn(`Call to ${url} failed:`, err.message);
+    }
   }
+
+  throw lastError || new Error('Backend server is not reachable. Please ensure backend is running on port 5000.');
 };
 
 export const api = {
